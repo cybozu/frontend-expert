@@ -21,7 +21,10 @@ const Layout = ({ children, title }: Props) => (
     </Head>
     <header>
       <nav>
-        <Link href="/">Home</Link>
+        <h1>
+          <Link href="/">サイボウズ フロントエンドエキスパートチーム</Link>
+        </h1>
+        <Link href="/members">メンバー一覧</Link>
       </nav>
     </header>
     {children}
