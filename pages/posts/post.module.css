@@ -1,3 +1,65 @@
 .post {
-  color: blue;
+  margin: 0 auto;
+  max-width: 42rem;
+}
+.post h1 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1.75rem;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  color: inherit;
+  font-family: Montserrat,sans-serif;
+  font-weight: 900;
+  text-rendering: optimizeLegibility;
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+
+.post h2 {
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.post table {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.post img {
+  display: block;
+  margin: 0.5rem auto 0;
+  width: 80%;
+}
+
+.post p {
+  margin-top: 0.5rem;
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.post li {
+  margin-left: 1rem;
+  font-size: 1rem;
+}
+
+.post ul {
+  margin-top: 1rem;
+  box-sizing: border-box;
+}
+
+.post pre {
+  margin: 0.4rem;
+  padding: 0.5rem;
+  padding-left: 1rem;
+  border-radius: 0.5rem;
+  background-color: #ccc;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.post hr {
+  margin-top: 1rem;
 }

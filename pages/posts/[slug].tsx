@@ -13,7 +13,10 @@ const Post = ({ post }: Props) => {
   const content = hydrate(post.contentSource);
   return (
     <Layout title={post.metaData.title}>
-      <div className={styles.post}>{content}</div>
+      <div className={styles.post}>
+        <h1>{post.metaData.title}</h1>
+        {content}
+      </div>
     </Layout>
   );
 };
