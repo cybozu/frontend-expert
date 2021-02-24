@@ -1,25 +1,29 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Layout from "../../src/components/Layout";
 import { getAllPosts, getPostBySlug } from "../../src/utils/posts";
+import type { PostData } from "../../src/utils/posts";
+import hydrate from "next-mdx-remote/hydrate";
 
 type Props = {
-  title: string;
+  post: PostData;
 };
-const Post = ({ title }: Props) => <Layout title={title} />;
+
+const Post = ({ post }: Props) => {
+  const content = hydrate(post.content);
+  return <Layout title="">{content}</Layout>;
+};
 
 export const getStaticProps: GetStaticProps = async (context) => {
   // @ts-ignore
-  const post = getPostBySlug(context.params.slug);
-
-  console.log(post);
+  const post = await getPostBySlug(context.params.slug);
 
   return {
-    props: post,
+    props: { post },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
 
   return {
     paths: posts.map((post) => {

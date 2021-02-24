@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import renderToString from "next-mdx-remote/render-to-string";
+import { MdxRemote } from "next-mdx-remote/types";
 
 type PostMetaData = {
   title: string;
@@ -9,9 +11,9 @@ type PostMetaData = {
   updatedAt: string;
 };
 
-export type Post = {
+export type PostData = {
   slug: string;
-  content: string;
+  content: MdxRemote.Source;
   metaData: PostMetaData;
 };
 
@@ -21,7 +23,7 @@ function getPostSlugs() {
   return fs.readdirSync(postsDirectoryPath);
 }
 
-export function getPostBySlug(slug: string): Post {
+export async function getPostBySlug(slug: string): Promise<PostData> {
   const realSlug = slug.replace(/\.mdx$/, "");
   const fullPath = path.join(postsDirectoryPath, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -31,17 +33,16 @@ export function getPostBySlug(slug: string): Post {
 
   return {
     slug: realSlug,
-    content,
+    content: await renderToString(content),
     metaData: data as PostMetaData,
   };
 }
 
-export function getAllPosts() {
+export async function getAllPosts() {
   const slugs = getPostSlugs();
-  const posts = slugs
-    .map(getPostBySlug)
-    .sort((post1, post2) =>
-      post1.metaData.createdAt > post2.metaData.createdAt ? -1 : 1
-    );
+  const _posts = await Promise.all(slugs.map(getPostBySlug));
+  const posts = _posts.sort((post1, post2) =>
+    post1.metaData.createdAt > post2.metaData.createdAt ? -1 : 1
+  );
   return posts;
 }
