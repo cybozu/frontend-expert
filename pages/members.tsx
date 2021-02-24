@@ -49,6 +49,15 @@ const Members = () => (
     {members.map((member) => {
       return <Member key={member.name} member={member} />;
     })}
+    <div style={{ width: "400px", height: "300px" }}>
+      <script
+        async
+        className="speakerdeck-embed"
+        data-id="0efec8a9dd224baebfb2aaf30fbe9a28"
+        data-ratio="1.33333333333333"
+        src="//speakerdeck.com/assets/embed.js"
+      ></script>
+    </div>
   </Layout>
 );
 
