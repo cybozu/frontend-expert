@@ -3,6 +3,7 @@ import Layout from "../../src/components/Layout";
 import { getAllPosts, getPostBySlug } from "../../src/utils/posts";
 import type { PostData } from "../../src/utils/posts";
 import hydrate from "next-mdx-remote/hydrate";
+import styles from "./post.module.css";
 
 type Props = {
   post: PostData;
@@ -10,7 +11,11 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   const content = hydrate(post.contentSource);
-  return <Layout title={post.metaData.title}>{content}</Layout>;
+  return (
+    <Layout title={post.metaData.title}>
+      <div className={styles.post}>{content}</div>
+    </Layout>
+  );
 };
 
 function assertContextForPost(
