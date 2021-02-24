@@ -10,7 +10,7 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   const content = hydrate(post.contentSource);
-  return <Layout title="">{content}</Layout>;
+  return <Layout title={post.metaData.title}>{content}</Layout>;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
