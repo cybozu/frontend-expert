@@ -1,9 +1,11 @@
 export const SpeakerDeck = ({
   embedId,
   width,
+  title,
 }: {
   embedId: string;
   width: string;
+  title: string;
 }) => {
   return (
     <div style={{ width }}>
@@ -17,6 +19,7 @@ export const SpeakerDeck = ({
         }}
       >
         <iframe
+          title={title}
           src={`https://speakerdeck.com/player/${embedId}`}
           style={{
             border: 0,
@@ -29,7 +32,7 @@ export const SpeakerDeck = ({
           allowFullScreen
           scrolling="no"
           allow="encrypted-media"
-        ></iframe>
+        />
       </div>
     </div>
   );

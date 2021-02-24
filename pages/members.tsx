@@ -50,7 +50,11 @@ const Members = () => (
     {members.map((member) => {
       return <Member key={member.name} member={member} />;
     })}
-    <SpeakerDeck embedId="0efec8a9dd224baebfb2aaf30fbe9a28" width="400px" />
+    <SpeakerDeck
+      embedId="0efec8a9dd224baebfb2aaf30fbe9a28"
+      width="400px"
+      title="フロントエンドエキスパートチームについて"
+    />
   </Layout>
 );
 
