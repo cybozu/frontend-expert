@@ -13,7 +13,7 @@ type PostMetaData = {
 
 export type PostData = {
   slug: string;
-  content: MdxRemote.Source;
+  contentSource: MdxRemote.Source;
   metaData: PostMetaData;
 };
 
@@ -33,7 +33,7 @@ export async function getPostBySlug(slug: string): Promise<PostData> {
 
   return {
     slug: realSlug,
-    content: await renderToString(content),
+    contentSource: await renderToString(content),
     metaData: data as PostMetaData,
   };
 }

@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Post = ({ post }: Props) => {
-  const content = hydrate(post.content);
+  const content = hydrate(post.contentSource);
   return <Layout title="">{content}</Layout>;
 };
 
