@@ -1,4 +1,4 @@
-import Layout from "../../components/Layout";
+import Layout from "../../src/components/Layout";
 
 const Posts = () => <Layout title="記事一覧">やほ</Layout>;
 
