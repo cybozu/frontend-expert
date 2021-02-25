@@ -10,9 +10,11 @@ type Props = {
 const Posts = ({ posts }: Props) => (
   <Layout title="記事一覧">
     <div>
-      {posts.map((post) => (
-        <div key={post.slug}>
-          <Link href={`/posts/${post.slug}`}>{post.metaData.title}</Link>
+      {posts.map(({ slug, metaData }) => (
+        <div key={slug}>
+          <Link href={`/posts/${slug}`}>
+            {`${metaData.createdAt} ${metaData.title}`}
+          </Link>
         </div>
       ))}
     </div>
