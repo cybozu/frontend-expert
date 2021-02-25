@@ -1,5 +1,3 @@
-const { off } = require("process");
-
 module.exports = {
   extends: "@cybozu/eslint-config/presets/react-typescript-prettier",
   rules: {
