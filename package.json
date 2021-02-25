@@ -12,8 +12,6 @@
     "format": "preiiter . -w"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
     "next": "latest",
     "react": "^16.12.0",
     "next-mdx-remote": "^2.1.3",
@@ -21,7 +19,6 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^12.0.0",
-    "@next/mdx": "^10.0.7",
     "@types/node": "^12.12.21",
     "@types/react": "^16.9.16",
     "@types/react-dom": "^16.9.4",
