@@ -72,7 +72,7 @@ const Member = ({ member }: { member: Member }) => {
 };
 
 const Members = () => (
-  <Layout title="メンバー一覧">
+  <Layout title="Members">
     {members.map((member) => {
       return <Member key={member.name} member={member} />;
     })}

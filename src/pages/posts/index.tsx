@@ -8,7 +8,7 @@ type Props = {
 };
 
 const Posts = ({ posts }: Props) => (
-  <Layout title="記事一覧">
+  <Layout title="Posts">
     <div>
       {posts.map(({ slug, metaData }) => (
         <div key={slug}>
