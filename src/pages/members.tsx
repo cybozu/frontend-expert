@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Layout from "../src/components/Layout";
-import { SpeakerDeck } from "../src/components/SpeakerDeck";
+import Layout from "../components/Layout";
+import { SpeakerDeck } from "../components/SpeakerDeck";
 
 type Member = {
   name: string;

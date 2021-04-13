@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import Layout from "../../src/components/Layout";
-import { getAllPosts, getPostBySlug } from "../../src/utils/posts";
-import type { PostData } from "../../src/utils/posts";
+import Layout from "../../components/Layout";
+import { getAllPosts, getPostBySlug } from "../../utils/posts";
+import type { PostData } from "../../utils/posts";
 import hydrate from "next-mdx-remote/hydrate";
 import styles from "./post.module.css";
 
