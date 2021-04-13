@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
 import { SpeakerDeck } from "../components/SpeakerDeck";
+import styles from "./members.module.css";
 
 type Member = {
   name: string;
@@ -53,20 +54,30 @@ const members: Member[] = [
 
 const Member = ({ member }: { member: Member }) => {
   return (
-    <section>
-      <p>{member.name}</p>
+    <section className={styles.member}>
       <Image
         src={`/member-icons/${member.name}.jpg`}
         alt={`${member.name} icon`}
         width="100"
         height="100"
       />
-      <a
-        href={`https://twitter.com/${member.twitterId}`}
-      >{`@${member.twitterId}`}</a>
-      <a
-        href={`https://github.com/${member.githubUsername}`}
-      >{`@${member.githubUsername}`}</a>
+      <div className={styles.details}>
+        <p className={styles.name}>{member.name}</p>
+        <div className={styles.links}>
+          <ul>
+            <li>
+              <a
+                href={`https://twitter.com/${member.twitterId}`}
+              >{`@${member.twitterId}`}</a>
+            </li>
+            <li>
+              <a
+                href={`https://github.com/${member.githubUsername}`}
+              >{`@${member.githubUsername}`}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
   );
 };

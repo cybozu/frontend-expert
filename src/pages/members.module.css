@@ -1,0 +1,25 @@
+.member {
+  margin: 1.2rem 0;
+  display: flex;
+}
+
+.member .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+  padding-left: 1.2rem;
+}
+
+.member .details .name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.member .details .links ul {
+  list-style-type: none;
+}
+
+.member .details .links ul li {
+  font-size: 0.8rem;
+}
