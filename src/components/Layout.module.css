@@ -1,0 +1,32 @@
+.layout {
+  margin: 0 auto;
+  max-width: 42rem;
+}
+
+.header {
+  padding: 0.6rem 0;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+  padding-top: 1.2rem;
+}
+
+.navigation ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.navigation ul li {
+  padding: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.main {
+  padding-bottom: 0.6rem;
+}
+
+.main h2 {
+  font-size: 1.6rem;
+}

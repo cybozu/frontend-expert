@@ -9,6 +9,7 @@ type Props = {
 
 const Posts = ({ posts }: Props) => (
   <Layout title="Posts">
+    <h2>Posts</h2>
     <div>
       {posts.map(({ slug, metaData }) => (
         <div key={slug}>

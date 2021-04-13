@@ -73,6 +73,7 @@ const Member = ({ member }: { member: Member }) => {
 
 const Members = () => (
   <Layout title="Members">
+    <h2>Members</h2>
     {members.map((member) => {
       return <Member key={member.name} member={member} />;
     })}
