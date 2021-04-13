@@ -92,7 +92,7 @@ const Members = () => (
     })}
     <SpeakerDeck
       embedId="0efec8a9dd224baebfb2aaf30fbe9a28"
-      width="400px"
+      width="42rem"
       title="フロントエンドエキスパートチームについて"
     />
   </Layout>
