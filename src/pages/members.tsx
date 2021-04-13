@@ -66,11 +66,13 @@ const Member = ({ member }: { member: Member }) => {
         <div className={styles.links}>
           <ul>
             <li>
+              Twitter:{" "}
               <a
                 href={`https://twitter.com/${member.twitterId}`}
               >{`@${member.twitterId}`}</a>
             </li>
             <li>
+              GitHub:{" "}
               <a
                 href={`https://github.com/${member.githubUsername}`}
               >{`@${member.githubUsername}`}</a>
