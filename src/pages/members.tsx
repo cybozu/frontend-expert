@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Layout from "../components/Layout";
-import { SpeakerDeck } from "../components/SpeakerDeck";
 import styles from "./members.module.css";
 
 type Member = {
