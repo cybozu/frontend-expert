@@ -29,6 +29,20 @@ const Author = ({ author }: { author: Member }) => {
   );
 };
 
+const Tags = ({ tags }: { tags: string[] }) => {
+  return (
+    <div className={styles.tags}>
+      {tags.map((tag) => {
+        return (
+          <Link key={tag} href={`tags/${tag}`}>
+            <div className={styles.tag}>{tag}</div>
+          </Link>
+        );
+      })}
+    </div>
+  );
+};
+
 type Props = {
   post: PostData;
 };
@@ -37,6 +51,7 @@ const Post = ({ post }: Props) => {
   const author = getMemberByName(post.metaData.author);
   return (
     <Layout title={post.metaData.title}>
+      <Tags tags={post.metaData.tags} />
       <h1 className={styles.title}>{post.metaData.title}</h1>
       <Author author={author} />
       <div className={styles.post}>

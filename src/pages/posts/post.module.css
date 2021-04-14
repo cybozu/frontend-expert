@@ -81,3 +81,16 @@
 .authorInfo ul li {
   margin-right: 0.3rem;
 }
+
+.tags {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.tag {
+  font-size: 1.2rem;
+  border: 1px solid black;
+  padding: 0.2rem;
+  cursor: pointer;
+  margin-right: 0.8rem;
+}

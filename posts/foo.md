@@ -3,6 +3,10 @@ title: "Frontend Monthly #1"
 author: "sosukesuzuki"
 createdAt: "2020-07-28"
 updatedAt: "2021-02-24"
+tags:
+  - FrontendMonthly
+  - web
+  - JavaScript
 ---
 
 ## イベント概要

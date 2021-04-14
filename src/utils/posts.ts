@@ -10,6 +10,7 @@ type PostMetaData = {
   author: string;
   createdAt: string;
   updatedAt: string;
+  tags: string[];
 };
 
 export type PostData = {
@@ -38,6 +39,9 @@ function assertMetaData(metaData: any): asserts metaData is PostMetaData {
   if (!("updatedAt" in metaData)) {
     missingProperties.push("updatedAt");
   }
+  if (!("tags" in metaData)) {
+    missingProperties.push("tags");
+  }
   if (missingProperties.length > 0) {
     throw new Error(`Missing meta data: ${missingProperties.join(", ")}`);
   }
@@ -55,6 +59,11 @@ export async function getPostBySlug(slug: string): Promise<PostData> {
   const { data, content } = matter(fileContents);
 
   if (!data.updatedAt) data.updatedAt = data.createdAt;
+  if (!data.tags) {
+    data.tags = [];
+  } else {
+    data.tags = Array.from(new Set(data.tags));
+  }
 
   assertMetaData(data);
 
