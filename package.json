@@ -5,11 +5,12 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint:eslint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "yarn lint:eslint --fix",
-    "lint:typescript": "tsc",
     "lint": "run-p lint:*",
-    "format": "preiiter . -w"
+    "lint:eslint": "eslint . --ext .ts,.tsx",
+    "lint:typescript": "tsc",
+    "fix": "run-s fix:prettier fix:eslint",
+    "fix:prettier": "prettier src -w",
+    "fix:eslint": "eslint . --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "next": "latest",
