@@ -13,7 +13,7 @@ type Props = {
   title?: string;
 };
 
-const Layout = ({ children, title }: Props) => (
+export const Layout = ({ children, title }: Props) => (
   <div className={styles.layout}>
     <Head>
       <title>{createPageTitle(title)}</title>
@@ -42,5 +42,3 @@ const Layout = ({ children, title }: Props) => (
     </footer>
   </div>
 );
-
-export default Layout;

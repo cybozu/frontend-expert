@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Layout from "../components/Layout";
+import { Layout } from "../components/Layout";
 import styles from "./members.module.css";
 
 type Member = {

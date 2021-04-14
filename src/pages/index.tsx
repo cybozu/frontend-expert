@@ -1,4 +1,4 @@
-import Layout from "../components/Layout";
+import { Layout } from "../components/Layout";
 import { SpeakerDeck } from "../components/SpeakerDeck";
 
 const IndexPage = () => (

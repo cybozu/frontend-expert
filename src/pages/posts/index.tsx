@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import Layout from "../../components/Layout";
+import { Layout } from "../../components/Layout";
 import { getAllPosts, PostData } from "../../utils/posts";
 import styles from "./posts.module.css";
 
