@@ -1,25 +1,15 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { Layout } from "../../components/Layout";
-import {
-  getIconByName,
-  getMemberByName,
-  Member,
-  members,
-} from "../../utils/members";
+import { getMemberByName, Member, members } from "../../utils/members";
 import { getPostsByAuthor, PostData } from "../../utils/posts";
 import styles from "./member.module.css";
-import Image from "next/image";
 import { Posts } from "../../components/posts";
+import { MemberIcon } from "../../components/MemberIcon";
 
 const MemberSection = ({ member }: { member: Member }) => {
   return (
     <div className={styles.member}>
-      <Image
-        width="200"
-        height="200"
-        src={getIconByName(member.name)}
-        alt={`${member.name} icon`}
-      />
+      <MemberIcon member={member} width="200" height="200" />
       <h1 className={styles.memberName}>{member.name}</h1>
       <ul className={styles.links}>
         <li>

@@ -4,19 +4,14 @@ import { getAllPosts, getPostBySlug } from "../../utils/posts";
 import type { PostData } from "../../utils/posts";
 import styles from "./post.module.css";
 import "prismjs/themes/prism.css";
-import { getIconByName, getMemberByName, Member } from "../../utils/members";
-import Image from "next/image";
+import { getMemberByName, Member } from "../../utils/members";
 import Link from "next/link";
+import { MemberIcon } from "../../components/MemberIcon";
 
 const Author = ({ author }: { author: Member }) => {
   return (
     <div className={styles.author}>
-      <Image
-        width="60"
-        height="60"
-        alt={`${author.name} icon`}
-        src={getIconByName(author.name)}
-      />
+      <MemberIcon width="60" height="60" member={author} />
       <div className={styles.authorInfo}>
         <p className={styles.authorName}>
           <Link href={`/members/${author.name}`}>{author.name}</Link>
