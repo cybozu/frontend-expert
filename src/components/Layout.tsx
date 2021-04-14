@@ -28,7 +28,7 @@ export const Layout = ({ children, title }: Props) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={DESCRIPTION} />
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={DESCRIPTION} />
         <meta name="twitter:image " content={OG_IMAGE_URL} />
