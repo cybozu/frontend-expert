@@ -2,20 +2,19 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { Layout } from "../../components/Layout";
 import { getAllPosts, getPostBySlug } from "../../utils/posts";
 import type { PostData } from "../../utils/posts";
-import hydrate from "next-mdx-remote/hydrate";
 import styles from "./post.module.css";
+import "prismjs/themes/prism.css";
 
 type Props = {
   post: PostData;
 };
 
 const Post = ({ post }: Props) => {
-  const content = hydrate(post.contentSource);
   return (
     <Layout title={post.metaData.title}>
       <div className={styles.post}>
         <h1>{post.metaData.title}</h1>
-        {content}
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
     </Layout>
   );

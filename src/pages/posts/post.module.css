@@ -50,16 +50,6 @@
   box-sizing: border-box;
 }
 
-.post pre {
-  margin: 0.4rem;
-  padding: 0.5rem;
-  padding-left: 1rem;
-  border-radius: 0.5rem;
-  background-color: #ccc;
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-
 .post hr {
   margin-top: 1rem;
 }

@@ -1,8 +1,9 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import renderToString from "next-mdx-remote/render-to-string";
-import { MdxRemote } from "next-mdx-remote/types";
+import remark from "remark";
+import html from "remark-html";
+import prism from "remark-prism";
 
 type PostMetaData = {
   title: string;
@@ -13,7 +14,7 @@ type PostMetaData = {
 
 export type PostData = {
   slug: string;
-  contentSource: MdxRemote.Source;
+  content: string;
   metaData: PostMetaData;
 };
 
@@ -42,9 +43,14 @@ function assertMetaData(metaData: any): asserts metaData is PostMetaData {
   }
 }
 
+async function markdownToHtml(markdownContent: string): Promise<string> {
+  const result = await remark().use(html).use(prism).process(markdownContent);
+  return result.toString();
+}
+
 export async function getPostBySlug(slug: string): Promise<PostData> {
-  const realSlug = slug.replace(/\.mdx$/, "");
-  const fullPath = path.join(postsDirectoryPath, `${realSlug}.mdx`);
+  const realSlug = slug.replace(/\.md$/, "");
+  const fullPath = path.join(postsDirectoryPath, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
@@ -54,7 +60,7 @@ export async function getPostBySlug(slug: string): Promise<PostData> {
 
   return {
     slug: realSlug,
-    contentSource: await renderToString(content),
+    content: await markdownToHtml(content),
     metaData: data,
   };
 }
