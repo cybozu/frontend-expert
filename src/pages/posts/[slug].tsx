@@ -4,16 +4,47 @@ import { getAllPosts, getPostBySlug } from "../../utils/posts";
 import type { PostData } from "../../utils/posts";
 import styles from "./post.module.css";
 import "prismjs/themes/prism.css";
+import { getIconByName, getMemberByName, Member } from "../../utils/members";
+import Image from "next/image";
+import Link from "next/link";
+
+const Author = ({ author }: { author: Member }) => {
+  return (
+    <div className={styles.author}>
+      <Image
+        width="60"
+        height="60"
+        alt={`${author.name} icon`}
+        src={getIconByName(author.name)}
+      />
+      <div className={styles.authorInfo}>
+        <p className={styles.authorName}>
+          <Link href={`/members/${author.name}`}>{author.name}</Link>
+        </p>
+        <ul>
+          <li>
+            <a href={`https://twitter.com/${author.twitterId}`}>Twitter</a>
+          </li>
+          <li>
+            <a href={`https://github.com/${author.githubUsername}`}>GitHub</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+};
 
 type Props = {
   post: PostData;
 };
 
 const Post = ({ post }: Props) => {
+  const author = getMemberByName(post.metaData.author);
   return (
     <Layout title={post.metaData.title}>
+      <h1 className={styles.title}>{post.metaData.title}</h1>
+      <Author author={author} />
       <div className={styles.post}>
-        <h1>{post.metaData.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
     </Layout>

@@ -2,6 +2,7 @@
   margin: 0 auto;
   max-width: 42rem;
 }
+.title,
 .post h1 {
   margin-left: 0;
   margin-right: 0;
@@ -52,4 +53,31 @@
 
 .post hr {
   margin-top: 1rem;
+}
+
+.author {
+  display: flex;
+  margin: 3rem 0;
+}
+
+.authorName {
+  font-size: 1.2rem;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 1rem;
+  margin: 0.3rem 0;
+  font-size: 0.8rem;
+}
+
+.authorInfo ul {
+  list-style: none;
+  display: flex;
+}
+
+.authorInfo ul li {
+  margin-right: 0.3rem;
 }

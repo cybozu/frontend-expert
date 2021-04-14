@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Layout } from "../components/Layout";
 import styles from "./members.module.css";
-import { Member, members } from "../utils/members";
+import { Member, members, getIconByName } from "../utils/members";
 
 const Member = ({ member }: { member: Member }) => {
   return (
     <section className={styles.member}>
       <Image
-        src={`/member-icons/${member.name}.jpg`}
+        src={getIconByName(member.name)}
         alt={`${member.name} icon`}
         width="100"
         height="100"

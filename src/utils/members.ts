@@ -46,3 +46,15 @@ export const members: Member[] = [
     githubUsername: "sosukesuzuki",
   },
 ];
+
+export function getMemberByName(name: string): Member {
+  const foundMember = members.find((member) => member.name === name);
+  if (foundMember === undefined) {
+    throw new Error(`Invalid member name ${name}`);
+  }
+  return foundMember;
+}
+
+export function getIconByName(name: string) {
+  return `/member-icons/${name}.jpg`;
+}
