@@ -3,7 +3,7 @@ import { Layout } from "../components/Layout";
 import styles from "./members.module.css";
 import { Member, members, getIconByName } from "../utils/members";
 
-const Member = ({ member }: { member: Member }) => {
+const MemberSection = ({ member }: { member: Member }) => {
   return (
     <section className={styles.member}>
       <Image
@@ -39,7 +39,7 @@ const Members = () => (
   <Layout title="Members">
     <h2>Members</h2>
     {members.map((member) => {
-      return <Member key={member.name} member={member} />;
+      return <MemberSection key={member.name} member={member} />;
     })}
   </Layout>
 );
