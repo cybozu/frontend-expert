@@ -1,0 +1,23 @@
+.member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.member .memberName {
+  font-size: 3rem;
+}
+
+.member .links {
+  list-style: none;
+  display: flex;
+}
+
+.member .links li {
+  font-size: 1.4rem;
+  margin-right: 1.2rem;
+}
+
+.posts {
+  margin-top: 1.2rem;
+}

@@ -73,3 +73,8 @@ export async function getAllPosts() {
   );
   return posts;
 }
+
+export async function getPostsByAuthor(authorName: string) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.metaData.author === authorName);
+}

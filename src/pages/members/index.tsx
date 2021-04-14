@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { Layout } from "../components/Layout";
+import { Layout } from "../../components/Layout";
 import styles from "./members.module.css";
-import { Member, members, getIconByName } from "../utils/members";
+import { Member, members, getIconByName } from "../../utils/members";
+import Link from "next/link";
 
 const MemberSection = ({ member }: { member: Member }) => {
   return (
@@ -13,7 +14,9 @@ const MemberSection = ({ member }: { member: Member }) => {
         height="100"
       />
       <div className={styles.details}>
-        <p className={styles.name}>{member.name}</p>
+        <p className={styles.name}>
+          <Link href={`/members/${member.name}`}>{member.name}</Link>
+        </p>
         <div className={styles.links}>
           <ul>
             <li>
