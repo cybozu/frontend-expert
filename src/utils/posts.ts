@@ -93,3 +93,8 @@ export async function getAllTags() {
   const tags = Array.from(new Set(posts.flatMap((post) => post.metaData.tags)));
   return tags;
 }
+
+export async function getPostsByTag(tag: string) {
+  const posts = await getAllPosts();
+  return posts.filter((post) => post.metaData.tags.includes(tag));
+}
