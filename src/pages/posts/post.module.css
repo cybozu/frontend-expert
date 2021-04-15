@@ -81,15 +81,32 @@
 }
 
 .post code {
-  font-size: 1.2rem;
-}
-
-.post code {
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 0.8rem;
   background-color: rgba(27, 31, 35, 0.05);
   border-radius: 3px;
+}
+
+.post table {
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.post table th {
+  font-weight: 600;
+}
+
+.post table td,
+.post table th {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.post table tr {
+  border-top: 1px solid #c6cbd1;
 }
 
 .author {
