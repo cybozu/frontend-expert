@@ -7,6 +7,7 @@ import "prismjs/themes/prism.css";
 import { getMemberByName, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
+import { Tags } from "../../components/Tags";
 
 const Author = ({ author }: { author: Member }) => {
   return (
@@ -25,20 +26,6 @@ const Author = ({ author }: { author: Member }) => {
           </li>
         </ul>
       </div>
-    </div>
-  );
-};
-
-const Tags = ({ tags }: { tags: string[] }) => {
-  return (
-    <div className={styles.tags}>
-      {tags.map((tag) => {
-        return (
-          <Link key={tag} href={`tags/${tag}`}>
-            <div className={styles.tag}>{tag}</div>
-          </Link>
-        );
-      })}
     </div>
   );
 };

@@ -87,3 +87,9 @@ export async function getPostsByAuthor(authorName: string) {
   const posts = await getAllPosts();
   return posts.filter((post) => post.metaData.author === authorName);
 }
+
+export async function getAllTags() {
+  const posts = await getAllPosts();
+  const tags = Array.from(new Set(posts.flatMap((post) => post.metaData.tags)));
+  return tags;
+}

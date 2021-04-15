@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { Layout } from "../../components/Layout";
 import { getAllPosts, PostData } from "../../utils/posts";
-import { Posts } from "../../components/posts";
+import { Posts } from "../../components/Posts";
 
 type Props = {
   posts: PostData[];

@@ -3,7 +3,7 @@ import { Layout } from "../../components/Layout";
 import { getMemberByName, Member, members } from "../../utils/members";
 import { getPostsByAuthor, PostData } from "../../utils/posts";
 import styles from "./member.module.css";
-import { Posts } from "../../components/posts";
+import { Posts } from "../../components/Posts";
 import { MemberIcon } from "../../components/MemberIcon";
 
 const MemberSection = ({ member }: { member: Member }) => {

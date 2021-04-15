@@ -1,0 +1,9 @@
+.tags {
+  list-style: none;
+  display: flex;
+}
+
+.tags li {
+  font-size: 1.2rem;
+  margin-right: 0.7rem;
+}
