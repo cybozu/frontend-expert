@@ -51,6 +51,9 @@ export const Layout = ({ children, title }: Props) => {
             <li>
               <Link href="/posts">Posts</Link>
             </li>
+            <li>
+              <Link href="/frontend-monthly">FrontendMonthly</Link>
+            </li>
           </ul>
         </nav>
       </header>
