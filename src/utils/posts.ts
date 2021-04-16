@@ -1,10 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import remark from "remark";
-import html from "remark-html";
-import prism from "remark-prism";
-import gfm from "remark-gfm";
+import { markdownToHtml } from "./markdown";
 
 type PostMetaData = {
   title: string;
@@ -46,15 +43,6 @@ function assertMetaData(metaData: any): asserts metaData is PostMetaData {
   if (missingProperties.length > 0) {
     throw new Error(`Missing meta data: ${missingProperties.join(", ")}`);
   }
-}
-
-async function markdownToHtml(markdownContent: string): Promise<string> {
-  const result = await remark()
-    .use(gfm)
-    .use(html)
-    .use(prism)
-    .process(markdownContent);
-  return result.toString();
 }
 
 export async function getPostBySlug(slug: string): Promise<PostData> {
