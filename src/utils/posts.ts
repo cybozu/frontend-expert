@@ -20,7 +20,7 @@ export type PostData = {
   metaData: PostMetaData;
 };
 
-const postsDirectoryPath = path.join(process.cwd(), "posts");
+const postsDirectoryPath = path.join(process.cwd(), "data", "posts");
 
 function getPostSlugs() {
   return fs.readdirSync(postsDirectoryPath);
