@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { markdownToHtml } from "./markdown";
 
 type MonthlyPostMetaData = {
   date: string;
@@ -43,33 +44,33 @@ function assertMetaData(
   }
 }
 
-export async function getPostBySlug(
-  slug: string,
-  index: number
-): Promise<MonthlyPostData> {
-  const realSlug = slug.replace(/\.md$/, "");
-  const fullPath = path.join(monthlyPostsDirectoryPath, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
-
-  assertMetaData(data);
-
-  return {
-    slug: realSlug,
-    no: index + 1,
-    content,
-    metaData: data,
-  };
-}
-
 export async function getAllPosts() {
   const slugs = getPostSlugs();
   slugs.sort();
   const _posts = await Promise.all(
-    slugs.map((slug, i) => getPostBySlug(slug, i))
+    slugs.map(async (slug, i) => {
+      const realSlug = slug.replace(/\.md$/, "");
+      const fullPath = path.join(monthlyPostsDirectoryPath, `${realSlug}.md`);
+      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
+      assertMetaData(data);
+      return {
+        slug: realSlug,
+        no: i + 1,
+        content: await markdownToHtml(content),
+        metaData: data,
+      };
+    })
   );
   const posts = _posts.sort((post1, post2) =>
     post1.metaData.date > post2.metaData.date ? -1 : 1
   );
   return posts;
+}
+
+export async function getPostBySlug(
+  slug: string
+): Promise<MonthlyPostData | undefined> {
+  const posts = await getAllPosts();
+  return posts.find((post) => post.slug === slug);
 }

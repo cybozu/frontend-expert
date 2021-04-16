@@ -8,6 +8,7 @@ import { getMemberByName, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 import { Tags } from "../../components/Tags";
+import { PostContent } from "../../components/PostContent";
 
 const Author = ({ author }: { author: Member }) => {
   return (
@@ -41,9 +42,7 @@ const Post = ({ post }: Props) => {
       <Tags tags={post.metaData.tags} />
       <h1 className={styles.title}>{post.metaData.title}</h1>
       <Author author={author} />
-      <div className={styles.post}>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
-      </div>
+      <PostContent content={post.content} />
     </Layout>
   );
 };
