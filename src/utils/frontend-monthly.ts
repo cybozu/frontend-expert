@@ -7,6 +7,7 @@ type MonthlyPostMetaData = {
   date: string;
   connpass: string;
   members: string[];
+  guests?: Array<{ name: string; link: string }>;
 };
 
 export type MonthlyPostData = {

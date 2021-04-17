@@ -10,6 +10,7 @@ import {
 import "prismjs/themes/prism.css";
 import { MemberIcon } from "../../components/MemberIcon";
 import { getMemberByName } from "../../utils/members";
+import Image from "next/image";
 
 type Props = {
   post: MonthlyPostData;
@@ -37,6 +38,24 @@ const PostPage = ({ post }: Props) => {
           </div>
         );
       })}
+      {post.metaData.guests && (
+        <>
+          <h2>ゲスト</h2>
+          {post.metaData.guests.map((guest) => {
+            return (
+              <div key={guest.name}>
+                <Image
+                  width="100"
+                  height="100"
+                  src={`/guest-icons/${guest.name}.jpg`}
+                  alt={`${guest.name} icon`}
+                />
+                <p>{guest.name}</p>
+              </div>
+            );
+          })}
+        </>
+      )}
       <h2>紹介記事</h2>
       <PostContent content={post.content} />
     </Layout>
