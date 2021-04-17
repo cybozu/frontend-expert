@@ -1,6 +1,6 @@
 import { Layout } from "../../components/Layout";
 import styles from "./members.module.css";
-import { Member, members } from "../../utils/members";
+import { activeMembers, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 
@@ -36,7 +36,7 @@ const MemberSection = ({ member }: { member: Member }) => {
 const Members = () => (
   <Layout title="Members">
     <h2>Members</h2>
-    {members.map((member) => {
+    {activeMembers.map((member) => {
       return <MemberSection key={member.name} member={member} />;
     })}
   </Layout>

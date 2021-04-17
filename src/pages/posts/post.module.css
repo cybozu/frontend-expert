@@ -13,3 +13,30 @@
   font-size: 2.5rem;
   line-height: 1.1;
 }
+
+.author {
+  display: flex;
+  margin: 3rem 0;
+}
+
+.authorName {
+  font-size: 1.2rem;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 1rem;
+  margin: 0.3rem 0;
+  font-size: 0.8rem;
+}
+
+.authorInfo ul {
+  list-style: none;
+  display: flex;
+}
+
+.authorInfo ul li {
+  margin-right: 0.3rem;
+}

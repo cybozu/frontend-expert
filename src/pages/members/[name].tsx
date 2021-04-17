@@ -10,7 +10,9 @@ const MemberSection = ({ member }: { member: Member }) => {
   return (
     <div className={styles.member}>
       <MemberIcon member={member} width="200" height="200" />
-      <h1 className={styles.memberName}>{member.name}</h1>
+      <h1 className={styles.memberName}>{`${member.name}${
+        member.active ? "" : "(inactive)"
+      }`}</h1>
       <ul className={styles.links}>
         <li>
           <a href={`https://twitter.com/${member.twitterId}`}>Twitter</a>

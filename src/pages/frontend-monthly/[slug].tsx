@@ -8,6 +8,8 @@ import {
   MonthlyPostData,
 } from "../../utils/frontend-monthly";
 import "prismjs/themes/prism.css";
+import { MemberIcon } from "../../components/MemberIcon";
+import { getMemberByName } from "../../utils/members";
 
 type Props = {
   post: MonthlyPostData;
@@ -22,6 +24,19 @@ const PostPage = ({ post }: Props) => {
       <p>{post.metaData.date}</p>
       <h2>イベントページ</h2>
       <a href={post.metaData.connpass}>{post.metaData.connpass}</a>
+      <h2>メンバー</h2>
+      {post.metaData.members.map((memberName) => {
+        return (
+          <div key={memberName}>
+            <MemberIcon
+              width="100"
+              height="100"
+              member={getMemberByName(memberName)}
+            />
+            <p>{memberName}</p>
+          </div>
+        );
+      })}
       <h2>紹介記事</h2>
       <PostContent content={post.content} />
     </Layout>
