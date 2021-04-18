@@ -13,7 +13,7 @@ const FrontendMonthlyPage = ({ posts }: Props) => {
   return (
     <Layout title="Frontend Monthly">
       <PageLayout>
-        <h2>Frontend Monthly</h2>
+        <h2>Cybozu Frontend Monthly</h2>
         <Description />
         <div className={styles.postList}>
           {posts.map((post) => {

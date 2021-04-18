@@ -52,7 +52,7 @@ export const Layout = ({ children, title }: Props) => {
               <Link href="/posts">Posts</Link>
             </li>
             <li>
-              <Link href="/frontend-monthly">FrontendMonthly</Link>
+              <Link href="/frontend-monthly">Cybozu Frontend Monthly</Link>
             </li>
           </ul>
         </nav>
