@@ -42,7 +42,9 @@ const Post = ({ post }: Props) => {
       <Tags tags={post.metaData.tags} />
       <h1 className={styles.title}>{post.metaData.title}</h1>
       <Author author={author} />
-      <PostContent content={post.content} />
+      <PostContent>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </PostContent>
     </Layout>
   );
 };

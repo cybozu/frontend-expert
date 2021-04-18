@@ -49,7 +49,9 @@ const PostPage = ({ post }: Props) => {
         </>
       )}
       <h2>紹介記事</h2>
-      <PostContent content={post.content} />
+      <PostContent>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </PostContent>
     </Layout>
   );
 };

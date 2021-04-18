@@ -1,13 +1,6 @@
+import { FC } from "react";
 import styles from "./PostContent.module.css";
 
-interface Props {
-  content: string;
-}
-
-export const PostContent = ({ content }: Props) => {
-  return (
-    <div className={styles.post}>
-      <div dangerouslySetInnerHTML={{ __html: content }} />
-    </div>
-  );
+export const PostContent: FC = ({ children }) => {
+  return <div className={styles.post}>{children}</div>;
 };
