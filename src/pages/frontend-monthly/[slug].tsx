@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { FrontendMonthlyDescription } from "../../components/FrontendMonthlyDescription";
+import { Description } from "../../components/frontend-monthly/Description";
 import { Layout } from "../../components/Layout";
 import { PostContent } from "../../components/PostContent";
 import {
@@ -9,9 +9,7 @@ import {
 } from "../../utils/frontend-monthly";
 import "prismjs/themes/prism.css";
 import { MemberIcon } from "../../components/MemberIcon";
-import { getMemberByName } from "../../utils/members";
-import Image from "next/image";
-import { StreamView } from "../../components/StreamView";
+import { StreamView } from "../../components/frontend-monthly/StreamView";
 
 type Props = {
   post: MonthlyPostData;
@@ -21,7 +19,7 @@ const PostPage = ({ post }: Props) => {
   return (
     <Layout title={title}>
       <h1>{title}</h1>
-      <FrontendMonthlyDescription />
+      <Description />
       <h2>開催日</h2>
       <p>{post.metaData.date}</p>
       <h2>イベントページ</h2>
@@ -32,11 +30,7 @@ const PostPage = ({ post }: Props) => {
       {post.metaData.members.map((memberName) => {
         return (
           <div key={memberName}>
-            <MemberIcon
-              width="100"
-              height="100"
-              member={getMemberByName(memberName)}
-            />
+            <MemberIcon width="100" height="100" name={memberName} />
             <p>{memberName}</p>
           </div>
         );
@@ -47,12 +41,7 @@ const PostPage = ({ post }: Props) => {
           {post.metaData.guests.map((guest) => {
             return (
               <div key={guest.name}>
-                <Image
-                  width="100"
-                  height="100"
-                  src={`/guest-icons/${guest.name}.jpg`}
-                  alt={`${guest.name} icon`}
-                />
+                <MemberIcon width="100" height="100" name={guest.name} />
                 <p>{guest.name}</p>
               </div>
             );

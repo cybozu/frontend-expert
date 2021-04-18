@@ -3,7 +3,7 @@ import { Layout } from "../../components/Layout";
 import { getAllPosts, MonthlyPostData } from "../../utils/frontend-monthly";
 import styles from "./frontend-monthly.module.css";
 import Link from "next/link";
-import { FrontendMonthlyDescription } from "../../components/FrontendMonthlyDescription";
+import { Description } from "../../components/frontend-monthly/Description";
 
 interface Props {
   posts: MonthlyPostData[];
@@ -12,7 +12,7 @@ const FrontendMonthlyPage = ({ posts }: Props) => {
   return (
     <Layout title="Frontend Monthly">
       <h2>Frontend Monthly</h2>
-      <FrontendMonthlyDescription />
+      <Description />
       <div className={styles.postList}>
         {posts.map((post) => {
           return (

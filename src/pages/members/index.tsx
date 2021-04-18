@@ -7,7 +7,7 @@ import { MemberIcon } from "../../components/MemberIcon";
 const MemberSection = ({ member }: { member: Member }) => {
   return (
     <section className={styles.member}>
-      <MemberIcon member={member} width="100" height="100" />
+      <MemberIcon name={member.name} width="100" height="100" />
       <div className={styles.details}>
         <p className={styles.name}>
           <Link href={`/members/${member.name}`}>{member.name}</Link>

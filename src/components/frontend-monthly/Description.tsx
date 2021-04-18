@@ -1,4 +1,4 @@
-export const FrontendMonthlyDescription = () => {
+export const Description = () => {
   return (
     <div>
       <p>
