@@ -13,7 +13,7 @@ import { PostContent } from "../../components/PostContent";
 const Author = ({ author }: { author: Member }) => {
   return (
     <div className={styles.author}>
-      <MemberIcon width="60" height="60" member={author} />
+      <MemberIcon width="60" height="60" name={author.name} />
       <div className={styles.authorInfo}>
         <p className={styles.authorName}>
           <Link href={`/members/${author.name}`}>{author.name}</Link>
