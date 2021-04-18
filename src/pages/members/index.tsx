@@ -1,10 +1,11 @@
 import { Layout } from "../../components/Layout";
+import { PageLayout } from "../../components/PageLayout";
 import styles from "./members.module.css";
 import { activeMembers, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 
-const MemberSection = ({ member }: { member: Member }) => {
+const MemberItem = ({ member }: { member: Member }) => {
   return (
     <section className={styles.member}>
       <MemberIcon name={member.name} width="100" height="100" />
@@ -35,10 +36,12 @@ const MemberSection = ({ member }: { member: Member }) => {
 
 const Members = () => (
   <Layout title="Members">
-    <h2>Members</h2>
-    {activeMembers.map((member) => {
-      return <MemberSection key={member.name} member={member} />;
-    })}
+    <PageLayout>
+      <h2>Members</h2>
+      {activeMembers.map((member) => {
+        return <MemberItem key={member.name} member={member} />;
+      })}
+    </PageLayout>
   </Layout>
 );
 
