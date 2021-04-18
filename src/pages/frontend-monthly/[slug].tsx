@@ -11,6 +11,7 @@ import "prismjs/themes/prism.css";
 import { MemberIcon } from "../../components/MemberIcon";
 import { getMemberByName } from "../../utils/members";
 import Image from "next/image";
+import { StreamView } from "../../components/StreamView";
 
 type Props = {
   post: MonthlyPostData;
@@ -25,6 +26,8 @@ const PostPage = ({ post }: Props) => {
       <p>{post.metaData.date}</p>
       <h2>イベントページ</h2>
       <a href={post.metaData.connpass}>{post.metaData.connpass}</a>
+      <h2>配信URL</h2>
+      <StreamView streamUrl={post.metaData.streamUrl} />
       <h2>メンバー</h2>
       {post.metaData.members.map((memberName) => {
         return (

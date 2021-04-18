@@ -6,6 +6,7 @@ import { markdownToHtml } from "./markdown";
 type MonthlyPostMetaData = {
   date: string;
   connpass: string;
+  streamUrl: string;
   members: string[];
   guests?: Array<{ name: string; link: string }>;
 };
@@ -36,6 +37,9 @@ function assertMetaData(
   }
   if (typeof metaData.connpass !== "string") {
     missingProperties.push("connpass");
+  }
+  if (typeof metaData.streamUrl !== "string") {
+    missingProperties.push("streamUrl");
   }
   if (!Array.isArray(metaData.members)) {
     missingProperties.push("members");
