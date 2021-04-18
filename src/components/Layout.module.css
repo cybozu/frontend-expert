@@ -19,8 +19,13 @@
 }
 
 .navigation ul li {
-  padding: 0.2rem;
+  padding: 0.2rem 0;
   font-size: 1.2rem;
+}
+
+.navigation ul li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.4rem;
 }
 
 .main {

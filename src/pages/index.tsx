@@ -1,14 +1,17 @@
 import { Layout } from "../components/Layout";
+import { PageLayout } from "../components/PageLayout";
 import { SpeakerDeck } from "../components/SpeakerDeck";
 
 const IndexPage = () => (
   <Layout>
-    <h1>Hello Cybozu Frontend Expert Team 👋</h1>
-    <SpeakerDeck
-      embedId="0efec8a9dd224baebfb2aaf30fbe9a28"
-      width="42rem"
-      title="フロントエンドエキスパートチームについて"
-    />
+    <PageLayout>
+      <h2>Hello Cybozu Frontend Expert Team 👋</h2>
+      <SpeakerDeck
+        embedId="0efec8a9dd224baebfb2aaf30fbe9a28"
+        width="42rem"
+        title="フロントエンドエキスパートチームについて"
+      />
+    </PageLayout>
   </Layout>
 );
 
