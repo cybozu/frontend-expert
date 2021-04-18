@@ -75,7 +75,7 @@ export function getMemberByName(name: string): Member {
 }
 
 function isGuest(name: string): boolean {
-  return activeMembers.every((member) => member.name !== name);
+  return members.every((member) => member.name !== name);
 }
 
 export function getIconByName(name: string) {

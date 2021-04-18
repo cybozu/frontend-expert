@@ -1,6 +1,8 @@
+import styles from "./Description.module.css";
+
 export const Description = () => {
   return (
-    <div>
+    <div className={styles.description}>
       <p>
         サイボウズフロントエンドマンスリーは、サイボウズ社内で行っているフロントエンド情報共有会「フロントエンドウィークリー」の公開版です。
       </p>

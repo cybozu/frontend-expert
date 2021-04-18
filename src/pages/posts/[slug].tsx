@@ -15,9 +15,9 @@ const Author = ({ author }: { author: Member }) => {
     <div className={styles.author}>
       <MemberIcon width="60" height="60" name={author.name} />
       <div className={styles.authorInfo}>
-        <p className={styles.authorName}>
+        <span className={styles.authorName}>
           <Link href={`/members/${author.name}`}>{author.name}</Link>
-        </p>
+        </span>
         <ul>
           <li>
             <a href={`https://twitter.com/${author.twitterId}`}>Twitter</a>

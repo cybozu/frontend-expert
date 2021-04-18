@@ -14,6 +14,7 @@ export const MemberIcon = ({ width, height, name }: Props) => {
       alt={`${name} icon`}
       width={width}
       height={height}
+      layout="fixed"
     />
   );
 };

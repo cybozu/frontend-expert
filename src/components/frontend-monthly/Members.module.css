@@ -1,0 +1,14 @@
+.members {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.member {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0.5rem;
+}
+
+.member:last-child {
+  margin-right: 0;
+}
