@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
-import Link from "next/link";
 import Head from "next/head";
 import styles from "./Layout.module.css";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 const DEFAULT_PAGE_TITLE = "サイボウズ フロントエンドエキスパートチーム";
 function createPageTitle(title?: string) {
@@ -39,29 +40,11 @@ export const Layout = ({ children, title }: Props) => {
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE_URL} />
       </Head>
-      <header className={styles.header}>
-        <h1>
-          <Link href="/">Cybozu Frontend Expert Team</Link>
-        </h1>
-        <nav className={styles.navigation}>
-          <ul>
-            <li>
-              <Link href="/members">Members</Link>
-            </li>
-            <li>
-              <Link href="/posts">Posts</Link>
-            </li>
-            <li>
-              <Link href="/frontend-monthly">Cybozu Frontend Monthly</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
-      <main className={styles.main}>{children}</main>
-      <footer>
-        <hr />
-        <span>Im here to stay (Footer)</span>
-      </footer>
+      <Header />
+      <main className={styles.main}>
+        <div className={styles.content}>{children}</div>
+      </main>
+      <Footer />
     </div>
   );
 };

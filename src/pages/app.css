@@ -5,7 +5,11 @@
 
 body {
   color: #4d5156;
-  font-size: 10px;
+  background-color: var(--primary-color);
+}
+
+html {
+  font-size: 18px;
 }
 
 a:link {

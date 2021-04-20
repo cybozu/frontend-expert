@@ -7,7 +7,7 @@ import { MemberIcon } from "../../components/MemberIcon";
 
 const MemberItem = ({ member }: { member: Member }) => {
   return (
-    <section className={styles.member}>
+    <li className={styles.member}>
       <MemberIcon name={member.name} width="100" height="100" />
       <div className={styles.details}>
         <p className={styles.name}>
@@ -30,7 +30,7 @@ const MemberItem = ({ member }: { member: Member }) => {
           </ul>
         </div>
       </div>
-    </section>
+    </li>
   );
 };
 
@@ -38,9 +38,11 @@ const Members = () => (
   <Layout title="Members">
     <PageLayout>
       <h2>Members</h2>
-      {activeMembers.map((member) => {
-        return <MemberItem key={member.name} member={member} />;
-      })}
+      <ul>
+        {activeMembers.map((member) => {
+          return <MemberItem key={member.name} member={member} />;
+        })}
+      </ul>
     </PageLayout>
   </Layout>
 );

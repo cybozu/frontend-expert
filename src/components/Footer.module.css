@@ -1,0 +1,30 @@
+.footer {
+  padding: 5rem 0;
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.footer .content {
+  width: var(--content-width);
+  padding: 0 2rem;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.footer a {
+  color: white;
+}
+
+.footer ul {
+  list-style: none;
+  margin-bottom: 2.5rem;
+}
+
+.footer ul li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer small {
+  font-size: 1rem;
+}

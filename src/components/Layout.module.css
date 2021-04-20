@@ -1,33 +1,15 @@
 .layout {
-  margin: 0 auto;
-  max-width: 42rem;
-}
-
-.header {
-  padding: 0.6rem 0;
-}
-
-.header h1 {
-  font-size: 1.6rem;
-  padding-top: 1.2rem;
-}
-
-.navigation ul {
-  margin: 0;
-  list-style: none;
-  display: flex;
-}
-
-.navigation ul li {
-  padding: 0.2rem 0;
-  font-size: 1.2rem;
-}
-
-.navigation ul li:not(:last-child)::after {
-  content: "/";
-  margin: 0 0.4rem;
+  width: 100%;
 }
 
 .main {
-  padding-bottom: 0.6rem;
+  max-width: 100%;
+  background-color: white;
+}
+
+.main .content {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  box-sizing: border-box;
+  padding: 2rem;
 }

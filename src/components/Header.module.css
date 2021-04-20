@@ -1,0 +1,36 @@
+.header {
+  padding: 3rem 0;
+  background-color: var(--primary-color);
+}
+
+.header .content {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.header h1 {
+  font-size: 1.6rem;
+}
+
+.navigation ul {
+  margin: 0;
+  list-style: none;
+  display: flex;
+}
+
+.navigation ul li {
+  padding: 0.2rem 0;
+  font-size: 1.2rem;
+}
+
+.navigation ul li:not(:last-child)::after {
+  content: "/";
+  margin: 0 0.4rem;
+  color: var(--light-font-color);
+}
+
+.header a {
+  color: var(--light-font-color);
+}
