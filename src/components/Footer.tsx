@@ -7,19 +7,21 @@ export const Footer: FC = () => {
       <div className={styles.content}>
         <ul>
           <li>
-            <a href="">サイボウズ 企業情報</a>
+            <a href="https://cybozu.co.jp/">サイボウズ 企業情報</a>
           </li>
           <li>
-            <a href="">cybozu.com</a>
+            <a href="https://www.cybozu.com/jp/">cybozu.com</a>
           </li>
           <li>
-            <a href="">サイボウズエンジニアのブログ Cybozu Inside Out</a>
+            <a href="https://blog.cybozu.io/">
+              サイボウズエンジニアのブログ Cybozu Inside Out
+            </a>
           </li>
           <li>
-            <a href="">Cybozu Tech</a>
+            <a href="https://tech.cybozu.io/">Cybozu Tech</a>
           </li>
           <li>
-            <a href="">採用情報</a>
+            <a href="https://cybozu.co.jp/company/job/recruitment/">採用情報</a>
           </li>
         </ul>
         <small>Copyright &copy; Cybozu, Inc.</small>
