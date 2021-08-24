@@ -60,6 +60,12 @@ export const members: Member[] = [
     githubUsername: "toshi-toma",
     active: false,
   },
+  {
+    name: "mugi",
+    twitterId: "mugi_uno",
+    githubUsername: "mugi-uno",
+    active: true,
+  },
 ];
 
 export const activeMembers: Member[] = members.filter(
