@@ -5,7 +5,7 @@
 }
 
 .footer .content {
-  width: var(--content-width);
+  max-width: var(--content-width);
   padding: 0 2rem;
   box-sizing: border-box;
   margin: 0 auto;

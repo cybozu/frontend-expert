@@ -4,7 +4,7 @@
 }
 
 .header .content {
-  width: var(--content-width);
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 2rem;
   box-sizing: border-box;
