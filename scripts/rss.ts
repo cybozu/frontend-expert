@@ -3,6 +3,8 @@ import path from "path";
 import matter from "gray-matter";
 import format from "date-fns/formatRFC3339";
 import parseDateString from "date-fns/parse";
+// @ts-ignore
+import { minify } from "minify-xml";
 
 const OUT_DIR_PATH = path.join(__dirname, "..", "out");
 const POSTS_DIR_PATH = path.join(__dirname, "..", "data", "posts");
@@ -48,7 +50,7 @@ type PostData = {
 
 async function generateFeedFile(): Promise<void> {
   const feedMeta = await getFeedMeta();
-  const feedText = generateAtom(feedMeta);
+  const feedText = minify(generateAtom(feedMeta));
   await fs.writeFile(RSS_FEED_FILE_PATH, feedText);
   console.log(feedText);
 }
