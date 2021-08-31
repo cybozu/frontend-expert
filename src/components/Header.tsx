@@ -1,7 +1,7 @@
 import { VFC } from "react";
 import styles from "./header.module.css";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
 export const Header: VFC = () => {
   return (
@@ -11,7 +11,7 @@ export const Header: VFC = () => {
           <Link href="/" passHref>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>
-              <Image
+              <img
                 alt="Frontend Expert Team Logo"
                 width="200"
                 height="78"

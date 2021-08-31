@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 import { getIconByName } from "../utils/members";
 
 type Props = {
@@ -9,12 +9,12 @@ type Props = {
 
 export const MemberIcon = ({ width, height, name }: Props) => {
   return (
-    <Image
+    <img
       src={getIconByName(name)}
       alt={`${name} icon`}
       width={width}
       height={height}
-      layout="fixed"
+      // layout="fixed"
     />
   );
 };
