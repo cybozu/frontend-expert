@@ -18,7 +18,7 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules", "scripts"],
   "include": ["**/*.ts", "**/*.tsx"],
   "ts-node": {
     "transpileOnly": true,
