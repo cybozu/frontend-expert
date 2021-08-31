@@ -114,7 +114,7 @@ function assertPostMetaData(data: unknown): asserts data is PostData {
 }
 
 function getSummary(content: string): string {
-  return content.slice(0, 30);
+  return content.slice(0, 50).replace(/\r?\n|\r/g, "");
 }
 
 function generateEntryAtom({
