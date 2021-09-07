@@ -39,6 +39,12 @@ export const Layout = ({ children, title }: Props) => {
         <meta property="og:site_name" content={SITE_NAME} />
         <meta property="og:description" content={DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE_URL} />
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title="Atom Feed"
+          href="/feeds/atom.xml"
+        />
       </Head>
       <Header />
       <main className={styles.main}>

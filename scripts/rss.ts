@@ -8,7 +8,8 @@ import { minify } from "minify-xml";
 
 const OUT_DIR_PATH = path.join(__dirname, "..", "out");
 const POSTS_DIR_PATH = path.join(__dirname, "..", "data", "posts");
-const RSS_FEED_FILE_PATH = path.join(OUT_DIR_PATH, "feed.xml");
+const FEEDS_DIR = path.join(OUT_DIR_PATH, "feeds");
+const FEEDS_ATOM_FILE_PATH = path.join(FEEDS_DIR, "atom.xml");
 const WEBSITE_TITLE = "Cybozu Frontend Expert Team";
 const WEBSITE_URL = "https://cybozu.github.io/frontend-expert";
 
@@ -48,10 +49,15 @@ type PostData = {
   url: string;
 };
 
+async function writeFeedFile(text: string) {
+  await fs.mkdir(FEEDS_DIR);
+  await fs.writeFile(FEEDS_ATOM_FILE_PATH, text);
+}
+
 async function generateFeedFile(): Promise<void> {
   const feedMeta = await getFeedMeta();
   const feedText = minify(generateAtom(feedMeta));
-  await fs.writeFile(RSS_FEED_FILE_PATH, feedText);
+  await writeFeedFile(feedText);
   console.log(feedText);
 }
 
@@ -62,7 +68,7 @@ async function getFeedMeta(): Promise<FeedMeta> {
     id: WEBSITE_URL,
     authorName: WEBSITE_TITLE,
     siteUrl: WEBSITE_URL,
-    feedUrl: `${WEBSITE_URL}/feed.xml`,
+    feedUrl: `${WEBSITE_URL}/feeds/atom.xml`,
     updatedAt: format(new Date()),
     entries,
   };
