@@ -5,13 +5,12 @@ import format from "date-fns/formatRFC3339";
 import parseDateString from "date-fns/parse";
 // @ts-ignore
 import { minify } from "minify-xml";
+import { getPosts, WEBSITE_URL } from "./utils";
 
 const OUT_DIR_PATH = path.join(__dirname, "..", "out");
-const POSTS_DIR_PATH = path.join(__dirname, "..", "data", "posts");
 const FEEDS_DIR = path.join(OUT_DIR_PATH, "feeds");
 const FEEDS_ATOM_FILE_PATH = path.join(FEEDS_DIR, "atom.xml");
 const WEBSITE_TITLE = "Cybozu Frontend Expert Team";
-const WEBSITE_URL = "https://cybozu.github.io/frontend-expert";
 
 generateFeedFile()
   .then(() => {
@@ -39,18 +38,14 @@ type Entry = {
   summary: string;
 };
 
-type PostData = {
-  title: string;
-  author: string;
-  createdAt: string;
-  updatedAt?: string;
-  tags: string[];
-  summary: string;
-  url: string;
-};
-
 async function writeFeedFile(text: string) {
-  await fs.mkdir(FEEDS_DIR);
+  try {
+    await fs.mkdir(FEEDS_DIR);
+  } catch (e) {
+    if (e.code !== "EEXIST") {
+      throw e;
+    }
+  }
   await fs.writeFile(FEEDS_ATOM_FILE_PATH, text);
 }
 
@@ -76,7 +71,7 @@ async function getFeedMeta(): Promise<FeedMeta> {
 }
 
 async function getEntries(): Promise<Entry[]> {
-  const postMetaList = await getPostMetaList();
+  const postMetaList = await getPosts();
   return postMetaList.map((postMeta) => {
     const updatedAt = format(
       parseDateString(
@@ -93,34 +88,6 @@ async function getEntries(): Promise<Entry[]> {
       summary: postMeta.summary,
     };
   });
-}
-
-async function getPostMetaList(): Promise<PostData[]> {
-  const postFileNames = await fs.readdir(POSTS_DIR_PATH);
-  return await Promise.all(
-    postFileNames.map(async (fileName) => {
-      const filePath = path.join(POSTS_DIR_PATH, fileName);
-      const slug = fileName.replace(/\.md$/, "");
-      const postUrl = `${WEBSITE_URL}/posts/${slug}`;
-      const fileData = await fs.readFile(filePath, "utf-8");
-      const { data, content } = matter(fileData);
-      const meta = {
-        ...data,
-        url: postUrl,
-        summary: getSummary(content),
-      };
-      assertPostMetaData(meta);
-      return meta;
-    })
-  );
-}
-
-function assertPostMetaData(data: unknown): asserts data is PostData {
-  // TODO: implement assertion
-}
-
-function getSummary(content: string): string {
-  return content.slice(0, 50).replace(/\r?\n|\r/g, "");
 }
 
 function generateEntryAtom({
