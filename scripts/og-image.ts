@@ -1,11 +1,15 @@
 import fs from "fs/promises";
+import { existsSync } from "fs";
 import path from "path";
 import puppeteer from "puppeteer";
 import { getPosts, PostData } from "./utils";
 
+const shouldPurgeImages = !!process.env.PURGE_IMAGES;
+
 const OG_SOURCE_DIR_PATH = path.join(__dirname, "..", "data", "og");
 const OG_SOURCE_HTML_FILE_PATH = path.join(OG_SOURCE_DIR_PATH, "og.html");
 const OG_DIR_PATH = path.join(__dirname, "..", "public", "ogp", "posts");
+const FALLBACK_OG_IMAGE_FILE_PATH = path.join(OG_DIR_PATH, "..", "ogp.jpg");
 
 main();
 
@@ -39,10 +43,11 @@ async function captureOgImages(posts: PostData[]) {
   await captureOgImage(
     browser,
     "Cybozu Frontend Expert Team",
-    path.join(OG_DIR_PATH, "..", "ogp.jpg")
+    FALLBACK_OG_IMAGE_FILE_PATH
   );
   for (const { title, slug } of posts) {
-    await captureOgImage(browser, title, `${OG_DIR_PATH}/` + slug + ".jpg");
+    const OG_IMAGE_FILE_PATH = `${OG_DIR_PATH}/` + slug + ".jpg";
+    await captureOgImage(browser, title, OG_IMAGE_FILE_PATH);
   }
   await browser.close();
 }
@@ -52,17 +57,19 @@ async function captureOgImage(
   title: string,
   imagePath: string
 ) {
-  const page = await browser.newPage();
-  await page.setViewport({
-    width: 1200,
-    height: 630,
-  });
-  await page.goto("file://" + OG_SOURCE_HTML_FILE_PATH);
-  await page.exposeFunction("getTitle", () => title);
-  await page.reload();
-  await page.screenshot({
-    path: imagePath,
-    type: "jpeg",
-  });
-  await page.close();
+  if (shouldPurgeImages || !existsSync(imagePath)) {
+    const page = await browser.newPage();
+    await page.setViewport({
+      width: 1200,
+      height: 630,
+    });
+    await page.goto("file://" + OG_SOURCE_HTML_FILE_PATH);
+    await page.exposeFunction("getTitle", () => title);
+    await page.reload();
+    await page.screenshot({
+      path: imagePath,
+      type: "jpeg",
+    });
+    await page.close();
+  }
 }
