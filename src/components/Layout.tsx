@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from "react";
+import { useMemo, FC } from "react";
 import Head from "next/head";
 import styles from "./Layout.module.css";
 import { Header } from "./Header";
@@ -27,12 +27,11 @@ function useOgImageUrl(slug?: string) {
 }
 
 type Props = {
-  children?: ReactNode;
   title?: string;
   slug?: string;
 };
 
-export const Layout = ({ children, title, slug }: Props) => {
+export const Layout: FC<Props> = ({ children, title, slug }) => {
   const pageTitle = usePageTitle(title);
   const ogImageUrl = useOgImageUrl(slug);
   return (
