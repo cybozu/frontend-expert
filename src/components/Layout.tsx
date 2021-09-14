@@ -1,26 +1,40 @@
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import Head from "next/head";
 import styles from "./Layout.module.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
-const DEFAULT_PAGE_TITLE = "サイボウズ フロントエンドエキスパートチーム";
-function createPageTitle(title?: string) {
-  return title ? `${title} | ${DEFAULT_PAGE_TITLE}` : DEFAULT_PAGE_TITLE;
+const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
+const SITE_URL = "https://cybozu.github.io/frontend-expert";
+const DESCRIPTION = "Website by Cybozu Frontend Expert Team";
+
+const DEFAULT_PAGE_TITLE = SITE_NAME;
+function usePageTitle(title?: string) {
+  return useMemo(
+    () => (title ? `${title} | ${DEFAULT_PAGE_TITLE}` : DEFAULT_PAGE_TITLE),
+    [title]
+  );
 }
 
-const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
-const DESCRIPTION = "Website by Cybozu Frontend Expert Team";
-// TODO: set
-const OG_IMAGE_URL = "";
+const OG_IMAGE_URL = SITE_URL + "/ogp/ogp.jpg";
+function useOgImageUrl(slug?: string) {
+  return useMemo(() => {
+    if (slug) {
+      return SITE_URL + "/ogp/posts/" + slug + ".jpg";
+    }
+    return OG_IMAGE_URL;
+  }, [slug]);
+}
 
 type Props = {
   children?: ReactNode;
   title?: string;
+  slug?: string;
 };
 
-export const Layout = ({ children, title }: Props) => {
-  const pageTitle = createPageTitle(title);
+export const Layout = ({ children, title, slug }: Props) => {
+  const pageTitle = usePageTitle(title);
+  const ogImageUrl = useOgImageUrl(slug);
   return (
     <div className={styles.layout}>
       <Head>
@@ -38,7 +52,7 @@ export const Layout = ({ children, title }: Props) => {
         <meta property="og:title" content={pageTitle} />
         <meta property="og:site_name" content={SITE_NAME} />
         <meta property="og:description" content={DESCRIPTION} />
-        <meta property="og:image" content={OG_IMAGE_URL} />
+        <meta property="og:image" content={ogImageUrl} />
         <link
           rel="alternate"
           type="application/atom+xml"
