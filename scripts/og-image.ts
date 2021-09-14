@@ -6,7 +6,7 @@ const OG_SOURCE_DIR_PATH = path.join(__dirname, "..", "data", "og");
 const OG_SOURCE_HTML_FILE_PATH = path.join(OG_SOURCE_DIR_PATH, "og.html");
 const OG_DIR_PATH = path.join(__dirname, "..", "public", "ogp", "posts");
 
-captureOgImagess()
+captureOgImages()
   .then(() => {
     console.log("Done");
   })
@@ -14,7 +14,7 @@ captureOgImagess()
     throw e;
   });
 
-async function captureOgImagess() {
+async function captureOgImages() {
   const browser = await puppeteer.launch();
   const posts = await getPosts();
   const page = await browser.newPage();
