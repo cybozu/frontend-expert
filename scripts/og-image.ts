@@ -36,20 +36,33 @@ async function clearImages(posts: PostData[]) {
 
 async function captureOgImages(posts: PostData[]) {
   const browser = await puppeteer.launch();
+  await captureOgImage(
+    browser,
+    "Cybozu Frontend Expert Team",
+    path.join(OG_DIR_PATH, "..", "ogp.jpg")
+  );
   for (const { title, slug } of posts) {
-    const page = await browser.newPage();
-    await page.setViewport({
-      width: 1200,
-      height: 630,
-    });
-    await page.goto("file://" + OG_SOURCE_HTML_FILE_PATH);
-    await page.exposeFunction("getTitle", () => title);
-    await page.reload();
-    await page.screenshot({
-      path: `${OG_DIR_PATH}/` + slug + ".jpg",
-      type: "jpeg",
-    });
-    await page.close();
+    await captureOgImage(browser, title, `${OG_DIR_PATH}/` + slug + ".jpg");
   }
   await browser.close();
+}
+
+async function captureOgImage(
+  browser: puppeteer.Browser,
+  title: string,
+  imagePath: string
+) {
+  const page = await browser.newPage();
+  await page.setViewport({
+    width: 1200,
+    height: 630,
+  });
+  await page.goto("file://" + OG_SOURCE_HTML_FILE_PATH);
+  await page.exposeFunction("getTitle", () => title);
+  await page.reload();
+  await page.screenshot({
+    path: imagePath,
+    type: "jpeg",
+  });
+  await page.close();
 }
