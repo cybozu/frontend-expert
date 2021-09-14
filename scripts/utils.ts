@@ -45,4 +45,4 @@ async function getPosts(): Promise<PostData[]> {
   );
 }
 
-export { getPosts, WEBSITE_URL };
+export { getPosts, WEBSITE_URL, PostData };
