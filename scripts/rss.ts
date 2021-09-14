@@ -1,6 +1,5 @@
 import fs from "fs/promises";
 import path from "path";
-import matter from "gray-matter";
 import format from "date-fns/formatRFC3339";
 import parseDateString from "date-fns/parse";
 // @ts-ignore
