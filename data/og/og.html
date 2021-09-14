@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OG Image</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1200,height=630" />
+    <style>
+      body,
+      h1 {
+        margin: 0;
+      }
+      :root {
+        --primary-color: #14262a;
+        --font-color: #4d5156;
+        --og-width: 1200px;
+        --og-height: 630px;
+        --og-padding: 60px;
+        --og-inner-padding: 30px;
+        --og-inner-height: calc(var(--og-height) - var(--og-padding) * 2);
+        --og-inner-width: calc(var(--og-width) - var(--og-padding) * 2);
+        --logo-height: 78px;
+        --logo-width: 200px;
+      }
+      .root {
+        background-color: var(--primary-color);
+        padding: var(--og-padding);
+        height: var(--og-inner-height);
+        width: var(--og-inner-width);
+      }
+      .main {
+        background-color: white;
+        border-radius: 25px;
+        padding: var(--og-inner-padding);
+        color: var(--font-color);
+        height: calc(var(--og-inner-height) - var(--og-inner-padding) * 2);
+        width: calc(var(--og-inner-width) - var(--og-inner-padding) * 2);
+        display: flex;
+        flex-flow: column;
+        justify-content: space-between;
+      }
+      .title {
+        font-weight: bold;
+      }
+      .logo {
+        height: var(--logo-height);
+        display: flex;
+        flex-direction: row-reverse;
+      }
+      .logo img {
+        height: var(--logo-height);
+        width: var(--logo-width);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="root">
+      <div class="main">
+        <h1 class="title"></h1>
+        <div class="logo">
+          <img src="./logo.png" />
+        </div>
+      </div>
+    </div>
+    <script>
+      async function setTitleText() {
+        const title =
+          typeof getTitle === "function"
+            ? await getTitle()
+            : "サイボウズフロントエンドエキスパートチームのウェブサイト";
+        const titleElement = document.querySelector(".title");
+        titleElement.innerHTML = title;
+      }
+      function setTitleFontSize(fontSize = 100) {
+        const titleElement = document.querySelector(".title");
+        titleElement.style.fontSize = fontSize + "px";
+        const titleHeight = titleElement.getBoundingClientRect().height;
+        if (!(titleHeight <= 300)) {
+          setTitleFontSize(--fontSize);
+        }
+      }
+      document.addEventListener("DOMContentLoaded", async () => {
+        await setTitleText();
+        setTitleFontSize();
+      });
+    </script>
+  </body>
+</html>
