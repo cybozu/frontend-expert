@@ -13,18 +13,6 @@ export const members: Member[] = [
     active: true,
   },
   {
-    name: "pirosikick",
-    twitterId: "pirosikick",
-    githubUsername: "pirosikick",
-    active: true,
-  },
-  {
-    name: "zaki___yama",
-    twitterId: "zaki___yama",
-    githubUsername: "zaki-yama",
-    active: true,
-  },
-  {
     name: "sakito",
     twitterId: "__sakito__",
     githubUsername: "sakito21",
@@ -53,12 +41,6 @@ export const members: Member[] = [
     twitterId: "__sosukesuzuki",
     githubUsername: "sosukesuzuki",
     active: true,
-  },
-  {
-    name: "toshi__toma",
-    twitterId: "toshi__toma",
-    githubUsername: "toshi-toma",
-    active: false,
   },
   {
     name: "mugi",
