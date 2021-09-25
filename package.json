@@ -10,8 +10,8 @@
     "lint:eslint": "eslint . --ext .ts,.tsx",
     "lint:tsc": "tsc",
     "fix": "yarn lint:eslint --fix",
-    "feed": "npx ts-node ./scripts/feed.ts",
-    "og-image": "npx ts-node ./scripts/og-image.ts"
+    "gen:feed": "npx ts-node ./scripts/feed.ts",
+    "gen:og-image": "npx ts-node ./scripts/og-image.ts"
   },
   "dependencies": {
     "next": "11.1.0",
