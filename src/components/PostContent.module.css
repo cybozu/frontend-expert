@@ -69,6 +69,10 @@
   box-sizing: border-box;
 }
 
+.post ul ul {
+  margin: 0;
+}
+
 .post ol {
   margin-top: 1rem;
   box-sizing: border-box;
