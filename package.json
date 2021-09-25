@@ -9,7 +9,7 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx",
     "lint:typescript": "tsc",
-    "fix": "run-s fix:prettier fix:eslint",
+    "fix": "run-s fix:*",
     "fix:prettier": "prettier src -w",
     "fix:eslint": "eslint . --ext .ts,.tsx --fix",
     "rss": "npx ts-node ./scripts/rss.ts",
