@@ -1,5 +1,6 @@
-// import Image from "next/image";
+import Image from "next/image";
 import { getIconByName } from "../utils/members";
+import { unoptimizeLoader } from "../utils/unoptimizeLoader";
 
 type Props = {
   width: string;
@@ -9,12 +10,13 @@ type Props = {
 
 export const MemberIcon = ({ width, height, name }: Props) => {
   return (
-    <img
+    <Image
       src={getIconByName(name)}
       alt={`${name} icon`}
       width={width}
       height={height}
-      // layout="fixed"
+      layout="fixed"
+      loader={unoptimizeLoader}
     />
   );
 };
