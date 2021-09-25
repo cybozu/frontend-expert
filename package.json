@@ -5,14 +5,14 @@
     "dev": "next",
     "build": "yarn og-image && next build",
     "start": "next start",
-    "export": "next export && yarn run rss",
+    "export": "next export && yarn run feed",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx",
     "lint:typescript": "tsc",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier src -w",
     "fix:eslint": "eslint . --ext .ts,.tsx --fix",
-    "rss": "npx ts-node ./scripts/rss.ts",
+    "feed": "npx ts-node ./scripts/feed.ts",
     "og-image": "npx ts-node ./scripts/og-image.ts"
   },
   "dependencies": {
