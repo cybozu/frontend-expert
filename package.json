@@ -11,8 +11,7 @@
     "lint:tsc": "tsc",
     "fix": "yarn lint:eslint --fix",
     "gen:feed": "npx ts-node ./scripts/feed.ts",
-    "gen:og-image": "npx ts-node ./scripts/og-image.ts",
-    "deploy": "gh-pages -d out"
+    "gen:og-image": "npx ts-node ./scripts/og-image.ts"
   },
   "dependencies": {
     "next": "11.1.0",
