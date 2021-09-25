@@ -9,9 +9,7 @@
     "lint": "run-p lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx",
     "lint:typescript": "tsc",
-    "fix": "run-s fix:*",
-    "fix:prettier": "prettier src -w",
-    "fix:eslint": "eslint . --ext .ts,.tsx --fix",
+    "fix": "yarn lint:eslint --fix",
     "feed": "npx ts-node ./scripts/feed.ts",
     "og-image": "npx ts-node ./scripts/og-image.ts"
   },
