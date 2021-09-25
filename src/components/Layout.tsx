@@ -29,28 +29,32 @@ function useOgImageUrl(slug?: string) {
 type Props = {
   title?: string;
   slug?: string;
+  description?: string;
 };
 
-export const Layout: FC<Props> = ({ children, title, slug }) => {
+export const Layout: FC<Props> = ({ children, title, slug, description }) => {
   const pageTitle = usePageTitle(title);
   const ogImageUrl = useOgImageUrl(slug);
+  const descriptionText = useMemo(() => {
+    return description ?? DESCRIPTION;
+  }, [description]);
   return (
     <div className={styles.layout}>
       <Head>
         <title>{pageTitle}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <meta name="description" content={DESCRIPTION} />
+        <meta name="description" content={descriptionText} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={DESCRIPTION} />
+        <meta name="twitter:description" content={descriptionText} />
         <meta name="twitter:image " content={OG_IMAGE_URL} />
 
         <meta property="og:type" content="article" />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:site_name" content={SITE_NAME} />
-        <meta property="og:description" content={DESCRIPTION} />
+        <meta property="og:description" content={descriptionText} />
         <meta property="og:image" content={ogImageUrl} />
         <link
           rel="alternate"

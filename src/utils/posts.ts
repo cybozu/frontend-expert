@@ -9,6 +9,7 @@ type PostMetaData = {
   createdAt: string;
   updatedAt: string;
   tags: string[];
+  summary: string;
 };
 
 export type PostData = {
@@ -39,6 +40,9 @@ function assertMetaData(metaData: any): asserts metaData is PostMetaData {
   }
   if (!("tags" in metaData)) {
     missingProperties.push("tags");
+  }
+  if (!("summary" in metaData)) {
+    missingProperties.push("summary");
   }
   if (missingProperties.length > 0) {
     throw new Error(`Missing meta data: ${missingProperties.join(", ")}`);

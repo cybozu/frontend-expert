@@ -20,10 +20,6 @@ function assertPostMetaData(data: unknown): asserts data is PostData {
   // TODO: implement assertion
 }
 
-function getSummary(content: string): string {
-  return content.slice(0, 50).replace(/\r?\n|\r/g, "");
-}
-
 async function getPosts(): Promise<PostData[]> {
   const postFileNames = await fs.readdir(POSTS_DIR_PATH);
   return Promise.all(
@@ -32,11 +28,10 @@ async function getPosts(): Promise<PostData[]> {
       const slug = fileName.replace(/\.md$/, "");
       const postUrl = `${WEBSITE_URL}/posts/${slug}`;
       const fileData = await fs.readFile(filePath, "utf-8");
-      const { data, content } = matter(fileData);
+      const { data } = matter(fileData);
       const meta = {
         ...data,
         url: postUrl,
-        summary: getSummary(content),
         slug,
       };
       assertPostMetaData(meta);

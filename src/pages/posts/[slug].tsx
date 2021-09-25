@@ -38,7 +38,11 @@ type Props = {
 const Post = ({ post }: Props) => {
   const author = getMemberByName(post.metaData.author);
   return (
-    <Layout title={post.metaData.title} slug={post.slug}>
+    <Layout
+      title={post.metaData.title}
+      slug={post.slug}
+      description={post.metaData.summary}
+    >
       <Tags tags={post.metaData.tags} />
       <h1 className={styles.title}>{post.metaData.title}</h1>
       <Author author={author} />

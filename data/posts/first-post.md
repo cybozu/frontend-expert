@@ -2,6 +2,7 @@
 title: "サイボウズフロントエンドエキスパートチームのウェブサイトを作りました"
 author: "sosukesuzuki"
 createdAt: "2021-09-14"
+summary: "このウェブサイトを開設することになった経緯と目的、使用した技術について説明します。"
 tags:
   - Announcement
 ---
