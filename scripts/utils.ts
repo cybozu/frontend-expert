@@ -26,7 +26,7 @@ function getSummary(content: string): string {
 
 async function getPosts(): Promise<PostData[]> {
   const postFileNames = await fs.readdir(POSTS_DIR_PATH);
-  return await Promise.all(
+  return Promise.all(
     postFileNames.map(async (fileName) => {
       const filePath = path.join(POSTS_DIR_PATH, fileName);
       const slug = fileName.replace(/\.md$/, "");

@@ -21,8 +21,8 @@ async function main() {
 }
 
 function difference(setA: Set<string>, setB: Set<string>) {
-  let _difference = new Set(setA);
-  for (let elem of setB) {
+  const _difference = new Set(setA);
+  for (const elem of setB) {
     _difference.delete(elem);
   }
   return _difference;
