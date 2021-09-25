@@ -8,7 +8,7 @@
     "export": "next export && yarn run feed",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint . --ext .ts,.tsx",
-    "lint:typescript": "tsc",
+    "lint:tsc": "tsc",
     "fix": "yarn lint:eslint --fix",
     "feed": "npx ts-node ./scripts/feed.ts",
     "og-image": "npx ts-node ./scripts/og-image.ts"
