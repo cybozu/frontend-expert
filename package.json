@@ -11,7 +11,8 @@
     "lint:tsc": "tsc",
     "fix": "yarn lint:eslint --fix",
     "gen:feed": "npx ts-node ./scripts/feed.ts",
-    "gen:og-image": "npx ts-node ./scripts/og-image.ts"
+    "gen:og-image": "npx ts-node ./scripts/og-image.ts",
+    "deploy": "gh-pages -d out"
   },
   "dependencies": {
     "next": "11.1.0",
@@ -30,6 +31,7 @@
     "eslint": "^7.20.0",
     "eslint-config-next": "^11.1.0",
     "eslint-plugin-react": "^7.24.0",
+    "gh-pages": "^3.2.3",
     "gray-matter": "^4.0.2",
     "minify-xml": "^3.2.0",
     "npm-run-all": "^4.1.5",
