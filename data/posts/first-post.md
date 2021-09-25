@@ -9,7 +9,7 @@ tags:
 こんにちは、サイボウズフロントエンドエキスパートチームの[@__sosukesuzuki](https://twitter.com/__sosukesuzuki)です。
 
 サイボウズには[Cybozu Inside Out](https://blog.cybozu.io/)という技術ブログがあります。
-それとは別に、この度フロントエンドエキスパートチームとしてウェブサイトを開設することになりました。
+それとは別に、この度フロントエンドエキスパートチームとしてウェブサイトを開設することにしました。
 
 この記事では、このウェブサイトを開設することになった経緯と目的、使用した技術について説明します。
 
@@ -36,20 +36,19 @@ tags:
 
 ## 技術
 
-- Next.js を採用した
-  - 以下の要件を満たすから
-    - 環境構築がカンタンである
-      - ハッカソンで開発してたので、環境構築に時間を使っていられないという事情
-    - SSG
-      - コンテンツは全て静的
-    - TS
-    - よく使われている
-- コンテンツは Markdown として管理
-  - remark で HTML に変換する
-- feed の生成のためのスクリプトを書いた
-  - fs で記事データの Markdown のメタデータを取得して XML ファイルを書き出すやつ
-- OG Image を生成するスクリプトも書いた
-  - feed のやつと同様に Markdown からタイトルを取得して、Puppetteer & screenshot で画像を生成
-- デプロイは GitHub Pages
-  - やはり楽
-  - ドメインとか管理する必要なし
+次の要件を満たす技術として、[Next.js](https://github.com/vercel/next.js) を採用しました。
+
+- 環境構築が簡単である
+  - もともとハッカソンで開発していたので、環境構築に多くの時間を割けないという事情があった
+- SSG の機能を備えている
+  - すべてのコンテンツは静的なものと決まっていたので、SSG ができると嬉しい
+- TypeScript との相性が良い
+
+記事は Markdown として管理して Next.js の `getStaticProps` のタイミングで [remark](https://github.com/remarkjs/remark) を使って HTML に変換しています。
+
+また、ブログの機能を持つので、feed の生成と記事ごとの OGP 画像の生成をのためのスクリプトをそれぞれ用意しました。feed 生成スクリプトは、記事データの Markdown からメタデータを取得し、XML ファイルを書き出します。
+OGP 画像生成スクリプトは、記事データの Markdown からタイトルを取得し、[Puppeteer](https://github.com/puppeteer/puppeteer) で画像を生成します。
+
+ホスティングには GitHub Pages を使っています。GitHub で管理している HTML をホストする先としてはやはり楽です。
+
+実装はすべて https://github.com/cybozu/frontend-expert で公開しています。
