@@ -2,7 +2,6 @@ import { VFC } from "react";
 import styles from "./Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { unoptimizeLoader } from "../utils/unoptimizeLoader";
 
 export const Header: VFC = () => {
   return (
@@ -16,8 +15,8 @@ export const Header: VFC = () => {
                 alt="Frontend Expert Team Logo"
                 width="200"
                 height="78"
-                src="/logo.png"
-                loader={unoptimizeLoader}
+                src="/frontend-expert/logo.png"
+                unoptimized
               />
             </a>
           </Link>
