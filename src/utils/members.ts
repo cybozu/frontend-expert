@@ -48,6 +48,12 @@ export const members: Member[] = [
     githubUsername: "mugi-uno",
     active: true,
   },
+  {
+    name: "sajikix",
+    twitterId: "sajikix",
+    githubUsername: "sajikix",
+    active: true,
+  },
 ];
 
 export const activeMembers: Member[] = members.filter(
