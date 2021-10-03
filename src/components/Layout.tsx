@@ -6,7 +6,8 @@ import { Footer } from "./Footer";
 
 const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
 const SITE_URL = "https://cybozu.github.io/frontend-expert";
-const DESCRIPTION = "Website by Cybozu Frontend Expert Team";
+const DESCRIPTION =
+  "サイボウズ フロントエンドエキスパートチームのウェブサイトです";
 
 const DEFAULT_PAGE_TITLE = SITE_NAME;
 function usePageTitle(title?: string) {
