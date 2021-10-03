@@ -11,7 +11,7 @@ export const MemberIcon = ({ width, height, name }: Props) => {
   return (
     <Image
       src={`/frontend-expert/${getIconByName(name)}`}
-      alt={`${name} icon`}
+      alt={`${name}`}
       width={width}
       height={height}
       layout="fixed"
