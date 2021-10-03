@@ -68,6 +68,6 @@ function isGuest(name: string): boolean {
 
 export function getIconByName(name: string) {
   return isGuest(name)
-    ? `/guest-icons/${name}.jpg`
-    : `/member-icons/${name}.jpg`;
+    ? `/guest-icons/${name.toLowerCase()}.jpg`
+    : `/member-icons/${name.toLowerCase()}.jpg`;
 }
