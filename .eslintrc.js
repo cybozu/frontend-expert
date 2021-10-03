@@ -1,8 +1,7 @@
 module.exports = {
   extends: [
     "@cybozu/eslint-config/presets/react-typescript-prettier",
-    "next",
-    "plugin:@next/next/recommended"
+    "plugin:@next/next/recommended",
   ],
   rules: {
     "spaced-comment": "off",
