@@ -5,7 +5,7 @@ export type Member = {
   active: boolean;
 };
 
-export const members: ReadonlyArray<Member> = [
+export const members: Member[] = [
   {
     name: "koba04",
     twitterId: "koba04",
@@ -54,7 +54,7 @@ export const members: ReadonlyArray<Member> = [
     githubUsername: "sajikix",
     active: true,
   },
-] as const;
+];
 
 export const activeMembers: Member[] = members.filter(
   (member) => member.active
