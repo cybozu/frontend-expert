@@ -46,6 +46,19 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="description" content={descriptionText} />
 
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/frontend-expert/icons/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/frontend-expert/icons/favicon-16x16.png"
+        />
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={descriptionText} />
