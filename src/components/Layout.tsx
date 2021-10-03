@@ -49,7 +49,7 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={descriptionText} />
-        <meta name="twitter:image " content={OG_IMAGE_URL} />
+        <meta name="twitter:image " content={ogImageUrl} />
 
         <meta property="og:type" content="article" />
         <meta property="og:title" content={pageTitle} />
