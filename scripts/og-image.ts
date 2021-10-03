@@ -30,7 +30,9 @@ function difference(setA: Set<string>, setB: Set<string>) {
 
 async function clearImages(posts: PostData[]) {
   const images = new Set(
-    (await fs.readdir(OG_DIR_PATH)).map((name) => name.replace(/\.jpg$/, ""))
+    (await fs.readdir(OG_DIR_PATH))
+      .filter((name) => path.extname(name) === ".jpg")
+      .map((name) => name.replace(/\.jpg$/, ""))
   );
   const postSlugs = new Set(posts.map(({ slug }) => slug));
   for (const slug of difference(images, postSlugs)) {
