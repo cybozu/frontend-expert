@@ -20,7 +20,7 @@ tags:
 (チームでのハッカソンについては[Cybozu Inside Out に投稿されている記事](https://blog.cybozu.io/entry/2021/02/25/133039)をご覧ください)
 
 そのようなハッカソンで、フリーテーマの回がありました。
-そこで、[Sakito](https://twitter.com/__sakito__)さんと[BaHo](https://twitter.com/b4h0_c4t)さんと[sosukesuzuki](https://twitter.com__sosukesuzuki)(私)のチームでは、フロントエンドエキスパートチームのウェブサイトを作ってみることにしました。
+そこで、[Sakito](https://twitter.com/__sakito__)さんと[BaHo](https://twitter.com/b4h0_c4t)さんと[sosukesuzuki](https://twitter.com/__sosukesuzuki)(私)のチームでは、フロントエンドエキスパートチームのウェブサイトを作ってみることにしました。
 
 ハッカソンの期間内に完成することはありませんでしたが、チームとしてウェブサイトを持っていた方が良いということで合意が得られたので、ハッカソン終了後も開発を継続することにしました。
 
