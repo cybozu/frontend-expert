@@ -8,7 +8,7 @@ const IndexPage = () => (
       <h2>Hello Cybozu Frontend Expert Team 👋</h2>
       <SpeakerDeck
         embedId="0efec8a9dd224baebfb2aaf30fbe9a28"
-        width="42rem"
+        width="100%"
         title="フロントエンドエキスパートチームについて"
       />
     </PageLayout>
