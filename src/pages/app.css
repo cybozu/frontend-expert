@@ -12,6 +12,12 @@ html {
   font-size: 18px;
 }
 
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 a:link {
   text-decoration: none;
 }
