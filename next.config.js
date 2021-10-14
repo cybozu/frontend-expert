@@ -7,6 +7,10 @@ const nextConfig = {
   },
   basePath: "/frontend-expert",
   assetPrefix: "/frontend-expert",
+  experimental: {
+    swcLoader: true,
+    swcMinify: true,
+  },
 };
 
 module.exports = nextConfig;
