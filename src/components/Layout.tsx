@@ -74,7 +74,7 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
           rel="alternate"
           type="application/atom+xml"
           title="Atom Feed"
-          href="/feeds/atom.xml"
+          href="/frontend-expert/feeds/atom.xml"
         />
       </Head>
       <Header />
