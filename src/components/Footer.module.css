@@ -1,12 +1,12 @@
 .footer {
-  padding: 5rem 0;
+  padding: 2.4rem 0;
   background-color: var(--primary-color);
   color: white;
 }
 
 .footer .content {
   max-width: var(--content-width);
-  padding: 0 2rem;
+  padding: 0 1.2rem;
   box-sizing: border-box;
   margin: 0 auto;
 }

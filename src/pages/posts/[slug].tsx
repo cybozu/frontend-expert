@@ -9,21 +9,40 @@ import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 import { Tags } from "../../components/Tags";
 import { PostContent } from "../../components/PostContent";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 
 const Author = ({ author }: { author: Member }) => {
   return (
     <div className={styles.author}>
       <MemberIcon width="60" height="60" name={author.name} />
       <div className={styles.authorInfo}>
+        <div className={styles.label}>Author</div>
         <span className={styles.authorName}>
           <Link href={`/members/${author.name}`}>{author.name}</Link>
         </span>
         <ul>
           <li>
-            <a href={`https://twitter.com/${author.twitterId}`}>Twitter</a>
+            <a
+              href={`https://twitter.com/${author.twitterId}`}
+              aria-label="twitter"
+              className={styles.icon}
+              target="_blank"
+              rel="noopener"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
           </li>
           <li>
-            <a href={`https://github.com/${author.githubUsername}`}>GitHub</a>
+            <a
+              href={`https://github.com/${author.githubUsername}`}
+              aria-label="github"
+              className={styles.icon}
+              target="_blank"
+              rel="noopener"
+            >
+              <FontAwesomeIcon icon={faGithubAlt} />
+            </a>
           </li>
         </ul>
       </div>
@@ -43,12 +62,18 @@ const Post = ({ post }: Props) => {
       slug={post.slug}
       description={post.metaData.summary}
     >
-      <Tags tags={post.metaData.tags} />
       <h1 className={styles.title}>{post.metaData.title}</h1>
+      <div className={styles.publishedOn}>
+        Published on{" "}
+        <time dateTime={post.metaData.createdAt} itemProp="datePublished">
+          {post.metaData.createdAt}
+        </time>
+      </div>
       <Author author={author} />
       <PostContent>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </PostContent>
+      <Tags tags={post.metaData.tags} />
     </Layout>
   );
 };

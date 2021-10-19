@@ -11,5 +11,6 @@
   margin: 0 auto;
   max-width: var(--content-width);
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 1rem 1rem 1.5rem;
+  min-height: 400px;
 }

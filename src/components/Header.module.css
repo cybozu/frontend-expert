@@ -1,12 +1,12 @@
 .header {
-  padding: 3rem 0;
+  padding: 1.2rem 0 1rem;
   background-color: var(--primary-color);
 }
 
 .header .content {
   max-width: var(--content-width);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   box-sizing: border-box;
 }
 
@@ -22,7 +22,7 @@
 
 .navigation ul li {
   padding: 0.2rem 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .navigation ul li:not(:last-child)::after {

@@ -19,17 +19,20 @@
 
 .post h2 {
   margin-top: 1rem;
-  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2rem;
 }
 
 .post h3 {
   margin-top: 1rem;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 
 .post h4 {
   margin-top: 1rem;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .post h5 {
@@ -54,7 +57,7 @@
 }
 
 .post p {
-  margin-top: 0.5rem;
+  margin-top: 0.8rem;
   line-height: 1.75;
   font-size: 1rem;
 }
@@ -65,8 +68,10 @@
 }
 
 .post ul {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
   box-sizing: border-box;
+  line-height: 2;
 }
 
 .post ul ul {
