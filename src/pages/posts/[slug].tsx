@@ -28,7 +28,7 @@ const Author = ({ author }: { author: Member }) => {
               aria-label="twitter"
               className={styles.icon}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={faTwitter} />
             </a>
@@ -39,7 +39,7 @@ const Author = ({ author }: { author: Member }) => {
               aria-label="github"
               className={styles.icon}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
             >
               <FontAwesomeIcon icon={faGithubAlt} />
             </a>
