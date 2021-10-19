@@ -29,6 +29,15 @@ export const Header: VFC = () => {
             <li>
               <Link href="/posts">Posts</Link>
             </li>
+            <li>
+              <a
+                href="https://cybozu.co.jp/company/job/recruitment/list/front_end_expert.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Recruiting
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
