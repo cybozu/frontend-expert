@@ -6,6 +6,7 @@ import { markdownToHtml } from "./markdown";
 type PostMetaData = {
   title: string;
   author: string;
+  editor?: string;
   createdAt: string;
   updatedAt: string;
   tags: string[];
