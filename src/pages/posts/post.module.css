@@ -23,6 +23,14 @@
   width: 100%;
   font-size: 0.6rem;
 }
+.authors {
+  display: flex;
+}
+.author + .author {
+  margin-left: 16px;
+  padding-left: 16px;
+  border-left: 1px solid #d3d3d3;
+}
 .author {
   display: flex;
   margin: 1.5rem 0;

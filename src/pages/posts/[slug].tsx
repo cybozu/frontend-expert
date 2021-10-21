@@ -12,12 +12,12 @@ import { PostContent } from "../../components/PostContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 
-const Author = ({ author }: { author: Member }) => {
+const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
     <div className={styles.author}>
       <MemberIcon width="60" height="60" name={author.name} />
       <div className={styles.authorInfo}>
-        <div className={styles.label}>Author</div>
+        <div className={styles.label}>{label ? label : "Author"}</div>
         <span className={styles.authorName}>
           <Link href={`/members/${author.name}`}>{author.name}</Link>
         </span>
@@ -56,6 +56,9 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   const author = getMemberByName(post.metaData.author);
+  const editor = post.metaData.editor
+    ? getMemberByName(post.metaData.editor)
+    : "";
   return (
     <Layout
       title={post.metaData.title}
@@ -69,7 +72,10 @@ const Post = ({ post }: Props) => {
           {post.metaData.createdAt}
         </time>
       </div>
-      <Author author={author} />
+      <div className={styles.authors}>
+        <Author author={author} />
+        {editor && <Author author={editor} label="Editor" />}
+      </div>
       <PostContent>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </PostContent>
