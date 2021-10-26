@@ -3,7 +3,7 @@ title: "Firefox 93.0 リリースノート要約"
 author: "BaHo"
 editor: "nakajmg"
 createdAt: "2021-10-21"
-summary: "このウェブサイトを開設することになった経緯と目的、使用した技術について説明します。"
+summary: "Firefox 93.0 のリリースノートの要約です"
 tags:
   - Releasenote
 ---
