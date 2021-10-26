@@ -12,6 +12,7 @@ import { PostContent } from "../../components/PostContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { TweetButton } from "../../components/TweetButton";
+import { PostContact } from "../../components/PostContact";
 
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
@@ -82,6 +83,7 @@ const Post = ({ post }: Props) => {
       </PostContent>
       <Tags tags={post.metaData.tags} />
       <TweetButton />
+      <PostContact />
     </Layout>
   );
 };
