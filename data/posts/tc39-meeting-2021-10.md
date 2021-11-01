@@ -1,8 +1,8 @@
 ---
-title: "TC39 meeting 86th の概要と注目ポイント"
+title: "TC39 meeting 86th の概要とステージの移動"
 author: "sosukesuzuki"
 editor: "nakajmg"
-createdAt: "2021-10-21"
+createdAt: "2021-11-01"
 summary: ""
 tags:
   - TC39
