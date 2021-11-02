@@ -19,6 +19,15 @@ html {
   }
 }
 
+:not(pre) > pre[class*="language-"] {
+  font-size: 0.8rem;
+  margin: 1.5rem 0.5rem;
+  box-sizing: border-box;
+  border-radius: 2px;
+  line-height: 1.75;
+  padding: 0.5rem;
+}
+
 a:link {
   text-decoration: none;
   color: #0366d6;
