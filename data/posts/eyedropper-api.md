@@ -1,7 +1,7 @@
 ---
 title: "Chrome95で追加された画面上の色を取得するEyeDropper APIについて"
 author: "nakajmg"
-createdAt: "2021-11-01"
+createdAt: "2021-11-02"
 summary: "Chromiumベースのブラウザーに追加されたEyeDropper APIについて紹介します"
 tags:
   - "Web API"
