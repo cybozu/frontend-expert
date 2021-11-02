@@ -2,7 +2,7 @@
 title: "TC39 meeting 86th の概要とステージの移動"
 author: "sosukesuzuki"
 editor: "nakajmg"
-createdAt: "2021-11-01"
+createdAt: "2021-11-02"
 summary: "2021年10月の TC39 meeting 86th の議題とステージの移動について"
 tags:
   - TC39
