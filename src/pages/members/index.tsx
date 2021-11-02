@@ -19,11 +19,15 @@ const MemberItem = ({ member }: { member: Member }) => {
               Twitter:{" "}
               <a
                 href={`https://twitter.com/${member.twitterId}`}
+                target="_blank"
+                rel="noreferrer noopener"
               >{`@${member.twitterId}`}</a>
             </li>
             <li>
               GitHub:{" "}
               <a
+                target="_blank"
+                rel="noreferrer noopener"
                 href={`https://github.com/${member.githubUsername}`}
               >{`@${member.githubUsername}`}</a>
             </li>
@@ -38,7 +42,7 @@ const Members = () => (
   <Layout title="Members">
     <PageLayout>
       <h2>Members</h2>
-      <ul>
+      <ul className={styles.members}>
         {activeMembers.map((member) => {
           return <MemberItem key={member.name} member={member} />;
         })}
