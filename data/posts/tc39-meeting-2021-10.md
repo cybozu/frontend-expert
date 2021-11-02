@@ -20,19 +20,17 @@ TC39 の 86 回目のミーティングが 10/25 ~ 10/28 に開催されまし�
 
 **Stage 4 になりました。ECMAScript 2022 に入ります**
 
-Error Cause は、`Error` コンストラクタの第2引数に `cause` という値で原因となったエラーを渡すことができるようにする提案です。
+Error Cause は、`Error` コンストラクタの第 2 引数に `cause` という値で原因となったエラーを渡すことができるようにする提案です。
 キャッチする側では、`error.cause` で、そのエラーを取得できます。
 
 例を示します。
 
-`doUploadJob` 関数では `fetch` を実行して失敗したときに新しいエラーをスローします。そのエラーの第2引数に `{ cause: err }` というオブジェクトを渡しています。
-ここで `doUploadJob` がスローするエラーのメッセージは `"Upload job result failed"` ですが、その原因となったエラーを `cause` として渡すことで、キャッチする側でどのエラーが原因で失敗したのかを取得できます。
-この例では、`doUploadJob` が失敗した原因が `TypeError: Failed to fetch` であったことがわかります。
+`doUploadJob` 関数は `fetch` を実行して失敗したときに新しいエラーをスローします。そのエラーの第 2 引数に `{ cause: err }` というオブジェクトを渡しています。
 
 ```js
 async function doUploadJob() {
-  await fetch("https://example.com/upload").catch(err => {
-    throw new Error("Upload job result failed",  { cause: err });
+  await fetch("https://example.com/upload").catch((err) => {
+    throw new Error("Upload job result failed", { cause: err });
   });
 }
 
@@ -40,11 +38,15 @@ try {
   await doJob();
 } catch (e) {
   console.log(e);
-  console.log('Caused by', e.cause);
+  console.log("Caused by", e.cause);
 }
 // Error: Upload job result failed
 // Caused by TypeError: Failed to fetch
 ```
+
+`doUploadJob` がスローしているエラーメッセージは `"Upload job result failed"` ですが、その原因となったエラーを `cause` として渡すことで、キャッチする側でどのエラーが原因で失敗したのかを取得できます。
+
+この例では、`doUploadJob` が失敗した原因が `TypeError: Failed to fetch` であったことがわかります。
 
 ## for Stage 3
 
@@ -58,7 +60,7 @@ try {
 
 Array Grouping は、`Array` に `groupBy` というインスタンスメソッドを追加する提案です。
 
-[Lodash の `groupBy`](https://lodash.com/docs/4.17.15#groupBy) とおなじです。
+ユースケースは[Lodash の `groupBy`](https://lodash.com/docs/4.17.15#groupBy) と同様です。
 
 ```js
 const array = [1, 2, 3, 4, 5];
@@ -76,8 +78,8 @@ Partial Application は、関数の部分適用のための構文を導入しま
 
 例を示します。
 
-`add` は2つの引数を受け取り、その2つを足し合わせて返すだけの単純な関数です。
-そして、Partial Application を使って `addOne` という新しい関数を作っています。`addOne` は、1つの引数を受け取り、それに`1`を足して返す関数です。
+`add` は 2 つの引数を受け取り、その 2 つを足し合わせて返すだけの単純な関数です。
+そして、Partial Application を使って `addOne` という新しい関数を作っています。`addOne` は、1 つの引数を受け取り、それに`1`を足して返す関数です。
 つまり、既存の関数の一部の引数だけ渡して、残りの引数を受け取るような関数を作ることができます。
 
 ```js
@@ -89,12 +91,13 @@ addOne(2); // 3
 現在の JavaScript で表現すると、次のようになります。
 
 ```js
-const add = x => y => x + y;
+const add = (x) => (y) => x + y;
 const addOne = add(1);
 addOne(2); // 3
 ```
 
 Haskell のような関数型プログラミング言語では標準で備わっている機能です。
+
 ## for Stage 1
 
 ### [`String.cooked`](https://github.com/bathos/proposal-string-cooked)
@@ -105,7 +108,7 @@ Haskell のような関数型プログラミング言語では標準で備わっ
 `String.cooked` は [`String.raw`](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/raw) と逆のことをします。
 
 ```js
-String.raw`mmm ... \u0064elicious cooked string`
+String.raw`mmm ... \u0064elicious cooked string`;
 // mmm ... \u0064elicious cooked string
 String.cooked`mmm ... \u0064elicious cooked string`;
 // "mmm ... delicious cooked string"
@@ -134,7 +137,7 @@ myTag`hello ${'world'}` // "hello WORLD"
 
 Destructure Private Fields は、プライベートフィールドの分割代入のための構文を導入します。
 
-`#` からはじまる識別子は普通には存在できないので、別の名前にリネームする必要があります。次の例では `this.#x` を `x` という名前にリネームしています。
+`#` からはじまる識別子は通常であれば存在できないので、別の名前にリネームする必要があります。次の例では `this.#x` を `x` という名前にリネームしています。
 
 ```js
 class Foo {
@@ -173,13 +176,13 @@ const f = Function.flow(f0, f1, f2);
 f(5, 7); // f2(f1(f0(5, 7))).
 ```
 
-`Function.pipe` は第1引数の値を、それ移行の引数として渡された関数を合成した関数に渡した結果を返します。
+`Function.pipe` は第 1 引数の値を、それ移行の引数として渡された関数を合成した関数に渡した結果を返します。
 
 ```js
 Function.pipe(5, f0, f1, f2); // f2(f1(f0(5))).
 ```
 
-`Function.constant` は、第1引数として渡された値を返し続ける関数を返します。
+`Function.constant` は、第 1 引数として渡された値を返し続ける関数を返します。
 
 ```js
 const f = Function.constant(3);
@@ -188,7 +191,7 @@ f(3009, 33, 44); // 3
 f({ foo: "foo" }); // 3
 ```
 
-`Function.identifiy` は、第1引数に与えられた値をそのまま返します。
+`Function.identifiy` は、第 1 引数に与えられた値をそのまま返します。
 
 ```js
 Function.identity(3); // 3
