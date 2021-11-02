@@ -1,3 +1,17 @@
+.members {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  margin: auto;
+  max-width: 800px;
+}
+
+@media (max-width: 600px) {
+  .members {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
 .member {
   margin-bottom: 2.5rem;
   display: flex;
