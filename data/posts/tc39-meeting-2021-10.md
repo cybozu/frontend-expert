@@ -1,9 +1,9 @@
 ---
-title: "TC39 meeting 86th の概要とステージの移動"
+title: "ECMAScriptの最新動向 2021年11月版"
 author: "sosukesuzuki"
 editor: "nakajmg"
 createdAt: "2021-11-02"
-summary: "2021年10月の TC39 meeting 86th の議題とステージの移動について"
+summary: "2021年10月25日~28日に開催された TC39 meeting 86th の内容を紹介します"
 tags:
   - TC39
 ---
