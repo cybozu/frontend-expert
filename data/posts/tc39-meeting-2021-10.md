@@ -6,6 +6,7 @@ createdAt: "2021-11-02"
 summary: "2021年10月25日~28日に開催された TC39 meeting 86th の内容を紹介します"
 tags:
   - TC39
+  - ECMAScript
 ---
 
 ```
