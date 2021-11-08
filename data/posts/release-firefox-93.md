@@ -6,6 +6,7 @@ createdAt: "2021-10-21"
 summary: "Firefox 93.0 のリリースノートの要約です"
 tags:
   - Releasenote
+  - Browser
 ---
 
 Firefox 93 がリリースされました！

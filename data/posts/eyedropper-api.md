@@ -5,6 +5,7 @@ createdAt: "2021-11-02"
 summary: "Chromiumベースのブラウザーに追加されたEyeDropper APIについて紹介します"
 tags:
   - "Web API"
+  - Browser
 ---
 
 [Chrome 95 がリリース](https://developer.chrome.com/blog/new-in-chrome-95/)され、新機能として EyeDropper API が追加されました。(Edge 95 にも追加されました)
