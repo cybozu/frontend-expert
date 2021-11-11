@@ -107,7 +107,7 @@ class Foo {
 
 これが、このプロポーザルの主なモチベーションです。
 
-[`instanceof` 演算子](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/instanceof)も基本的にはこの目的を果たすために使えます。しかし `instanceof` 演算子はプロトタイプに依存するので、プロトタイプを書き換えることでその挙動を変更できます。
+[`instanceof` 演算子](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/instanceof)も基本的にはこの目的のために使えます。しかし `instanceof` 演算子はプロトタイプに依存するので、プロトタイプを書き換えることでその挙動を変更できます。
 
 次の例では、 `obj` は `Foo` のインスタンスではありませんが、後からプロトタイプを書き換えているので `obj instanceof Foo` は `true` になっています。
 
