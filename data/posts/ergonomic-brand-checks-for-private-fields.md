@@ -3,7 +3,7 @@ title: "ES2022 と TypeScript 4.5 に入るプライベートフィールドの�
 author: "sosukesuzuki"
 createdAt: "2021-11-11"
 summary: "ES2022 と TypeScript 4.5 に入る現在 Stage 4 の提案 Ergonomic brand checks for Private Fields についての解説です。"
-tags: ["ECMAScript"]
+tags: ["ECMAScript", "TypeScript"]
 ---
 
 2021年7月に行われた TC39 ミーティングで [Ergonomic brand checks for Private Fields](https://github.com/tc39/proposal-private-fields-in-in) というプロポーザルが Stage 4 になりました。
