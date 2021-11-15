@@ -92,12 +92,11 @@ Chrome 95 で非推奨になったもの、もしくは削除されたもので�
 
 ### WebAssembly cross-origin module sharing
 
-same-site間でのWebAssemblyモジュールの共有が非推奨になりました
+cross-originでsame-siteな環境間でのWebAssemblyモジュールの共有が非推奨になりました
 https://www.chromestatus.com/feature/5650158039597056
 
-参考:
-
-https://developer.chrome.com/blog/wasm-module-sharing-restricted-to-same-origin/
+合わせてこちらも参考にしてください  
+[Restricting Wasm module sharing to same-origin](https://developer.chrome.com/blog/wasm-module-sharing-restricted-to-same-origin/)
 
 
 ### Deprecate U2F API (Cryptotoken)
