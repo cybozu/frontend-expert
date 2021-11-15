@@ -25,7 +25,7 @@ meta タグ上での `theme-color` のサポートが追加されました。
 
 ## CSS
 
-### `aspect-ratio` プロパティのサポートが追加されました。
+### `aspect-ratio` プロパティのサポート
 
 [aspect-ratio - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio)
 
