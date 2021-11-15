@@ -1,21 +1,20 @@
+---
 title: "Chrome 95 リリースノートまとめ"
 author: "nus3"
 editor: "nakajmg"
 createdAt: "2021-11-15"
 summary: "Chrome 95 のリリースノートの要約です"
 tags:
-
-- Releasenote
-- Browser
-
+  - Releasenote
+  - Browser
 ---
 
 Chrome 95 のリリースノート関連の情報をまとめました。
 
-https://developer.chrome.com/blog/new-in-chrome-95/
-https://developer.chrome.com/blog/new-in-devtools-95/
-https://developer.chrome.com/blog/deps-rems-95/
-https://www.chromestatus.com/features#milestone%3D95
+- https://developer.chrome.com/blog/new-in-chrome-95/
+- https://developer.chrome.com/blog/new-in-devtools-95/
+- https://developer.chrome.com/blog/deps-rems-95/
+- https://www.chromestatus.com/features#milestone%3D95
 
 ## Routing with URLPattern
 
@@ -54,9 +53,10 @@ https://web.dev/urlpattern/
 
 ## PWA Summit
 
-10 月 6~7 日に PWA Summit が開催されてました
+10 月 6~7 日に PWA Summit が開催されてました  
 見逃した方はアーカイブが下記のリンクに残ってるので、そこから確認できます
-https://pwasummit.org/
+
+https://pwasummit.org/  
 https://www.youtube.com/channel/UC1j3gvdVISAEO1_2MwA5oQw/videos
 
 ## User-agent reduction origin trial
@@ -92,11 +92,13 @@ Chrome 95 で非推奨になったもの、もしくは削除されたもので�
 
 ### WebAssembly cross-origin module sharing
 
-agent clusters が長期的に long term のオリジンにスコープされることを可能にするため(?ごめんなさい、ここら辺よくわかってないです)
-cross-origin 間ではなく、same-site 内の WebAssembly モジュールの共有することを非推奨にしました
+same-site間でのWebAssemblyモジュールの共有が非推奨になりました
+https://www.chromestatus.com/feature/5650158039597056
 
-合わせてこちらも参考にしてください
+参考:
+
 https://developer.chrome.com/blog/wasm-module-sharing-restricted-to-same-origin/
+
 
 ### Deprecate U2F API (Cryptotoken)
 
@@ -112,19 +114,18 @@ U2F とはなんぞやという人はこちらの記事が参考になります�
 
 ### Back-forward cache for same-site navigations on Android
 
-Chrome 86 から origin trial で試せていた Android での戻る/進むのキャッシュが same-site で効くようになりました。
+Chrome 86 から origin trial で試せていた Android での戻る/進むのキャッシュが same-site で効くようになりました。  
 https://www.chromestatus.com/feature/5694778600587264
 
-bfcache(Back/forward cache)については下記に詳細の説明が載っています。
-
+bfcache(Back/forward cache)については下記に詳細の説明が載っています。  
 https://web.dev/bfcache/
 
 ### CSS @counter-style rules in shadow trees
 
-Shadow tree に対してカスタムの counter-style を定義することができるようになりました。
-
+Shadow tree に対してカスタムの counter-style を定義することができるようになりました。  
 https://www.chromestatus.com/feature/5716198446596096
 
+`@counter-style`については下記を参考ください
 ```css
 @counter-style circled-alpha {
   system: fixed;
@@ -146,6 +147,8 @@ https://www.chromestatus.com/feature/5716198446596096
 Ⓓ Four
 Ⓔ FIve
 ```
+
+https://developer.mozilla.org/ja/docs/Web/CSS/@counter-style#specifying_symbols_with_counter-style
 
 ### Cookie size limits
 
@@ -173,7 +176,7 @@ content-visibility で指定された要素の自然なサイズを制御する�
 
 次の実装は画面外の section のレンダリングをスキップする例です。
 
-```
+```html
 <style>
 section {
   content-visibility: auto;
@@ -190,7 +193,7 @@ https://developer.mozilla.org/ja/docs/Web/CSS/content-visibility
 
 Windows の Sec-CH-UA-Platform-Version(User-Agent Client Hints)で返されるバージョンが Windows プラットフォームの違いを識別できるように更新されました。
 
-https://www.chromestatus.com/feature/5080939765956608
+https://www.chromestatus.com/feature/5080939765956608  
 https://github.com/WICG/ua-client-hints/issues/220#issuecomment-870858413
 
 ### Note taking new note URL
@@ -198,7 +201,7 @@ https://github.com/WICG/ua-client-hints/issues/220#issuecomment-870858413
 Web Application Manifest が `note_taking` と `new_note_url` に対応しました。
 Web Application 側から新しいメモを書きたい時にユーザーエージェントに読み込ませたい URL を指定できるようになります。
 
-https://www.chromestatus.com/feature/5205972320518144
+https://www.chromestatus.com/feature/5205972320518144  
 https://wicg.github.io/manifest-incubations/index.html#note_taking-member
 
 ### Secure payment confirmation
@@ -219,7 +222,7 @@ PerformanceObserver のコールバックに droppedEntriesCount が追加され
 
 https://www.chromestatus.com/feature/5320666234486784
 
-PerformanceObserver
+PerformanceObserver  
 https://developer.mozilla.org/ja/docs/Web/API/PerformanceObserver
 
 ### self.reportError()
