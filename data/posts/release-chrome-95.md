@@ -226,9 +226,28 @@ https://developer.mozilla.org/ja/docs/Web/API/PerformanceObserver
 
 ### self.reportError()
 
+キャッチされない例外をレポートする`self.reportError()`が追加されます。
 https://www.chromestatus.com/feature/5634523220934656
+
+以下のコードを実行するとerrorはcatchで握り潰されずに`Uncaught Error: foo`になります。
+```js
+const addition = (a, b) => {
+  if (a > 0) {
+    self.reportError(new Error('foo'))
+  }
+  return a + b;
+};
+const count = (a, b, callback) => {
+  try {
+    callback(a, b)
+  } catch (error) {
+    console.log('bar')
+  }
+};
+
+count(2, 3, addition)
+```
 
 参考:
 
-- https://esdiscuss.org/topic/a-way-of-explicitly-reporting-exceptions
-- https://github.com/whatwg/html/pull/1196#issuecomment-854177687
+- https://html.spec.whatwg.org/#runtime-script-errors
