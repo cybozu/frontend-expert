@@ -31,7 +31,7 @@ meta タグ上での `theme-color` のサポートが追加されました。
 
 ### `lab()` `lch()` `hwb()` シンタックスのサポート
 
-[W3C Color Module Level 4](https://www.w3.org/TR/css-color-4/に沿った新しいカラーシンタックス `lab()` `lch()` `hwb()` が利用可能になりました。
+[W3C Color Module Level 4](https://www.w3.org/TR/css-color-4/)に沿った新しいカラーシンタックス `lab()` `lch()` `hwb()` が利用可能になりました。
 
 ### list-style-type に設定可能な値が追加
 
