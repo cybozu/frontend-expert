@@ -2,7 +2,7 @@
 title: "Chrome 95 リリースノートまとめ"
 author: "nus3"
 editor: "nakajmg"
-createdAt: "2021-11-15"
+createdAt: "2021-11-17"
 summary: "Chrome 95 のリリースノートの要約です"
 tags:
   - Releasenote
