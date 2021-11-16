@@ -2,7 +2,7 @@
 title: "Safari 15 の新機能とかまとめ"
 author: "mugi"
 editor: "nakajmg"
-createdAt: "2021-11-15"
+createdAt: "2021-11-16"
 summary: "先日 Safari 15 がリリースされました。影響の大きそうな箇所や、知っておいたほうが良さそうな箇所を中心に紹介します。"
 tags:
   - Releasenote
