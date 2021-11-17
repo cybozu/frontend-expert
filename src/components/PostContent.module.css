@@ -88,6 +88,10 @@
   margin-top: 1rem;
 }
 
+.post a {
+  word-wrap: break-word;
+}
+
 .post code:not([class*="language-"]) {
   padding: 0.2em 0.4em;
   margin: 0;
