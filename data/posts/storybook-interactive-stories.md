@@ -1,6 +1,7 @@
 ---
 title: "Storybook 6.4 で追加されたInteractive storiesについて"
 author: "nus3"
+editor: "nakajmg"
 createdAt: "2021-11-29"
 summary: "Storybookに新しく追加されたInteractive storiesについて紹介します"
 tags:
@@ -13,20 +14,32 @@ tags:
 
 Interactive storiesのAddonを追加すると、testing-libraryで定義した操作をStorybook上で確認することができるようになります。
 
+次のgifのようにユーザー操作に対するコンポーネントの状態をUI(Addon)からステップごとに確認できます。
+
 ![Interactive addonを使った例](/frontend-expert/image/storybook-interactive-stories/capture.gif)
 
 
 ## 導入手順
 
-1. 必要なパッケージを追加する
-2. Storybookの`main.js`に必要な設定を追加する
+1. パッケージを追加する
+2. Storybookの`main.js`に設定を追加する
 3. Interactive stories用のstoryを`stories.tsx`に追加する
 
 
-### 1. 必要なパッケージを追加する
+### 1. パッケージを追加する
 
-下記のパッケージを追加します
+Interactive addonを利用するには次のパッケージが必要です。  
 (今回はReactのコンポーネントを対象としています)
+
+- @storybook/addon-interactions
+- @storybook/react
+- @storybook/testing-library
+
+次のコマンドを実行してインストールします。
+
+`npm i -D @storybook/addon-interactions @storybook/react @storybook/testing-library`
+
+今回試したバージョンは次になります。
 
 ```json
 {
@@ -38,7 +51,7 @@ Interactive storiesのAddonを追加すると、testing-libraryで定義した�
 }
 ```
 
-### 2. Storybookの`main.js`に必要な設定を追加する
+### 2. Storybookの`main.js`に設定を追加する
 
 ```js
 module.exports = {
@@ -52,7 +65,7 @@ module.exports = {
 
 ### 3. Interactive stories用のstoryを`stories.tsx`に追加する
 
-例えば、下記のサンプルコードではStorybook上にマウントされたコンポーネントに対して、`Add`のラベルがついたボタンを4回クリックした後に`Reset`のボタンをクリックするstoryを`@storybook/testing-library`を使って追加しています。
+例えば、次のサンプルコードではStorybook上にマウントされたコンポーネントに対して、`Add`のラベルがついたボタンを4回クリックした後に`Reset`のボタンをクリックするstoryを`@storybook/testing-library`を使って追加しています。
 
 ```tsx
 // Interactive storiesに関係ある部分しか記載してません
@@ -73,10 +86,10 @@ Default.play = async ({ canvasElement }) => {
 }
 ```
 
-Interactive storiesのaddonを追加したStorybookをGitHub Pagesでホスティングしたので、実際に触ってみたい方は下記リンクへ。  
+Interactive storiesのaddonを追加したStorybookをGitHub Pagesでホスティングしたので、実際に触ってみたい方は次のリンクへ。  
 https://nus3.github.io/p-storybook/?path=/story/components-examplecomponent--default
 
-Interactive storiesが追加されたことでStorybook上で複雑な操作が必要なコンポーネントのデバッグや共有がしやすくなりそうですね。
+Interactive storiesが追加されたことでStorybook上で複雑な操作があるコンポーネントのデバッグや共有がしやすくなりそうですね。
 
 ## 参考リンク
 
