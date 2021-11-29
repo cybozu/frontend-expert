@@ -43,7 +43,7 @@ export const members: Member[] = [
     active: true,
   },
   {
-    name: "sajikix",
+    name: "Saji",
     twitterId: "sajikix",
     githubUsername: "sajikix",
     active: true,
