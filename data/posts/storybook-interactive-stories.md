@@ -86,12 +86,16 @@ Default.play = async ({ canvasElement }) => {
 }
 ```
 
+`Default.play = async ({ canvasElement }) => {`はStorybook6.4でサポートされる[CSF3](https://storybook.js.org/blog/component-story-format-3-0/)の構文です。  
+また、まだv0.5ですがStorybookから[eslint-plugin](https://github.com/storybookjs/eslint-plugin-storybook)も提供されているので、併せて試してみても良さそうです。
+
 Interactive storiesのaddonを追加したStorybookをGitHub Pagesでホスティングしたので、実際に触ってみたい方は次のリンクへ。  
 https://nus3.github.io/p-storybook/?path=/story/components-examplecomponent--default
 
-Interactive storiesが追加されたことでStorybook上で複雑な操作があるコンポーネントのデバッグや共有がしやすくなりそうですね。
+Storybook上で複雑な操作があるコンポーネントのデバッグや共有がしやすくなりそうですね。
 
 ## 参考リンク
 
 - https://storybook.js.org/blog/interactive-stories-beta/
+- https://storybook.js.org/blog/component-story-format-3-0/
 - [実際に実装したリポジトリ](https://github.com/nus3/p-storybook)
