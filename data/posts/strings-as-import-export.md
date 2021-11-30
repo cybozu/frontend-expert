@@ -31,17 +31,24 @@ console.log(foo); // foo
 
 ここからは、仕様上の用語を使って解説をします。
 
-この変更が入る前の ECMAScript では、`import` 内の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした(`import` の `as` の右側は [`ImportBinding`](https://tc39.es/ecma262/#prod-ImportedBinding) です。これは `Identifier` のようなものですが、ここでは詳しく解説しません)。
-また、`export` 内の `as` は、左右どちらとも `IdentifierName` でなければいけませんでした。(`IdentifierName` は [MDN](https://developer.mozilla.org/ja/docs/Glossary/Identifier)で説明されている普通の識別子です)
+この変更が入る前の ECMAScript では、[`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした(`ImportSpecifier` の右側は [`ImportBinding`](https://tc39.es/ecma262/#prod-ImportedBinding) でなければいけません。これは大雑把にいえば `Identifier` のようなものです)。
 
-今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) です。そして、`import` の `as` の左側と、`export` の `as` の左右両方に `ModuleExportName` を置くことができるようになりました。
+また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。(`IdentifierName` は [MDN](https://developer.mozilla.org/ja/docs/Glossary/Identifier)で説明されている普通の識別子です)
 
-ただし、`export` の `as` の左側を `StringLiteral` にできるのはその `export` に `from` が存在する場合のみです。
+今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) です。たとえば、`foo`(`Identifier`) や `"foo"`(`"StringLiterak"`) は `ModuleExportName` です。
+
+そして、`ImportSpecifier` の `as` の左側と、`ExportSpecifier` の `as` の右側と左側に `ModuleExportName` を置くことができるようになりました。
+
+ただし `ExportSpecifier` の `as` の左側を `StringLiteral` にできるのはその `ExportSpecifier` を含む [`ExportDeclaration`](https://tc39.es/ecma262/#prod-ExportDeclaration) に [`FromClause`](https://tc39.es/ecma262/#prod-FromClause) が存在する場合のみです。
+
+たとえば、次のコードは `ExportDeclaration` に `FromClause` が存在しないので `ExportSpecifier` の `as` の左右に `ModuleExportName` を書けません。
 
 ```js
 // できない
 export { "foo" as "foo" };
 ```
+
+一方で、次のコードは `FromClause` が存在するので、`ExportSpecifier` の `as` の左右に `ModuleExportName` を書けます。
 
 ```js
 // できる
