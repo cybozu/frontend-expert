@@ -22,9 +22,9 @@ Chrome96で新しく追加された機能です。
 
 ### Manifest id for PWAs
 
-今までPWAをインストールする際ブラウザ側でPWAを一意に識別するための明確な方法が存在しておらず、ブラウザの判断に委ねられていました。(実際ブラウザによってPWAマニフェストファイルのstart_urlが利用されていたり、マニフェストファイル自体のパスなどが利用されたりしています)
+今までPWAをインストールする際ブラウザ側でPWAを一意に識別するための明確な方法が存在しておらず、ブラウザの判断に委ねられていました。(実際ブラウザによってPWAマニフェストファイルの`start_url`が利用されていたり、マニフェストファイル自体のパスなどが利用されたりしています)
 
-今回のアップデートにより、マニフェストファイル内でPWAの識別子をidプロパティとして明示的に定義できるようになりました。
+今回のアップデートにより、マニフェストファイル内でPWAの識別子を`id`プロパティとして明示的に定義できるようになりました。
 
 マニフェストにidプロパティを追加すると、マニフェストファイルのstart_urlプロパティやマニフェストファイル場所へ依存がなくなり、これらのフィールドを更新することが容易になります。
 
@@ -43,7 +43,7 @@ Chrome96で新しく追加された機能です。
 すでに運用しているPWAのマニフェストファイルにidを追加する場合
 
 - ブラウザから割り当てられたIDを使用する必要があります。
-- 割り当てられているID は、Dev Tools の Application パネルの Manifest ペインで確認できます。
+- 割り当てられているID は、Dev Tools の `Application` パネルの `Manifest` ペインで確認できます。
 
 新しくPWAを作成する場合
 
@@ -51,9 +51,9 @@ Chrome96で新しく追加された機能です。
 
 ### URL protocol handlers for PWAs
 
-今までwebページで利用可能だったURL protocol handlerの登録がChrome96からはPWAでもインストール時に行えるようになりました。
+今までwebページで利用可能だった`URL protocol handler`の登録がChrome96からはPWAでもインストール時に行えるようになりました。
 
-PWAの場合は以下のようにprotocol_handlersマニフェストファイルに記載することで登録できます
+PWAの場合は以下のように`protocol_handlers`プロパティをマニフェストファイルに記載することで登録できます
 ```json
 {
   ...
@@ -70,13 +70,13 @@ PWAの場合は以下のようにprotocol_handlersマニフェストファイル
 }
 ```
 
-それぞれ、protocolには登録したいプロトコル名を、urlにはそのプロトコルのURLをクリックしたときに開いてほしいURLを指定します。ただし、これらのオリジナルなプロトコルの登録にはいくつかの制限があるので、詳しくはを参照してください。
+それぞれ、`protocol`には登録したいプロトコル名を、`url`にはそのプロトコルのURLをクリックしたときに開いてほしいURLを指定します。ただし、これらのプロトコル登録にはいくつかの制限があります。詳細や登録方法などは[こちら](https://web.dev/url-protocol-handler/)を参照してください。
 
 ### Priority hints (origin trial)
 
-ブラウザがページ内リソース(image,script,CSS)を読み込む際の優先度ヒントを追加できる機能がOrigin Trialsとして実験的に利用できるようになりました。
+ブラウザがページ内リソース(`image`,`script`,`CSS`)を読み込む際の優先度ヒントを追加できる機能が`Origin Trials`として実験的に利用できるようになりました。
 
-具体的には以下のような形で対象となるリソースにimportance属性で優先度(high,low,autoから選択)を指定します。
+具体的には以下のような形で対象となるリソースに`importance`属性で優先度(`high`,`low`,`auto`から選択)を指定します。
 ```html
 <!-- We don't want a high priority for this above-the-fold image -->
 <img src="/not-important.svg" importance="low">
@@ -92,25 +92,25 @@ PWAの場合は以下のようにprotocol_handlersマニフェストファイル
 </script>
 ```
 
-今回のリリースノートではGoogle Flights ページで、Priority hitnsの有無におけるLCP(最大視覚コンテンツの表示時間)の比較を行なった結果を紹介しています。この比較では背景画像のimgタグに対してimportance="high"を指定することでLCPが 2.6s から 1.9s に向上したとしています。
+今回のリリースノートでは Google Flights ページで、`Priority hitns` の有無におけるLCP(最大視覚コンテンツの表示時間)の比較を行なった結果を紹介しています。この比較では背景画像の`img`タグに対して`importance="high"`を指定することでLCPが 2.6s から 1.9s に向上したとしています。
 
-機能詳細やOrigin Trialとして登録する方法、サンプルなどについてはOptimizing resource loading with Priority Hintsを参考にしてください。
+機能詳細やOrigin Trialとして登録する方法、サンプルなどについては[Optimizing resource loading with Priority Hints](https://web.dev/priority-hints/)を参考にしてください。
 
 ### Emulate Chrome 100 in the UA string
 
 来年の早い段階でChromeはバージョン100をリリースする予定であり、これ以降３桁のバージョン番号に突入します。そのため、バージョン番号を利用しているコードやUserAgentをパースしているコードが３桁のバージョン番号でも正しく動作することを保証する必要があります。
 
-これらを検証するためChrome96では`#force-major-version-to-100`というフラグが追加されました。このフラグを有効にするとChromeのバージョンだけが100になった状態で動作をシミュレートすることができ、バージョン番号を扱う動作に問題がないかの検証を行うことができます。
+これらを検証するためChrome96では`#force-major-version-to-100`というフラグが追加されました。このフラグを有効にするとChromeのバージョンだけが100になった状態をシミュレートすることができ、バージョン番号を扱う動作に問題がないかの検証を行うことができます。
 
-詳しくは [Force Chrome major version to 100 in the User-Agent string.]() を参照してください。
+詳しくは [Force Chrome major version to 100 in the User-Agent string.](https://developer.chrome.com/blog/force-major-version-to-100/) を参照してください。
 
 ### Chrome Dev Summit
 
-Chrome Dev Summitにおけるすべての動画やコンテンツはオンラインで視聴可能です。詳しくは Chrome Dev Summit site をご覧ください。またkeynoteや配信を見逃した方はChrome Developers YouTube Channelの [CDS Playlist](https://www.youtube.com/playlist?list=PLNYkxOF6rcIBju4hD9ed1pt6YO20LgLWg) を合わせて参照してください。
+Chrome Dev Summitにおけるすべての動画やコンテンツはオンラインで視聴可能です。詳しくは [Chrome Dev Summit site](https://developer.chrome.com/devsummit/) をご覧ください。またkeynoteや配信を見逃した方はChrome Developers YouTube Channelの [CDS Playlist](https://www.youtube.com/playlist?list=PLNYkxOF6rcIBju4hD9ed1pt6YO20LgLWg) を合わせて参照してください。
 
 ### その他
 
-Back/forward cacheの機能がstableになりました。
+`Back/forward cache`の機能が`stable`になりました。
 - これによりFireFoxやSafariと挙動を揃えることができるようになりました。
 
 ## What's New In DevTools (Chrome 96)
