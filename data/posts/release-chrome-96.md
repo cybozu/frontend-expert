@@ -22,7 +22,7 @@ Chrome96で新しく追加された機能です。
 
 ### Manifest id for PWAs
 
-今までPWAをインストールする際ブラウザ側でPWAを一意に識別するための明確な方法が存在しておらず、ブラウザの判断に委ねられていました。(実際ブラウザによってPWAマニフェストファイルの`start_url`が利用されていたり、マニフェストファイル自体のパスなどが利用されたりしています)
+今まではPWAをインストールする際、ブラウザ側でPWAを一意に識別するための明確な方法が存在しておらず、ブラウザの判断に委ねられていました。(実際ブラウザによってPWAマニフェストファイルの`start_url`が利用されていたり、マニフェストファイル自体のパスなどが利用されたりしています)
 
 今回のアップデートにより、マニフェストファイル内でPWAの識別子を`id`プロパティとして明示的に定義できるようになりました。
 
@@ -53,7 +53,7 @@ Chrome96で新しく追加された機能です。
 
 今までwebページで利用可能だった`URL protocol handler`の登録がChrome96からはPWAでもインストール時に行えるようになりました。
 
-PWAの場合は以下のように`protocol_handlers`プロパティをマニフェストファイルに記載することで登録できます
+PWAの場合は以下のように`protocol_handlers`プロパティをマニフェストファイルに記載することで登録できます。
 ```json
 {
   ...
@@ -129,7 +129,7 @@ https://developer.chrome.com/blog/deps-rems-96/
 PaymentRequestを呼び出すときに指定できる`basic card`method(ブラウザで保存されているカード情報を使う方法)が非推奨になります。
 Chrome96では実際に`basic card`を使っているとDevToolsのConsoleでwarningメッセージが表示され、Chrome100になると利用できなくなります。
 
-`basic card`を使っている場合は別のmethodに変更するように早めに対応したほうが良さそうです
+`basic card`を使っている場合は別のmethodに変更するように早めに対応したほうが良さそうです。
 https://blog.chromium.org/2021/10/sunsetting-basic-card-payment-method-in.html
 
 
@@ -152,8 +152,8 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/speak-as
 
 ### Clipboard: Preserve PNG metadata
 
-クリップボードからPNGを読み込む際にサニタイズされなくなります
-(前まではメタデータを削除していた)
+クリップボードからPNGを読み込む際にサニタイズされなくなります。
+(前まではメタデータを削除していました)
 
 https://www.chromestatus.com/feature/5629962485760000
 
@@ -174,8 +174,8 @@ https://www.chromestatus.com/feature/5663240823504896
 
 ### EME MediaKeySession Closed Reason
 
-MediaKeySessionのcloseメソッドが`MediaKeySessionClosedReason`を返すようになります
-sessionが閉じられた理由(`internal-error`, `closed-by-application`など)を取得してハンドリングできるようになります
+MediaKeySessionのcloseメソッドが`MediaKeySessionClosedReason`を返すようになります。
+sessionが閉じられた理由(`internal-error`, `closed-by-application`など)を取得してハンドリングできるようになります。
 
 ```js
 const keySystemAccess = await navigator.requestMediaKeySystemAccess(
@@ -204,20 +204,20 @@ https://googlechrome.github.io/samples/media/key-session-closed-reason.html
 ### HTTP->HTTPS redirect for HTTPS DNS records
 
 DNSのHTTPSレコードを従来のAレコードやAAAAレコードと一緒に照会し、解析されるようになります。
-HTTPSレコードを追加し、Chromeがそれを受信するとChromeは常にそのウェブサイトにHTTPSで接続されるようになります
+HTTPSレコードを追加し、Chromeがそれを受信するとChromeは常にそのウェブサイトにHTTPSで接続されるようになります。
 
 https://www.chromestatus.com/feature/5485544526053376
 
 ### InteractionID in EventTiming
 
-Event Timing APIのPerformanceEventTimingに`interactionId`が追加されました
-ユーザーの操作に対して関連するイベント(たとえばユーザーがタップした時にはpointerdown→mousedown→pointerup→mouseup→clickのイベントが発生する)は`interactionId`が同じになります
+Event Timing APIのPerformanceEventTimingに`interactionId`が追加されました。
+ユーザーの操作に対して関連するイベント(たとえばユーザーがタップした時にはpointerdown→mousedown→pointerup→mouseup→clickのイベントが発生する)は`interactionId`が同じになります。
 
 https://www.chromestatus.com/feature/5674224959094784
 
 ### Media Queries: prefers-contrast feature
 
-OSが設定している色のコントラスト設定に対応するメディアクエリ`prefers-contrast`が追加されました
+OSが設定している色のコントラスト設定に対応するメディアクエリ`prefers-contrast`が追加されました。
 
 ```css
 .contrast {
@@ -244,10 +244,10 @@ https://developer.mozilla.org/ja/docs/Web/CSS/@media/prefers-contrast
 
 ### Support calc(`<number>`) where only accepts `<integer>`
 
-cssの`calc()`関数でintegerしか受け取らないような場所でもnumberを指定できるようになりました
+cssの`calc()`関数でintegerしか受け取らないような場所でもnumberを指定できるようになりました。
 もっとも近い整数に丸められます。
 
-例えば、下記はいずれも`width: 0px`と同義です
+例えば、下記はいずれも`width: 0px`と同義です。
 
 ```css
 .example {
