@@ -25,7 +25,7 @@ tags: ["ECMAScript"]
 
 聞いただけではイメージしにくいと思うので、具体例を示します。
 
-次のようにして emoji や空白を含めた名前として import/export できるようになります。
+次のようにして、import/export する際の名前として文字列を使えるようになります。
 
 ```js
 const foo = "foo";
@@ -38,6 +38,8 @@ console.log(foo); // foo
 ```
 
 基本的にはこれだけです。
+
+## 詳解
 
 ここからは、仕様上の用語を使って解説をします。
 
@@ -71,7 +73,7 @@ export { "foo" as "foo" } from "some-module";
 
 `ModuleExportName` は `StringLiteral` を含むので、全ての文字列を `ModuleExportName` として使えるように思えますが、実は少し違います。`ModuleExportName` として使える `StringLiteral` には制限があります。
 
-**`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Unicode Sequence](http://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**(このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています)
+**`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Unicode Sequence](https://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**(このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています)
 
 ### Well-Formed Unicode Sequence とは
 
@@ -97,11 +99,11 @@ console.log("\uD842\uDF9F"); // 𠮟
 const str = "\uD842";
 ```
 
-`\uD842` に対応するコードポイントは存在しません。簡単にいえば、`\uD842` で表される文字は Unicode には存在しません。
+しかし、`\uD842` に対応するコードポイントは Unicode には存在しません。
 
 このような、**対になっていないサロゲートペアを含むような文字列は Well-Formed Unicode Sequece ではありません。**
 
-逆に、対になっていないサロゲートペアを許容しないような文字列を **Well-Formed Unicode Sequece** といいます。つまり、大雑把にいえば「ちゃんと文字になっているコードユニットで構成された文字列」のことです。
+逆に、対になっていないサロゲートペアを許容しないような文字列を **Well-Formed Unicode Sequece** といいます。つまり、大雑把にいえば「ちゃんと文字になっているコードユニットで構成された文字列」ということです。
 
 ちなみに、このような文字列は WebIDL では [USVString](https://developer.mozilla.org/ja/docs/Web/API/USVString) と呼ばれています。
 
@@ -127,5 +129,11 @@ const str = "\uD842";
   - [7.12.0 Released: TypeScript 4.1, strings as import/export names, and class static blocks · Babel](https://babeljs.io/blog/2020/10/15/7.12.0#imports-and-exports-with-string-names-12091httpsgithubcombabelbabelpull12091)
 - MDN
   - [Identifier (識別子) - MDN Web Docs 用語集: ウェブ関連用語の定義](https://developer.mozilla.org/ja/docs/Glossary/Identifier)
+  - [USVString - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/USVString)
 - ECMA262
+  - [ImportSpecifier · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#prod-ImportSpecifier)
+  - [ExportSpecifier · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#prod-ExportSpecifier)
+  - [ModuleExportName · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#prod-ModuleExportName)
   - [IsStringWellFormedUnicode · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#sec-isstringwellformedunicode)
+- Unicode
+  - [Well-Formed Unicode Sequece · Glossary of Unicode Terms](https://www.unicode.org/glossary/#well_formed_code_unit_sequence)
