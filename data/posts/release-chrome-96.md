@@ -145,7 +145,7 @@ https://www.chromestatus.com/feature/5728533701722112
 
 ### CSS @counter-style descriptor 'speak-as'
 
-`@counter-style`を使った際にカウンターが音声形式でどのように表されるかを指定できるプロパティ`speak-as`が追加予定で、現状は`In developer trial`で試験運用中
+`@counter-style`を使った際にカウンターが音声形式でどのように表されるかを指定できるプロパティ`speak-as`が追加予定で、現状は`In developer trial`で試験運用中です・
 
 https://www.chromestatus.com/feature/5687059677184000
 https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/speak-as
@@ -203,8 +203,8 @@ https://googlechrome.github.io/samples/media/key-session-closed-reason.html
 
 ### HTTP->HTTPS redirect for HTTPS DNS records
 
-DNSのHTTPSレコードを従来のAレコードやAAAAレコードと一緒に照会し、解析されるようになります。
-HTTPSレコードを追加し、Chromeがそれを受信するとChromeは常にそのウェブサイトにHTTPSで接続されるようになります。
+DNSのHTTPSレコードを従来のAレコードやAAAAレコードと一緒に照会し、解析するようになります。
+HTTPSレコードを追加し、Chromeがそれを受信するとChromeは常にそのウェブサイトにHTTPSで接続します。
 
 https://www.chromestatus.com/feature/5485544526053376
 
