@@ -121,17 +121,16 @@ https://developer.chrome.com/ja/blog/new-in-devtools-96/
 
 ## Deprecations and removals in Chrome 96
 
-Chrome96で非推奨になったもの、もしくは削除されたものです
+Chrome96で非推奨になったもの、もしくは削除されたものです  
 https://developer.chrome.com/blog/deps-rems-96/
 
 ### The "basic-card" method of PaymentRequest API
 
 PaymentRequestを呼び出すときに指定できる`basic card`method(ブラウザで保存されているカード情報を使う方法)が非推奨になります。
-Chrome96では実際に`basic card`を使っているとDevToolsのConsoleでwarningメッセージが表示され、Chrome100になると利用できなくなります。
 
-`basic card`を使っている場合は別のmethodに変更するように早めに対応したほうが良さそうです。
+Chrome96では実際に`basic card`を使っているとDevToolsのConsoleでwarningメッセージが表示され、Chrome100になると利用できなくなります。`basic card`を使っている場合は別のmethodに変更するように早めに対応したほうが良さそうです。
+
 https://blog.chromium.org/2021/10/sunsetting-basic-card-payment-method-in.html
-
 
 ## その他Chrome Platform Statusに記載されていたもの
 
@@ -145,7 +144,7 @@ https://www.chromestatus.com/feature/5728533701722112
 
 ### CSS @counter-style descriptor 'speak-as'
 
-`@counter-style`を使った際にカウンターが音声形式でどのように表されるかを指定できるプロパティ`speak-as`が追加予定で、現状は`In developer trial`で試験運用中です・
+`@counter-style`を使った際にカウンターが音声形式でどのように表されるかを指定できるプロパティ`speak-as`が追加予定で、現状は`In developer trial`で試験運用中です。
 
 https://www.chromestatus.com/feature/5687059677184000
 https://developer.mozilla.org/en-US/docs/Web/CSS/@counter-style/speak-as
@@ -239,7 +238,7 @@ OSが設定している色のコントラスト設定に対応するメディア
 
 https://www.chromestatus.com/feature/5646323212615680
 
-参考: prefers-contrast(MDN)
+参考: prefers-contrast(MDN)  
 https://developer.mozilla.org/ja/docs/Web/CSS/@media/prefers-contrast
 
 ### Support calc(`<number>`) where only accepts `<integer>`
