@@ -51,7 +51,7 @@ Chrome 96で新しく追加された機能です。
 
 ### URL protocol handlers for PWAs
 
-今までwebページで利用可能だった`URL protocol handler`の登録がChrome96からはPWAでもインストール時に行えるようになりました。
+今までwebページで利用可能だった`URL protocol handler`の登録がChrome 96からはPWAでもインストール時に行えるようになりました。
 
 PWAの場合は以下のように`protocol_handlers`プロパティをマニフェストファイルに記載することで登録できます。
 ```json
