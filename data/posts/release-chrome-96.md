@@ -2,7 +2,7 @@
 title: "Chrome 96 リリースノートまとめ"
 author: "Saji"
 editor: "nus3"
-createdAt: "2021-11-29"
+createdAt: "2021-12-02"
 summary: "Chrome 96 のリリースノートの要約です"
 tags:
   - Releasenote
