@@ -100,7 +100,7 @@ PWAの場合は以下のように`protocol_handlers`プロパティをマニフ�
 
 来年の早い段階でChromeはバージョン100がリリースされる予定であり、これ以降３桁のバージョン番号に突入します。そのため、バージョン番号を利用しているコードや`UserAgent`をパースしているコードが３桁のバージョン番号でも正しく動作することを保証する必要があります。
 
-これらを検証するためChrome96では`#force-major-version-to-100`というフラグが追加されました。このフラグを有効にするとChromeのバージョンだけが100になった状態をシミュレートすることができ、バージョン番号を扱う動作に問題がないかの検証を行うことができます。
+これらを検証するためChrome 96では`#force-major-version-to-100`というフラグが追加されました。このフラグを有効にするとChromeのバージョンだけが100になった状態をシミュレートすることができ、バージョン番号を扱う動作に問題がないかの検証を行うことができます。
 
 詳しくは [Force Chrome major version to 100 in the User-Agent string.](https://developer.chrome.com/blog/force-major-version-to-100/) を参照してください。
 
