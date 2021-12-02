@@ -18,7 +18,7 @@ Chrome 96 のリリースノート関連の情報をまとめました。
 - https://v8.dev/blog/v8-release-96
 
 ## New In Chrome (Chrome 96)
-Chrome96で新しく追加された機能です。
+Chrome 96で新しく追加された機能です。
 
 ### Manifest id for PWAs
 
