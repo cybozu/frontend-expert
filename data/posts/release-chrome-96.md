@@ -128,7 +128,7 @@ https://developer.chrome.com/blog/deps-rems-96/
 
 PaymentRequestを呼び出すときに指定できる`basic card`method(ブラウザで保存されているカード情報を使う方法)が非推奨になります。
 
-Chrome96では実際に`basic card`を使っているとDevToolsのConsoleでwarningメッセージが表示され、Chrome100になると利用できなくなります。`basic card`を使っている場合は別のmethodに変更するように早めに対応したほうが良さそうです。
+Chrome 96では`basic card`を使っているとDevToolsのConsoleにwarningメッセージが表示されます。また、Chrome 100では利用できなくなります。`basic card`を使っている場合は別のmethodに変更するように早めに対応したほうが良さそうです。
 
 https://blog.chromium.org/2021/10/sunsetting-basic-card-payment-method-in.html
 
