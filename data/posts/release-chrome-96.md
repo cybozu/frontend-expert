@@ -74,7 +74,7 @@ PWAの場合は以下のように`protocol_handlers`プロパティをマニフ�
 
 ### Priority hints (origin trial)
 
-ブラウザがページ内リソース(`image`,`script`,`CSS`)を読み込む際の優先度ヒントを追加できる機能が`Origin Trials`として実験的に利用できるようになりました。
+ブラウザがページ内リソース(`image`,`script`,`CSS`)を読み込む際の優先度ヒントを追加できる機能がOrigin Trialsとして実験的に利用できるようになりました。
 
 具体的には以下のような形で対象となるリソースに`importance`属性で優先度(`high`,`low`,`auto`から選択)を指定します。
 ```html
