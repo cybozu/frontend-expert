@@ -168,7 +168,7 @@ https://blog.agektmr.com/2021/11/cross-origin-isolation.html
 
 ### Disable propagation of body style to viewport when contained
 
-ルートやbody要素に`contain: none`以外の値を使用するとbodyからのcssプロパティの伝搬が無効になります。
+ルートやbody要素に`contain: none`以外の値を使用するとbodyからのCSSプロパティの伝搬が無効になります。
 https://www.chromestatus.com/feature/5663240823504896
 
 ### EME MediaKeySession Closed Reason
