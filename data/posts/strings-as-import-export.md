@@ -6,8 +6,9 @@ summary: ""
 tags: ["ECMAScript"]
 ---
 
-11月11日に、以前から一部で注目されていた[とある Pull Request](https://github.com/tc39/ecma262/pull/2154) が [tc39/ecma262(ECMAScript)](https://github.com/tc39/ecma262) にマージされました。
-この変更は、識別子ではなく文字列の import/export を可能にします。
+11 月 11 日に、以前から一部で注目されていた[ある Pull Request](https://github.com/tc39/ecma262/pull/2154) が [tc39/ecma262](https://github.com/tc39/ecma262) にマージされました。
+
+その Pull Request によってモジュールから識別子ではなく文字列を import/export することが可能になりました。
 
 この変更はプロポーザルという形で扱われてはいません。しかし構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないでしょう。
 
@@ -44,6 +45,7 @@ console.log(foo); // foo
 
 たとえば、次のコードは `ExportDeclaration` に `FromClause` が存在しないので `ExportSpecifier` の `as` の左右に `ModuleExportName` を書けません。
 
+<!-- prettier-ignore -->
 ```js
 // できない
 export { "foo" as "foo" };
