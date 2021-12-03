@@ -106,7 +106,7 @@ const str = "\uD842";
 
 この Abstract Operation は、引数の文字列が Well-Formed Code Unit Sequence かどうかを判定します。
 
-前述した `ModuleExportName` のための Eary Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います
+前述した `ModuleExportName` のための Early Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います
 そして、もし Well-Formed Code Unit Sequence でなければ Syntax Error になります。
 
 ## モチベーション
