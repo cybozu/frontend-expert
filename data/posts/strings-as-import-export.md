@@ -96,7 +96,7 @@ const str = "\uD842";
 
 ちなみに、このような文字列は WebIDL では [USVString](https://developer.mozilla.org/ja/docs/Web/API/USVString) と呼ばれています。
 
-### 新たな Abstract Operation: `IsStringWellFormedUnicode`
+### 新しい Abstract Operation `IsStringWellFormedUnicode`
 
 この仕様の変更に伴って、[`IsStringWellFormedUnicode`](https://tc39.es/ecma262/#sec-isstringwellformedunicode) という新しい Abstract Operation が追加されました。
 
@@ -107,13 +107,20 @@ const str = "\uD842";
 
 ## モチベーション
 
-この変更の主な目的は WebAssembly との相互運用性を改善することです。
+- WebAssembly の Module との、将来的な相互運用性の向上のため
+- Wasm のモジュールでは文字列を名前として export する
+- 将来的に JavaScript の Import を使って WebAssembly の Module を import できるようにしたい、という動きがある
+- そのときに、今までの仕様のままだと、named export できない
+  - Wasm のモジュールは文字列を export するが、JS の import は識別子しか import できないため
+- なので、JS 側で識別子ではなく文字列を import できるようにしておけば、WebAssembly の Module から export されたものを ImportStatement で import できる
+- 文字列に Well-Formed 制限があるのも、WebAssembly で export できる文字列が Well-Formed なものだけだから
 
 ## 参考リンク
 
 - TC39
   - [Normative: Arbitrary module namespace identifier names by bmeck · Pull Request #2154 · tc39/ecma262](https://github.com/tc39/ecma262/pull/2154)
   - [Arbitrary module namespace identifier names · tc39/notes/notes/sept-21.md](https://github.com/tc39/notes/blob/master/meetings/2020-09/sept-21.md#arbitrary-strings-as-exportimport-names)
+  - [tc39/proposal-import-reflection](https://github.com/tc39/proposal-import-reflection)
 - Babel
   - [Parse string export names by default (`moduleStringNames`) by nicolo-ribaudo · Pull Request #13195 · babel/babel](https://github.com/babel/babel/pull/13195)
   - [7.12.0 Released: TypeScript 4.1, strings as import/export names, and class static blocks · Babel](https://babeljs.io/blog/2020/10/15/7.12.0#imports-and-exports-with-string-names-12091httpsgithubcombabelbabelpull12091)
@@ -127,3 +134,7 @@ const str = "\uD842";
   - [IsStringWellFormedUnicode · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#sec-isstringwellformedunicode)
 - Unicode
   - [Well-Formed Unicode Sequece · Glossary of Unicode Terms](https://www.unicode.org/glossary/#well_formed_code_unit_sequence)
+- WebAssembly
+  - [WebAssembly/interface-types](https://github.com/WebAssembly/interface-types)
+  - [Why should strings be lists of Unicode Scalar Values? · Issue #135 · WebAssembly/interface-types](https://github.com/WebAssembly/interface-types/issues/135)
+  - [Values — WebAssembly 1.1 (Draft 2021-12-02)](https://webassembly.github.io/spec/core/text/values.html#names)
