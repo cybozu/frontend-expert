@@ -1,14 +1,14 @@
 ---
-title: "文字列を import/export できるようになる ECMAScript の修正について"
+title: "文字列リテラルを import/export できるようになる ECMAScript の修正について"
 author: "sosukesuzuki"
 createdAt: "2021-11-22"
-summary: "ES2022 に含まれる予定の、識別子ではなく文字列を import/export できるようになる ECMAScript の修正について解説します"
+summary: "ES2022 に含まれる予定の、識別子ではなく文字列リテラルを import/export できるようになる ECMAScript の修正について解説します"
 tags: ["ECMAScript"]
 ---
 
 11 月 11 日に、以前から一部で注目されていた[ある Pull Request](https://github.com/tc39/ecma262/pull/2154) が [tc39/ecma262](https://github.com/tc39/ecma262) にマージされました。
 
-その Pull Request によってモジュールから識別子ではなく文字列を import/export することが可能になりました。
+その Pull Request によってモジュールから識別子ではなく文字列リテラルを import/export することが可能になりました。
 
 この変更はプロポーザルという形で扱われてはいません。しかし構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないでしょう。
 
@@ -16,7 +16,7 @@ tags: ["ECMAScript"]
 
 まず具体例を示します。
 
-今回の変更によって、次のように import/export する際の名前として文字列を使えるようになります。
+今回の変更によって、次のように import/export する際の名前として文字列リテラルを使えるようになります。
 
 ```js
 const foo = "foo";
@@ -62,7 +62,7 @@ export { "foo" as "foo" } from "some-module";
 
 `StringLiteral` は通常の JavaScript の文字列リテラルです。たとえば `"foo"` とか `"bar"` みたいな形をしたものです。
 
-`ModuleExportName` は `StringLiteral` を含むので、全ての文字列を `ModuleExportName` として使えるように思えますが、実は少し違います。`ModuleExportName` として使える `StringLiteral` には制限があります。
+`ModuleExportName` は `StringLiteral` を含むので、全ての文字列リテラルを `ModuleExportName` として使えるように思えますが、実は少し違います。`ModuleExportName` として使える `StringLiteral` には制限があります。
 
 **`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Code Unit Sequence](https://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**
 このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています。
