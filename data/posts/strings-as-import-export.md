@@ -155,8 +155,8 @@ import { "+" as add } from "foo.wasm";
 console.log(add(1, 2)); // 3
 ```
 
-また、`ModuleExportName` の `StringLiteral` が Well-Formed Unicode Sequence でなければならないという制約が存在するにも、WebAssembly との相互運用のためです。
-WebAssembly で `export` の後に続く文字列は Well-Formed Unicode Sequece でなければいけないので、それと統一させた形になります。
+また、`ModuleExportName` の `StringLiteral` が Well-Formed Unicode Sequence でなければならないという制約が存在するのも、WebAssembly との相互運用のためです。
+WebAssembly のテキストフォーマットで `export` の後に続く文字列は Well-Formed Unicode Sequece でなければいけないので、それと統一させた形になります。
 
 ## 参考リンク
 
