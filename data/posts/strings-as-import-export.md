@@ -13,9 +13,9 @@ tags: ["ECMAScript"]
 
 ## 概要
 
-聞いただけではイメージしにくいと思うので、具体例を示します。
+まず具体例を示します。
 
-次のようにして、import/export する際の名前として文字列を使えるようになります。
+今回の変更によって、次のように import/export する際の名前として文字列を使えるようになります。
 
 ```js
 const foo = "foo";
@@ -33,9 +33,10 @@ console.log(foo); // foo
 
 ここからは仕様上の用語を使って解説をします。
 
-この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした(ちなみに `ImportSpecifier` の右側は [`ImportBinding`](https://tc39.es/ecma262/#prod-ImportedBinding) でなければいけません。これは大雑把にいえば `Identifier` のようなものです)。また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。(`IdentifierName` は [MDN](https://developer.mozilla.org/ja/docs/Glossary/Identifier)で説明されているような普通の識別子です)
+この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした。
+また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。
 
-今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) です。たとえば、識別子 `foo` や 文字列リテラル `"foo"` は `ModuleExportName` です。
+今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) の形をとります。たとえば、識別子 `foo` や 文字列リテラル `"foo"` は `ModuleExportName` です。
 
 そして、`ImportSpecifier` の `as` の左側と、`ExportSpecifier` の `as` の右側と左側に `ModuleExportName` を置くことができるようになりました。
 
@@ -87,7 +88,7 @@ console.log("\uD842\uDF9F"); // 𠮟
 const str = "\uD842";
 ```
 
-しかし、`\uD842` に対応するコードポイントは Unicode には存在しません。
+しかし、`\uD842` 単体に対応する文字は Unicode には存在しません。
 
 このような、**対になっていないサロゲートペアを含むような文字列は Well-Formed Unicode Sequece ではありません。**
 
@@ -99,13 +100,14 @@ const str = "\uD842";
 
 この仕様の変更に伴って、[`IsStringWellFormedUnicode`](https://tc39.es/ecma262/#sec-isstringwellformedunicode) という新しい Abstract Operation が追加されました。
 
-この Abstract Operation は引数の文字列が Well-Formed かどうかを判定します。
+この Abstract Operation は、引数の文字列が Well-Formed Unicode Sequence かどうかを判定します。
 
-前述した `ModuleExportName` のための Eary Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed かどうかの判定を行い、Well-Formed でなければ Syntax Error になります。
-
-(この Abstract Operation は、現在 Stage 1 の [`isUSVString`](https://github.com/guybedford/proposal-is-usv-string) というプロポーザルでも使われるかもしれません。)
+前述した `ModuleExportName` のための Eary Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Unicode Sequence かどうかの判定を行います
+そして、もし Well-Formed Unicode Sequrnce でなければ Syntax Error になります。
 
 ## モチベーション
+
+この変更の主な目的は WebAssembly との相互運用性を改善することです。
 
 ## 参考リンク
 
