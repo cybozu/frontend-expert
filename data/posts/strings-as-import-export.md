@@ -37,7 +37,8 @@ console.log(foo); // foo
 この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした。
 また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。
 
-今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) の形をとります。たとえば、識別子 `foo` や 文字列リテラル `"foo"` は `ModuleExportName` です。
+今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) の形をとります。
+たとえば、識別子 `foo` や 文字列リテラル `"😃 hey hey"` は `ModuleExportName` です。
 
 そして、`ImportSpecifier` の `as` の左側と、`ExportSpecifier` の `as` の右側と左側に `ModuleExportName` を置くことができるようになりました。
 
@@ -91,7 +92,7 @@ console.log("\uD842\uDF9F"); // 𠮟
 const str = "\uD842";
 ```
 
-しかし、`\uD842` 単体に対応する文字は Unicode には存在しません。
+しかし、`0xD842` 単体に対応する文字は Unicode には存在しません。
 
 このような、**対になっていないサロゲートペアを含むような文字列は Well-Formed Code Unit Sequence ではありません。**
 
