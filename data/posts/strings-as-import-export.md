@@ -62,9 +62,10 @@ export { "foo" as "foo" } from "some-module";
 
 `ModuleExportName` は `StringLiteral` を含むので、全ての文字列を `ModuleExportName` として使えるように思えますが、実は少し違います。`ModuleExportName` として使える `StringLiteral` には制限があります。
 
-**`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Unicode Sequence](https://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**(このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています)
+**`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Code Unit Sequence](https://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**
+このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています。
 
-### Well-Formed Unicode Sequence とは
+### Well-Formed Code Unit Sequence とは
 
 JavaScript の文字列は UTF-16 でエンコードされます。なので、実際のところ JavaScript の文字列というのは 16 ビットの整数で表現される Unicode のコードユニットの並びでしかありません。
 
@@ -90,9 +91,9 @@ const str = "\uD842";
 
 しかし、`\uD842` 単体に対応する文字は Unicode には存在しません。
 
-このような、**対になっていないサロゲートペアを含むような文字列は Well-Formed Unicode Sequece ではありません。**
+このような、**対になっていないサロゲートペアを含むような文字列は Well-Formed Code Unit Sequence ではありません。**
 
-逆に、対になっていないサロゲートペアを許容しないような文字列を **Well-Formed Unicode Sequece** といいます。つまり、大雑把にいえば「ちゃんと文字になっているコードユニットで構成された文字列」ということです。
+逆に、対になっていないサロゲートペアを許容しないような文字列を **Well-Formed Code Unit Sequence** といいます。つまり、大雑把にいえば「ちゃんと文字になっているコードユニットで構成された文字列」ということです。
 
 ちなみに、このような文字列は WebIDL では [USVString](https://developer.mozilla.org/ja/docs/Web/API/USVString) と呼ばれています。
 
@@ -100,10 +101,10 @@ const str = "\uD842";
 
 この仕様の変更に伴って、[`IsStringWellFormedUnicode`](https://tc39.es/ecma262/#sec-isstringwellformedunicode) という新しい Abstract Operation が追加されました。
 
-この Abstract Operation は、引数の文字列が Well-Formed Unicode Sequence かどうかを判定します。
+この Abstract Operation は、引数の文字列が Well-Formed Code Unit Sequence かどうかを判定します。
 
-前述した `ModuleExportName` のための Eary Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Unicode Sequence かどうかの判定を行います
-そして、もし Well-Formed Unicode Sequrnce でなければ Syntax Error になります。
+前述した `ModuleExportName` のための Eary Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います
+そして、もし Well-Formed Code Unit Sequence でなければ Syntax Error になります。
 
 ## モチベーション
 
@@ -155,8 +156,8 @@ import { "+" as add } from "foo.wasm";
 console.log(add(1, 2)); // 3
 ```
 
-また、`ModuleExportName` の `StringLiteral` が Well-Formed Unicode Sequence でなければならないという制約が存在するのも、WebAssembly との相互運用のためです。
-WebAssembly のテキストフォーマットで `export` の後に続く文字列は Well-Formed Unicode Sequece でなければいけないので、それと統一させた形になります。
+また、`ModuleExportName` の `StringLiteral` が Well-Formed Code Unit Sequence でなければならないという制約が存在するのも、WebAssembly との相互運用のためです。
+WebAssembly のテキストフォーマットで `export` の後に続く文字列は Well-Formed Code Unit Sequence でなければいけないので、それと統一させた形になります。
 
 ## 参考リンク
 
@@ -176,7 +177,7 @@ WebAssembly のテキストフォーマットで `export` の後に続く文字�
   - [ModuleExportName · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#prod-ModuleExportName)
   - [IsStringWellFormedUnicode · ECMAScript® 2022 Language Specification](https://tc39.es/ecma262/#sec-isstringwellformedunicode)
 - Unicode
-  - [Well-Formed Unicode Sequece · Glossary of Unicode Terms](https://www.unicode.org/glossary/#well_formed_code_unit_sequence)
+  - [Well-Formed Code Unit Sequence · Glossary of Unicode Terms](https://www.unicode.org/glossary/#well_formed_code_unit_sequence)
 - WebAssembly
   - [WebAssembly/interface-types](https://github.com/WebAssembly/interface-types)
   - [Why should strings be lists of Unicode Scalar Values? · Issue #135 · WebAssembly/interface-types](https://github.com/WebAssembly/interface-types/issues/135)
