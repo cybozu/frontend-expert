@@ -1,8 +1,8 @@
 ---
-title: "識別子でなく文字列を import/export できるようになる ECMAScript 仕様の修正について"
+title: "文字列を import/export できるようになる ECMAScript の修正について"
 author: "sosukesuzuki"
 createdAt: "2021-11-22"
-summary: ""
+summary: "ES2022 に含まれる予定の、識別子ではなく文字列を import/export できるようになる ECMAScript の修正について解説します"
 tags: ["ECMAScript"]
 ---
 
