@@ -107,13 +107,56 @@ const str = "\uD842";
 
 ## モチベーション
 
-- WebAssembly の Module との、将来的な相互運用性の向上のため
-- Wasm のモジュールでは文字列を名前として export する
-- 将来的に JavaScript の Import を使って WebAssembly の Module を import できるようにしたい、という動きがある
-- そのときに、今までの仕様のままだと、named export できない
-  - Wasm のモジュールは文字列を export するが、JS の import は識別子しか import できないため
-- なので、JS 側で識別子ではなく文字列を import できるようにしておけば、WebAssembly の Module から export されたものを ImportStatement で import できる
-- 文字列に Well-Formed 制限があるのも、WebAssembly で export できる文字列が Well-Formed なものだけだから
+この変更が入った主な目的は、将来的な WebAssembly の Module との相互運用性を向上のためです。
+
+まず、WebAssembly の Module では関数を export するときに文字列を使います。
+たとえば次の例では `$add` という関数を `"add"` という名前で export しています。
+
+```wat
+(module
+  (func $add (param $lhs i32) (param $rhs i32) (result i32)
+    local.get $lhs
+    local.get $rhs
+    i32.add)
+  (export "add" (func $add))
+)
+```
+
+そして、WebAssembly の Module を JavaScript から import できるようにしたい、という動きがあります。
+[WebAsembly/esm-integration](https://github.com/WebAssembly/esm-integration) などで、その動きを見ることができます。
+
+簡単にいえば、次のようにして簡単に WebAssembly の Module を JavaScript から扱えるようにしたいということです。
+
+```js
+import { add } from "foo.wasm";
+console.log(add(1, 2)); // 3
+```
+
+次の例は、上にあるものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっています。
+WebAssembly のテキストフォーマットの `export` の後ろには文字列を置くことができるので、これは妥当な Module です。
+
+```wat
+(module
+  (func $add (param $lhs i32) (param $rhs i32) (result i32)
+    local.get $lhs
+    local.get $rhs
+    i32.add)
+  (export "+" (func $add))
+)
+```
+
+**このとき、今までの ECMAScript の仕様では `"+"` を named import することはできませんでした。**
+しかし、今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったので、次のように書けます。
+
+```js
+// ES2022 では構文上は valid
+// (wasm の import 自体はまだできない)
+import { "+" as add } from "foo.wasm";
+console.log(add(1, 2)); // 3
+```
+
+また、`ModuleExportName` の `StringLiteral` が Well-Formed Unicode Sequence でなければならないという制約が存在するにも、WebAssembly との相互運用のためです。
+WebAssembly で `export` の後に続く文字列は Well-Formed Unicode Sequece でなければいけないので、それと統一させた形になります。
 
 ## 参考リンク
 
@@ -138,3 +181,4 @@ const str = "\uD842";
   - [WebAssembly/interface-types](https://github.com/WebAssembly/interface-types)
   - [Why should strings be lists of Unicode Scalar Values? · Issue #135 · WebAssembly/interface-types](https://github.com/WebAssembly/interface-types/issues/135)
   - [Values — WebAssembly 1.1 (Draft 2021-12-02)](https://webassembly.github.io/spec/core/text/values.html#names)
+  - [ESM isn't suited for importing objects containing non-JavaScript identifiers · Issue #39 · WebAssembly/esm-integration](https://github.com/WebAssembly/esm-integration/issues/39)
