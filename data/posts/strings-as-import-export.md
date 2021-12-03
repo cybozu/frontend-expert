@@ -11,16 +11,6 @@ tags: ["ECMAScript"]
 
 この変更はプロポーザルという形で扱われてはいません。しかし構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないでしょう。
 
-## まとめ
-
-以下のような仕様の変更の ECMAScript 2022 に含まれる予定です
-
-- `ModuleExportName` という新しい構文が追加される
-  - `ModuleExportName` は `IdentifierName` もしくは `StringLiteral` の形をとる
-  - `ModuleExportName` が `StringLiteral` のときは Well-Formed UTF-16 Sequence でなければならない
-- `ImportSpecifier` の `as` の左側に `ModuleExportName` を書けるようになる
-- `ExportSpecifier` の `as` の左側と右側に `ModuleExportName` を書けるようになる
-
 ## 概要
 
 聞いただけではイメージしにくいと思うので、具体例を示します。
@@ -41,13 +31,11 @@ console.log(foo); // foo
 
 ## 詳解
 
-ここからは、仕様上の用語を使って解説をします。
+ここからは仕様上の用語を使って解説をします。
 
-この変更が入る前の ECMAScript では、[`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした(`ImportSpecifier` の右側は [`ImportBinding`](https://tc39.es/ecma262/#prod-ImportedBinding) でなければいけません。これは大雑把にいえば `Identifier` のようなものです)。
+この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした(ちなみに `ImportSpecifier` の右側は [`ImportBinding`](https://tc39.es/ecma262/#prod-ImportedBinding) でなければいけません。これは大雑把にいえば `Identifier` のようなものです)。また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。(`IdentifierName` は [MDN](https://developer.mozilla.org/ja/docs/Glossary/Identifier)で説明されているような普通の識別子です)
 
-また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。(`IdentifierName` は [MDN](https://developer.mozilla.org/ja/docs/Glossary/Identifier)で説明されている普通の識別子です)
-
-今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) です。たとえば、`foo` や `"foo"` は `ModuleExportName` です。
+今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) です。たとえば、識別子 `foo` や 文字列リテラル `"foo"` は `ModuleExportName` です。
 
 そして、`ImportSpecifier` の `as` の左側と、`ExportSpecifier` の `as` の右側と左側に `ModuleExportName` を置くことができるようになりました。
 
