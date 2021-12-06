@@ -74,7 +74,7 @@ JavaScript の文字列は UTF-16 でエンコードされます。なので、�
 
 UTF-16 では基本的に 1 文字につき 16 ビットで表現されます。しかし、Unicode の BMP(基本多言語面)に収まらない文字は 16 ビットのコードユニットを二つ並べたペアで表現します。
 
-たとえば、ひらがなの `あ` は BMP に含まれるので、一つのコードユニット(`0x3042`)で表されます。
+たとえば、ひらがなの `あ` は BMP に含まれており、一つのコードユニット(`0x3042`)で表されます。
 
 ```js
 console.log("\u3042"); // あ
@@ -98,7 +98,7 @@ const str = "\uD842";
 
 逆に、対になっていないサロゲートペアを許容しないような文字列を **Well-Formed Code Unit Sequence** といいます。つまり、大雑把にいえば「ちゃんと文字になっているコードユニットで構成された文字列」ということです。
 
-ちなみに、このような文字列は WebIDL では [USVString](https://developer.mozilla.org/ja/docs/Web/API/USVString) と呼ばれています。
+ちなみに、このような Well-Formed な文字列は WebIDL では [USVString](https://developer.mozilla.org/ja/docs/Web/API/USVString) と呼ばれています。
 
 ### 新しい Abstract Operation `IsStringWellFormedUnicode`
 
@@ -109,11 +109,15 @@ const str = "\uD842";
 前述した `ModuleExportName` のための Eary Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います
 そして、もし Well-Formed Code Unit Sequence でなければ Syntax Error になります。
 
-## モチベーション
+## 仕様変更のモチベーション
 
-この変更が入った主な目的は、将来的な WebAssembly の Module との相互運用性を向上のためです。
+実はこの仕様の変更は、今の Web の仕様ではほとんど役に立つことはありません。
 
-まず、WebAssembly の Module では関数を export するときに文字列を使います。
+この変更が行われたモチベーションは、**将来的に** WebAssembly の Module との相互運用性を向上させるためです。
+
+この背景を理解するために、おさえておくべき前提が二つあります。
+
+１つ目は、WebAssembly の Module では関数を export するときに文字列で名前をつけるということです。
 たとえば次の例では `$add` という関数を `"add"` という名前で export しています。
 
 ```wat
@@ -126,8 +130,7 @@ const str = "\uD842";
 )
 ```
 
-そして、WebAssembly の Module を JavaScript から import できるようにしたい、という動きがあります。
-[WebAsembly/esm-integration](https://github.com/WebAssembly/esm-integration) などで、その動きを見ることができます。
+２つ目は、WebAssembly の Module を JavaScript から import できるようにしたい、という動きがあるということです。[WebAsembly/esm-integration](https://github.com/WebAssembly/esm-integration) などで、その動きを見ることができます。
 
 簡単にいえば、次のようにして簡単に WebAssembly の Module を JavaScript から扱えるようにしたいということです。
 
@@ -136,8 +139,11 @@ import { add } from "foo.wasm";
 console.log(add(1, 2)); // 3
 ```
 
-次の例は、上にあるものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっています。
-WebAssembly のテキストフォーマットの `export` の後ろには文字列を置くことができるので、これは妥当な Module です。
+現在の WebAssembly および ECMAScript の仕様では、このような形で JavaScript 側から WebAssembly の Module を読み込むことはできません。
+
+これらを前提として上で、次の例について考えます。
+
+この例は、前述したものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっている WebAssembly の Module です。`export` の後ろには文字列を置くことができるので、これは妥当な Module です。
 
 ```wat
 (module
@@ -149,18 +155,32 @@ WebAssembly のテキストフォーマットの `export` の後ろには文字�
 )
 ```
 
-**このとき、今までの ECMAScript の仕様では `"+"` を named import することはできませんでした。**
-しかし、今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったので、次のように書けます。
+将来、WebAssembly の Module を JavaScript から import できるようになったときに、このモジュールから `+` 関数を named import したいとします。
+**しかし、`+` は `IdentifierName` ではないので、今までの ECMAScript の仕様では named import できませんでした。**
 
 ```js
-// ES2022 では構文上は valid
-// (wasm の import 自体はまだできない)
+// できない
+import { + } from "foo.wasm";
+```
+
+```js
+// できない
+import { + as add } from "foo.wasm";
+```
+
+今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったことで、次のように書るようになりました。
+
+```js
+// ES2022 でできる
 import { "+" as add } from "foo.wasm";
+
 console.log(add(1, 2)); // 3
 ```
 
+このような書き方は ES2022 では構文上は妥当ですが、実際にはまだ WebAssembly の import はできません。
+
 また、`ModuleExportName` の `StringLiteral` が Well-Formed Code Unit Sequence でなければならないという制約が存在するのも、WebAssembly との相互運用のためです。
-WebAssembly のテキストフォーマットで `export` の後に続く文字列は Well-Formed Code Unit Sequence でなければいけないので、それと統一させた形になります。
+WebAssembly のテキストフォーマットで `export` の後に続く文字列は Well-Formed Code Unit Sequence でなければいけないので、それと統一させたのでしょう。
 
 ## 参考リンク
 
@@ -182,7 +202,6 @@ WebAssembly のテキストフォーマットで `export` の後に続く文字�
 - Unicode
   - [Well-Formed Code Unit Sequence · Glossary of Unicode Terms](https://www.unicode.org/glossary/#well_formed_code_unit_sequence)
 - WebAssembly
-  - [WebAssembly/interface-types](https://github.com/WebAssembly/interface-types)
-  - [Why should strings be lists of Unicode Scalar Values? · Issue #135 · WebAssembly/interface-types](https://github.com/WebAssembly/interface-types/issues/135)
+  - [WebAssembly/esm-integration: ECMAScript module integration](https://github.com/WebAssembly/esm-integration)
   - [Values — WebAssembly 1.1 (Draft 2021-12-02)](https://webassembly.github.io/spec/core/text/values.html#names)
   - [ESM isn't suited for importing objects containing non-JavaScript identifiers · Issue #39 · WebAssembly/esm-integration](https://github.com/WebAssembly/esm-integration/issues/39)
