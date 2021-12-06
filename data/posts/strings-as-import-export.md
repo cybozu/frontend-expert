@@ -150,7 +150,7 @@ WebAssembly のテキストフォーマットの `export` の後ろには文字�
 ```
 
 **`"+"`は今までの ECMAScript の仕様では named import することはできませんでした。**
-しかし、今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったことで、次のように書けるようになしました。
+しかし、今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったことで、次のように書けるようになりました。
 
 ```js
 // ES2022 では構文上は valid
