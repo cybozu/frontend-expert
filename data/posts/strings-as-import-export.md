@@ -8,9 +8,9 @@ tags: ["ECMAScript"]
 
 11 月 11 日に、以前から一部で注目されていた[ある Pull Request](https://github.com/tc39/ecma262/pull/2154) が [tc39/ecma262](https://github.com/tc39/ecma262) にマージされました。
 
-その Pull Request によってモジュールから識別子ではなく文字列リテラルを import/export することが可能になりました。
+この Pull Request がマージされたことで、モジュールから識別子ではなく文字列リテラルで import/export することが可能になりました。
 
-この変更はプロポーザルという形で扱われてはいません。しかし構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないでしょう。
+この仕様変更はプロポーザルという形で扱われてはいませんが、構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないものになります。
 
 ## 概要
 
@@ -63,14 +63,14 @@ export { "foo" as "foo" } from "some-module";
 
 `StringLiteral` は通常の JavaScript の文字列リテラルです。たとえば `"foo"` とか `"bar"` みたいな形をしたものです。
 
-`ModuleExportName` は `StringLiteral` を含むので、全ての文字列リテラルを `ModuleExportName` として使えるように思えますが、実は少し違います。`ModuleExportName` として使える `StringLiteral` には制限があります。
+`ModuleExportName` は `StringLiteral` を含むので、全ての文字列リテラルを `ModuleExportName` として使えるようにみえますが、実際には少々異なります。`ModuleExportName` として使える `StringLiteral` には制限があります。
 
 **`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Code Unit Sequence](https://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**
 このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています。
 
 ### Well-Formed Code Unit Sequence とは
 
-JavaScript の文字列は UTF-16 でエンコードされます。なので、実際のところ JavaScript の文字列というのは 16 ビットの整数で表現される Unicode のコードユニットの並びでしかありません。
+JavaScript の文字列は UTF-16 でエンコードされます。そのため、実際には JavaScript の文字列というのは 16 ビットの整数で表現される Unicode のコードユニットの並びでしかありません。
 
 UTF-16 では基本的に 1 文字につき 16 ビットで表現されます。しかし、Unicode の BMP(基本多言語面)に収まらない文字は 16 ビットのコードユニットを二つ並べたペアで表現します。
 
@@ -109,9 +109,9 @@ const str = "\uD842";
 前述した `ModuleExportName` のための Early Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います
 そして、もし Well-Formed Code Unit Sequence でなければ Syntax Error になります。
 
-## モチベーション
+## 仕様変更のモチベーション
 
-この変更が入った主な目的は、将来的な WebAssembly の Module との相互運用性を向上のためです。
+この変更が入った主な目的は、将来的な WebAssembly の Module との相互運用性を向上させるためです。
 
 まず、WebAssembly の Module では関数を export するときに文字列を使います。
 たとえば次の例では `$add` という関数を `"add"` という名前で export しています。
@@ -136,7 +136,7 @@ import { add } from "foo.wasm";
 console.log(add(1, 2)); // 3
 ```
 
-次の例は、上にあるものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっています。
+次の例は、前述したものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっています。
 WebAssembly のテキストフォーマットの `export` の後ろには文字列を置くことができるので、これは妥当な Module です。
 
 ```wat
@@ -149,8 +149,8 @@ WebAssembly のテキストフォーマットの `export` の後ろには文字�
 )
 ```
 
-**このとき、今までの ECMAScript の仕様では `"+"` を named import することはできませんでした。**
-しかし、今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったので、次のように書けます。
+**`"+"`は今までの ECMAScript の仕様では named import することはできませんでした。**
+しかし、今回の変更によって `ImportSpecifier` の `as` の左側に `StringLiteral` を置けるようになったことで、次のように書けるようになしました。
 
 ```js
 // ES2022 では構文上は valid
