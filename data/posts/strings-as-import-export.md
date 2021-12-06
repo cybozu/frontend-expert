@@ -34,28 +34,21 @@ console.log(foo); // foo
 
 ここからは仕様上の用語を使って解説をします。
 
-この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした。
-
-また[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) は、単一の `IdentifierName` もしくは、`as` を使う場合は `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。
-
-```js
-export { foo } from "mod";
-export { foo as bar } from "mod";
-```
+この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) で `as` を使う場合 `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした。
+また [`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) は、単一の `IdentifierName` もしくは、`as` を使う場合は `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。
 
 今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) の形をとります。
 たとえば、識別子 `foo` や 文字列リテラル `"😃 hey hey"` は `ModuleExportName` です。
 
-そして、`ImportSpecifier` の `as` の左側は `ModuleExportName` になりました。
+そして、`ImportSpecifier` で `as` を使う場合 `as` の左側は `ModuleExportName` の形をとるようになりました。したがって、次の例の `import` 文はすべて構文として妥当です。
 
 ```js
+import { foo } from "mod";
 import { foo as bar } from "mod";
 import { "😃 hey hey" as baz } from "mod";
 ```
 
-`ExportSpecifier` は、単一の `ModuleExportName`、もしくは `as` を使う場合 `as` の左側と右側は両方とも `ModuleExportName` になりました。
-
-したがって、次の例に含まれる `export` 文はすべて構文としては妥当です。
+`ExportSpecifier` は、単一の `ModuleExportName` もしくは、 `as` を使う場合 `as` の左側と右側は両方とも `ModuleExportName` の形をとるようになりました。したがって、次の例の `export` 文はすべて構文として妥当です。
 
 ```js
 export { foo } from "mod";
@@ -130,8 +123,7 @@ const str = "\uD842";
 
 この Abstract Operation は、引数の文字列が Well-Formed Code Unit Sequence かどうかを判定します。
 
-前述した `ModuleExportName` のための Early Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います
-そして、もし Well-Formed Code Unit Sequence でなければ Syntax Error になります。
+前述した `ModuleExportName` のための Early Errors では、この `IsStringWellFormedUnicode` Abstract Operation を使って `StringLiteral` が Well-Formed Code Unit Sequence かどうかの判定を行います。そしてもし Well-Formed Code Unit Sequence でなければ Syntax Error になります。
 
 ## 仕様変更のモチベーション
 
@@ -167,7 +159,7 @@ console.log(add(1, 2)); // 3
 
 これらを前提として上で、次の例について考えます。
 
-この例は、前述したものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっている WebAssembly の Module です。`export` の後ろには文字列を置くことができるので、これは妥当な Module です。
+この例は前述したものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっている WebAssembly の Module です。`export` の後ろには文字列を置くことができるので、これは妥当な Module です。
 
 ```wat
 (module
