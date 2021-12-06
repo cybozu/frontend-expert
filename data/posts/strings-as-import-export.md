@@ -1,8 +1,8 @@
 ---
-title: "文字列リテラルを import/export できるようになる ECMAScript の修正について"
+title: "なぜ ES2022 で文字列リテラルを使った import/export ができるようになるのか"
 author: "sosukesuzuki"
 createdAt: "2021-11-22"
-summary: "ES2022 に含まれる予定の、識別子ではなく文字列リテラルを import/export できるようになる ECMAScript の修正について解説します"
+summary: "ES2022 に含まれる予定の、識別子ではなく文字列リテラルを使って import/export できるようになる ECMAScript の仕様変更について解説します"
 tags: ["ECMAScript"]
 ---
 
