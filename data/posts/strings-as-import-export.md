@@ -8,9 +8,9 @@ tags: ["ECMAScript"]
 
 11 月 11 日に、以前から一部で注目されていた[ある Pull Request](https://github.com/tc39/ecma262/pull/2154) が [tc39/ecma262](https://github.com/tc39/ecma262) にマージされました。
 
-その Pull Request によってモジュールから識別子ではなく文字列リテラルを import/export することが可能になりました。
+この Pull Request がマージされたことで、モジュールから識別子ではなく文字列リテラルで import/export することが可能になりました。
 
-この変更はプロポーザルという形で扱われてはいません。しかし構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないでしょう。
+この仕様変更はプロポーザルという形で扱われてはいませんが、構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないものになります。
 
 ## 概要
 
@@ -63,14 +63,14 @@ export { "foo" as "foo" } from "some-module";
 
 `StringLiteral` は通常の JavaScript の文字列リテラルです。たとえば `"foo"` とか `"bar"` みたいな形をしたものです。
 
-`ModuleExportName` は `StringLiteral` を含むので、全ての文字列リテラルを `ModuleExportName` として使えるように思えますが、実は少し違います。`ModuleExportName` として使える `StringLiteral` には制限があります。
+`ModuleExportName` は `StringLiteral` を含むので、全ての文字列リテラルを `ModuleExportName` として使えるようにみえますが、実際には少々異なります。`ModuleExportName` として使える `StringLiteral` には制限があります。
 
 **`ModuleExportName` として使える `StringLiteral` は、[Well-Formed Code Unit Sequence](https://www.unicode.org/glossary/#well_formed_code_unit_sequence) でなければいけません。**
 このことは、[Module Semantics](https://tc39.es/ecma262/#sec-module-semantics) の Eary Errros 内の https://tc39.es/ecma262/#_ref_6583 に記載されています。
 
 ### Well-Formed Code Unit Sequence とは
 
-JavaScript の文字列は UTF-16 でエンコードされます。なので、実際のところ JavaScript の文字列というのは 16 ビットの整数で表現される Unicode のコードユニットの並びでしかありません。
+JavaScript の文字列は UTF-16 でエンコードされます。そのため、実際には JavaScript の文字列というのは 16 ビットの整数で表現される Unicode のコードユニットの並びでしかありません。
 
 UTF-16 では基本的に 1 文字につき 16 ビットで表現されます。しかし、Unicode の BMP(基本多言語面)に収まらない文字は 16 ビットのコードユニットを二つ並べたペアで表現します。
 
