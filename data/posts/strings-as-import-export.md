@@ -8,7 +8,7 @@ tags: ["ECMAScript"]
 
 11 月 11 日に、以前から一部で注目されていた[ある Pull Request](https://github.com/tc39/ecma262/pull/2154) が [tc39/ecma262](https://github.com/tc39/ecma262) にマージされました。
 
-この Pull Request がマージされたことで、モジュールから識別子ではなく文字列リテラルで import/export することが可能になりました。
+この Pull Request がマージされたことで、識別子ではなく文字列リテラルを使った import/export が可能になりました。
 
 この仕様変更はプロポーザルという形で扱われてはいませんが、構文上の影響があるので、JavaScript ユーザーとして知っておくに越したことはないものになります。
 
@@ -136,7 +136,7 @@ const str = "\uD842";
 １つ目は、WebAssembly の Module では関数を export するときに文字列で名前をつけるということです。
 たとえば次の例では `$add` という関数を `"add"` という名前で export しています。
 
-```wat
+```wasm
 (module
   (func $add (param $lhs i32) (param $rhs i32) (result i32)
     local.get $lhs
@@ -161,7 +161,7 @@ console.log(add(1, 2)); // 3
 
 この例は前述したものとほとんど変わりませんが、`export` の後ろが `"add"` ではなく `"+"` になっている WebAssembly の Module です。`export` の後ろには文字列を置くことができるので、これは妥当な Module です。
 
-```wat
+```wasm
 (module
   (func $add (param $lhs i32) (param $rhs i32) (result i32)
     local.get $lhs
