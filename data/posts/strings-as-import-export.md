@@ -35,28 +35,52 @@ console.log(foo); // foo
 ここからは仕様上の用語を使って解説をします。
 
 この変更が入る前の ECMAScript では [`ImportSpecifier`](https://tc39.es/ecma262/#prod-ImportSpecifier) の `as` の左側は [`IdentifierName`](https://tc39.es/ecma262/#prod-IdentifierName) でなければいけませんでした。
-また、[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) の `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。
+
+また[`ExportSpecifier`](https://tc39.es/ecma262/#prod-ExportSpecifier) は、単一の `IdentifierName` もしくは、`as` を使う場合は `as` の左側と右側は両方とも `IdentifierName` でなければいけませんでした。
+
+```js
+export { foo } from "mod";
+export { foo as bar } from "mod";
+```
 
 今回の変更によって、新たに [`ModuleExportName`](https://tc39.es/ecma262/#prod-ModuleExportName) という構文が追加されました。`ModuleExportName` は、`IdentifierName` もしくは [`StringLiteral`](https://tc39.es/ecma262/#prod-StringLiteral) の形をとります。
 たとえば、識別子 `foo` や 文字列リテラル `"😃 hey hey"` は `ModuleExportName` です。
 
-そして、`ImportSpecifier` の `as` の左側と、`ExportSpecifier` の `as` の右側と左側に `ModuleExportName` を置くことができるようになりました。
+そして、`ImportSpecifier` の `as` の左側は `ModuleExportName` になりました。
 
-ただし `ExportSpecifier` の `as` の左側を `StringLiteral` にできるのはその `ExportSpecifier` を含む [`ExportDeclaration`](https://tc39.es/ecma262/#prod-ExportDeclaration) に [`FromClause`](https://tc39.es/ecma262/#prod-FromClause) が存在する場合のみです。
+```js
+import { foo as bar } from "mod";
+import { "😃 hey hey" as baz } from "mod";
+```
 
-たとえば、次のコードは `ExportDeclaration` に `FromClause` が存在しないので `ExportSpecifier` の `as` の左右に `ModuleExportName` を書けません。
+`ExportSpecifier` は、単一の `ModuleExportName`、もしくは `as` を使う場合 `as` の左側と右側は両方とも `ModuleExportName` になりました。
+
+したがって、次の例に含まれる `export` 文はすべて構文としては妥当です。
+
+```js
+export { foo } from "mod";
+export { "😃 hey hey" } from "mod";
+export { foo as foo } from "mod";
+export { foo as "😃 hey hey" } from "mod";
+export { "😃 hey hey" as foo } from "mod";
+export { "😃 hey hey" as "😃 hey hey" } from "mod";
+```
+
+ただし `ExportSpecifier` の `ModuleExportName` を `StringLiteral` にできるのは、その `ExportSpecifier` を含む [`ExportDeclaration`](https://tc39.es/ecma262/#prod-ExportDeclaration) に [`FromClause`](https://tc39.es/ecma262/#prod-FromClause) が存在する場合のみです。
+
+たとえば、次のコードは `ExportDeclaration` に `FromClause` が存在しないので `ExportSpecifier` で `StringLiteral` を使うことはできません。
 
 <!-- prettier-ignore -->
 ```js
 // できない
-export { "foo" as "foo" };
+export { "😃 hey hey" };
 ```
 
-一方で、次のコードは `FromClause` が存在するので、`ExportSpecifier` の `as` の左右に `ModuleExportName` を書けます。
+一方で、次のコードは `FromClause` が存在するので、`ExportSpecifier` で `StringLiteral` を使うことができます。
 
 ```js
 // できる
-export { "foo" as "foo" } from "some-module";
+export { "😃 hey hey" } from "mod";
 ```
 
 ## 文字列の制約
