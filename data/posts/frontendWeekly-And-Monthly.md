@@ -10,7 +10,7 @@ tags: ["Announcement"]
 
 -----
 
-フロントエンドエキスパートでは、社内向けフロントエンド勉強会の「Frontend Weekly」と、社外向けフロントエンド情報発信イベントの「Cybozu Frontend Monthly」を運営しています。
+フロントエンドエキスパートチームでは、社内向けフロントエンド勉強会の「Frontend Weekly」と、社外向けフロントエンド情報発信イベントの「Cybozu Frontend Monthly」を運営しています。
 
 この度、Frontend Weeklyが5周年、Cybozu Frontend Monthlyが1周年を迎えました🎉
 
