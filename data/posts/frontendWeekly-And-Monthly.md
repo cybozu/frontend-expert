@@ -1,5 +1,5 @@
 ---
-title: "Frontend Weekly5周年&Cybozu Frontend Monthly1周年"
+title: "Frontend Weekly5周年&Cybozu Frontend Monthly1周年🎉 〜続けてみてのアレコレ〜"
 author: "sakito"
 createdAt: "2021-12-09"
 summary: "社内と社外向けのフロントエンド勉強会について"
