@@ -41,7 +41,7 @@ Frontend Weeklyは所属する組織・チームに関わらず、フロント�
 
 ## Cybozu Frontend Monthlyとは？
 
-![Cybozu Frontend Monthlyのアイキャッチ画像](/frontend-expert/image/frontendWeekly-And-Monthly/frontendWeekly.png)
+![Cybozu Frontend Monthlyのアイキャッチ画像](/frontend-expert/image/frontendWeekly-And-Monthly/cybozuFrontendMonthly-ogp.png)
 
 Cybozu Frontend Monthlyは、フロントエンドエキスパートチームが月末にフロントエンド情報を発信するオンラインイベントです。
 
