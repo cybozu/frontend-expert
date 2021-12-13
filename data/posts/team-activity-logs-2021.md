@@ -56,7 +56,8 @@ tags:
 
 サイボウズでは現在、kinotneのフロントエンドのリアーキテクチャプロジェクトが進行中です。kintoneの脱レガシーの取り組み自体は2018年から開始されていましたが、1つのプロジェクトとして動くようになったのは今年からです。
 
-kintoneのフロントエンドリアーキテクチャについて: https://blog.cybozu.io/entry/2021/07/20/170000
+
+[kintoneのフロントエンドリアーキテクチャについて](https://blog.cybozu.io/entry/2021/07/20/170000)
 
 ### 少数チームでやれることに限界を感じた
 
@@ -112,3 +113,16 @@ Cybozu Frontend Monthlyは多くの人に視聴してもらえており、中途
 2021年はフロントエンドエキスパートチームとして存在感と価値を発揮できた年だと感じています。地道な草の根活動からプロジェクト化へこぎつけたり、継続的な発信が行えていたりと、エキスパートチームらしい働きができたのかなと思います。
 
 フロントエンドエキスパートチームの活動はチームメンバーだけでなく、プロダクトチームなどの協力があってこその活動も多いです。来年も関係各所と連携を取りつつ、着々と成果が出せるように取り組んで行きたいと思います。
+
+フロントエンドの横断的支援チーム、フロントエンドのリアーキテクチャなどに興味がある方は次のリンクをご覧ください。
+
+- [キャリア採用 - フロントエンドエキスパート](https://cybozu.co.jp/company/job/recruitment/list/front_end_expert.html)
+- [キャリア採用 - フロントエンドエンジニア（kintoneアーキテクチャ刷新PJ）](https://cybozu.co.jp/company/job/recruitment/list/front_end_engineer_kintone.html)
+
+カジュアル面談もやっていますのでこちらもぜひ。
+
+- [Meety - サイボウズ、フロントエンドエキスパートチーム、週４勤務、副業、など](https://meety.net/matches/PRwcgiYyMXxM)
+- [Meety - サイボウズのWebフロントエンドについて話します](https://meety.net/matches/TgEdHofmrGjd)
+- [Meety - サイボウズのフロントエンド、チーム、働き方についてなどなんでも](https://meety.net/matches/arWAMFBPtzsm)
+- [Meety - サイボウズの開発組織について話します！](https://meety.net/matches/phQxpBZQLDBO)
+- [Meety - 100人100通りのエンジニアの働き方について、お話させてください～](https://meety.net/matches/svqrXMUNfWTD)
