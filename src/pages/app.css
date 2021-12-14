@@ -35,3 +35,8 @@ a:link {
 a:visited {
   color: #0366d6;
 }
+
+.hatena-link-frame {
+  max-width: 400px;
+  width: 100%;
+}
