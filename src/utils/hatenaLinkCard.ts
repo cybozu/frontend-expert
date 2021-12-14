@@ -20,9 +20,9 @@ export const hatenaLinkCard: Plugin = () => {
   return (tree: Node) => {
     visit(tree, "link", (node: Node, index: number, parent: Parent) => {
       if (parent.children.length > 1) return;
-      if (!/.*:embed$/.test(node.url)) return;
+      if (!/.*:embed$/.test(node.url as string)) return;
 
-      const url = node.url.replace(/:embed$/, "");
+      const url = (node.url as string).replace(/:embed$/, "");
       node.children = [
         h("div", { className: "hatena-link" }, [
           h("iframe", {
@@ -32,7 +32,7 @@ export const hatenaLinkCard: Plugin = () => {
           }),
         ]),
       ];
-      parent.children.splice(index, 1, ...node.children);
+      parent.children.splice(index, 1, ...(node.children as any[]));
     });
   };
 };
