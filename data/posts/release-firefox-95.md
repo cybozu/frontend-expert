@@ -8,6 +8,9 @@ tags:
   - Browser
 ---
 
+- https://www.mozilla.org/en-US/firefox/95.0/releasenotes/
+- https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/95
+
 Firefox 95 がリリースされました。
 本アップデートでは RLBox という新しいコードアイソレーション機能が導入されて信頼できないコードに対する安全性が向上しました。
 また、Firefox App から Slack.com の Huddle や Call 機能が利用できるようになったのは嬉しいですね。
