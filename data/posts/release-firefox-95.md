@@ -1,5 +1,5 @@
 ---
-title: "Firefox 95.0 リリースノートまとめ"
+title: "新しいコードサンドボックス機能 RLBox の追加など Firefox 95.0 リリースノートまとめ"
 author: "BaHo"
 createdAt: "2021-12-16"
 summary: "Firefox 95.0 のリリースノートの日本語まとめです"
@@ -12,7 +12,7 @@ tags:
 - https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/95
 
 Firefox 95 がリリースされました。
-本アップデートでは RLBox という新しいコードアイソレーション機能が導入されて信頼できないコードに対する安全性が向上しました。
+本アップデートでは RLBox という新しいコードサンドボックス機能が導入されて信頼できないコードに対する安全性が向上しました。
 また、Firefox App から Slack.com の Huddle や Call 機能が利用できるようになったのは嬉しいですね。
 
 ## New
