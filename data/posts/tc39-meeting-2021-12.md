@@ -23,7 +23,7 @@ TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催さ�
 
 ## Normative Changes
 
-### `import.meta[Symbol.toStringTag]` の追加
+### [`import.meta[Symbol.toStringTag]` の追加](https://github.com/tc39/ecma262/pull/2106)
 
 **合意は得られませんでした**
 
@@ -55,6 +55,7 @@ console.log(foo.toString()); // "[object I'm foo]"
 
 - TC39
   - [Agenda for the 87th meeting of Ecma TC39](https://github.com/tc39/agendas/blob/main/2021/12.md)
+  - [Normative: Add import.meta[Symbol.toStringTag]](https://github.com/tc39/ecma262/pull/2106)
 - babel/proposals
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
