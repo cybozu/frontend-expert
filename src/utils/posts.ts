@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { markdownToHtml } from "./markdown";
+import { markdownToHtml } from "./markdown/markdownToHtml";
 
 type PostMetaData = {
   title: string;
