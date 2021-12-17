@@ -2,7 +2,7 @@ import remark from "remark";
 import html from "remark-html";
 import prism from "remark-prism";
 import gfm from "remark-gfm";
-import { hatenaLinkCard } from "./hatenaLinkCard";
+import { hatenaLinkCard } from "./unifiedPlugins/hatenaLinkCard";
 
 export async function markdownToHtml(markdownContent: string): Promise<string> {
   const result = await remark()
