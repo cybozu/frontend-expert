@@ -43,6 +43,10 @@ console.log(map); // Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
 
 ## Updates
 
+ステージの移動はないものの、アップデートがあった提案です。
+
+### [Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
+
 ## Normative Changes
 
 ### [`import.meta[Symbol.toStringTag]` の追加](https://github.com/tc39/ecma262/pull/2106)
