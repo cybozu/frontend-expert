@@ -82,7 +82,9 @@ console.log(foo.toString()); // "[object I'm foo]"
 - TC39
   - [Agenda for the 87th meeting of Ecma TC39](https://github.com/tc39/agendas/blob/main/2021/12.md)
   - [Normative: Add import.meta[Symbol.toStringTag]](https://github.com/tc39/ecma262/pull/2106)
-- babel/proposals
+  - [Proposal Array Grouping](https://github.com/tc39/proposal-array-grouping)
+  - [Proposal Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
+- Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
   - [`import.meta`](https://tc39.es/ecma262/#prod-ImportMeta)
