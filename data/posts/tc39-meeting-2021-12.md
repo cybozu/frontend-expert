@@ -15,6 +15,28 @@ TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催さ�
 
 ## For Stage 3
 
+### [Array Grouping](https://github.com/tc39/proposal-array-grouping)
+
+**Stage 3 になりました**
+
+Array Grouping は `Array.prototype.groupBy` と `Array.prototype.groupByToMap` を追加するプロポーザルです。
+
+2021 年 10 月のミーティングで Stage 2 になったばかりですが、今回のミーティングで Stage 3 になりました。
+
+また、今回から `Array.prototype.groupByToMap` が追加されています。
+
+これは `groupBy` の結果が `Map` になったものです。
+
+```js
+const array = [1, 2, 3, 4, 5];
+const odd  = { odd: true };
+const even = { even: true };
+const map = array.groupByToMap((num, index, array) => {
+  return num % 2 === 0 ? even: odd;
+});
+console.log(map); // Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
+```
+
 ## For Stage 2
 
 ## For Stage 1
