@@ -1,7 +1,7 @@
 ---
 title: "新しいコードサンドボックス機能 RLBox の追加など Firefox 95.0 リリースノートまとめ"
 author: "BaHo"
-createdAt: "2021-12-16"
+createdAt: "2021-12-20"
 summary: "Firefox 95.0 のリリースノートの日本語まとめです"
 tags:
   - Releasenote
