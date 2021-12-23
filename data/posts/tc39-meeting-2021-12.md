@@ -39,6 +39,24 @@ console.log(map); // Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
 
 ## For Stage 2
 
+## [`Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
+
+**Stage 2 になりました**
+
+`Array.fromAsync` は非同期イテラブルから配列を生成するためのスタティックメソッドを追加するプロポーザルです。
+
+JavaScript では `Array.from` を使ってイテラブルから配列を生成できます。しかし、非同期イテラブルから配列を生成することはできません。
+
+このプロポーザルによって追加される `Array.fromAsync` メソッドを使うと次のようにして非同期イテラブルから配列を生成できます。
+
+```js
+async function * asyncGen (n) {
+  for (let i = 0; i < n; i++)
+    yield i * 2;
+}
+const arr = await Array.fromAsync(asyncGen(4));
+```
+
 ## For Stage 1
 
 ## Updates
@@ -84,6 +102,7 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Normative: Add import.meta[Symbol.toStringTag]](https://github.com/tc39/ecma262/pull/2106)
   - [Proposal Array Grouping](https://github.com/tc39/proposal-array-grouping)
   - [Proposal Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
+  - [Proposal `Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
 - Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
