@@ -39,7 +39,7 @@ console.log(map); // Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
 
 ## For Stage 2
 
-## [`Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
+## [Array.fromAsync](https://github.com/tc39/proposal-array-from-async/)
 
 **Stage 2 になりました**
 
