@@ -73,10 +73,10 @@ export function getMembersByName(name: string | string[]): Member[] {
     return [getMemberByName(name)];
   }
 
-  const fountMembers = name.map((n) => {
+  const foundMembers = name.map((n) => {
     return getMemberByName(n);
   });
-  return fountMembers;
+  return foundMembers;
 }
 
 function isGuest(name: string): boolean {
