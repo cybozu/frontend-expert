@@ -1,7 +1,9 @@
 ---
 title: "Interactive storiesを使ってStorybook上でユーザー操作の状態を確認する"
 author: "nus3"
-editor: "nakajmg"
+editor:
+  - "nakajmg"
+  - "sakito"
 createdAt: "2021-11-29"
 summary: "Storybookに新しく追加されたInteractive storiesについて紹介します"
 tags:

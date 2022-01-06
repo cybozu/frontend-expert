@@ -4,7 +4,7 @@ import { getAllPosts, getPostBySlug } from "../../utils/posts";
 import type { PostData } from "../../utils/posts";
 import styles from "./post.module.css";
 import "prismjs/themes/prism.css";
-import { getMemberByName, Member } from "../../utils/members";
+import { getMemberByName, getMembersByName, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 import { Tags } from "../../components/Tags";
@@ -58,8 +58,8 @@ type Props = {
 
 const Post = ({ post }: Props) => {
   const author = getMemberByName(post.metaData.author);
-  const editor = post.metaData.editor
-    ? getMemberByName(post.metaData.editor)
+  const editors = post.metaData.editor
+    ? getMembersByName(post.metaData.editor)
     : "";
   return (
     <Layout
@@ -76,7 +76,13 @@ const Post = ({ post }: Props) => {
       </div>
       <div className={styles.authors}>
         <Author author={author} />
-        {editor && <Author author={editor} label="Editor" />}
+        {editors && (
+          <div className={styles.editors}>
+            {editors.map((editor) => (
+              <Author key={editor.name} author={editor} label="Editor" />
+            ))}
+          </div>
+        )}
       </div>
       <PostContent>
         <div dangerouslySetInnerHTML={{ __html: post.content }} />
