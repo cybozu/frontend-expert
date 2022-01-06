@@ -25,15 +25,21 @@
 }
 .authors {
   display: flex;
+  margin: 1.5rem 0;
 }
-.author + .author {
+.editors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.author + .editors {
   margin-left: 16px;
   padding-left: 16px;
   border-left: 1px solid #d3d3d3;
 }
 .author {
   display: flex;
-  margin: 1.5rem 0;
+  height: 60px;
   color: #333;
 }
 .author a {

@@ -68,6 +68,17 @@ export function getMemberByName(name: string): Member {
   return foundMember;
 }
 
+export function getMembersByName(name: string | string[]): Member[] {
+  if (!Array.isArray(name)) {
+    return [getMemberByName(name)];
+  }
+
+  const foundMembers = name.map((n) => {
+    return getMemberByName(n);
+  });
+  return foundMembers;
+}
+
 function isGuest(name: string): boolean {
   return members.every((member) => member.name !== name);
 }
