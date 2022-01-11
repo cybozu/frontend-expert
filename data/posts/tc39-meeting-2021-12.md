@@ -57,6 +57,10 @@ async function * asyncGen (n) {
 const arr = await Array.fromAsync(asyncGen(4));
 ```
 
+## [RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
+
+**Stage 2 になりませんでした**
+
 ## For Stage 1
 
 ## Updates
