@@ -26,10 +26,10 @@ function usePostData() {
         withCredentials: true,
       });
       console.log(source);
-      source.onmessage = function (event) {
-        console.log(event.data);
+      source.onmessage = function (e) {
+        console.log(e);
         // @ts-ignore
-        setEvent(event);
+        setEvent(e);
       };
     }
     return () => {
