@@ -33,9 +33,10 @@ function handler(req, res) {
           "Content-type": "text/event-stream",
           Connection: "keep-alive",
         });
+        res.write("\n");
         res.write("id: " + id + "\n");
         res.write("retry: 1000\n");
-        res.write("data: " + "HOHO" + "\n");
+        res.write("data: " + JSON.stringify(event) + "\n\n");
       }
     };
     emitter.on(updatePostsEvent, emitterHandler);

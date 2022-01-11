@@ -29,7 +29,7 @@ function usePostData() {
       source.onmessage = function (event) {
         console.log(event.data);
         // @ts-ignore
-        setEvent(data);
+        setEvent(event);
       };
     }
     return () => {
