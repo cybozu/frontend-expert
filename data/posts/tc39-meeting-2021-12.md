@@ -93,8 +93,7 @@ console.log(foo.toString()); // "[object I'm foo]"
 
 この挙動についての Issue は `import.meta` の策定時にも存在しましたが、そのときすでに `import.meta` が Stage 4 を達成していたことからクローズされました。
 
-そして今回のミーティングでもこの仕様の修正についての合意は得られませんでした。
-議事録がまだ公開されていないので実際にどのような議論が行われたかはわかりませんが、事前に以下のような懸念が公開されていました。
+そして今回のミーティングでもこの仕様の修正についての合意は得られませんでした。この修正のための Pull Request が作成された時点で以下のような懸念が公開されていました。
 
 - `import.meta` は、ECMAScript の範囲では [`HostGetImportMetaProperties`](https://tc39.es/ecma262/#sec-hostgetimportmetaproperties) というホスト定義の abstract operation によって中身が決定されるオブジェクトであるということしか決まっておらず、ホストにとって必要であればホスト側で `import.meta` の `Symbol.toStringTag` を定義できる。
 - 仕様内で作成される他のオブジェクトとは異なり、`import.meta` はホストのデータによって生成されるものであり、ECMAScript の範囲でプロパティを生成することを考慮したものではない。
