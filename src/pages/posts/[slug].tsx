@@ -13,6 +13,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { TweetButton } from "../../components/TweetButton";
 import { PostContact } from "../../components/PostContact";
+import { useState, useEffect } from "react";
+
+function usePostData() {
+  // const [post, setPost] = useState(post);
+  const [event, setEvent] = useState();
+  useEffect(() => {
+    let source: EventSource | undefined;
+    if (process.env.NODE_ENV === "development") {
+      console.log("useEffect");
+      source = new EventSource("http://localhost:8888/stream", {
+        withCredentials: true,
+      });
+      console.log(source);
+      source.onmessage = function (event) {
+        console.log(event.data);
+        // @ts-ignore
+        setEvent(data);
+      };
+    }
+    return () => {
+      if (source) {
+        source.close();
+      }
+    };
+  }, []);
+  return event;
+}
 
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
@@ -61,6 +88,8 @@ const Post = ({ post }: Props) => {
   const editors = post.metaData.editor
     ? getMembersByName(post.metaData.editor)
     : "";
+  const event = usePostData();
+  console.log(event);
   return (
     <Layout
       title={post.metaData.title}

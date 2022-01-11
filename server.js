@@ -14,7 +14,7 @@ const subscription = watcher.subscribe(postsDirPath, (err, events) => {
 function handler(req, res) {
   const headers = {
     "Access-Control-Allow-Origin": "http://localhost:3000",
-    "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+    "Access-Control-Allow-Methods": "OPTIONS, GET",
     "Access-Control-Allow-Credentials": "true",
   };
 
