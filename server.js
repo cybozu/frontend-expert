@@ -27,13 +27,13 @@ function handler(req, res) {
   if (req.url === "/stream") {
     const emitterHandler = (events) => {
       for (const event of events) {
-        const sseId = new Date().toLocaleTimeString();
+        const id = new Date().toLocaleTimeString();
         res.writeHead(200, {
           ...headers,
           "Content-type": "text/event-stream",
           Connection: "keep-alive",
         });
-        res.write("id: " + sseId + "\n");
+        res.write("id: " + id + "\n");
         res.write("retry: 1000\n");
         res.write("data: " + "HOHO" + "\n");
       }
