@@ -29,27 +29,26 @@ function handler(req, res) {
 
   if (req.url === "/stream") {
     const emitterHandler = (events) => {
-      for (const event of events) {
-        const id = new Date().toLocaleTimeString();
-        markdownToHtml(fs.readFileSync(event.path)).then((html) => {
-          res.writeHead(200, {
-            ...headers,
-            "Content-type": "text/event-stream",
-            Connection: "keep-alive",
-          });
-          res.write("\n");
-          res.write("id: " + id + "\n");
-          res.write("retry: 1000\n");
-          res.write(
-            "data: " +
-              JSON.stringify({
-                path: event.path,
-                html: Base64.encode(html),
-              }) +
-              "\n\n"
-          );
+      const event = events[events.length - 1];
+      const id = new Date().toLocaleTimeString();
+      markdownToHtml(fs.readFileSync(event.path)).then((html) => {
+        res.writeHead(200, {
+          ...headers,
+          "Content-type": "text/event-stream",
+          Connection: "keep-alive",
         });
-      }
+        res.write("\n");
+        res.write("id: " + id + "\n");
+        res.write("retry: 1000\n");
+        res.write(
+          "data: " +
+            JSON.stringify({
+              path: event.path,
+              html: Base64.encode(html),
+            }) +
+            "\n\n"
+        );
+      });
     };
     emitter.on(updatePostsEvent, emitterHandler);
   }

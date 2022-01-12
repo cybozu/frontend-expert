@@ -16,6 +16,10 @@ import { PostContact } from "../../components/PostContact";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
+function getLast<T>(arr: T[]): T {
+  return arr[arr.length - 1];
+}
+
 function usePostData(postContent: string) {
   const [postContentHthml, setPostContentHtml] = useState(postContent);
   const router = useRouter();
@@ -26,8 +30,10 @@ function usePostData(postContent: string) {
         withCredentials: true,
       });
       source.onmessage = function (e) {
-        const data = Base64.decode(JSON.parse(e.data));
-        if (data.path === router.asPath) {
+        const data = JSON.parse(e.data);
+        const pathFromData = getLast(data.path.split("/")).replace(/\.md$/, "");
+        const pathFromRouter = getLast(router.asPath.split("/"));
+        if (pathFromData === pathFromRouter) {
           import("js-base64").then(({ Base64 }) => {
             setPostContentHtml(Base64.decode(data.html));
           });
