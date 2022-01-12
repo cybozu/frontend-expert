@@ -14,6 +14,10 @@ const subscription = watcher.subscribe(postsDirPath, (err, events) => {
   emitter.emit(updatePostsEvent, events);
 });
 
+process.on("exit", () => {
+  subscription.unsubscribe();
+});
+
 function handler(req, res) {
   const headers = {
     "Access-Control-Allow-Origin": "http://localhost:3000",
