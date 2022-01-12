@@ -31,9 +31,8 @@ function usePostData(postContent: string) {
       });
       source.onmessage = function (e) {
         const data = JSON.parse(e.data);
-        const pathFromData = getLast(data.path.split("/")).replace(/\.md$/, "");
         const pathFromRouter = getLast(router.asPath.split("/"));
-        if (pathFromData === pathFromRouter) {
+        if (data.path === pathFromRouter) {
           import("js-base64").then(({ Base64 }) => {
             setPostContentHtml(Base64.decode(data.html));
           });
@@ -45,7 +44,7 @@ function usePostData(postContent: string) {
         source.close();
       }
     };
-  }, []);
+  }, [router.asPath]);
   return postContentHthml;
 }
 

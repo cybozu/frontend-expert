@@ -10,13 +10,17 @@ const postsDirPath = path.join(process.cwd(), "data", "posts");
 
 const emitter = new events.EventEmitter();
 const updatePostsEvent = "update-posts";
-const subscription = watcher.subscribe(postsDirPath, (err, events) => {
-  emitter.emit(updatePostsEvent, events);
-});
+watcher
+  .subscribe(postsDirPath, (err, events) => {
+    emitter.emit(updatePostsEvent, events);
+  })
+  .then((subscription) => {
+    subscription.unsubscribe();
+  });
 
-process.on("exit", () => {
-  subscription.unsubscribe();
-});
+function getLast(arr) {
+  return arr[arr.length - 1];
+}
 
 function handler(req, res) {
   const headers = {
@@ -33,7 +37,7 @@ function handler(req, res) {
 
   if (req.url === "/stream") {
     const emitterHandler = (events) => {
-      const event = events[events.length - 1];
+      const event = getLast(events);
       const id = new Date().toLocaleTimeString();
       markdownToHtml(fs.readFileSync(event.path)).then((html) => {
         res.writeHead(200, {
@@ -44,14 +48,12 @@ function handler(req, res) {
         res.write("\n");
         res.write("id: " + id + "\n");
         res.write("retry: 1000\n");
-        res.write(
-          "data: " +
-            JSON.stringify({
-              path: event.path,
-              html: Base64.encode(html),
-            }) +
-            "\n\n"
-        );
+        const data = {
+          path: getLast(event.path.split("/")).replace(/\.md$/, ""),
+          html: Base64.encode(html),
+        };
+        console.log(data);
+        res.write("data: " + JSON.stringify(data) + "\n\n");
       });
     };
     emitter.on(updatePostsEvent, emitterHandler);
