@@ -1,7 +1,6 @@
-const createServer = require("./server.js");
-
-const server = createServer();
-server.listen(8888);
+if (process.env.NODE_ENV === "development") {
+  require("./server.js")().listen(8888);
+}
 
 /**
  * @type {import('next').NextConfig}

@@ -2,6 +2,9 @@ const http = require("http");
 const events = require("events");
 const watcher = require("@parcel/watcher");
 const path = require("path");
+const fs = require("fs");
+const { Base64 } = require("js-base64");
+const markdownToHtml = require("./markdown-to-html");
 
 const postsDirPath = path.join(process.cwd(), "data", "posts");
 
@@ -28,15 +31,24 @@ function handler(req, res) {
     const emitterHandler = (events) => {
       for (const event of events) {
         const id = new Date().toLocaleTimeString();
-        res.writeHead(200, {
-          ...headers,
-          "Content-type": "text/event-stream",
-          Connection: "keep-alive",
+        markdownToHtml(fs.readFileSync(event.path)).then((html) => {
+          res.writeHead(200, {
+            ...headers,
+            "Content-type": "text/event-stream",
+            Connection: "keep-alive",
+          });
+          res.write("\n");
+          res.write("id: " + id + "\n");
+          res.write("retry: 1000\n");
+          res.write(
+            "data: " +
+              JSON.stringify({
+                path: event.path,
+                html: Base64.encode(html),
+              }) +
+              "\n\n"
+          );
         });
-        res.write("\n");
-        res.write("id: " + id + "\n");
-        res.write("retry: 1000\n");
-        res.write("data: " + JSON.stringify(event) + "\n\n");
       }
     };
     emitter.on(updatePostsEvent, emitterHandler);

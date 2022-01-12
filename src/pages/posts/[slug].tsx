@@ -14,22 +14,21 @@ import { faTwitter, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { TweetButton } from "../../components/TweetButton";
 import { PostContact } from "../../components/PostContact";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-function usePostData() {
-  // const [post, setPost] = useState(post);
-  const [event, setEvent] = useState();
+function usePostData(postContent: string) {
+  const [postContentHthml, setPostContentHtml] = useState(postContent);
+  const router = useRouter();
   useEffect(() => {
     let source: EventSource | undefined;
     if (process.env.NODE_ENV === "development") {
-      console.log("useEffect");
       source = new EventSource("http://localhost:8888/stream", {
         withCredentials: true,
       });
-      console.log(source);
       source.onmessage = function (e) {
-        console.log(e);
-        // @ts-ignore
-        setEvent(e);
+        import("js-base64").then(({ Base64 }) => {
+          setPostContentHtml(Base64.decode(JSON.parse(e.data).html));
+        });
       };
     }
     return () => {
@@ -38,7 +37,7 @@ function usePostData() {
       }
     };
   }, []);
-  return event;
+  return postContentHthml;
 }
 
 const Author = ({ author, label }: { author: Member; label?: string }) => {
@@ -88,8 +87,7 @@ const Post = ({ post }: Props) => {
   const editors = post.metaData.editor
     ? getMembersByName(post.metaData.editor)
     : "";
-  const event = usePostData();
-  console.log(event);
+  const postContentHtml = usePostData(post.content);
   return (
     <Layout
       title={post.metaData.title}
@@ -114,7 +112,7 @@ const Post = ({ post }: Props) => {
         )}
       </div>
       <PostContent>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div dangerouslySetInnerHTML={{ __html: postContentHtml }} />
       </PostContent>
       <Tags tags={post.metaData.tags} />
       <TweetButton />
