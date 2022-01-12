@@ -26,9 +26,12 @@ function usePostData(postContent: string) {
         withCredentials: true,
       });
       source.onmessage = function (e) {
-        import("js-base64").then(({ Base64 }) => {
-          setPostContentHtml(Base64.decode(JSON.parse(e.data).html));
-        });
+        const data = Base64.decode(JSON.parse(e.data));
+        if (data.path === router.asPath) {
+          import("js-base64").then(({ Base64 }) => {
+            setPostContentHtml(Base64.decode(data.html));
+          });
+        }
       };
     }
     return () => {
