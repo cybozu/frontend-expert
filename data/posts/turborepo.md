@@ -2,15 +2,15 @@
 title: "workspaceを使ったコマンドを最適化して実行するTurborepoについて"
 author: "nus3"
 createdAt: "2022-01-17"
-summary: "Turborepoの機能とstarterからでできるモノレポ構成について"
+summary: "Turborepoの機能について"
 tags:
   - Turborepo
   - Monorepo
 ---
 
-今年からフロントエンドエキスパートチームでは活動内容の一つである**探求**の一環として、メンバーが気になった技術に対して時間がある人で、気軽に触ってみる会をしています。次の画像は筆者が Slack で、気軽に触ってみる会の開催を宣言してる時のものです。
+今年からフロントエンドエキスパートチームでは活動内容の一つである**探求**の一環として、メンバーが気になった技術に対して、気軽に触ってみる会をしています。次の画像は筆者が Slack で、気軽に触ってみる会の開催を宣言してる時のものです。
 
-![slackで気軽に触ってみる会を宣言してる](/frontend-expert/image/monorepo-use-turborepo/slack.png)
+![slackで気軽に触ってみる会を宣言してる](/frontend-expert/image/turborepo/slack.png)
 
 今回は[去年の 12 月に Vercel に買収されたニュース](https://vercel.com/blog/vercel-acquires-turborepo)があった Turborepo を気軽に触ってみました。
 個人的には 1 人で調べるときよりも複数人でわいわい調べた方が、その技術や関連する周辺知識の話を色んな人の観点で深掘ってできて、とても有意義な時間でした。
@@ -44,7 +44,7 @@ https://github.com/nus3/p-turborepo/tree/main/yarn
 - `nus3-a`は`nus3-ui`と`nus3-button2`に依存している
 - `nus3-ui`は`nus3-button2`に依存している
 
-![サンプルリポジトリの依存関係](/frontend-expert/image/monorepo-use-turborepo/dependencies.png)
+![サンプルリポジトリの依存関係](/frontend-expert/image/turborepo/dependencies.png)
 
 ### 使い方
 
@@ -62,7 +62,7 @@ workspace の設定については割愛します。各パッケージマネー�
 
 #### 2. `turbo`のインストール
 
-`yarn add turbo -W --dev`で Turborepo を追加します.
+`yarn add turbo -W --dev`で Turborepo を追加します。
 
 #### 3. package.json に`pipeline`の設定
 
@@ -98,9 +98,10 @@ workspace の設定については割愛します。各パッケージマネー�
 "dependsOn": ["^build"],
 ```
 
-この build コマンドでは dependOn に`^`を追加したコマンド(`^build`)を指定することで workspace 内の各 package の指定したコマンド(`build`)を package 間の依存関係を考慮した順番で実行してくれます。
+dependOn に`^`を追加したコマンド(`^build`)を指定することで workspace 内の各 package の指定したコマンド(`build`)を package 間の依存関係を考慮した順番で実行してくれます。
 
-実際に実行してみると、サンプルで作った各 package の依存関係を考慮した順番(`@nus3/example-button2` → `nus3-ui` → `nus3-a`)でビルドされていることがわかります。
+実際に実行してみると、サンプルで作った各 package の依存関係を考慮した順番(`@nus3/example-button2` → `nus3-ui` → `nus3-a`)でビルドされていることがわかります。  
+(※今回サンプルで作った構成では`nus3-ui`はビルドの必要がないですが、依存関係を考慮した順番を表すのにあえて build コマンドを追加しています)
 
 ```
 $ turbo run build
@@ -155,7 +156,7 @@ Cached:    3 cached, 3 total
 "lint": {},
 ```
 
-次の deploy コマンドの`dependsOn`では pipeline で定義した`build`, `test`, `lint`を実行し、終了した時点で workspace 内の各 package の`deploy`コマンドを実行します。
+次の deploy コマンドの`dependsOn`では pipeline で定義した`build`, `test`, `lint`(順不同)を実行し、終了した時点で workspace 内の各 package の`deploy`コマンドを実行します。
 
 ```json
 "deploy": {
@@ -163,9 +164,9 @@ Cached:    3 cached, 3 total
 },
 ```
 
-今回定義したものの場合、次のようなことを考慮しながら各々の package のコマンドを実行します。
+今回定義したものの場合、Turborepo は次のようなことを考慮しながら各々の package のコマンドを実行します。
 
-- `build`: 各 package の依存順を考慮しつつ build
+- `build`: モノレポ内の各 package の依存関係を考慮しつつ build
 - `test`: `pipeline`で定義した`build`が実行された後に実行
 - `lint`: 他のコマンドの順番を気にせず、並列で実行
 
