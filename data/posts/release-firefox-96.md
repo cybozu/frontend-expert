@@ -14,14 +14,14 @@ tags:
 
 Firefox 96 がリリースされました！
 全体的に性能面での改善が多くを占めるアップデートでした。
-本リリースでは Cookie Policy がデフォルトで `Same-Site=lax`を指定するようになりました。
+本リリースでは Cookie Policy がデフォルトで `SameSite=lax`を指定するようになりました。
 また、`color-scheme`プロパティが追加されて便利になりましたね。
 
 ## New
 
 - ノイズ抑制やオートゲインコントロールの大きな改善とエコーキャンセレーションの若干の改善がされました
 - メインスレッドの負荷が大きく軽減されました
-- Cookie Policy をデフォルトで `Same-Site=lax` に強制するようになりました
+- Cookie Policy をデフォルトで `SameSite=lax` に強制するようになりました
 
 ## Fixed
 
