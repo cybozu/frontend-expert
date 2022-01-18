@@ -1,5 +1,5 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 import matter from "gray-matter";
 
 const POSTS_DIR_PATH = path.join(__dirname, "..", "data", "posts");

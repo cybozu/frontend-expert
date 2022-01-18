@@ -1,5 +1,5 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 import format from "date-fns/formatRFC3339";
 import parseDateString from "date-fns/parse";
 // @ts-ignore

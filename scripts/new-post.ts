@@ -1,5 +1,5 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 import { prompt } from "enquirer";
 import { POSTS_DIR_PATH } from "./utils";
 

@@ -3,6 +3,7 @@ module.exports = {
     "@cybozu/eslint-config/presets/react-typescript-prettier",
     "plugin:@next/next/recommended",
   ],
+  plugins: ["unicorn"],
   rules: {
     "spaced-comment": "off",
     "react/react-in-jsx-scope": "off",
@@ -12,5 +13,6 @@ module.exports = {
         components: ["Link"],
       },
     ],
+    "unicorn/prefer-node-protocol": "error",
   },
 };
