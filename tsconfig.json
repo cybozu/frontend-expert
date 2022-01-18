@@ -29,11 +29,5 @@
   "include": [
     "**/*.ts",
     "**/*.tsx"
-  ],
-  "ts-node": {
-    "transpileOnly": true,
-    "compilerOptions": {
-      "module": "CommonJS"
-    }
-  }
+  ]
 }
