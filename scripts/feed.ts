@@ -1,11 +1,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import format from "date-fns/formatRFC3339";
-import parseDateString from "date-fns/parse";
+import { dirname } from 'dirname-filename-esm';
+import { formatRFC3339 as format, parse as parseDateString } from "date-fns";
 // @ts-ignore
 import { minify } from "minify-xml";
 import { getPosts, WEBSITE_URL } from "./utils";
 
+const __dirname = dirname(import.meta);
 const OUT_DIR_PATH = path.join(__dirname, "..", "out");
 const FEEDS_DIR = path.join(OUT_DIR_PATH, "feeds");
 const FEEDS_ATOM_FILE_PATH = path.join(FEEDS_DIR, "atom.xml");

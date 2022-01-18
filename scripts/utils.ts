@@ -1,6 +1,9 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { dirname } from 'dirname-filename-esm';
 import matter from "gray-matter";
+
+const __dirname = dirname(import.meta);
 
 const POSTS_DIR_PATH = path.join(__dirname, "..", "data", "posts");
 const WEBSITE_URL = "https://cybozu.github.io/frontend-expert";
