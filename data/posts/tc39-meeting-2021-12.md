@@ -106,6 +106,10 @@ re1.test("aB"); // false
 
 いくつかの仕様上の重要な変更があったようです。詳しくは[スライド](https://docs.google.com/presentation/d/12PM5c4_yUnqXHjvACh8HEN5oJwgei-0T0hX_hlqjfDU/edit#slide=id.ge435a9058a_0_0)に記載されています。
 
+## [Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
+
+Record と Tuple の中で通常のオブジェクトを扱う方法について議論されました。その方法とその懸念についての Decision Tree が[スライド](https://drive.google.com/file/d/1lVYn8_sHecqxW08vN5Tu7rXZn7GemBqO/view)で公開されています。
+
 ## Normative Changes
 
 ### [`import.meta[Symbol.toStringTag]` の追加](https://github.com/tc39/ecma262/pull/2106)
@@ -146,6 +150,7 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
   - [Proposal RegExp Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
   - [Proposal RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
+  - [Proposal Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
 - Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
