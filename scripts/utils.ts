@@ -24,7 +24,7 @@ type PostData = {
   slug: string;
 };
 
-function assertPostMetaData(data: unknown): asserts data is PostData {
+function assertPostMetaData(_data: unknown): asserts _data is PostData {
   // TODO: implement assertion
 }
 
@@ -48,4 +48,5 @@ async function getPosts(): Promise<PostData[]> {
   );
 }
 
-export { getPosts, WEBSITE_URL, type PostData, POSTS_DIR_PATH, isNodeError };
+export { getPosts, WEBSITE_URL, POSTS_DIR_PATH, isNodeError };
+export type { PostData };
