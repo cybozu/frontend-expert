@@ -63,6 +63,18 @@ const arr = await Array.fromAsync(asyncGen(4));
 
 **Stage 2 になりませんでした**
 
+RegExp `\R` escape は以前 [Regexp Features Parity]() として提案されていた正規表現の機能群の１つで、正規表現内で line terminator とシンプルにマッチングさせるために新しく `\R` を導入する提案です。
+
+この機能は `u` もしくは `v` モードのみで有効になります。そして、大まかには次のパターンと等価です。
+
+```js
+(?>\r\n?|[\x0A-\x0C\x85\u{2028}\u{2029}])
+```
+
+この正規表現の機能は Perl をはじめとする多くの正規表現エンジンに実装されていて、TC39 においてもそのユースケースは認められているようです。
+
+しかし、[Set Notation Proposal](https://github.com/tc39/proposal-regexp-set-notation) の sequece properties によって同等の機能が実現できる可能性があるためその方向で調査しなおすべきだという結論になり Stage 2 には到達しませんでした。
+
 ## For Stage 1
 
 ## Updates
@@ -110,6 +122,8 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal Array Grouping](https://github.com/tc39/proposal-array-grouping)
   - [Proposal Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
   - [Proposal `Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
+  - [Proposal RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
+  - [Proposal Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
 - Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
