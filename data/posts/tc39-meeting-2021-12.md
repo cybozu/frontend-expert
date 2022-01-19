@@ -71,6 +71,8 @@ const arr = await Array.fromAsync(asyncGen(4));
 
 ### [Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
 
+いくつかの仕様上の重要な変更があったようです。詳しくは[スライド](https://docs.google.com/presentation/d/12PM5c4_yUnqXHjvACh8HEN5oJwgei-0T0hX_hlqjfDU/edit#slide=id.ge435a9058a_0_0)に記載されています。
+
 ## Normative Changes
 
 ### [`import.meta[Symbol.toStringTag]` の追加](https://github.com/tc39/ecma262/pull/2106)
