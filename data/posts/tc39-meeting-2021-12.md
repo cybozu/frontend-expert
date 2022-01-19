@@ -40,7 +40,7 @@ console.log(map); // Map { {odd: true}: [1, 3, 5], {even: true}: [2, 4] }
 
 ## For Stage 2
 
-## [Array.fromAsync](https://github.com/tc39/proposal-array-from-async/)
+### [Array.fromAsync](https://github.com/tc39/proposal-array-from-async/)
 
 **Stage 2 になりました**
 
@@ -58,7 +58,7 @@ async function * asyncGen (n) {
 const arr = await Array.fromAsync(asyncGen(4));
 ```
 
-## [RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
+### [RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
 
 **Stage 2 になりませんでした**
 
@@ -74,7 +74,7 @@ RegExp `\R` escape は以前 [RegExp Language Features](https://github.com/rbuck
 
 しかし、[RegExp Set Notation Proposal](https://github.com/tc39/proposal-regexp-set-notation) の sequece properties によって同等の機能が実現できる可能性があるためその方向で調査しなおすべきだという結論になり Stage 2 には到達しませんでした。
 
-## [RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
+### [RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
 
 **Stage 2 になりました**
 
@@ -95,7 +95,7 @@ re1.test("Ab"); // true
 re1.test("aB"); // false
 ```
 
-## [RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
+### [RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
 
 **Stage 2 になりました**
 
