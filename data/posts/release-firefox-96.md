@@ -67,7 +67,7 @@ Firefox 96 がリリースされました！
 
 #### Media, WebRTC, and Web Audio
 
-- いくつかの非標準な静的フィールドが WebRTC Statistics API から削除されました
+- いくつかの非標準な静的フィールドが [WebRTC Statistics API](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_Statistics_API) から削除されました
 
 #### WebDriver conformance (Marionette)
 
