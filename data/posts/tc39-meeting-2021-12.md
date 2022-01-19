@@ -138,6 +138,14 @@ re.test("\nbar"); // true
 
 ステージの移動はないものの、アップデートがあった提案です。
 
+### [Temporal](https://github.com/tc39/proposal-temporal)
+
+いくつかの仕様上の軽微な修正がありました。修正箇所について説明した[スライド](https://ptomato.name/talks/tc39-2021-12/#1)が公開されています。
+
+### [Decimal](https://github.com/tc39/proposal-decimal)
+
+Decimal は現在 Stage 1 ですが、2022 年に Stage 2 に到達することを目指しているそうです。進捗を共有するための[スライド](https://drive.google.com/file/d/1qdieei11dZgDY_KnJhSBcFyHTMZOmCJr/view)が公開されています。
+
 ### [Destructuring Private Fields](https://github.com/tc39/proposal-destructuring-private)
 
 Destructuring Private Fields が提案された当初は小さな修正で十分だと考えられていました。しかし真剣に検討してみるといくつかの仕様上の難しい問題が明らかになったそうです。そこで再度レビュワーを募りレビューをやり直すことが決定しました。
@@ -192,6 +200,8 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal RegExp Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
   - [Proposal RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
   - [Proposal RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
+  - [Proposal Temporal](https://github.com/tc39/proposal-temporal)
+  - [Proposal Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
   - [Proposal Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
   - [Proposal Destructuring Private Fields](https://github.com/tc39/proposal-destructuring-private)
 - Babel
