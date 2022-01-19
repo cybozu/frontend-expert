@@ -4,7 +4,7 @@ import { dirname } from "dirname-filename-esm";
 import { formatRFC3339 as format, parse as parseDateString } from "date-fns";
 // @ts-ignore
 import { minify } from "minify-xml";
-import { getPosts, WEBSITE_URL } from "./utils";
+import { getPosts, WEBSITE_URL, isNodeError } from "./utils";
 
 const __dirname = dirname(import.meta);
 const OUT_DIR_PATH = path.join(__dirname, "..", "out");
@@ -42,7 +42,7 @@ async function writeFeedFile(text: string) {
   try {
     await fs.mkdir(FEEDS_DIR);
   } catch (e) {
-    if (e.code !== "EEXIST") {
+    if (isNodeError(e) && e.code !== "EEXIST") {
       throw e;
     }
   }

@@ -1,7 +1,12 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import typeUtils from "node:util/types";
 import { dirname } from "dirname-filename-esm";
 import matter from "gray-matter";
+
+function isNodeError(error: unknown): error is NodeJS.ErrnoException {
+  return typeUtils.isNativeError(error);
+}
 
 const __dirname = dirname(import.meta);
 
@@ -43,4 +48,4 @@ async function getPosts(): Promise<PostData[]> {
   );
 }
 
-export { getPosts, WEBSITE_URL, PostData, POSTS_DIR_PATH };
+export { getPosts, WEBSITE_URL, type PostData, POSTS_DIR_PATH, isNodeError };
