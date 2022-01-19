@@ -1,6 +1,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import util from "node:util";
+import { dirname } from "dirname-filename-esm";
 import matter from "gray-matter";
+
+function isNodeError(error: unknown): error is NodeJS.ErrnoException {
+  return util.types.isNativeError(error);
+}
+
+const __dirname = dirname(import.meta);
 
 const POSTS_DIR_PATH = path.join(__dirname, "..", "data", "posts");
 const WEBSITE_URL = "https://cybozu.github.io/frontend-expert";
@@ -16,7 +24,7 @@ type PostData = {
   slug: string;
 };
 
-function assertPostMetaData(data: unknown): asserts data is PostData {
+function assertPostMetaData(_data: unknown): asserts _data is PostData {
   // TODO: implement assertion
 }
 
@@ -40,4 +48,5 @@ async function getPosts(): Promise<PostData[]> {
   );
 }
 
-export { getPosts, WEBSITE_URL, PostData, POSTS_DIR_PATH };
+export { getPosts, WEBSITE_URL, POSTS_DIR_PATH, isNodeError };
+export type { PostData };
