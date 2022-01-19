@@ -55,7 +55,7 @@ Firefox 96 がリリースされました！
 #### APIs
 
 - Android において `[navigator.canShare()](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)` がサポートされました
-- デフォルトで Web Locks API が有効になりました
+- デフォルトで [Web Locks API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API) が有効になりました
 
 #### Canvas
 
