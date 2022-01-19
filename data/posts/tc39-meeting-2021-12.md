@@ -73,7 +73,7 @@ RegExp `\R` escape は以前 [Regexp Features Parity]() として提案されて
 
 この正規表現の機能は Perl をはじめとする多くの正規表現エンジンに実装されていて、TC39 においてもそのユースケースは認められているようです。
 
-しかし、[Set Notation Proposal](https://github.com/tc39/proposal-regexp-set-notation) の sequece properties によって同等の機能が実現できる可能性があるためその方向で調査しなおすべきだという結論になり Stage 2 には到達しませんでした。
+しかし、[RegExp Set Notation Proposal](https://github.com/tc39/proposal-regexp-set-notation) の sequece properties によって同等の機能が実現できる可能性があるためその方向で調査しなおすべきだという結論になり Stage 2 には到達しませんでした。
 
 ## For Stage 1
 
@@ -123,7 +123,7 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
   - [Proposal `Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
   - [Proposal RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
-  - [Proposal Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
+  - [Proposal RegExp Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
 - Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
