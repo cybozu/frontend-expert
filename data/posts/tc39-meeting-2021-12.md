@@ -13,6 +13,8 @@ TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催さ�
 
 ## For Stage 4
 
+**For Stage 4 の提案はありませんでした。**
+
 ## For Stage 3
 
 ### [Array Grouping](https://github.com/tc39/proposal-array-grouping)
