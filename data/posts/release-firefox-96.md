@@ -63,7 +63,7 @@ Firefox 96 がリリースされました！
 
 #### DOM
 
-- `IntersectionObserver()` のコンストラクターが関連付けられたパラメータオプションにから文字が渡された場合に例外発生ではなく `rootMargin` を設定するようになりました
+- `[IntersectionObserver()](https://developer.mozilla.org/ja/docs/Web/API/IntersectionObserver)` のコンストラクターが関連付けられたパラメータオプションにから文字が渡された場合に例外発生ではなく `rootMargin` を設定するようになりました
 
 #### Media, WebRTC, and Web Audio
 
