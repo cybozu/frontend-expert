@@ -9,7 +9,7 @@ tags:
 ---
 
 TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催されました。
-このミーティングで議題に上がった提案と、そのステージの移動について紹介します。
+このミーティングで議題に上がった提案とそのステージの移動について紹介します。
 
 ## For Stage 4
 
@@ -63,7 +63,7 @@ const arr = await Array.fromAsync(asyncGen(4));
 
 **Stage 2 になりませんでした**
 
-RegExp `\R` escape は以前 [Regexp Features Parity]() として提案されていた正規表現の機能群の１つで、正規表現内で line terminator とシンプルにマッチングさせるために新しく `\R` を導入する提案です。
+RegExp `\R` escape は以前 [RegExp Features Parity]() として提案されていた正規表現の機能群の１つで、正規表現内で line terminator とシンプルにマッチングさせるために新しく `\R` を導入する提案です。
 
 この機能は `u` もしくは `v` モードのみで有効になります。そして、大まかには次のパターンと等価です。
 
@@ -74,6 +74,27 @@ RegExp `\R` escape は以前 [Regexp Features Parity]() として提案されて
 この正規表現の機能は Perl をはじめとする多くの正規表現エンジンに実装されていて、TC39 においてもそのユースケースは認められているようです。
 
 しかし、[RegExp Set Notation Proposal](https://github.com/tc39/proposal-regexp-set-notation) の sequece properties によって同等の機能が実現できる可能性があるためその方向で調査しなおすべきだという結論になり Stage 2 には到達しませんでした。
+
+## [RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
+
+**Stage 2 になりました。**
+
+RegExp Modifiers は `\R` escape と同じようにもともと RegExp Features Parity の機能の１つでした。
+
+この提案は正規表現パターン内でのモードの変更を可能にします。
+
+例を示します。
+
+次の例中の正規表現パターン全体には `i` モードが適用されてます。しかし２つめの `[a-z]` は `?-i:` という RegExp Modifiers の構文を使って `i` モードを無効にしてます。このとき一文字目では大文字小文字が無視されるものの、二文字目では大文字小文字が無視されません。
+
+したがってこのパターンは `""ab` や `"Ab"` にはマッチし `"aB"` にはマッチしません。
+
+```js
+const re1 = /^[a-z](?-i:[a-z])$/i;
+re1.test("ab"); // true
+re1.test("Ab"); // true
+re1.test("aB"); // false
+```
 
 ## For Stage 1
 
@@ -124,6 +145,7 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal `Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
   - [Proposal RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
   - [Proposal RegExp Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
+  - [Proposal RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
 - Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
