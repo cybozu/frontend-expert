@@ -1,11 +1,11 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import typeUtils from "node:util/types";
+import util from "node:util";
 import { dirname } from "dirname-filename-esm";
 import matter from "gray-matter";
 
 function isNodeError(error: unknown): error is NodeJS.ErrnoException {
-  return typeUtils.isNativeError(error);
+  return util.types.isNativeError(error);
 }
 
 const __dirname = dirname(import.meta);
