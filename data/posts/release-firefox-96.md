@@ -49,6 +49,8 @@ Firefox 96 がリリースされました！
 - 同じドメインから送信された Cookie でも異なるスキームを使用されているものは Cookie SameSite ディレクティブについて別サイトから送信されたものと見なすようになりました
 - SameSite 属性が指定されていない Cookie は暗黙的に `SameSite=lax` が指定されるようになりました
 - `SameSite=none` を指定した Cookie はセキュアなコンテキストが必要になりました
+- CookieのSameSite についてはこちらをお読みください
+  - [Cookie の SameSite 属性について - Cybozu Inside Out | サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2020/05/07/080000)
 
 #### APIs
 
