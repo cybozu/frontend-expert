@@ -106,6 +106,10 @@ re1.test("aB"); // false
 
 ステージの移動はないものの、アップデートがあった提案です。
 
+### [Destructuring Private Fields](https://github.com/tc39/proposal-destructuring-private)
+
+Destructuring Private Fields は当初は小さな修正で十分な提案だと考えられていました。しかし真剣に検討してみるといくつかの仕様上の難しい問題が明らかになったそうです。そこで再度レビュワーを募りレビューをやり直すことが決定しました。
+
 ### [Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
 
 いくつかの仕様上の重要な変更があったようです。詳しくは[スライド](https://docs.google.com/presentation/d/12PM5c4_yUnqXHjvACh8HEN5oJwgei-0T0hX_hlqjfDU/edit#slide=id.ge435a9058a_0_0)に記載されています。
@@ -157,6 +161,7 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
   - [Proposal RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
   - [Proposal Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
+  - [Proposal Destructuring Private Fields](https://github.com/tc39/proposal-destructuring-private)
 - Babel
   - [Dec 2021 · Issue #78 · babel/proposals](https://github.com/babel/proposals/issues/78)
 - ECMA262
