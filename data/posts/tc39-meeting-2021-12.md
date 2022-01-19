@@ -13,7 +13,7 @@ TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催さ�
 
 ## For Stage 4
 
-**For Stage 4 の提案はありませんでした。**
+**For Stage 4 の提案はありませんでした**
 
 ## For Stage 3
 
@@ -63,7 +63,7 @@ const arr = await Array.fromAsync(asyncGen(4));
 
 **Stage 2 になりませんでした**
 
-RegExp `\R` escape は以前 [RegExp Features Parity]() として提案されていた正規表現の機能群の１つで、正規表現内で line terminator とシンプルにマッチングさせるために新しく `\R` を導入する提案です。
+RegExp `\R` escape は以前 [RegExp Language Features](https://github.com/rbuckton/proposal-regexp-features) として提案されていた正規表現の機能群の１つで、正規表現内で line terminator とシンプルにマッチングさせるために新しく `\R` を導入する提案です。
 
 この機能は `u` もしくは `v` モードのみで有効になります。そして、大まかには次のパターンと等価です。
 
@@ -77,9 +77,9 @@ RegExp `\R` escape は以前 [RegExp Features Parity]() として提案されて
 
 ## [RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
 
-**Stage 2 になりました。**
+**Stage 2 になりました**
 
-RegExp Modifiers は `\R` escape と同じようにもともと RegExp Features Parity の機能の１つでした。
+RegExp Modifiers は `\R` escape と同じようにもともと RegExp Language Features の機能の１つでした。
 
 この提案は正規表現パターン内でのモードの変更を可能にします。
 
@@ -95,6 +95,10 @@ re1.test("ab"); // true
 re1.test("Ab"); // true
 re1.test("aB"); // false
 ```
+
+## [RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
+
+**Stage 2 になりました**
 
 ## For Stage 1
 
@@ -147,8 +151,10 @@ console.log(foo.toString()); // "[object I'm foo]"
   - [Proposal Array Grouping](https://github.com/tc39/proposal-array-grouping)
   - [Proposal Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
   - [Proposal `Array.fromAsync`](https://github.com/tc39/proposal-array-from-async/)
+  - [Proposal RegExp Language Features](https://github.com/rbuckton/proposal-regexp-features)
   - [Proposal RegExp `\R` escape](https://github.com/tc39/proposal-regexp-r-escape)
   - [Proposal RegExp Set Notation](https://github.com/tc39/proposal-regexp-set-notation)
+  - [Proposal RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
   - [Proposal RegExp Modifiers](https://github.com/tc39/proposal-regexp-modifiers)
   - [Proposal Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
 - Babel
