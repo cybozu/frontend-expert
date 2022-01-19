@@ -8,8 +8,7 @@ tags:
   - ECMAScript
 ---
 
-TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催されました。
-このミーティングで議題に上がった提案とそのステージの移動について紹介します。
+TC39 の 87 回目のミーティングが 12月14日 ~ 12月15日に開催されました。このミーティングで議題に上がった提案とそのステージの移動について紹介します。
 
 ## For Stage 4
 
@@ -108,15 +107,15 @@ re1.test("aB"); // false
 
 ### [Destructuring Private Fields](https://github.com/tc39/proposal-destructuring-private)
 
-Destructuring Private Fields は当初は小さな修正で十分な提案だと考えられていました。しかし真剣に検討してみるといくつかの仕様上の難しい問題が明らかになったそうです。そこで再度レビュワーを募りレビューをやり直すことが決定しました。
+Destructuring Private Fields が提案された当初は小さな修正で十分だと考えられていました。しかし真剣に検討してみるといくつかの仕様上の難しい問題が明らかになったそうです。そこで再度レビュワーを募りレビューをやり直すことが決定しました。
 
 ### [Shadow Realms](https://github.com/tc39/proposal-shadowrealm)
 
 いくつかの仕様上の重要な変更があったようです。詳しくは[スライド](https://docs.google.com/presentation/d/12PM5c4_yUnqXHjvACh8HEN5oJwgei-0T0hX_hlqjfDU/edit#slide=id.ge435a9058a_0_0)に記載されています。
 
-## [Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
+### [Records and Tuples](https://github.com/tc39/proposal-record-tuple/)
 
-Record と Tuple の中で通常のオブジェクトを扱う方法について議論されました。その方法とその懸念についての Decision Tree が[スライド](https://drive.google.com/file/d/1lVYn8_sHecqxW08vN5Tu7rXZn7GemBqO/view)で公開されています。
+Record と Tuple の中で通常のオブジェクトを扱う方法について議論されました。その方法とその懸念についての Decision Tree が[スライド](https://drive.google.com/file/d/1lVYn8_sHecqxW08vN5Tu7rXZn7GemBqO/view)として公開されています。
 
 ## Normative Changes
 
