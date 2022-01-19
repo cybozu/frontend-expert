@@ -40,7 +40,7 @@ Firefox 96 がリリースされました！
 
 #### CSS
 
-- CSS で色の値として利用される `hwb()` 関数が実装されました
+- CSS で色の値として利用される `[hwb()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb())` 関数が実装されました
 - `color-scheme` プロパティがサポートされました
 - `counter-reset` プロパティにて逆順の CSS カウンターを生成する `reversed()` 関数がサポートされました
 
