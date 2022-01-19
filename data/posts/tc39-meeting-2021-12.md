@@ -1,7 +1,7 @@
 ---
 title: "ECMAScriptの最新動向 2021年12月版"
 author: "sosukesuzuki"
-createdAt: "2021-01-19"
+createdAt: "2022-01-19"
 summary: "2021年12月14日~15日に開催された TC39 meeting 87th の内容を紹介します"
 tags:
   - TC39
