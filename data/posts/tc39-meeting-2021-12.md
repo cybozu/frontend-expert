@@ -64,7 +64,7 @@ const arr = await Array.fromAsync(asyncGen(4));
 
 RegExp `\R` escape は以前 [RegExp Language Features](https://github.com/rbuckton/proposal-regexp-features) として提案されていた正規表現の機能群の１つで、正規表現内で line terminator とシンプルにマッチングさせるために新しく `\R` を導入する提案です。
 
-この機能は `u` もしくは `v` モードのみで有効になります。そして、大まかには次のパターンと等価です。
+この機能は `u` もしくは `v` フラグが有効になっているときのみ有効になります。そして、大まかには次のパターンと等価です。
 
 ```js
 (?>\r\n?|[\x0A-\x0C\x85\u{2028}\u{2029}])
@@ -80,11 +80,11 @@ RegExp `\R` escape は以前 [RegExp Language Features](https://github.com/rbuck
 
 RegExp Modifiers は `\R` escape と同じようにもともと RegExp Language Features の機能の１つでした。
 
-この提案は正規表現パターン内でのモードの変更を可能にします。
+この提案は正規表現パターン内でのフラグの変更を可能にします。
 
 例を示します。
 
-次の例中の正規表現パターン全体には `i` モードが適用されてます。しかし２つめの `[a-z]` は `?-i:` という RegExp Modifiers の構文を使って `i` モードを無効にしてます。このとき一文字目では大文字小文字が無視されるものの、二文字目では大文字小文字が無視されません。
+次の例中の正規表現パターン全体には `i` フラグが適用されてます。しかし２つめの `[a-z]` は `?-i:` という RegExp Modifiers の構文を使って `i` フラグを無効にしてます。このとき一文字目では大文字小文字が無視されるものの、二文字目では大文字小文字が無視されません。
 
 したがってこのパターンは `""ab` や `"Ab"` にはマッチし `"aB"` にはマッチしません。
 
@@ -98,6 +98,39 @@ re1.test("aB"); // false
 ### [RegExp Buffer Boundaries](https://github.com/tc39/proposal-regexp-buffer-boundaries)
 
 **Stage 2 になりました**
+
+RegExp Buffer Boundaries も RegExp Language Features の機能の１つでした。
+
+この提案は、それぞれ入力の最初と最後にマッチする `\A` と `\z` を導入します。`m` フラグの影響を受けないことを除けば `^` と `$` に似ています。
+
+`^` と `$` はそれぞれ最初と最後にマッチしますが、`m` フラグが有効になっているときは行頭と行末にマッチします。しかし RegExp Buffer Boundaries が導入する `\A` と `\x` は、たとえ `m` フラグが有効であっても入力の最初と最後にマッチします。
+
+例を示します。
+
+```js
+const re = /\Afoo|^bar/um;
+```
+
+このパターンでは `foo` に `\A` がついています。したがって入力の最初が `foo` の文字列にマッチします。
+
+```js
+re.test("foo"); // true
+re.test("foo\n"); // true
+```
+
+しかし入力の最初ではなく行頭が `foo` の文字列にはマッチしません。
+
+```js
+re.test("\nfoo"); // false
+```
+
+`bar` には `^` がついています。パターン全体で `m` フラグが有効になっているので、入力の先頭と行頭が `bar` の文字列にマッチします。
+
+```js
+re.test("bar"); // true
+re.test("bar\n"); // true
+re.test("\nbar"); // true
+```
 
 ## For Stage 1
 
