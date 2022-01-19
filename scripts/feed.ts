@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { dirname } from 'dirname-filename-esm';
+import { dirname } from "dirname-filename-esm";
 import { formatRFC3339 as format, parse as parseDateString } from "date-fns";
 // @ts-ignore
 import { minify } from "minify-xml";

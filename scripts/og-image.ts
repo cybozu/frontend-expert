@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
-import { dirname } from 'dirname-filename-esm';
+import { dirname } from "dirname-filename-esm";
 import puppeteer from "puppeteer";
 import { getPosts, PostData } from "./utils";
 
