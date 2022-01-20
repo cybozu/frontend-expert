@@ -36,7 +36,7 @@ Firefox 96 がリリースされました！
 - Linux にて `Select All` のショートカットキーが `Alt-A` から `Ctrl-A` に変更されました
   - web-compatibility の確保やアクセスキーとの衝突回避のため
 
-### For web developers
+## 開発者向けの変更
 
 #### CSS
 
