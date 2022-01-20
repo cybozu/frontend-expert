@@ -2,7 +2,7 @@
 title: "CSS color-scheme サポート追加等 Firefox 96.0 リリースノートまとめ"
 author: "BaHo"
 editor: "shisama"
-createdAt: "2022-01-18"
+createdAt: "2022-01-20"
 summary: "Firefox 96.0 のリリースノートの日本語まとめです"
 tags:
   - Releasenote
@@ -15,7 +15,7 @@ tags:
 Firefox 96 がリリースされました！
 全体的に性能面での改善が多くを占めるアップデートでした。
 本リリースでは Cookie Policy がデフォルトで `SameSite=lax`を指定するようになりました。
-また、`color-scheme`プロパティが追加され、IE以外の主要なブラウザで利用可能になりました。
+また、`color-scheme`プロパティが追加され、IE 以外の主要なブラウザで利用可能になりました。
 
 ## New
 
@@ -49,7 +49,7 @@ Firefox 96 がリリースされました！
 - 同じドメインから送信された Cookie でも異なるスキームを使用されているものは Cookie SameSite ディレクティブについて別サイトから送信されたものと見なすようになりました
 - SameSite 属性が指定されていない Cookie は暗黙的に `SameSite=lax` が指定されるようになりました
 - `SameSite=none` を指定した Cookie はセキュアなコンテキストが必要になりました
-- CookieのSameSite についてはこちらをお読みください
+- Cookie の SameSite についてはこちらをお読みください
   - [Cookie の SameSite 属性について - Cybozu Inside Out | サイボウズエンジニアのブログ](https://blog.cybozu.io/entry/2020/05/07/080000)
 
 #### APIs
