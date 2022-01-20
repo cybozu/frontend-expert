@@ -1,6 +1,6 @@
-import fs from "fs/promises";
-import path from "path";
-import { prompt } from "enquirer";
+import fs from "node:fs/promises";
+import path from "node:path";
+import enquirer from "enquirer";
 import { POSTS_DIR_PATH } from "./utils";
 
 main();
@@ -29,7 +29,7 @@ tags: []
 }
 
 async function main() {
-  const { slug } = await prompt<{ slug: string }>({
+  const { slug } = await enquirer.prompt<{ slug: string }>({
     type: "input",
     name: "slug",
     message: "新しい記事のファイル名を、拡張子を含めずに入力してください",

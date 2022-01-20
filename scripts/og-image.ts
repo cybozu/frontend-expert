@@ -1,12 +1,14 @@
-import fs from "fs/promises";
-import { existsSync } from "fs";
-import path from "path";
+import fs from "node:fs/promises";
+import { existsSync } from "node:fs";
+import path from "node:path";
+import { dirname } from "dirname-filename-esm";
 import puppeteer from "puppeteer";
 import { getPosts, PostData } from "./utils";
 import { loadDefaultJapaneseParser } from "budoux";
 
 const shouldPurgeImages = !!process.env.PURGE_IMAGES;
 
+const __dirname = dirname(import.meta);
 const OG_SOURCE_DIR_PATH = path.join(__dirname, "..", "data", "og");
 const OG_SOURCE_HTML_FILE_PATH = path.join(OG_SOURCE_DIR_PATH, "og.html");
 const OG_DIR_PATH = path.join(__dirname, "..", "public", "ogp", "posts");

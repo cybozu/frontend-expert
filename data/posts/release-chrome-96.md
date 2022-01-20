@@ -246,13 +246,12 @@ https://developer.mozilla.org/ja/docs/Web/CSS/@media/prefers-contrast
 cssの`calc()`関数でintegerしか受け取らないような場所でもnumberを指定できるようになりました。
 もっとも近い整数に丸められます。
 
-例えば、下記はいずれも`width: 0px`と同義です。
+例えば、下記はいずれも`column-count: 1`と同義です。
 
 ```css
 .example {
-    width: calc(5px - 10px);
-    width: calc(-5px);
-    width: 0px;
+  column-count: calc(1.2);
+  column-count: calc(0.6);
 }
 ```
 
