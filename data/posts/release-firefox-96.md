@@ -36,7 +36,16 @@ Firefox 96 がリリースされました！
 - Linux にて `Select All` のショートカットキーが `Alt-A` から `Ctrl-A` に変更されました
   - web-compatibility の確保やアクセスキーとの衝突回避のため
 
+## Web Platform
+
+- Web Lock API が実装されました。
+  - 異なる ServiceWorker やタブで実行されているスクリプトを相互連携させることが可能になります
+- WebRTC ライブラリが更新されたことで Web 会議アプリでの音声やビデオ機能が改善されました
+- CSS にて `color-scheme` がサポートされ、Web ページがどのカラースキームでレンダリング可能かを指定できるようになりました
+
 ## 開発者向けの変更
+
+### for web developers
 
 #### CSS
 
@@ -75,10 +84,3 @@ Firefox 96 がリリースされました！
   - 指定された要素が持っている shadow root を取り出す
 - `WebDriver:ExecuteScript` 及び `WebDriver:ExecuteAsyncScript`にて要素の `ShadowRoot` を返す際に `cyclic object error` が発生する問題が解決されました
 - `WebDriver:Print` が PDF にプリントする際のページ範囲をサポートするように拡張されました
-
-## Web Platform
-
-- Web Lock API が実装されました。
-  - 異なる ServiceWorker やタブで実行されているスクリプトを相互連携させることが可能になります
-- WebRTC ライブラリが更新されたことで Web 会議アプリでの音声やビデオ機能が改善されました
-- CSS にて `color-scheme` がサポートされ、Web ページがどのカラースキームでレンダリング可能かを指定できるようになりました
