@@ -15,6 +15,8 @@ import { TweetButton } from "../../components/TweetButton";
 import { PostContact } from "../../components/PostContact";
 import { loadDefaultJapaneseParser } from "budoux";
 
+const parser = loadDefaultJapaneseParser();
+
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
     <div className={styles.author}>
@@ -52,8 +54,6 @@ const Author = ({ author, label }: { author: Member; label?: string }) => {
     </div>
   );
 };
-
-const parser = loadDefaultJapaneseParser();
 
 type Props = {
   post: PostData;
