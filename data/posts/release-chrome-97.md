@@ -23,21 +23,21 @@ Chrome97 で新しく追加された機能です。
 
 ### Web Transport
 
-サーバーとクライアントの双方向リアルタイム通信を実現する新しいフレームワーク<!--(APIという方が適切？)-->として提案されている`Web Transport`が正式にサポートされました。
+サーバーとクライアントの双方向リアルタイム通信を実現する新しいフレームワークとして提案されている`Web Transport`が正式にサポートされました。
 
 Web Transport は既存の代表的手法である`Web Sockets`や`WebRTC`と比べ以下のような利点を持っています。
 
-- `WebSockets`よりも低遅延な通信を実現する。
-- P2P メッセージング用に設計された`WebRTC`と違い、クライアントサーバーメッセージングを前提として設計されているため扱いやすい。
+- `WebSockets`よりも低遅延な通信を実現する
+- P2P メッセージング用に設計された`WebRTC`と違い、クライアントサーバーメッセージングを前提として設計されているため扱いやすい
 
 Web Transport では`streams API`と`datagram API`という２種類の通信 API がサポートされており、それぞれ以下のような特徴から使い分けることができます。
 
 - streams API : 信頼性の高い順序付けられたデータ送信に最適
 - datagram API : 信頼性や順序がそこまで求められず、より低遅延でベストエフォートなデータ送信に最適
 
-注意点として、Web Transport を試すためには`HTTP/3`をサポートしたサーバーが必要となります。<!--(QUICの話入れる？)-->
+注意点として、Web Transport を試すためには`HTTP/3`をサポートしたサーバーが必要となります。
 
-Web Transport は以下のような形で簡単に使うことができます。
+Web Transport は以下のような形で簡単に利用することができます。
 
 ```javascript=
 const url = 'https://example.com:4999/foo/bar';
@@ -53,9 +53,9 @@ writer.write(data1);
 
 ### Script type feature detection
 
-ブラウザ側で`ES Modules`の対応を判別する方法として今まで`nomodule`属性がありましたが、`import maps`, `speculation rules`,`bundle preloading`などの新しく提案されている仕様には対応しきれていませんでした。
+ブラウザ側で`ES Modules`の対応状況を判別する方法として今まで`nomodule`属性がありましたが、`import maps`, `speculation rules`,`bundle preloading`などの新しく提案されている仕様には対応しきれていませんでした。
 
-今回サポートされた`HTMLScriptElement.supports()`を利用することで以下のように script の type 属性の仕様に対応しているかのチェックをすることができるようになります。
+今回サポートされた`HTMLScriptElement.supports()`を利用することで以下のように JavaScript側でscriptがどの仕様に対応しているかのチェックをすることができるようになります。
 
 ```javascript=
 if (HTMLScriptElement.supports('importmap')) {
@@ -96,7 +96,7 @@ console.log(lastIndex); // 4
   - これによりブラウザ間の相互運用性が向上しました。
 - `client hint`のプレフィクスを`sec-ch`にするように標準化を進めています。
   - 例えば`dpr`は`sec-ch-dpr`のようになります。
-  - 以前の仕様のヒントも当分の間サポートを続けますが、いずれは非推奨となり削除されることを想定しましょう。
+  - 以前の仕様も当分の間サポートを続けますが、いずれは非推奨となり削除されることを想定しましょう。
 - 閉じている`<detail>`要素が検索可能になり、閉じている`<detail>`要素内の element にスクロールしようとした際は閉じられている`<detail>`要素を自動的に開くようになりました。
 
 ### What's New In DevTools (Chrome 97)
@@ -132,8 +132,6 @@ WebRTC でセッションを確立するために使用される SDP に非標�
 https://blog.jxck.io/entries/2018-01-05/sdp-unified-plan.html
 
 ## その他 Chrome Platform Status に記載されていたもの
-
-<!-- saji -->
 
 https://www.chromestatus.com/features#milestone%3D97
 
