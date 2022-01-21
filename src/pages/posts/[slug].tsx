@@ -93,11 +93,7 @@ const Post = ({ post }: Props) => {
         )}
       </div>
       <PostContent>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: parser.translateHTMLString(post.content),
-          }}
-        />
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
       </PostContent>
       <Tags tags={post.metaData.tags} />
       <TweetButton />
