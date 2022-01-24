@@ -49,9 +49,9 @@ Firefox 96 がリリースされました！
 
 #### CSS
 
-- CSS で色の値として利用される `[hwb()](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb())` 関数が実装されました
-- `[color-scheme](https://developer.mozilla.org/ja/docs/Web/CSS/color-scheme)` プロパティがサポートされました
-- `[counter-reset](https://developer.mozilla.org/en-US/docs/Web/CSS/counter-reset)` プロパティにて逆順の CSS カウンターを生成する `reversed()` 関数がサポートされました
+- CSS で色の値として利用される [hwb()](<https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb()>) 関数が実装されました
+- [color-scheme](https://developer.mozilla.org/ja/docs/Web/CSS/color-scheme)プロパティがサポートされました
+- [counter-reset](https://developer.mozilla.org/en-US/docs/Web/CSS/counter-reset) プロパティにて逆順の CSS カウンターを生成する `reversed()` 関数がサポートされました
 
 #### HTTP
 
@@ -63,7 +63,7 @@ Firefox 96 がリリースされました！
 
 #### APIs
 
-- Android において `[navigator.canShare()](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare)` がサポートされました
+- Android において [navigator.canShare()](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare) がサポートされました
 - デフォルトで [Web Locks API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API) が有効になりました
 
 #### Canvas
@@ -72,7 +72,7 @@ Firefox 96 がリリースされました！
 
 #### DOM
 
-- `[IntersectionObserver()](https://developer.mozilla.org/ja/docs/Web/API/IntersectionObserver)` のコンストラクターが関連付けられたパラメータオプションにから文字が渡された場合に例外発生ではなく `rootMargin` を設定するようになりました
+- [IntersectionObserver()](https://developer.mozilla.org/ja/docs/Web/API/IntersectionObserver) のコンストラクターが関連付けられたパラメータオプションにから文字が渡された場合に例外発生ではなく `rootMargin` を設定するようになりました
 
 #### Media, WebRTC, and Web Audio
 
