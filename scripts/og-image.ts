@@ -4,6 +4,7 @@ import path from "node:path";
 import { dirname } from "dirname-filename-esm";
 import puppeteer from "puppeteer";
 import { getPosts, PostData } from "./utils";
+import { loadDefaultJapaneseParser } from "budoux";
 
 const shouldPurgeImages = !!process.env.PURGE_IMAGES;
 
@@ -62,13 +63,16 @@ async function captureOgImage(
   imagePath: string
 ) {
   if (shouldPurgeImages || !existsSync(imagePath)) {
+    const parser = loadDefaultJapaneseParser();
     const page = await browser.newPage();
     await page.setViewport({
       width: 1200,
       height: 630,
     });
     await page.goto("file://" + OG_SOURCE_HTML_FILE_PATH);
-    await page.exposeFunction("getTitle", () => title);
+    await page.exposeFunction("getTitle", () =>
+      parser.translateHTMLString(title)
+    );
     await page.reload();
     await page.screenshot({
       path: imagePath,

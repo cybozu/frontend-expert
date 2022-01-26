@@ -13,6 +13,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faGithubAlt } from "@fortawesome/free-brands-svg-icons";
 import { TweetButton } from "../../components/TweetButton";
 import { PostContact } from "../../components/PostContact";
+import { loadDefaultJapaneseParser } from "budoux";
+
+const parser = loadDefaultJapaneseParser();
 
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
@@ -67,7 +70,12 @@ const Post = ({ post }: Props) => {
       slug={post.slug}
       description={post.metaData.summary}
     >
-      <h1 className={styles.title}>{post.metaData.title}</h1>
+      <h1
+        className={styles.title}
+        dangerouslySetInnerHTML={{
+          __html: parser.translateHTMLString(post.metaData.title),
+        }}
+      />
       <div className={styles.publishedOn}>
         Published on{" "}
         <time dateTime={post.metaData.createdAt} itemProp="datePublished">
