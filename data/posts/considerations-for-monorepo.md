@@ -10,7 +10,7 @@ tags:
 
 それっぽいタイトルを付けましたが特に意味はないです。
 
-[workspace を使ったコマンドを最適化して実行する Turborepo について](./turborepo)のお話で Turborepo を気軽に触ってみた際に`npx create-turbo@latest`で作られる構成がとてもわかりやすく、プロダクトの初期段階からモノレポを採用するのは選択肢の 1 つとしていいのでは、と思い続編を書きました。
+[workspace を使ったコマンドを最適化して実行する Turborepo について](https://cybozu.github.io/frontend-expert/posts/turborepo)のお話で Turborepo を軽く触ってみた際に`npx create-turbo@latest`で作られる構成がとてもわかりやすく、プロダクトの初期段階からモノレポを採用するのは選択肢の 1 つとしていいのでは、と思い続編を書きました。
 
 前回と同じくサンプルのリポジトリはこちらになります。  
 https://github.com/nus3/p-turborepo/tree/main/yarn
