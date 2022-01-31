@@ -20,7 +20,7 @@ https://github.com/nus3/p-turborepo/tree/main/yarn
 ## 概要
 
 - モノレポを採用することで、同一リポジトリ内で自作した汎用的なライブラリやコンポーネントを複数のアプリケーションで使いまわせる
-- 規模が大きくなってきた場合にモノレポ内のパッケージを npm に公開することで、アプリケーションとパッケージを非同期に開発できる
+- モノレポの規模が大きくなってきた場合には、モノレポ内のパッケージを npm に公開することでアプリケーションとパッケージを非同期に開発できる
 - Yarn や npm の workspace はイイゾ！
 
 ## モノレポとは
@@ -45,7 +45,7 @@ workspaces を使うにはリポジトリのルート直下にある`package.jso
 }
 ```
 
-apps 配下にある`nus3-a`というアプリケーションから packages 配下にある`nus3-ui`という名前の npm パッケージを使う場合、それぞれ次のような`package.json`になります。
+`apps` 配下にある`nus3-a`というアプリケーションから `packages` 配下にある`nus3-ui`という名前の npm パッケージを使う場合、それぞれ次のような`package.json`になります。
 
 `apps/nus3-a`
 
@@ -95,7 +95,7 @@ ESLint や Stylelint の config は npm に公開することで、異なるプ�
 モノレポ内であれば ESLint や Stylelint の設定を npm に公開・管理せずに共有することもできます。
 
 `packages/nus3-config`  
-で共通の ESLint や TSConfig を定義して、package.json の`files` に指定します。
+で共通の ESLint や TSConfig を定義して、`package.json` の`files` に指定します。
 
 ```json
 {
@@ -140,7 +140,7 @@ module.exports = require("nus3-config/eslint-preset");
 
 #### React を使った汎用的なコンポーネント(tsx)を別パッケージに分けて アプリケーション(Next.js)で使用する
 
-create-turbo では汎用的な React コンポーネントを tsx ファイルのまま packages 配下の npm パッケージで管理し、Next.js の[plugin](https://github.com/martpie/next-transpile-modules)を使って アプリケーション 側でトランスパイルしています。
+create-turbo では汎用的な React コンポーネントを tsx ファイルのまま `packages` 配下の npm パッケージで管理し、Next.js の[plugin](https://github.com/martpie/next-transpile-modules)を使って アプリケーション 側でトランスパイルしています。
 
 `packages/nus3-ui`  
 で React(tsx)のコンポーネントを実装します。実装した tsx ファイルのパスをそのまま`main`と`types`に追加します。
