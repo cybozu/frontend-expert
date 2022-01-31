@@ -1,6 +1,8 @@
 ---
 title: "フロントエンドのモノレポ構成はスケーリングの夢を見るか"
 author: "nus3"
+editor:
+  - "nakajmg"
 createdAt: "2022-01-31"
 summary: "Turborepoのstarterでできるモノレポ構成からスケーリングするフロントエンドの構成について考える"
 tags:
@@ -18,7 +20,7 @@ https://github.com/nus3/p-turborepo/tree/main/yarn
 ## 概要
 
 - モノレポを採用することで、同一リポジトリ内で自作した汎用的なライブラリやコンポーネントを複数のアプリケーションで使いまわせる
-- 規模が大きくなってきた場合にモノレポ内のパッケージを npm に公開することで、アプリケーションとパッケージの非同期に開発できる
+- 規模が大きくなってきた場合にモノレポ内のパッケージを npm に公開することで、アプリケーションとパッケージを非同期に開発できる
 - Yarn や npm の workspace はイイゾ！
 
 ## モノレポとは
@@ -88,7 +90,7 @@ create-turbo(`npx create-turbo@latest`) では作られるモノレポ構成に�
 
 #### npm に公開せずに config をモノレポ内の別パッケージに分けて、複数のパッケージから使用する
 
-ESLint や Stylelint は npm に公開することにより、共通の設定を各プロジェクトで使えます。サイボウズでは[ESLint](https://github.com/cybozu/eslint-config)や[Stylelint](https://github.com/cybozu/stylelint-config)は npm に公開しています。
+ESLint や Stylelint の config は npm に公開することで、異なるプロジェクトで共通の設定を使えます。サイボウズでは[@cybozu/eslint-config](https://github.com/cybozu/eslint-config)や[@cybozu/stylelint-config](https://github.com/cybozu/stylelint-config)として npm に公開しています。
 
 モノレポ内であれば ESLint や Stylelint の設定を npm に公開・管理せずに共有することもできます。
 
@@ -109,7 +111,7 @@ ESLint や Stylelint は npm に公開することにより、共通の設定を
 ```
 
 `apps/nus3-a`
-で`nus3-config`を追加し、`nus3-config`から TSConfig や ESLint のルールを適応します。
+で`nus3-config`を追加し、`nus3-config`から TSConfig や ESLint のルールを適用します。
 
 ```json
 {
