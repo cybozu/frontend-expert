@@ -143,7 +143,7 @@ module.exports = require("nus3-config/eslint-preset");
 create-turbo では汎用的な React コンポーネントを tsx ファイルのまま packages 配下の npm パッケージで管理し、Next.js の[plugin](https://github.com/martpie/next-transpile-modules)を使って アプリケーション 側でトランスパイルしています。
 
 `packages/nus3-ui`  
-で React(tsx)のコンポーネントを実装。tsx ファイルをそのまま`main`と`types`に追加する。
+で React(tsx)のコンポーネントを実装します。実装した tsx ファイルのパスをそのまま`main`と`types`に追加します。
 
 ```json
 {
@@ -170,7 +170,7 @@ export const Button: VFC = () => {
 ```
 
 `apps/nus3-a`  
-で`nus3-ui`の tsx ファイルをトランスパイルしている
+`nus3-ui`の tsx ファイルを`nus3-a`で`next-transpile-modules`を使ってトランスパイルします。
 
 ```json
 {
