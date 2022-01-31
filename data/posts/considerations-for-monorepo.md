@@ -71,9 +71,9 @@ apps 配下にある`nus3-a`というアプリケーションから packages 配
 
 workspaces 内にある npm パッケージの名前が npm に公開されているパッケージ名と同じ場合は、 workspace 内の npm パッケージが優先してインストールされます。後々 workspaces 内の npm パッケージを公開する可能性がある場合、パッケージ名は npm で公開されているパッケージ名と被らない名前にした方が良いかもしれません。
 
-workspace 内の npm パッケージを依存関係に追加すると node_modules にシンボリックリンクが作成されます。次の画像では実際に node_modules 配下に`nus3-ui`と`nus3-a`のシンボリックリンクが追加されています。
+workspace 内の npm パッケージを依存関係に追加すると node_modules にシンボリックリンクが作成されます。次の画像のように node_modules 配下に`nus3-ui`と`nus3-a`のシンボリックリンクが追加されていることが確認できます。
 
-![node_modulesにシンボリックリンクが作成される](/frontend-expert/image/considerations-for-monorepo/symlink.png)
+![node_modulesに作成されたシンボリックリンク](/frontend-expert/image/considerations-for-monorepo/symlink.png)
 
 シンボリックリンクにより依存する npm パッケージのコードを直接参照するので、npm に公開しバージョン管理するまでは、version は`0.0.0`、かつ、使う側は`"nus3-ui": "*"`のようにワイルドカードを指定するとバージョンのことを意識せずに管理できます。
 
