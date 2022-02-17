@@ -2,7 +2,7 @@
 title: "COLRv1 fontのサポートなど、Chrome 98 リリースノートまとめ"
 author: "nus3"
 editor: "Saji"
-createdAt: "2022-01-15"
+createdAt: "2022-02-18"
 summary: "Chrome 98 のリリースノートの要約です"
 tags:
   - Releasenote
@@ -30,8 +30,8 @@ Chrome96 から、Android では OriginTrial として「[Auto Dark Themes](http
 
 具体的には以下のように`meta`タグを利用して無効化することが出来ます。
 
-```htmlmixed=
-<meta name="color-scheme" content="only light">
+```html
+<meta name="color-scheme" content="only light" />
 ```
 
 また以下のように`color-scheme: only light`というスタイルを`:root`要素にあてることでも無効化できます。
@@ -55,7 +55,8 @@ CSS スタイルを利用する方法の優れた点として、以下のよう�
 
 ### COLRv1 font support
 
-COLRv1 フォントがサポートされました。  
+COLRv1 フォントがサポートされました。
+
 COLRv1 では COLRv0 と比べて、新たにフォントのグラデーションや合成などに対応しています。また、フォントが鮮明なまま圧縮率が高いのも特徴の一つです。
 
 次の参考記事では実際にグラデーションを導入したカラーフォントや COLRv1 と Bitmap を比較してどれほど鮮明なのかを確認することができます。
@@ -117,7 +118,8 @@ FileSystemHandle に`Remove()`メソッドを追加しました。
 
 ### HDR CSS Media Queries: dynamic-range
 
-CSS のメディアクエリーに`dynamic-range`が追加されました。  
+CSS のメディアクエリーに`dynamic-range`が追加されました。
+
 次のサンプルコードのように、ディスプレイが HDR をサポートしてるかしていないかを`dynamic-range`で判別できるようになります。
 
 ```css
@@ -159,11 +161,12 @@ https://www.w3.org/TR/mediaqueries-5/#dynamic-range
 
 ### WritableStream controller AbortSignal
 
-[WritableStream.abort()](https://developer.mozilla.org/ja/docs/Web/API/WritableStream/abort)でのストリームへの進行中の書き込みの中止や終了がすぐに実行されるようになりました。
+[WritableStream.abort()](https://developer.mozilla.org/ja/docs/Web/API/WritableStream/abort)を実行した際に、ストリームへの進行中の書き込みの中止や終了がすぐに実行されるようになりました。
 
 ### self.structuredClone()
 
 ディープコピーができる`structuredClone()`がついに 98 で実装されました。
+
 お使いの Chrome を 98 にアップデートした上で、DevTools の Console で次のサンプルコードを試しに実行してみると`structuredClone()`で実際にディープコピーが実行されていることが確認できます。
 
 ```js
