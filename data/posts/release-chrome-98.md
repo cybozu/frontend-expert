@@ -47,7 +47,6 @@ CSSスタイルを利用する方法の優れた点として、以下のよう�
 }
 ```
 詳しくは[Auto Dark Themes on Android](https://developer.chrome.com/blog/auto-dark-theme/)における[How to opt-out of Auto Dark Theme](https://developer.chrome.com/blog/auto-dark-theme/#per-element-opt-out)の章を参照してください。
-<!-- saji -->
 
 ### COLRv1 font support
 
@@ -86,7 +85,6 @@ https://developer.chrome.com/ja/blog/new-in-devtools-97/
 今まで、Chromeでは`ClipboardItem`コンストラクターの引数として「文字列またはblobに解決されるPromise」を受け取ることが出来ませんでした。
 
 今回のアップデートにより`clipboard.write`APIが呼ばれた時に、一旦クリップボードに書き込むBlobデータを同期的に取得する必要がなくなり、ブロックすることなく非同期的にwriteメソッドを呼び出すことができるようになります。
-<!-- saji -->
 
 ### CSS Color Adjust: 'only' keyword for color-scheme
 
@@ -101,7 +99,6 @@ FileSystemHandleに`Remove()`メソッドを追加しました。
 
 今回のアップデートにより「`showSaveFilePicker`から`FileHandle`を取得したが、結局保存したくなくなったのでファイルを削除したい」というような、よくあるユースケースに対応できるようになりました。
 
-<!-- saji -->
 
 ### HDR CSS Media Queries: dynamic-range
 
@@ -113,12 +110,15 @@ FileSystemHandleに`Remove()`メソッドを追加しました。
 `window.open()`では第3引数として`windowFeatures`というoptionをDOMStringで指定できますが、今バージョンから`popup`という機能に対応するようになりました。` popup=yes`または`popup=1`のように指定することで、ポップアップウィンドウを利用して開くことをブラウザに要求することが出来ます。
 
 この変更はwindow.openの新しくリリースされた仕様に合わせて、相互運用性のために行われた変更です。 広報互換性のため、ポップアップやタブ/ウィンドウを開く既存の動作に変更はありません。
-<!-- saji -->
-
 
 ### Private Network Access preflight requests for subresources
-<!-- saji -->
-内容
+サブリソースに対するプライベートネットワークリクエストの前にCORSプリフライトリクエストを送信し、ターゲットサーバーからの明示的な許可を求めるようになります。
+
+プライベートネットワークリクエストとは以下のようなリクエストとのことです。
+- パブリックWebサイトからプライベートIPアドレスまたはローカルホストへのリクエスト
+- プライベートなWebサイト（イントラネットなど）からローカルホストへのリクエスト
+
+プライベートネットワーク上のサービスや機器(ネットワーク機器やプリンタなど)はCSRF対策が不十分なものが多く、今回のアップデートはこれらの攻撃リスクを軽減させるための対策になります。
 
 ### WritableStream controller AbortSignal
 
