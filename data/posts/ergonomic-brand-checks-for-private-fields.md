@@ -119,6 +119,8 @@ Object.setPrototypeOf(obj, foo);
 console.log(obj instanceof Foo); // true
 ```
 
+また、[Symbol.hasInstance](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Symbol/hasInstance) を使って `instanceof` の挙動を変更することも可能です。
+
 なので、より安全にオブジェクトのもとになったクラスを検証したい場合は `in` 演算子を使うと良いでしょう。
 
 ## 参考リンク
