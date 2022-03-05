@@ -86,6 +86,61 @@ enum SyntaxKind {
 
 しかし細部の仕様について検討すべき事項が多く、今回のミーティングでは Stage 1 に到達することはありませんでした。[このスライド](https://docs.google.com/presentation/d/14WtGmdWjEYXIXZVWJWpERF98D90_BytceAu7b7DKr5Q/edit#slide=id.g10effb28f4f_0_273)に詳しくまとまっているので興味のある方はご覧ください。
 
+### [Reversible string split](https://github.com/tc39/proposal-reversible-string-split)
+
+**Stage 1 になりました。**
+
+Reversible string split は可逆(Reversible)の文字列分割のための方法を導入するプロポーザルです。
+
+JavaScript では `String.prototype.split` を使って文字列を分割できます。
+
+[String.prototype.split()](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/split:embed)
+
+```js
+const splitted = "A,B,C,D,E".split(",");
+console.log(splitted); // [ 'A', 'B', 'C', 'D', 'E' ]
+```
+
+`String.prototype.split` は第2引数として非負の整数を渡すことで、分割する数を制限できます。
+
+```js
+const splitted1 = "A,B,C,D,E".split(",", 1);
+console.log(splitted1); // [ 'A' ]
+
+const splitted2 = "A,B,C,D,E".split(",", 2);
+console.log(splitted2); // [ 'A', 'B' ]
+
+const splitted3 = "A,B,C,D,E".split(",", 3);
+console.log(splitted3); // [ 'A', 'B', 'C' ]
+```
+
+JavaScript 以外のいくつかの言語(Perl、PHP、Ruby、Go、Rust、Java など)では第2引数を受け取った `String.prototype.split` に相当する機能は、次のように文字列の分割を行います。
+
+```js
+const splitted2 = "A,B,C,D,E".split(",", 2);
+console.log(splitted2); // [ 'A', 'B,C,D,E' ]
+```
+
+N-1 回分割され、残りの部分が戻り値の配列の末尾に含まれています(戻り値の配列の要素数が N)。
+
+Reversible string split プロポーザルでは、このような振る舞いを持つ新しいメソッド `String.prototype.splitN` を導入します。
+
+```js
+const splitted2 = "A,B,C,D,E".splitN(",", 2);
+console.log(splitted2); // [ 'A', 'B,C,D,E' ]
+```
+
+このような文字列分割メソッドを使うと、次のようにして分割する前の文字列を取得できます。
+
+```js
+const value = "A,B,C,D,E";
+const separator = ",";
+const n = 2;
+console.log((value.splitN(separator, n).join(separator)) === value); // true
+```
+
+提案の名前に含まれている Reversible というのはこのような可逆性のことを指しているようです。
+
 ## Updates
 
 ### [Symbols as WeakMap keys](https://github.com/tc39/proposal-symbols-as-weakmap-keys)
@@ -113,5 +168,6 @@ Symbols as WeakMap keys は Symbol を WeakMap のキーとして使えるよう
   - [Proposal Symbols as WeakMap keys](https://github.com/tc39/proposal-symbols-as-weakmap-keys)
   - [Proposal `class.hasInstance()`](https://github.com/tc39/proposal-class-brand-check)
   - [Proposal enum](https://github.com/rbuckton/proposal-enum)
+  - [Proposal Reversible string split](https://github.com/tc39/proposal-reversible-string-split)
 - Babel
   - [Jan 2022 · Issue #80 · babel/proposals](https://github.com/babel/proposals/issues/80)
