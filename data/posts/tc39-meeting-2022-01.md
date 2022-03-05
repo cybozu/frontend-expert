@@ -42,7 +42,7 @@ Class brand checks は brand check のための新しい構文を導入するプ
 
 brand check は TC39 内で使われる用語で、https://github.com/tc39/how-we-work/blob/master/terminology.md#brand-check で説明されています。
 
-brand check とは、雑に言えば「ある値があるデータ型であることを検証すること」です。たとえば `Array.isArray` は brand check です(`instanceof` は厳密ではないため brand check ではありません)。
+brand check とは、雑に言えば「ある値があるデータ型であることを検証すること」です。たとえば `Array.isArray` は brand check です([`instanceof` は厳密ではない](https://zenn.dev/sosukesuzuki/articles/e0516a3d4c424e)ため brand check ではありません)。
 
 以前 brand check の方法の一つである [Ergonomic brand checks for private fields](https://github.com/tc39/proposal-private-fields-in-in) についての記事を書いたので興味のある方はそちらもご覧ください。
 
