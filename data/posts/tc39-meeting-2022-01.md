@@ -46,7 +46,7 @@ brand check とは、雑に言えば「ある値があるデータ型である�
 
 以前 brand check の方法の一つである [Ergonomic brand checks for private fields](https://github.com/tc39/proposal-private-fields-in-in) についての記事を書いたので興味のある方はそちらもご覧ください。
 
-https://cybozu.github.io/frontend-expert/posts/ergonomic-brand-checks-for-private-fields
+[ES2022 と TypeScript 4.5 に入るプライベートフィールドのための in 演算子について](https://cybozu.github.io/frontend-expert/posts/ergonomic-brand-checks-for-private-fields:embed)
 
 Class branc check プロポーザルでは `class.hasInstance(x)` という新しい Meta Property を追加します。これはクラスの中でのみ使うことができ、引数として渡された値が今いるクラスのインスタンスかどうかをチェックします。
 
@@ -68,6 +68,24 @@ console.log(Foo.isFoo(obj)); // false
 
 ### [enum](https://github.com/rbuckton/proposal-enum)
 
+**Stage 1 にはなりませんでした。**
+
+enum は列挙型を実現するためのプロポーザルです。このプロポーザルは 4 年ほど前から存在していましたがまた動き出したようです。
+
+enum プロポーザルでは次のような構文を導入します。
+
+```js
+enum SyntaxKind {
+  A,
+  B,
+  C
+}
+```
+
+他のプログラミング言語の enum と構文上は似ています。
+
+しかし細部の仕様について検討すべき事項が多く、今回のミーティングでは Stage 1 に到達することはありませんでした。[このスライド](https://docs.google.com/presentation/d/14WtGmdWjEYXIXZVWJWpERF98D90_BytceAu7b7DKr5Q/edit#slide=id.g10effb28f4f_0_273)に詳しくまとまっているので興味のある方はご覧ください。
+
 ## Updates
 
 ### [Symbols as WeakMap keys](https://github.com/tc39/proposal-symbols-as-weakmap-keys)
@@ -76,7 +94,7 @@ Symbols as WeakMap keys は Symbol を WeakMap のキーとして使えるよう
 
 現在では一部情報が古くなっていますが以前このプロポーザルについて解説する記事を書いたので興味がある方はそちらもご覧ください。
 
-https://sosukesuzuki.dev/posts/symbols-as-weakmap-keys/
+[JavaScript の Symbols as WeakMap keys について](https://sosukesuzuki.dev/posts/symbols-as-weakmap-keys:embed)
 
 以前から Symbols as WeakMap keys プロポーザルのモチベーションや基本的な振る舞いについては概ね合意がとれていました。しかし、Well-knwon Symbols やグローバルシンボルレジストリに登録された Symbol (Eternal Symbol と呼ばれている)についてはどのように扱うべきかという点で TC39 メンバー内でも意見が分かれていました。
 
