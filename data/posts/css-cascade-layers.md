@@ -7,11 +7,11 @@ tags:
   - CSS
 ---
 
-先日、[Chrome99 がリリース](https://developer.chrome.com/blog/new-in-chrome-99/)され、新機能として CSS Cascade Layers が実装されました。(このほかに Firefox97, Safari 15.4 でも実装されました)
+今月、[Chrome99 がリリース](https://developer.chrome.com/blog/new-in-chrome-99/)され、新機能として CSS Cascade Layers が実装されました。(このほかに Firefox97, Safari 15.4 でも実装されました)
 
 ## CSS Cascade Layers とは
 
-これまでブラウザはどの CSS を適用するかを次のような順番で決定していました。
+これまで CSS の仕様では、どのスタイルを適用するかを、ざっくりと次のような順番で決定していました。(※カスケード順を省いて簡略的に記述しています)
 
 1. `!important`
 2. インラインスタイル
@@ -26,9 +26,9 @@ CSS Cascade Layers が導入されると次のような順番に変わります�
 4. セレクターの詳細度
 5. 同じ詳細度であれば最後に宣言されたもの
 
-## 複雑な詳細度
+## 複雑な詳細度の管理
 
-ブラウザがどのスタイルを適応するか判断するのにセレクターの詳細度を用いる場合は、詳細度がより大きいものが適用されます。セレクタの詳細度の大きさは次のような順番で算出されます。
+どのスタイルを適用するか判断するのにセレクターの詳細度を用いる場合は、詳細度がより大きいものが適用されます。セレクターの詳細度の大きさは次のような順番で算出されます。(1 が大、3 が小)
 
 1. ID セレクタ(`#example`)
 2. クラスセレクタ:(`.example`)、属性セレクタ(`[type="radio"]`)、疑似クラス(`:hover`)
@@ -38,7 +38,7 @@ CSS Cascade Layers が導入されると次のような順番に変わります�
 
 参考: https://specifishity.com/
 
-上記のような詳細度の仕様は、CSS の記述量が増えていくにつれ、詳細度をうまく管理できず意図しないスタイルが適応されることがままあります。意図せぬスタイルが適応されないように[BEM](http://getbem.com/naming/)などのクラスに対して命名ルールを決めて対応することもあります。しかし、BEM を取り入れたとしてもサードパーティの CSS ライブラリの使用など膨大な CSS のコード量になった場合、全てを通した詳細度の把握をすることはなかなか大変です。
+上記のような詳細度の仕様は、CSS の記述量が増えていくにつれ、詳細度をうまく管理できず意図しないスタイルが適用されることがままあります。意図せぬスタイルが適用されないようにクラス名の命名規則を厳格にする[BEM](http://getbem.com/naming/)などの設計手法を取り入れて対応することもあります。しかし、命名規則をベースとした設計手法でもサードパーティの CSS ライブラリの使用など膨大な量の CSS になった場合、全てを通した詳細度の把握をすることはなかなか大変です。
 
 ## Cascade Layers を入れるとどうなるのか
 
@@ -64,7 +64,7 @@ Cascade Layers を導入すると、セレクターの詳細度よりも優先�
 }
 ```
 
-セレクタの詳細度は ID > Class > 要素 なので ID セレクタのスタイルが適用されます
+また、セレクターの詳細度は ID > Class > 要素 の順に大きさが異なります。次のサンプルコードでは ID セレクターのスタイルが適用されます
 
 ```html
 <button id="btn" class="nus3">crimsonになる</button>
@@ -84,7 +84,7 @@ button {
 
 ### Cascade Layers を使ったスタイルの適用
 
-`@layer`の構文を使い layer を定義します。`@layer base, page, utilities;`の部分で各 layer でのスタイルの優先順位を定義することができます。この場合は各 layer で定義したスタイルは
+`@layer`構文を使い、レイヤーを定義します。`@layer base, page, utilities;`の部分で各レイヤーでのスタイルの優先順位を定義することができます。この場合、各レイヤーで定義したスタイルは
 
 1. utilities
 2. page
@@ -128,44 +128,43 @@ button {
 }
 ```
 
-しかし実際、v99 以降の Chrome で見てみると当たってるスタイルは`background-color: gold;`になります。これはセレクタの詳細度よりも Cascade Layers で指定した layer 順が優先されているからです。
+しかし実際、v99 以降の Chrome で見てみると適用されるスタイルは`background-color: gold;`になります。これはセレクタの詳細度よりも Cascade Layers で指定したレイヤー順が優先されているからです。
 
-[Chrome Dev(Chrome の Develop 版)](https://www.google.com/intl/ja/chrome/dev/)の DevTools で対象の要素に当たってるスタイルみると Cascade Layers が適用されているのがわかります。(※サンプルコードとはクラス名が違います。ややこしくてごめんなさい)
+[Chrome Dev](https://www.google.com/intl/ja/chrome/dev/)の DevTools で対象の要素をみると Cascade Layers が適用されているのがわかります。(※サンプルコードとはクラス名が違います。ややこしくてごめんなさい)
 
-![devtoolsで実際に当たっているスタイル](/frontend-expert/image/css-cascade-layers/devtools.png)
+![DevToolsで確認すると実際にCascade Layersが適用されている](/frontend-expert/image/css-cascade-layers/devtools.png)
 
-## サードパーティの CSS ライブラリにも Cascade Layers は使える
+レイヤーの適用順が utilities > page > base になってるのがわかります。
 
-## まとめ
+## CSS フレームワークにも Cascade Layers は使える
 
-今回の各ブラウザの実装状況も踏まえ、CSS が記述量が増えてくるようなプロジェクトには、命名規則をベースにした設計だけでなく、今後は Cascade Layers をベースにした設計も考えてみてもいいかもしれません。
+Bootstrap や Materialize CSS、Bulma といった CSS フレームワークにも Cascade Layers を使うことができます。
 
-## 参考リンク
+CSS フレームワークの一つである[Bulma](https://bulma.io/)を使って試してみましょう。
+
+本来、次のようなクラスをボタンに付与すると、Bulma で元から定義されている`.button.is-primary`が、後に追加した`.button-nus3`より詳細度が大きくなり、`.button-nus3`のスタイルは適用されません。
+
+```html
+<button class="button is-primary button-nus3">ボタン</button>
+```
+
+```css
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+@import "styles/page.css";
+```
+
+しかし次のサンプルコードのように Cascade Layers を使い、[Bulma](https://bulma.io/)を`base`のレイヤーにしつつ、画面特有のスタイルを`styles/page.css`に定義することで、詳細度を考えずに Bulma のスタイルを上書きすることができます。
+
+```css
+@layer base, page;
+
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" layer(base);
+@import "styles/page.css" layer(page);
+```
+
+もちろん、対象ブラウザのサポート状況は考慮する必要がありますが、CSS の記述量が増えることが想定されるプロジェクトには、Cascade Layers をベースにした設計を検討してみてはいかがでしょうか。
+
+## 参考リンクなど
 
 - https://developer.chrome.com/blog/cascade-layers/
-- https://ishadeed.com/article/cascade-layers/
-- https://caniuse.com/css-cascade-layers
-- https://specifishity.com/
-- https://www.w3schools.com/cssref/css_selectors.asp
-
-## 雑メモ
-
-- layer 宣言がファイルの先頭
-- 同じクラス名の場合、後に呼ばれたものが反映される
-  - クラス名が被らないよう(被ってもいいように)、スコープを使ったり BEM 要素を使用したりしてた
-- サードパーティの CSS のクラス名を important してる場合は、カスケードレイヤー使えばいい
-- 擬似要素も含めた
-
-セレクターの詳細度(specificity)を大きい順に並べると
-
-1. !important
-2. インラインスタイル
-3. ID セレクタ
-4. クラスセレクタ
-5. 要素型セレクタ
-
-- [CSS セレクタの結合子](https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Selectors#%E7%B5%90%E5%90%88%E5%AD%90)
-- 子孫結合(Descendant combinator): 空白での結合。子、孫要素のことを表す
-- セレクターのクラス間が空白の場合は親子、ドット繋がりの場合は and、`,`の場合は or
-
-[色名の検索に使ってる](https://www.colordic.org/)
+- [サンプル実装したリポジトリ](https://github.com/nus3/p-css-cascade-layers)
