@@ -30,9 +30,9 @@ CSS の仕様において、要素にどのスタイルを適用するかはざ�
 
 ## 複雑な詳細度の管理
 
-どのスタイルを適用するか判断するのにセレクターの詳細度を用いる場合は、詳細度がより大きいものが適用されます。
+どのスタイルを適用するか判断するのにセレクターの詳細度を用いる場合は、詳細度がより高いものが適用されます。
 
-セレクターの詳細度は、大きい順に次のような順番になります。
+セレクターの詳細度は、高い順に次のような順番になります。
 
 1. ID セレクター: `#example`
 2. クラスセレクター: `.example`, 属性セレクター: `[type="radio"]`, 疑似クラス: `:hover`
@@ -74,9 +74,9 @@ Cascade Layers を使わない場合、同じ詳細度のセレクターは属�
 <button class="base nus3">royalblueになる</button>
 ```
 
-また、セレクターの詳細度は種類によって異なり、要素セレクター &lt; クラスセレクター &lt; ID セレクター の順に大きくなります。
+また、セレクターの詳細度は種類によって異なり、要素セレクター &lt; クラスセレクター &lt; ID セレクター の順に高くなります。
 
-次の場合、ID セレクター(`#btn`)のほうがクラスセレクター(`.nus3`) や要素セレクター(`button`)よりも詳細度が大きいので、`#btn` のスタイルが適用されます。
+次の場合、ID セレクター(`#btn`)のほうがクラスセレクター(`.nus3`) や要素セレクター(`button`)よりも詳細度が高いので、`#btn` のスタイルが適用されます。
 
 ```html
 <style>
@@ -166,7 +166,7 @@ Bootstrap や Materialize CSS、Bulma といった CSS フレームワークに�
 
 CSS フレームワークの一つである[Bulma](https://bulma.io/)を使って試してみましょう。
 
-本来、次のようなクラスをボタンに付与すると、Bulma で元から定義されている`.button.is-primary`が、後に追加した`.button-nus3`より詳細度が大きくなり、`.button-nus3`のスタイルは適用されません。
+本来、次のようなクラスをボタンに付与すると、Bulma で元から定義されている`.button.is-primary`が、後に追加した`.button-nus3`より詳細度が高くなり、`.button-nus3`のスタイルは適用されません。
 
 ```html
 <button class="button is-primary button-nus3">ボタン</button>
@@ -175,6 +175,11 @@ CSS フレームワークの一つである[Bulma](https://bulma.io/)を使っ�
 ```css
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 @import "styles/page.css";
+
+/* styles/page.cssで定義されているスタイル */
+.button-nus3 {
+  background-color: gold;
+}
 ```
 
 しかし次のように Cascade Layers を使い、[Bulma](https://bulma.io/)の CSS を`base`のレイヤーにしつつ、画面特有のスタイルを`styles/page.css`に定義することで、詳細度の影響を気にすることなく Bulma のスタイルを上書きすることができます。
