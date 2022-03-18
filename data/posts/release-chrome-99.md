@@ -23,7 +23,11 @@ Chrome99 で新しく追加された機能です。
 
 ### Chrome 100 and Firefox 100
 
-<!-- saji -->
+Chrome 100は今年の3月下旬、Firefox100は5月上旬にリリースされます。 これらは両方ともメジャーバージョン番号が3桁にロールオーバーするアップデートです。 UserAgentをパースしたバージョン番号を２桁として解釈しているコードがある場合、新しいバージョン番号によって問題が発生する可能性があります。
+
+Chromeでは、`＃force-major-version-to-100` フラグを有効にすることで現在のバージョンを100に上書きし、挙動を確認することができます。
+
+また、Firefox Nightlyでは「設定」メニューで、「Firefox100ユーザーエージェント文字列」オプションを有効にすることで同様の確認が可能です。 両ブラウザでバージョン番号の解釈が期待どおりに機能することを確認できるように、サイトをテストすることをお勧めします。
 
 ### CSS Cascasde Layers
 
@@ -37,7 +41,29 @@ https://developer.chrome.com/blog/cascade-layers/
 
 ### showPicker() for input elements
 
-<!-- saji -->
+HTML InputElementsに新しく`showPicker（）`メソッドが実装されました。
+
+これにより、日付だけでなく、時間、色、その他の`<input>`要素でブラウザーピッカーを表示するための標準的な方法が整備されました。
+
+利用する場合は、以下のように`<input>`要素で`showPicker（）`を呼び出します。また`try…catch`ブロックでこれらの処理を囲う事で、ブラウザーが`showPicker()`のAPIをサポートしていない場合、またはピッカーを表示できない場合のフォールバックを提供できます。
+
+```js
+const button = document.querySelector("button");
+const dateInput = document.querySelector("input");
+
+button.addEventListener("click", () => {
+  try {
+    dateInput.showPicker();
+    // Dateピッカーの表示.
+  } catch (error) {
+    // ピッカーを表示できない場合のフォールバック
+  }
+});
+```
+
+参考:
+
+[Show a browser picker for date, time, color, and files](https://developer.chrome.com/blog/new-in-chrome-99/#:~:text=Show%20a%20browser%20picker%20for%20date%2C%20time%2C%20color%2C%20and%20files)
 
 ### And more!
 
@@ -64,9 +90,7 @@ https://developer.chrome.com/ja/blog/new-in-devtools-99/
 
 ### Remove Battery Status API on insecure origins
 
-<!-- saji -->
-
-内容
+`Battery Status API`は、HTTPページやHTTPページに埋め込まれたHTTPSのiframeなどの安全でないオリジンでサポートされなくなりました。
 
 ### Remove font-family -webkit-standard
 
@@ -84,9 +108,12 @@ https://developer.chrome.com/ja/blog/new-in-devtools-99/
 
 ### Update WebCodecs to match the specification
 
-<!-- saji -->
+WebCodecs仕様変更により、仕様に反していた以下の2つの部分について修正しました。
 
-内容
+- `EncodeVideoChunkMetadata`オブジェクト内の`temporalLayerId`の場所
+- `VideoFrame()` コンストラクタでタイムスタンプ引数を指定しなかった際の挙動変更
+
+詳しくは[こちら](https://chromestatus.com/feature/5667793157488640)を参照してください。
 
 ## その他 Chrome Platform Status に記載されていたもの
 
@@ -96,13 +123,21 @@ https://developer.chrome.com/ja/blog/new-in-devtools-99/
 
 `Sec-Fetch-Dest`HTTP リクエストヘッダと`FetchEvent.request.destination`で適用されます。
 
+### Feature: "audioworklet" destination for AudioWorklet
+
+`Web Audio API`のオーディオ処理を別スレッドで実行する仕組みである、`AudioWorklet`のリクエストの送り先が`script`から`audioworklet`になりました。
+
+`Sec-Fetch-Dest`HTTP リクエストヘッダと`FetchEvent.request.destination`で適用されます。
+
 ### Feature: Allow infinity, -infinity and NaN in CSS calc()
 
-<!-- saji -->
+CSSの`calc()`関数で`infinity`, `-infinity`, `NaN` などのキーワード、及び`calc(1/0)` のように`infinity`や`NaN`に評価される式による値を許容するようになりました。
 
 ### Autofill in ShadowDOM
 
-<!-- saji -->
+`autofill`が`form` 要素内のフォームコントロールを収集する際に、`ShadowDOM`も参照するようになります。これにより`Shadow DOM`内部の入力フォームでも`autofill`が効くようになります。
+
+Web コンポーネントを採用する際、`input`要素のようなフォームコントロールを`ShadowDOM`で包むことが一般的になっていることを受けての改善となります。
 
 ### Convert adoptedStyleSheets to use ObservableArray
 
@@ -117,11 +152,13 @@ document.adoptedStyleSheets.push(newSheet); // これから
 
 ### Handwriting Recognition API
 
-<!-- saji -->
+OSなどにある既存の手書きの文字認識機能をweb上で扱えるようにするためのAPIが追加されました。
 
-### Origin Private File System extension: AccessHandle
+※現状このAPIが利用できるのはChromeOSのみで対応言語も英語に限られています。
 
-<!-- saji -->
+参考: 
+
+[Feature: Handwriting Recognition API](https://chromestatus.com/feature/5263213807534080)
 
 ### Unprefixed text-emphasis properties
 
@@ -130,10 +167,6 @@ CSS の text-emphasis プロパティが`-webkit`なしで使えるようにな�
 参考:
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/text-emphasis
-
-### Window Controls Overlay for Installed Desktop Web Apps
-
-<!-- saji -->
 
 ## V8 release v9.9
 
@@ -179,4 +212,43 @@ console.log(jaLocal.weekInfo);
 
 ### Intl Enumeration
 
-<!-- saji -->
+v8でサポートされている識別子の配列を返す`Intl.supportedValuesOf(code)`という新しい関数が追加されました。
+サポートされるコード値は以下の6つです。
+
+calendar
+```js
+Intl.supportedValuesOf('calendar')
+// ['buddhist', 'chinese', 'coptic', 'dangi', ...] 
+```
+
+collation
+```js
+Intl.supportedValuesOf('collation')
+// ['big5han', 'compat', 'dict', 'emoji', ...]
+```
+
+currency
+```js
+Intl.supportedValuesOf('currency')
+// ['ADP', 'AED', 'AFA', 'AFN', 'ALK', 'ALL', 'AMD', ...]
+```
+
+numberingSystem
+```js
+Intl.supportedValuesOf('numberingSystem')
+// ['adlm', 'ahom', 'arab', 'arabext', 'bali', ...]
+```
+
+timeZone
+```js
+Intl.supportedValuesOf('timeZone')
+// ['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers', ...]
+```
+
+unit
+```js
+Intl.supportedValuesOf('unit')
+// ['acre', 'bit', 'byte', 'celsius', 'centimeter', ...]
+```
+
+この新しいメソッドによって、Web開発者はどの値が実装でサポートされているかを簡単に発見できるようになります。
