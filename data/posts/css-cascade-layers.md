@@ -160,6 +160,48 @@ Cascade Layers では、まず`@layer`構文を使ってレイヤーを定義し
 
 このように、Cascade Layers を使うことで、詳細度ではなくレイヤーでスタイルをコントロールできるようになります。
 
+### Cascade Layers 内で`!important`を使った際のカスケード順の違い
+
+`!important`を使っていない場合、Cascade Layers で定義したレイヤー外のスタイルが優先して適用されます。
+
+これはカスケード順が、レイヤー内 &lt; レイヤー外 の順に高くなっているからです。
+
+次のコードでは、レイヤー外のスタイルが適用され、ボタンの背景色が`white`になります。
+
+```html
+<style>
+  @layer base {
+    .nus3 {
+      background-color: gold;
+    }
+  }
+
+  .nus3 {
+    background-color: white; /* このスタイルが適用される */
+  }
+</style>
+
+<button class="nus3">whiteになる</button>
+```
+
+しかし、`!important`を使ったスタイルの場合、このカスケード順が変わるので注意が必要です。
+
+```html
+<style>
+  @layer base {
+    .nus3 {
+      background-color: gold !important; /* このスタイルが適用される */
+    }
+  }
+
+  .nus3 {
+    background-color: white !important;
+  }
+</style>
+
+<button class="nus3">goldになる</button>
+```
+
 ## CSS フレームワークにも Cascade Layers は使える
 
 Bootstrap や Materialize CSS、Bulma といった CSS フレームワークにも Cascade Layers を使ってレイヤーを定義できます。
@@ -195,5 +237,7 @@ CSS フレームワークの一つである[Bulma](https://bulma.io/)を使っ�
 
 ## 参考リンクなど
 
+- https://www.w3.org/TR/css-cascade-5/
+- https://developer.mozilla.org/en-US/docs/Web/CSS/@layer
 - https://developer.chrome.com/blog/cascade-layers/
 - [サンプル実装したリポジトリ](https://github.com/nus3/p-css-cascade-layers)
