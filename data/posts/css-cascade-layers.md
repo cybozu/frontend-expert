@@ -2,23 +2,23 @@
 title: "Chrome99で実装された、セレクタの詳細度より優先されるCSS Cascade Layersについて"
 author: "nus3"
 createdAt: "2022-03-11"
-summary: "モダンブラウザの最新バージョンで実装されたCSS Cascade Layersの紹介"
+summary: "CSS Cascade Layersを使ったスタイルの管理方法について紹介します"
 tags:
   - CSS
 ---
 
-今月、[Chrome99 がリリース](https://developer.chrome.com/blog/new-in-chrome-99/)され、新機能として CSS Cascade Layers が実装されました。(このほかに Firefox97, Safari 15.4 でも実装されました)
+[Chrome99](https://developer.chrome.com/blog/new-in-chrome-99/)に新機能として CSS Cascade Layers が実装され、Firefox、Edge、Safari といった主要ブラウザで CSS Cascade Layers が使えるようになりました。
 
 ## CSS Cascade Layers とは
 
-これまで CSS の仕様では、どのスタイルを適用するかを、ざっくりと次のような順番で決定していました。(※カスケード順を省いて簡略的に記述しています)
+CSS の仕様において、要素にどのスタイルを適用するかはざっくりと次のような優先順位で決定されていました。(カスケード順を省いて簡略的に記述しています)
 
 1. `!important`
 2. インラインスタイル
 3. セレクターの詳細度
 4. 同じ詳細度であれば最後に宣言されたもの
 
-CSS Cascade Layers が導入されると次のような順番に変わります。
+ここに CSS Cascade Layers が導入されると次のように変わります。
 
 1. `!important`
 2. インラインスタイル
@@ -28,109 +28,127 @@ CSS Cascade Layers が導入されると次のような順番に変わります�
 
 ## 複雑な詳細度の管理
 
-どのスタイルを適用するか判断するのにセレクターの詳細度を用いる場合は、詳細度がより大きいものが適用されます。セレクターの詳細度の大きさは次のような順番で算出されます。(1 が大、3 が小)
+どのスタイルを適用するか判断するのにセレクターの詳細度を用いる場合は、詳細度がより大きいものが適用されます。
 
-1. ID セレクタ(`#example`)
-2. クラスセレクタ:(`.example`)、属性セレクタ(`[type="radio"]`)、疑似クラス(`:hover`)
-3. 要素型セレクタ(`h1`)と擬似要素(`::before`)
+セレクターの詳細度は、大きい順に次のような順番になります。
 
-また、単純にセレクターの種類だけでなく、数も詳細度には影響します。
+1. ID セレクター: `#example`
+2. クラスセレクター: `.example`, 属性セレクター: `[type="radio"]`, 疑似クラス: `:hover`
+3. 要素型セレクター: `h1`, 擬似要素: `::before`
+
+また、単純にセレクターの種類だけでなく、セレクターの数も詳細度に影響します。
 
 参考: https://specifishity.com/
 
-上記のような詳細度の仕様は、CSS の記述量が増えていくにつれ、詳細度をうまく管理できず意図しないスタイルが適用されることがままあります。意図せぬスタイルが適用されないようにクラス名の命名規則を厳格にする[BEM](http://getbem.com/naming/)などの設計手法を取り入れて対応することもあります。しかし、命名規則をベースとした設計手法でもサードパーティの CSS ライブラリの使用など膨大な量の CSS になった場合、全てを通した詳細度の把握をすることはなかなか大変です。
+CSS の記述量が増えていくにつれ、この詳細度をうまく管理できず意図しないスタイルが適用されることがままあります。意図しないスタイルが適用されないために、セレクターの命名規則を厳格にする[BEM](http://getbem.com/naming/)などの設計手法を取り入れて対応することもあります。
+
+しかし、命名規則をベースとした設計手法では、サードパーティの CSS ライブラリを使用する場合や、コントロールが難しいくらい多い記述量の CSS になってしまった場合、全体の詳細度を把握して管理することはなかなか大変です。
 
 ## Cascade Layers を入れるとどうなるのか
 
-Cascade Layers を導入すると、セレクターの詳細度よりも優先したレイヤーを定義することができるようになります。実際にコードで見てみましょう。
+Cascade Layers を導入すると、セレクターの詳細度よりも優先したレイヤーを定義することができるようになります。
+
+実際にコードで見てみましょう。
 
 ### 通常の詳細度を使ったスタイルの適用
 
-同じ詳細度の場合、最後に宣言されたスタイルが適用されます。
+Cascade Layers を使わない場合、同じ詳細度のセレクターは属性値での記述順に関わらず、スタイルシート内で最後に宣言されたスタイルが適用されます。
+
+次の場合、一番最後に記述されている `.base` が適用されます。
 
 ```html
+<style>
+  .base {
+    background-color: crimson;
+  }
+  .nus3 {
+    background-color: white;
+  }
+  .base {
+    background-color: royalblue; /* このスタイルが適用される */
+  }
+</style>
+
 <button class="base nus3">royalblueになる</button>
 ```
 
-```css
-.base {
-  background-color: crimson;
-}
-.nus3 {
-  background-color: white;
-}
-.base {
-  background-color: royalblue; /* このスタイルが適用されます */
-}
-```
+また、セレクターの詳細度は種類によって異なり、要素セレクター &lt; クラスセレクター &lt; ID セレクター の順に大きくなります。
 
-また、セレクターの詳細度は ID > Class > 要素 の順に大きさが異なります。次のサンプルコードでは ID セレクターのスタイルが適用されます
+次の場合、ID セレクター(`#btn`)のほうがクラスセレクター(`.nus3`) や要素セレクター(`button`)よりも詳細度が大きいので、`#btn` のスタイルが適用されます。
 
 ```html
+<style>
+  button {
+    background-color: coral;
+  }
+  #btn {
+    background-color: crimson; /* このスタイルが適用される */
+  }
+  .nus3 {
+    background-color: black;
+  }
+</style>
 <button id="btn" class="nus3">crimsonになる</button>
-```
-
-```css
-button {
-  background-color: coral;
-}
-#btn {
-  background-color: crimson; /* このスタイルが適用されます */
-}
-.nus3 {
-  background-color: black;
-}
 ```
 
 ### Cascade Layers を使ったスタイルの適用
 
-`@layer`構文を使い、レイヤーを定義します。`@layer base, page, utilities;`の部分で各レイヤーでのスタイルの優先順位を定義することができます。この場合、各レイヤーで定義したスタイルは
+Cascade Layers では、まず`@layer`構文を使ってレイヤーを定義します。
+
+```css
+`@layer base, page, utilities;`
+```
+
+このとき、base、page、utilities の 3 つのレイヤーを定義するとともに、レイヤーの優先順位を定義しています。
+
+この場合、各レイヤーのスタイルは後ろに定義したものほど優先度が高く、次のような優先度でスタイルが適用されます。
 
 1. utilities
 2. page
 3. base
 
-の順に適用されます。
-
 サンプルコードで詳しく見てみましょう。
 
-次のコードでは、`@layer`の記述を無視した場合、一つ目のボタンでは最後に宣言したクラスセレクタである`.nus3`のスタイルが適用され、`background-color: white;`になります。また二つ目のボタンではより詳細度の大きい ID セレクタの`#btn`のスタイルが適用され、`background-color: crimson;`になります。
+次のコードは、前述したコードをベースに `@layer` を追加したものです。
 
 ```html
-<button class="base nus3">goldになる</button>
-<button id="btn" class="nus3">goldになる</button>
+<style>
+  @layer base, page, utilities;
+
+  @layer utilities {
+    .shiny {
+      background-color: gold;
+    }
+  }
+
+  @layer page {
+    #btn {
+      background-color: crimson;
+    }
+  }
+
+  @layer base {
+    .base {
+      background-color: crimson;
+    }
+
+    .nus3 {
+      background-color: white;
+    }
+  }
+</style>
+
+<button class="shiny base nus3">goldになる</button>
+<button id="btn" class="shiny">goldになる</button>
 ```
 
-```css
-/* この部分は省略可能。省略した場合はlayer宣言した順番がスタイルの優先順になる(最後に宣言したものが一番優先される) */
-@layer base, page, utilities;
+１つ目のボタンはレイヤーがない場合には最後に宣言されている `.nus3` の `white` が適用されていましたが、優先度の高い utilities レイヤーに定義した `.shiny` の `gold` が適用されます。
 
-@layer base {
-  .base {
-    background-color: crimson;
-  }
+２つ目のボタンはレイヤーがない場合には ID セレクターの `#btn` のスタイルが適用されていましたが、この場合も utilities レイヤーに定義した `.shiny` のほうが優先度が高いため、 `gold` が適用されます。
 
-  .nus3 {
-    background-color: white;
-  }
-}
+次のサンプルページを開いて、DevTools で対象の要素をみると Cascade Layers が適用されているのがわかります。
 
-@layer page {
-  #btn {
-    background-color: crimson;
-  }
-}
-
-@layer utilities {
-  button {
-    background-color: gold;
-  }
-}
-```
-
-しかし実際、v99 以降の Chrome で見てみると適用されるスタイルは`background-color: gold;`になります。これはセレクタの詳細度よりも Cascade Layers で指定したレイヤー順が優先されているからです。
-
-[Chrome Dev](https://www.google.com/intl/ja/chrome/dev/)の DevTools で対象の要素をみると Cascade Layers が適用されているのがわかります。(※サンプルコードとはクラス名が違います。ややこしくてごめんなさい)
+[サンプルページ](https://c1r38o.csb.app/)
 
 ![DevToolsで確認すると実際にCascade Layersが適用されている](/frontend-expert/image/css-cascade-layers/devtools.png)
 
@@ -138,7 +156,7 @@ button {
 
 ## CSS フレームワークにも Cascade Layers は使える
 
-Bootstrap や Materialize CSS、Bulma といった CSS フレームワークにも Cascade Layers を使うことができます。
+Bootstrap や Materialize CSS、Bulma といった CSS フレームワークにも Cascade Layers を使ってレイヤーを定義できます。
 
 CSS フレームワークの一つである[Bulma](https://bulma.io/)を使って試してみましょう。
 
@@ -153,7 +171,7 @@ CSS フレームワークの一つである[Bulma](https://bulma.io/)を使っ�
 @import "styles/page.css";
 ```
 
-しかし次のサンプルコードのように Cascade Layers を使い、[Bulma](https://bulma.io/)を`base`のレイヤーにしつつ、画面特有のスタイルを`styles/page.css`に定義することで、詳細度を考えずに Bulma のスタイルを上書きすることができます。
+しかし次のように Cascade Layers を使い、[Bulma](https://bulma.io/)の CSS を`base`のレイヤーにしつつ、画面特有のスタイルを`styles/page.css`に定義することで、詳細度の影響を気にすることなく Bulma のスタイルを上書きすることができます。
 
 ```css
 @layer base, page;
@@ -162,7 +180,7 @@ CSS フレームワークの一つである[Bulma](https://bulma.io/)を使っ�
 @import "styles/page.css" layer(page);
 ```
 
-もちろん、対象ブラウザのサポート状況は考慮する必要がありますが、CSS の記述量が増えることが想定されるプロジェクトには、Cascade Layers をベースにした設計を検討してみてはいかがでしょうか。
+対象ブラウザのサポート状況は考慮する必要がありますが、CSS の記述量が増えることが想定されるプロジェクトには、Cascade Layers をベースにした設計を検討してみてはいかがでしょうか。
 
 ## 参考リンクなど
 
