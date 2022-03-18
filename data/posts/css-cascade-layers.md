@@ -154,6 +154,8 @@ Cascade Layers では、まず`@layer`構文を使ってレイヤーを定義し
 
 レイヤーの適用順が utilities > page > base になってるのがわかります。
 
+このように、Cascade Layers を使うことで、詳細度ではなくレイヤーでスタイルをコントロールできるようになります。
+
 ## CSS フレームワークにも Cascade Layers は使える
 
 Bootstrap や Materialize CSS、Bulma といった CSS フレームワークにも Cascade Layers を使ってレイヤーを定義できます。
