@@ -142,7 +142,7 @@ Safari 15.4 がリリースされ、リリースノートが公開されまし�
 
 ## Web Inspector
 
-- CSS Cascade Layer サポート追加に伴い、Web Inspector 上で `@layer` ルールセットを確認可能になった
+- CSS Cascade Layer サポート追加に伴い、Web Inspector 上で `@layer` ルールセットが確認可能になった
 - Flexbox および Grid で、視覚的なコントロールの追加
 - Style パネルでのプロパティや値の変更時の自動補完の強化
 - CSS 表示の改善。未使用の継承値の非表示や、フィルタによる検索、種類でのグループ化など
