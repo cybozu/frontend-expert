@@ -3,7 +3,7 @@ title: "主要ブラウザで使える！CSS Cascade Layers で新しいCSS設�
 author: "nus3"
 editor:
   - "nakajmg"
-createdAt: "2022-03-23"
+createdAt: "2022-03-22"
 summary: "CSS Cascade Layersを使ったスタイルの管理方法について紹介します"
 tags:
   - CSS
