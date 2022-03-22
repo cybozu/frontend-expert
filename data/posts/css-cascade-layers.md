@@ -3,7 +3,7 @@ title: "主要ブラウザで使える！CSS Cascade Layers で新しいCSS設�
 author: "nus3"
 editor:
   - "nakajmg"
-createdAt: "2022-03-18"
+createdAt: "2022-03-23"
 summary: "CSS Cascade Layersを使ったスタイルの管理方法について紹介します"
 tags:
   - CSS
@@ -160,7 +160,7 @@ Cascade Layers では、まず`@layer`構文を使ってレイヤーを定義し
 
 このように、Cascade Layers を使うことで、詳細度ではなくレイヤーでスタイルをコントロールできるようになります。
 
-### Cascade Layers 内で`!important`を使った際のカスケード順の違い
+### Cascade Layers 内で`!important`を使った際のスタイルの優先順位
 
 `!important`を使っていない場合、Cascade Layers で定義したレイヤー外のスタイルが優先して適用されます。
 
