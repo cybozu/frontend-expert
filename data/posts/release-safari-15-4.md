@@ -11,7 +11,7 @@ tags:
 🔗 https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/
 
 Safari 15.4 がリリースされました 🎉  
-ここまで Technology Preview として公開されていた様々な変更が含まれています。
+これまで Technology Preview として公開されていた様々な変更が含まれています。
 
 ## HTML
 
