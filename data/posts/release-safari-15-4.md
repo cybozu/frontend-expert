@@ -35,7 +35,7 @@ Safari 15.4 がリリースされました 🎉
 
 ### Solving Pain Points
 
-- 主にモバイル向けに、viewport 指定に応じた新しい CSS 値指定が可能に
+- 主にモバイル向けに、viewport に応じた新しい値の指定が可能に
   - `svh`, `svw` → メニューバーなどを除いた最小の viewport
   - `dvh`, `dvw` → スクロールによるメニューバーなどの表示切り替えに応じて変化する viewport
   - `lvh`, `lvw` → メニューバーなどが存在しない状態を想定した最大の viewport
