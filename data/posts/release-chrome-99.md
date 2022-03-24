@@ -2,7 +2,7 @@
 title: "CSS Cascasde Layersの追加など、Chrome 99 リリースノートまとめ"
 author: "Saji"
 editor: "nus3"
-createdAt: "2022-03-18"
+createdAt: "2022-03-24"
 summary: "Chrome 99 のリリースノートの要約です"
 tags:
   - Releasenote
