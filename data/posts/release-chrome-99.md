@@ -23,29 +23,29 @@ Chrome99 で新しく追加された機能です。
 
 ### Chrome 100 and Firefox 100
 
-Chrome 100は今年の3月下旬、Firefox100は5月上旬にリリースされます。 これらは両方ともメジャーバージョン番号が3桁にロールオーバーするアップデートです。 UserAgentをパースしたバージョン番号を２桁として解釈しているコードがある場合、新しいバージョン番号によって問題が発生する可能性があります。
+Chrome 100 は今年の 3 月下旬、Firefox100 は 5 月上旬にリリースされます。 これらは両方ともメジャーバージョン番号が 3 桁にロールオーバーするアップデートです。 UserAgent をパースしたバージョン番号を２桁として解釈しているコードがある場合、新しいバージョン番号によって問題が発生する可能性があります。
 
-Chromeでは、`＃force-major-version-to-100` フラグを有効にすることで現在のバージョンを100に上書きし、挙動を確認することができます。
+Chrome では、`＃force-major-version-to-100` フラグを有効にすることで現在のバージョンを 100 に上書きし、挙動を確認することができます。
 
-また、Firefox Nightlyでは「設定」メニューで、「Firefox100ユーザーエージェント文字列」オプションを有効にすることで同様の確認が可能です。 両ブラウザでバージョン番号の解釈が期待どおりに機能することを確認できるように、サイトをテストすることをお勧めします。
+また、Firefox Nightly では「設定」メニューで、「Firefox100 ユーザーエージェント文字列」オプションを有効にすることで同様の確認が可能です。 両ブラウザでバージョン番号の解釈が期待どおりに機能することを確認できるように、サイトをテストすることをお勧めします。
 
 ### CSS Cascasde Layers
 
 CSS Cascade Layers が Chrome99、Firefox 97、Safari 15.4 Beta でサポートされました！
 
-CSS セレクタの詳細度を上回るルールを`@layer`で定義することができるようになります。詳細は nus3 が別記事で書こうと思うのでお楽しみに！
+CSS セレクタの詳細度を上回るルールを`@layer`で定義することができるようになります。
 
-参考:
+詳細は [@nus3](https://twitter.com/nus3_) が別途記事を書いたので次のリンクをご参考ください。
 
-https://developer.chrome.com/blog/cascade-layers/
+https://cybozu.github.io/frontend-expert/posts/css-cascade-layers
 
 ### showPicker() for input elements
 
-HTML InputElementsに新しく`showPicker（）`メソッドが実装されました。
+HTML InputElements に新しく`showPicker（）`メソッドが実装されました。
 
 これにより、日付だけでなく、時間、色、その他の`<input>`要素でブラウザーピッカーを表示するための標準的な方法が整備されました。
 
-利用する場合は、以下のように`<input>`要素で`showPicker（）`を呼び出します。また`try…catch`ブロックでこれらの処理を囲う事で、ブラウザーが`showPicker()`のAPIをサポートしていない場合、またはピッカーを表示できない場合のフォールバックを提供できます。
+利用する場合は、以下のように`<input>`要素で`showPicker（）`を呼び出します。また`try…catch`ブロックでこれらの処理を囲う事で、ブラウザーが`showPicker()`の API をサポートしていない場合、またはピッカーを表示できない場合のフォールバックを提供できます。
 
 ```js
 const button = document.querySelector("button");
@@ -90,7 +90,7 @@ https://developer.chrome.com/ja/blog/new-in-devtools-99/
 
 ### Remove Battery Status API on insecure origins
 
-`Battery Status API`は、HTTPページやHTTPページに埋め込まれたHTTPSのiframeなどの安全でないオリジンでサポートされなくなりました。
+`Battery Status API`は、HTTP ページや HTTP ページに埋め込まれた HTTPS の iframe などの安全でないオリジンでサポートされなくなりました。
 
 ### Remove font-family -webkit-standard
 
@@ -108,7 +108,7 @@ https://developer.chrome.com/ja/blog/new-in-devtools-99/
 
 ### Update WebCodecs to match the specification
 
-WebCodecs仕様変更により、仕様に反していた以下の2つの部分について修正しました。
+WebCodecs 仕様変更により、仕様に反していた以下の 2 つの部分について修正しました。
 
 - `EncodeVideoChunkMetadata`オブジェクト内の`temporalLayerId`の場所
 - `VideoFrame()` コンストラクタでタイムスタンプ引数を指定しなかった際の挙動変更
@@ -131,7 +131,7 @@ WebCodecs仕様変更により、仕様に反していた以下の2つの部分�
 
 ### Feature: Allow infinity, -infinity and NaN in CSS calc()
 
-CSSの`calc()`関数で`infinity`, `-infinity`, `NaN` などのキーワード、及び`calc(1/0)` のように`infinity`や`NaN`に評価される式による値を許容するようになりました。
+CSS の`calc()`関数で`infinity`, `-infinity`, `NaN` などのキーワード、及び`calc(1/0)` のように`infinity`や`NaN`に評価される式による値を許容するようになりました。
 
 ### Autofill in ShadowDOM
 
@@ -152,11 +152,11 @@ document.adoptedStyleSheets.push(newSheet); // これから
 
 ### Handwriting Recognition API
 
-OSなどにある既存の手書きの文字認識機能をweb上で扱えるようにするためのAPIが追加されました。
+OS などにある既存の手書きの文字認識機能を web 上で扱えるようにするための API が追加されました。
 
-※現状このAPIが利用できるのはChromeOSのみで対応言語も英語に限られています。
+※現状この API が利用できるのは ChromeOS のみで対応言語も英語に限られています。
 
-参考: 
+参考:
 
 [Feature: Handwriting Recognition API](https://chromestatus.com/feature/5263213807534080)
 
@@ -212,43 +212,49 @@ console.log(jaLocal.weekInfo);
 
 ### Intl Enumeration
 
-v8でサポートされている識別子の配列を返す`Intl.supportedValuesOf(code)`という新しい関数が追加されました。
-サポートされるコード値は以下の6つです。
+v8 でサポートされている識別子の配列を返す`Intl.supportedValuesOf(code)`という新しい関数が追加されました。
+サポートされるコード値は以下の 6 つです。
 
 calendar
+
 ```js
-Intl.supportedValuesOf('calendar')
-// ['buddhist', 'chinese', 'coptic', 'dangi', ...] 
+Intl.supportedValuesOf("calendar");
+// ['buddhist', 'chinese', 'coptic', 'dangi', ...]
 ```
 
 collation
+
 ```js
-Intl.supportedValuesOf('collation')
+Intl.supportedValuesOf("collation");
 // ['big5han', 'compat', 'dict', 'emoji', ...]
 ```
 
 currency
+
 ```js
-Intl.supportedValuesOf('currency')
+Intl.supportedValuesOf("currency");
 // ['ADP', 'AED', 'AFA', 'AFN', 'ALK', 'ALL', 'AMD', ...]
 ```
 
 numberingSystem
+
 ```js
-Intl.supportedValuesOf('numberingSystem')
+Intl.supportedValuesOf("numberingSystem");
 // ['adlm', 'ahom', 'arab', 'arabext', 'bali', ...]
 ```
 
 timeZone
+
 ```js
-Intl.supportedValuesOf('timeZone')
+Intl.supportedValuesOf("timeZone");
 // ['Africa/Abidjan', 'Africa/Accra', 'Africa/Addis_Ababa', 'Africa/Algiers', ...]
 ```
 
 unit
+
 ```js
-Intl.supportedValuesOf('unit')
+Intl.supportedValuesOf("unit");
 // ['acre', 'bit', 'byte', 'celsius', 'centimeter', ...]
 ```
 
-この新しいメソッドによって、Web開発者はどの値が実装でサポートされているかを簡単に発見できるようになります。
+この新しいメソッドによって、Web 開発者はどの値が実装でサポートされているかを簡単に発見できるようになります。
