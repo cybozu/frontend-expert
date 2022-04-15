@@ -3,6 +3,7 @@ import Head from "next/head";
 import styles from "./Layout.module.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { usePagesViews } from "nextjs-google-analytics";
 
 const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
 const SITE_URL = "https://cybozu.github.io/frontend-expert";
@@ -39,6 +40,7 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
   const descriptionText = useMemo(() => {
     return description ?? DESCRIPTION;
   }, [description]);
+  usePagesViews();
   return (
     <div className={styles.layout}>
       <Head>
