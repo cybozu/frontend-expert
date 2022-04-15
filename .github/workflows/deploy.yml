@@ -14,10 +14,10 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "14"
-        env:
-          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
       - run: yarn install --frozen-lockfile
       - run: yarn build
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
       - run: yarn export
       - run: touch ./out/.nojekyll
       - uses: JamesIves/github-pages-deploy-action@3.7.1
