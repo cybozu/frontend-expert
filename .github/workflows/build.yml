@@ -13,3 +13,5 @@ jobs:
           node-version: "14"
       - run: yarn install --frozen-lockfile
       - run: yarn build
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
