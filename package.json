@@ -15,6 +15,7 @@
     "gen:new-post": "tsm ./scripts/new-post.ts"
   },
   "dependencies": {
+    "@emotion/css": "^11.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
