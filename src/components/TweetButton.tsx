@@ -1,24 +1,25 @@
-import { useEffect } from "react";
-import styles from "./TweetButton.module.css";
+import { css } from "@emotion/css";
+import Script from "next/script";
+import { useRef } from "react";
 
 export const TweetButton = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://platform.twitter.com/widgets.js";
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
+  const buttonEl = useRef(null);
   return (
     <>
-      <p className={styles.tweetButton}>
+      <Script
+        src="https://platform.twitter.com/widgets.js"
+        onLoad={() => {
+          (window as any).twttr?.widgets?.load(buttonEl.current);
+        }}
+      />
+
+      <p className={style}>
         <a
           href="https://twitter.com/share?ref_src=twsrc%5Etfw"
           className="twitter-share-button"
           data-show-count="false"
           data-lang="ja"
+          ref={buttonEl}
         >
           Tweet
         </a>
@@ -26,3 +27,7 @@ export const TweetButton = () => {
     </>
   );
 };
+
+const style = css`
+  margin-top: 32px;
+`;
