@@ -1,9 +1,9 @@
 import { useMemo, FC } from "react";
 import Head from "next/head";
-import styles from "./Layout.module.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { usePagesViews } from "nextjs-google-analytics";
+import { css } from "@emotion/css";
 
 const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
 const SITE_URL = "https://cybozu.github.io/frontend-expert";
@@ -42,7 +42,7 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
   }, [description]);
   usePagesViews();
   return (
-    <div className={styles.layout}>
+    <div className={style}>
       <Head>
         <title>{pageTitle}</title>
         <meta charSet="utf-8" />
@@ -80,10 +80,27 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
         />
       </Head>
       <Header />
-      <main className={styles.main}>
-        <div className={styles.content}>{children}</div>
+      <main className="main">
+        <div className="content">{children}</div>
       </main>
       <Footer />
     </div>
   );
 };
+
+const style = css`
+  width: 100%;
+
+  .main {
+    max-width: 100%;
+    background-color: white;
+  }
+
+  .main .content {
+    margin: 0 auto;
+    max-width: var(--content-width);
+    box-sizing: border-box;
+    padding: 1rem 1rem 1.5rem;
+    min-height: 400px;
+  }
+`;

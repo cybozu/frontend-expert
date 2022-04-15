@@ -1,12 +1,12 @@
 import { VFC } from "react";
-import styles from "./Header.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { css } from "@emotion/css";
 
 export const Header: VFC = () => {
   return (
-    <header className={styles.header}>
-      <div className={styles.content}>
+    <header className={style}>
+      <div className="content">
         <h1>
           <Link href="/" passHref>
             {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -21,7 +21,7 @@ export const Header: VFC = () => {
             </a>
           </Link>
         </h1>
-        <nav className={styles.navigation}>
+        <nav className="navigation">
           <ul>
             <li>
               <Link href="/members">Members</Link>
@@ -44,3 +44,40 @@ export const Header: VFC = () => {
     </header>
   );
 };
+
+const style = css`
+  padding: 1.2rem 0 1rem;
+  background-color: var(--primary-color);
+
+  .content {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .navigation ul {
+    margin: 0;
+    list-style: none;
+    display: flex;
+  }
+
+  .navigation ul li {
+    padding: 0.2rem 0;
+    font-size: 1rem;
+  }
+
+  .navigation ul li:not(:last-child)::after {
+    content: "/";
+    margin: 0 0.4rem;
+    color: var(--light-font-color);
+  }
+
+  a {
+    color: var(--light-font-color);
+  }
+`;

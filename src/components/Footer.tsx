@@ -1,10 +1,10 @@
+import { css } from "@emotion/css";
 import { FC } from "react";
-import styles from "./Footer.module.css";
 
 export const Footer: FC = () => {
   return (
-    <footer className={styles.footer}>
-      <div className={styles.content}>
+    <footer className={style}>
+      <div className="content">
         <ul>
           <li>
             <a href="https://cybozu.co.jp/">サイボウズ 企業情報</a>
@@ -29,3 +29,33 @@ export const Footer: FC = () => {
     </footer>
   );
 };
+
+const style = css`
+  padding: 2.4rem 0;
+  background-color: var(--primary-color);
+  color: white;
+  .content {
+    max-width: var(--content-width);
+    padding: 0 1.2rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+
+  a {
+    color: white;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: 2.5rem;
+  }
+
+  ul li {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  small {
+    font-size: 1rem;
+  }
+`;
