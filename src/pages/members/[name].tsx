@@ -10,10 +10,10 @@ const MemberSection = ({ member }: { member: Member }) => {
   return (
     <div className={style}>
       <MemberIcon name={member.name} width="200" height="200" />
-      <h1 className={"memberName"}>{`${member.name}${
+      <h1 className="memberName">{`${member.name}${
         member.active ? "" : "(inactive)"
       }`}</h1>
-      <ul className={"links"}>
+      <ul className="links">
         <li>
           <a href={`https://twitter.com/${member.twitterId}`}>Twitter</a>
         </li>
@@ -35,7 +35,7 @@ const MemberPage = ({
   return (
     <Layout title={member.name}>
       <MemberSection member={member} />
-      <div className={"posts"}>
+      <div className="posts">
         <Posts posts={posts} />
       </div>
     </Layout>
@@ -75,29 +75,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default MemberPage;
 
 const style = css`
-  
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  .memberName {
+    font-size: 3rem;
+  }
 
-.memberName {
-  font-size: 3rem;
-}
+  .links {
+    list-style: none;
+    display: flex;
+  }
 
-.links {
-  list-style: none;
-  display: flex;
-}
+  .links li {
+    font-size: 1.4rem;
+    margin-right: 1.2rem;
+  }
 
-.links li {
-  font-size: 1.4rem;
-  margin-right: 1.2rem;
-}
-
-.posts {
-  margin-top: 1.2rem;
-}
-
-
-`
+  .posts {
+    margin-top: 1.2rem;
+  }
+`;

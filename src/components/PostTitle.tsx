@@ -3,14 +3,16 @@ import { loadDefaultJapaneseParser } from "budoux";
 
 const parser = loadDefaultJapaneseParser();
 
-export const PostTitle = ({title}: {title: string}) => {
-  return       <h2
-  className={style}
-  dangerouslySetInnerHTML={{
-    __html: parser.translateHTMLString(title),
-  }}
-/>
-}
+export const PostTitle = ({ title }: { title: string }) => {
+  return (
+    <h2
+      className={style}
+      dangerouslySetInnerHTML={{
+        __html: parser.translateHTMLString(title),
+      }}
+    />
+  );
+};
 
 const style = css`
   margin-left: 0;
@@ -25,4 +27,4 @@ const style = css`
   text-rendering: optimizeLegibility;
   font-size: 1.8rem;
   line-height: 1.5;
-`
+`;

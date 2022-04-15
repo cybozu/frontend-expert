@@ -9,11 +9,11 @@ const MemberItem = ({ member }: { member: Member }) => {
   return (
     <li className={memberStyle}>
       <MemberIcon name={member.name} width="100" height="100" />
-      <div className={"details"}>
-        <p className={"name"}>
+      <div className="details">
+        <p className="name">
           <Link href={`/members/${member.name}`}>{member.name}</Link>
         </p>
-        <div className={"links"}>
+        <div className="links">
           <ul>
             <li>
               Twitter:{" "}
@@ -57,36 +57,36 @@ const membersStyle = css`
   margin: auto;
   max-width: 800px;
 
-@media (max-width: 600px) {
+  @media (max-width: 600px) {
     max-width: 320px;
     margin: 0 auto;
-}
-`
+  }
+`;
 
 const memberStyle = css`
   margin-bottom: 2.5rem;
   display: flex;
 
-.details {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0.2rem 0;
-  padding-left: 1.2rem;
-}
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.2rem 0;
+    padding-left: 1.2rem;
+  }
 
-.details .name {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
+  .details .name {
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
 
-.details .links ul {
-  list-style-type: none;
-}
+  .details .links ul {
+    list-style-type: none;
+  }
 
-.details .links ul li {
-  font-size: 0.8rem;
-}
-`
+  .details .links ul li {
+    font-size: 0.8rem;
+  }
+`;
 
 export default Members;

@@ -5,13 +5,13 @@ import Link from "next/link";
 import { Member } from "../utils/members";
 import { MemberIcon } from "./MemberIcon";
 
-const Author = ({ author, label,  }: { author: Member; label?: string }) => {
+const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
     <div className={authorStyle}>
       <MemberIcon width="60" height="60" name={author.name} />
-      <div className={"authorInfo"}>
-        <div className={"label"}>{label ? label : "Author"}</div>
-        <span className={"authorName"}>
+      <div className="authorInfo">
+        <div className="label">{label ? label : "Author"}</div>
+        <span className="authorName">
           <Link href={`/members/${author.name}`}>{author.name}</Link>
         </span>
         <ul>
@@ -19,7 +19,7 @@ const Author = ({ author, label,  }: { author: Member; label?: string }) => {
             <a
               href={`https://twitter.com/${author.twitterId}`}
               aria-label="twitter"
-              className={"icon"}
+              className="icon"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -30,7 +30,7 @@ const Author = ({ author, label,  }: { author: Member; label?: string }) => {
             <a
               href={`https://github.com/${author.githubUsername}`}
               aria-label="github"
-              className={"icon"}
+              className="icon"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -48,65 +48,67 @@ const authorStyle = css`
   height: 60px;
   color: #333;
   .label {
-  width: 100%;
-  font-size: 0.6rem;
-}
+    width: 100%;
+    font-size: 0.6rem;
+  }
 
-a {
-  color: inherit;
-}
+  a {
+    color: inherit;
+  }
 
-.icon {
-  display: block;
-  width: 18px;
-  height: 18px;
-  font-size: 1rem;
-  color: #444;
-}
+  .icon {
+    display: block;
+    width: 18px;
+    height: 18px;
+    font-size: 1rem;
+    color: #444;
+  }
 
-.authorName {
-  font-size: 0.9rem;
-  line-height: 1;
-}
+  .authorName {
+    font-size: 0.9rem;
+    line-height: 1;
+  }
 
-.authorInfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 0.6rem;
-  font-size: 1rem;
-  flex-grow: 1;
-}
+  .authorInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 0.6rem;
+    font-size: 1rem;
+    flex-grow: 1;
+  }
 
-.authorInfo ul {
-  list-style: none;
-  display: flex;
-}
+  .authorInfo ul {
+    list-style: none;
+    display: flex;
+  }
 
-.authorInfo ul li:not(:last-of-type) {
-  margin-right: 0.6rem;
-}
-`
+  .authorInfo ul li:not(:last-of-type) {
+    margin-right: 0.6rem;
+  }
+`;
 
 type Props = {
-  author: Member
-  editors?: Member[]
-}
+  author: Member;
+  editors?: Member[];
+};
 
-export const AuthorAndEditor = ({author, editors}: Props) => {
-  return <div className={authorsStyle}>
-    <div className="author">
-      <Author author={author} />
-    </div>
-    {editors && (
-      <div className={"editors"}>
-        {editors.map((editor) => (
-          <Author key={editor.name} author={editor} label="Editor" />
-        ))}
+export const AuthorAndEditor = ({ author, editors }: Props) => {
+  return (
+    <div className={authorsStyle}>
+      <div className="author">
+        <Author author={author} />
       </div>
-    )}
-  </div>
-}
+      {editors && (
+        <div className="editors">
+          {editors.map((editor) => (
+            <Author key={editor.name} author={editor} label="Editor" />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const authorsStyle = css`
   display: flex;
@@ -121,4 +123,4 @@ const authorsStyle = css`
     padding-left: 16px;
     border-left: 1px solid #d3d3d3;
   }
-`
+`;
