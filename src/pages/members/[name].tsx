@@ -2,18 +2,18 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { Layout } from "../../components/Layout";
 import { getMemberByName, Member, members } from "../../utils/members";
 import { getPostsByAuthor, PostData } from "../../utils/posts";
-import styles from "./member.module.css";
 import { Posts } from "../../components/Posts";
 import { MemberIcon } from "../../components/MemberIcon";
+import { css } from "@emotion/css";
 
 const MemberSection = ({ member }: { member: Member }) => {
   return (
-    <div className={styles.member}>
+    <div className={style}>
       <MemberIcon name={member.name} width="200" height="200" />
-      <h1 className={styles.memberName}>{`${member.name}${
+      <h1 className={"memberName"}>{`${member.name}${
         member.active ? "" : "(inactive)"
       }`}</h1>
-      <ul className={styles.links}>
+      <ul className={"links"}>
         <li>
           <a href={`https://twitter.com/${member.twitterId}`}>Twitter</a>
         </li>
@@ -35,7 +35,7 @@ const MemberPage = ({
   return (
     <Layout title={member.name}>
       <MemberSection member={member} />
-      <div className={styles.posts}>
+      <div className={"posts"}>
         <Posts posts={posts} />
       </div>
     </Layout>
@@ -73,3 +73,31 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default MemberPage;
+
+const style = css`
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+.memberName {
+  font-size: 3rem;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+}
+
+.links li {
+  font-size: 1.4rem;
+  margin-right: 1.2rem;
+}
+
+.posts {
+  margin-top: 1.2rem;
+}
+
+
+`
