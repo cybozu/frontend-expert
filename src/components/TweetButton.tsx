@@ -4,9 +4,7 @@ import Script from "next/script";
 export const TweetButton = () => {
   return (
     <>
-      <Script
-        src="https://platform.twitter.com/widgets.js"
-      />
+      <Script src="https://platform.twitter.com/widgets.js" />
 
       <p className={style}>
         <a
