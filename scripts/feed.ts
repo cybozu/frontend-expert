@@ -5,6 +5,7 @@ import { formatRFC3339 as format, parse as parseDateString } from "date-fns";
 // @ts-ignore
 import { minify } from "minify-xml";
 import { getPosts, WEBSITE_URL, isNodeError } from "./utils";
+import { encode } from "html-entities";
 
 const __dirname = dirname(import.meta);
 const OUT_DIR_PATH = path.join(__dirname, "..", "out");
@@ -81,11 +82,11 @@ async function getEntries(): Promise<Entry[]> {
       )
     );
     return {
-      title: postMeta.title,
+      title: encode(postMeta.title, { level: "xml" }),
       id: postMeta.url,
       entryUrl: postMeta.url,
       updatedAt,
-      summary: postMeta.summary,
+      summary: encode(postMeta.summary, { level: "xml" }),
     };
   });
 }
