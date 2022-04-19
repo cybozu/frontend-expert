@@ -23,7 +23,7 @@ const Author = ({ author, label }: { author: Member; label?: string }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={faTwitter} />
+              <FontAwesomeIcon icon={faTwitter} width="18" height="18" />
             </a>
           </li>
           <li>
@@ -34,7 +34,7 @@ const Author = ({ author, label }: { author: Member; label?: string }) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <FontAwesomeIcon icon={faGithubAlt} />
+              <FontAwesomeIcon icon={faGithubAlt} width="18" height="18" />
             </a>
           </li>
         </ul>
@@ -58,10 +58,12 @@ const authorStyle = css`
 
   .icon {
     display: block;
-    width: 18px;
-    height: 18px;
-    font-size: 1rem;
-    color: #444;
+    svg {
+      color: #444;
+      width: 18px;
+      height: 18px;
+      font-size: 1rem;
+    }
   }
 
   .authorName {
