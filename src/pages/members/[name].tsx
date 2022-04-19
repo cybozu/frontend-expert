@@ -1,14 +1,15 @@
+/** @jsxImportSource @emotion/react */
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { Layout } from "../../components/Layout";
 import { getMemberByName, Member, members } from "../../utils/members";
 import { getPostsByAuthor, PostData } from "../../utils/posts";
 import { Posts } from "../../components/Posts";
 import { MemberIcon } from "../../components/MemberIcon";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 const MemberSection = ({ member }: { member: Member }) => {
   return (
-    <div className={style}>
+    <div css={style}>
       <MemberIcon name={member.name} width="200" height="200" />
       <h1 className="memberName">{`${member.name}${
         member.active ? "" : "(inactive)"

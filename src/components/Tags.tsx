@@ -1,9 +1,10 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import Link from "next/link";
 
 export const Tags = ({ tags }: { tags: string[] }) => {
   return (
-    <div className={style}>
+    <div css={style}>
       {tags.map((tag) => {
         return (
           <Link key={tag} href={`/tags/${tag}`} passHref>

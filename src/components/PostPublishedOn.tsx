@@ -1,8 +1,9 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 export const PostPublishedOn = ({ createdAt }: { createdAt: string }) => {
   return (
-    <div className={style}>
+    <div css={style}>
       Published on{" "}
       <time dateTime={createdAt} itemProp="datePublished">
         {createdAt}

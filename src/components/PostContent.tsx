@@ -1,8 +1,9 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { FC } from "react";
 
 export const PostContent: FC = ({ children }) => {
-  return <div className={style}>{children}</div>;
+  return <div css={style}>{children}</div>;
 };
 
 const style = css`

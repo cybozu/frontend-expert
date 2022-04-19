@@ -1,4 +1,5 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { faGithubAlt, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -7,7 +8,7 @@ import { MemberIcon } from "./MemberIcon";
 
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
-    <div className={authorStyle}>
+    <div css={authorStyle}>
       <MemberIcon width="60" height="60" name={author.name} />
       <div className="authorInfo">
         <div className="label">{label ? label : "Author"}</div>
@@ -97,7 +98,7 @@ type Props = {
 
 export const AuthorAndEditor = ({ author, editors }: Props) => {
   return (
-    <div className={authorsStyle}>
+    <div css={authorsStyle}>
       <div className="author">
         <Author author={author} />
       </div>

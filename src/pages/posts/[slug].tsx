@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { Layout } from "../../components/Layout";
 import { getAllPosts, getPostBySlug } from "../../utils/posts";
 import type { PostData } from "../../utils/posts";
-import "prismjs/themes/prism.css";
 import { getMemberByName, getMembersByName } from "../../utils/members";
 import { Tags } from "../../components/Tags";
 import { PostContent } from "../../components/PostContent";

@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@emotion/css": "^11.9.0",
+    "@emotion/react": "^11.9.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@cybozu/eslint-config": "^16.0.1",
+    "@emotion/babel-plugin": "^11.9.2",
     "@next/eslint-plugin-next": "^12.0.3",
     "@types/mdast": "^3.0.10",
     "@types/node": "^16.7.8",

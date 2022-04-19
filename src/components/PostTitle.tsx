@@ -1,4 +1,5 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { loadDefaultJapaneseParser } from "budoux";
 
 const parser = loadDefaultJapaneseParser();
@@ -6,7 +7,7 @@ const parser = loadDefaultJapaneseParser();
 export const PostTitle = ({ title }: { title: string }) => {
   return (
     <h2
-      className={style}
+      css={style}
       dangerouslySetInnerHTML={{
         __html: parser.translateHTMLString(title),
       }}

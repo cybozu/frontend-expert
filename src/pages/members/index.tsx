@@ -1,13 +1,14 @@
+/** @jsxImportSource @emotion/react */
 import { Layout } from "../../components/Layout";
 import { PageLayout } from "../../components/PageLayout";
 import { activeMembers, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 const MemberItem = ({ member }: { member: Member }) => {
   return (
-    <li className={memberStyle}>
+    <li css={memberStyle}>
       <MemberIcon name={member.name} width="100" height="100" />
       <div className="details">
         <p className="name">
@@ -42,7 +43,7 @@ const Members = () => (
   <Layout title="Members">
     <PageLayout>
       <h2>Members</h2>
-      <ul className={membersStyle}>
+      <ul css={membersStyle}>
         {activeMembers.map((member) => {
           return <MemberItem key={member.name} member={member} />;
         })}

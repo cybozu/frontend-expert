@@ -1,11 +1,12 @@
+/** @jsxImportSource @emotion/react */
 import { VFC } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 export const Header: VFC = () => {
   return (
-    <header className={style}>
+    <header css={style}>
       <div className="content">
         <h1>
           <Link href="/" passHref>

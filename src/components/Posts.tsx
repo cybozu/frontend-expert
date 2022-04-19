@@ -1,4 +1,5 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import Link from "next/link";
 import { PostData } from "../utils/posts";
 
@@ -7,7 +8,7 @@ type Props = {
 };
 export const Posts = ({ posts }: Props) => {
   return (
-    <div className={style}>
+    <div css={style}>
       {posts.map(({ slug, metaData }) => (
         <div key={slug} className="item">
           <Link href={`/posts/${slug}`}>

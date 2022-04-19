@@ -1,9 +1,10 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 import { FC } from "react";
 
 export const Footer: FC = () => {
   return (
-    <footer className={style}>
+    <footer css={style}>
       <div className="content">
         <ul>
           <li>
