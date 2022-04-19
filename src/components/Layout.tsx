@@ -1,9 +1,10 @@
+/** @jsxImportSource @emotion/react */
 import { useMemo, FC } from "react";
 import Head from "next/head";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { usePagesViews } from "nextjs-google-analytics";
-import { css } from "@emotion/css";
+import { css } from "@emotion/react";
 
 const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
 const SITE_URL = "https://cybozu.github.io/frontend-expert";
@@ -42,7 +43,7 @@ export const Layout: FC<Props> = ({ children, title, slug, description }) => {
   }, [description]);
   usePagesViews();
   return (
-    <div className={style}>
+    <div css={style}>
       <Head>
         <title>{pageTitle}</title>
         <meta charSet="utf-8" />

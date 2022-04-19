@@ -1,8 +1,9 @@
-import { css } from "@emotion/css";
+/** @jsxImportSource @emotion/react */
+import { css } from "@emotion/react";
 
 export const PostContact = () => {
   return (
-    <div className={style}>
+    <div css={style}>
       記事に関する報告などは
       <a
         href="https://github.com/cybozu/frontend-expert/issues"
