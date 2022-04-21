@@ -4,6 +4,7 @@ import { Layout } from "../../../components/Layout";
 import { PageLayout } from "../../../components/PageLayout";
 import { Posts } from "../../../components/Posts";
 import { PostsPaginate } from "../../../components/PostsPaginate";
+import { postsPerPage } from "../../../utils/constants";
 import { getAllPosts, PostData } from "../../../utils/posts";
 
 type Props = {
@@ -22,8 +23,6 @@ const PagerPage = ({ posts, pageNum, totalPage }: Props) => (
 );
 export default PagerPage;
 
-const perPage = 10;
-
 interface Params extends ParsedUrlQuery {
   pageNum: string;
 }
@@ -32,10 +31,10 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
   const posts = await getAllPosts();
-  const totalPage = Math.ceil(posts.length / perPage);
+  const totalPage = Math.ceil(posts.length / postsPerPage);
   const pageNum = parseInt(params?.pageNum || "1", 10);
-  const start = (pageNum - 1) * perPage;
-  const end = start + perPage;
+  const start = (pageNum - 1) * postsPerPage;
+  const end = start + postsPerPage;
   const sliced = posts.slice(start, end);
 
   return {
@@ -45,7 +44,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const posts = await getAllPosts();
-  const totalPage = Math.ceil(posts.length / perPage);
+  const totalPage = Math.ceil(posts.length / postsPerPage);
 
   const paths = Array.from({ length: totalPage }, (v, k) => ({
     params: {
