@@ -72,10 +72,16 @@ export async function getPostBySlug(slug: string): Promise<PostData> {
   };
 }
 
+let posts: PostData[];
+
 export async function getAllPosts() {
+  if (posts) {
+    return posts;
+  }
   const slugs = getPostSlugs();
   const _posts = await Promise.all(slugs.map(getPostBySlug));
-  const posts = _posts.sort((post1, post2) =>
+
+  posts = _posts.sort((post1, post2) =>
     post1.metaData.createdAt > post2.metaData.createdAt ? -1 : 1
   );
   return posts;
