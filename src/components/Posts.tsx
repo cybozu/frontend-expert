@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import Link from "next/link";
 import { PostData } from "../utils/posts";
+import { MemberIcon } from "./MemberIcon";
 
 type Props = {
   posts: PostData[];
@@ -9,13 +10,31 @@ type Props = {
 export const Posts = ({ posts }: Props) => {
   return (
     <div css={style}>
-      {posts.map(({ slug, metaData }) => (
-        <div key={slug} className="item">
-          <Link href={`/posts/${slug}`}>
-            {`${metaData.createdAt} ${metaData.title}`}
-          </Link>
-        </div>
-      ))}
+      {posts.map(({ slug, metaData }) => {
+        return (
+          <div key={slug} className="item">
+            <Link href={`/posts/${slug}`} passHref>
+              <a>
+                <div className="title">{metaData.title}</div>
+
+                <div className="author">
+                  <MemberIcon width="30" height="30" name={metaData.author} />
+                  <span className="date">{metaData.createdAt}</span>
+                </div>
+                <div className="tags">
+                  {metaData.tags.map((tag, index) => {
+                    return (
+                      <span className="tag" key={index}>
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              </a>
+            </Link>
+          </div>
+        );
+      })}
     </div>
   );
 };
@@ -23,6 +42,38 @@ export const Posts = ({ posts }: Props) => {
 const style = css`
   .item {
     font-size: 1.1rem;
-    margin: 1.2rem 0;
+    padding: 12px 4px 8px;
+  }
+  .item + .item {
+    margin-top: 8px;
+    border-top: 1px solid #ebebeb;
+  }
+  .title {
+    font-size: 1.2em;
+  }
+  .tags {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    grid-gap: 8px;
+  }
+  .tag {
+    font-size: 0.5em;
+    border: 1px solid;
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: currentColor;
+  }
+  .date {
+    font-size: 0.8em;
+  }
+  .author {
+    display: flex;
+    align-items: center;
+    grid-gap: 8px;
+    padding-top: 8px;
+    img {
+      border-radius: 4px;
+    }
   }
 `;
