@@ -8,8 +8,8 @@ export const PageLayout: FC = ({ children }) => {
 
 const style = css`
   h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
   }
 
   p {
