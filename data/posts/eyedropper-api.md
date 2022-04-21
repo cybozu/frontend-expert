@@ -33,7 +33,7 @@ console.log(result); // {sRGBHex: '#92d0e1'}
 
 EyeDropper API の `open` はユーザーの操作なしに実行するとエラーになります。
 
-```
+```markup
 DOMException: Failed to execute 'open' on 'EyeDropper': EyeDropper::open() requires user gesture.
 ```
 
