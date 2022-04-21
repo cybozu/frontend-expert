@@ -14,9 +14,11 @@ export const PostsPaginate = ({ pageNum, totalPage }: Props) => {
       {arr.map((_pageNum, index) => {
         return pageNum !== _pageNum ? (
           <Link href={`/posts/page/${_pageNum}`} key={index} passHref>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a>{_pageNum}</a>
           </Link>
         ) : (
+          /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
           <a className="isCurrentPage" key={index}>
             {_pageNum}
           </a>

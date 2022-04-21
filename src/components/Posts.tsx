@@ -14,6 +14,7 @@ export const Posts = ({ posts }: Props) => {
         return (
           <div key={slug} className="item">
             <Link href={`/posts/${slug}`} passHref>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a>
                 <div className="title">{metaData.title}</div>
 

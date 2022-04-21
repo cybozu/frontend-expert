@@ -81,24 +81,23 @@ export async function getAllPosts() {
   const slugs = getPostSlugs();
   const _posts = await Promise.all(slugs.map(getPostBySlug));
 
-  posts = _posts.sort((post1, post2) =>
+  return _posts.sort((post1, post2) =>
     post1.metaData.createdAt > post2.metaData.createdAt ? -1 : 1
   );
-  return posts;
 }
 
 export async function getPostsByAuthor(authorName: string) {
-  const posts = await getAllPosts();
+  posts = await getAllPosts();
   return posts.filter((post) => post.metaData.author === authorName);
 }
 
 export async function getAllTags() {
-  const posts = await getAllPosts();
+  posts = await getAllPosts();
   const tags = Array.from(new Set(posts.flatMap((post) => post.metaData.tags)));
   return tags;
 }
 
 export async function getPostsByTag(tag: string) {
-  const posts = await getAllPosts();
+  posts = await getAllPosts();
   return posts.filter((post) => post.metaData.tags.includes(tag));
 }
