@@ -46,7 +46,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const posts = await getAllPosts();
   const totalPage = Math.ceil(posts.length / postsPerPage);
 
-  const paths = Array.from({ length: totalPage }, (v, k) => ({
+  const paths = Array.from({ length: totalPage }, (_, k) => ({
     params: {
       pageNum: k + 1 + "",
     },
