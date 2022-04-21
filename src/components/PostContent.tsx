@@ -61,6 +61,7 @@ const style = css`
     display: block;
     margin: 0.5rem auto 0;
     max-width: 80%;
+    height: auto;
   }
 
   p {
