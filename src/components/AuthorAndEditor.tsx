@@ -9,7 +9,12 @@ import { MemberIcon } from "./MemberIcon";
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
     <div css={authorStyle}>
-      <MemberIcon width="60" height="60" name={author.name} />
+      <Link href={`/members/${author.name}`} passHref>
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a className="memberIcon">
+          <MemberIcon width="60" height="60" name={author.name} />
+        </a>
+      </Link>
       <div className="authorInfo">
         <div className="label">{label ? label : "Author"}</div>
         <span className="authorName">
@@ -51,6 +56,12 @@ const authorStyle = css`
   .label {
     width: 100%;
     font-size: 0.6rem;
+    font-weight: bold;
+  }
+  .memberIcon {
+    img {
+      border-radius: 4px;
+    }
   }
 
   a {
@@ -70,6 +81,7 @@ const authorStyle = css`
   .authorName {
     font-size: 0.9rem;
     line-height: 1;
+    margin-top: 4px;
   }
 
   .authorInfo {
@@ -84,10 +96,12 @@ const authorStyle = css`
   .authorInfo ul {
     list-style: none;
     display: flex;
+    align-items: center;
+    margin-top: 4px;
   }
 
   .authorInfo ul li:not(:last-of-type) {
-    margin-right: 0.6rem;
+    margin-right: 8px;
   }
 `;
 

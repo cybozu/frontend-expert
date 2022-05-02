@@ -7,12 +7,6 @@ export type Member = {
 
 export const members: Member[] = [
   {
-    name: "sakito",
-    twitterId: "__sakito__",
-    githubUsername: "sakito21",
-    active: true,
-  },
-  {
     name: "shisama",
     twitterId: "shisama_",
     githubUsername: "shisama",
@@ -53,6 +47,12 @@ export const members: Member[] = [
     twitterId: "nus3_",
     githubUsername: "nus3",
     active: true,
+  },
+  {
+    name: "sakito",
+    twitterId: "__sakito__",
+    githubUsername: "sakito21",
+    active: false,
   },
 ];
 

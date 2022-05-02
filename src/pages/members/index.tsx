@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Layout } from "../../components/Layout";
 import { PageLayout } from "../../components/PageLayout";
-import { activeMembers, Member } from "../../utils/members";
+import { members, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 import { css } from "@emotion/react";
@@ -15,6 +15,7 @@ const MemberItem = ({ member }: { member: Member }) => {
       <div className="details">
         <p className="name">
           <Link href={`/members/${member.name}`}>{member.name}</Link>
+          {!member.active ? <span className="inactive">(inactive)</span> : ""}
         </p>
         <div className="links">
           <ul>
@@ -46,7 +47,7 @@ const Members = () => (
     <PageLayout>
       <h2>Members</h2>
       <ul css={membersStyle}>
-        {activeMembers.map((member) => {
+        {members.map((member) => {
           return <MemberItem key={member.name} member={member} />;
         })}
       </ul>
@@ -92,6 +93,11 @@ const memberStyle = css`
     align-items: center;
     gap: 8px;
     font-size: 0.8rem;
+  }
+  .inactive {
+    color: gray;
+    font-size: 0.8rem;
+    padding-left: 8px;
   }
 `;
 
