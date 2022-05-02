@@ -5,6 +5,8 @@ import { activeMembers, Member } from "../../utils/members";
 import Link from "next/link";
 import { MemberIcon } from "../../components/MemberIcon";
 import { css } from "@emotion/react";
+import { faGithubAlt, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MemberItem = ({ member }: { member: Member }) => {
   return (
@@ -17,7 +19,7 @@ const MemberItem = ({ member }: { member: Member }) => {
         <div className="links">
           <ul>
             <li>
-              Twitter:{" "}
+              <FontAwesomeIcon icon={faTwitter} width="18" height="18" />{" "}
               <a
                 href={`https://twitter.com/${member.twitterId}`}
                 target="_blank"
@@ -25,7 +27,7 @@ const MemberItem = ({ member }: { member: Member }) => {
               >{`@${member.twitterId}`}</a>
             </li>
             <li>
-              GitHub:{" "}
+              <FontAwesomeIcon icon={faGithubAlt} width="18" height="18" />{" "}
               <a
                 target="_blank"
                 rel="noreferrer noopener"
@@ -86,6 +88,9 @@ const memberStyle = css`
   }
 
   .details .links ul li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 0.8rem;
   }
 `;

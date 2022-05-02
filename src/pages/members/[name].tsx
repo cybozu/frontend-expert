@@ -6,20 +6,30 @@ import { getPostsByAuthor, PostData } from "../../utils/posts";
 import { Posts } from "../../components/Posts";
 import { MemberIcon } from "../../components/MemberIcon";
 import { css } from "@emotion/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithubAlt, faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const MemberSection = ({ member }: { member: Member }) => {
   return (
     <div css={style}>
-      <MemberIcon name={member.name} width="200" height="200" />
-      <h1 className="memberName">{`${member.name}${
+      <div className="memberIcon">
+        <MemberIcon name={member.name} width="160" height="160" />
+      </div>
+      <h2 className="memberName">{`${member.name}${
         member.active ? "" : "(inactive)"
-      }`}</h1>
+      }`}</h2>
       <ul className="links">
         <li>
-          <a href={`https://twitter.com/${member.twitterId}`}>Twitter</a>
+          <FontAwesomeIcon icon={faTwitter} width="24" height="24" />
+          <a href={`https://twitter.com/${member.twitterId}`}>
+            @{member.twitterId}
+          </a>
         </li>
         <li>
-          <a href={`https://github.com/${member.githubUsername}`}>GitHub</a>
+          <FontAwesomeIcon icon={faGithubAlt} width="24" height="24" />
+          <a href={`https://github.com/${member.githubUsername}`}>
+            @{member.githubUsername}
+          </a>
         </li>
       </ul>
     </div>
@@ -35,9 +45,11 @@ const MemberPage = ({
 }) => {
   return (
     <Layout title={member.name}>
-      <MemberSection member={member} />
-      <div className="posts">
-        <Posts posts={posts} />
+      <div css={layoutStyle}>
+        <MemberSection member={member} />
+        <div css={postsStyle}>
+          <Posts posts={posts} />
+        </div>
       </div>
     </Layout>
   );
@@ -76,25 +88,52 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export default MemberPage;
 
 const style = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  .memberIcon {
+    img {
+      border-radius: 4px;
+    }
+  }
 
   .memberName {
-    font-size: 3rem;
+    font-size: 1.8rem;
+    font-weight: normal;
   }
 
   .links {
     list-style: none;
-    display: flex;
+    margin-top: 16px;
   }
 
   .links li {
-    font-size: 1.4rem;
     margin-right: 1.2rem;
+    display: flex;
+    gap: 8px;
+    align-items: center;
   }
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
-  .posts {
-    margin-top: 1.2rem;
+const postsStyle = css`
+  border-left: 1px solid #ebebeb;
+  padding-left: 16px;
+  @media (max-width: 600px) {
+    border: none;
+    padding-left: 0;
+    margin-top: 16px;
+    border-top: 1px solid #ebebeb;
+  }
+`;
+
+const layoutStyle = css`
+  padding: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  @media (max-width: 600px) {
+    display: block;
   }
 `;
