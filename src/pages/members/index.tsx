@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { Layout } from "../../components/Layout";
 import { PageLayout } from "../../components/PageLayout";
 import { members, Member } from "../../utils/members";

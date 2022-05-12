@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Link from "next/link";
 import { PostData } from "../utils/posts";

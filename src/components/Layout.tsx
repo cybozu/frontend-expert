@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { useMemo, FC } from "react";
 import Head from "next/head";
 import { Header } from "./Header";

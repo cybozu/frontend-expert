@@ -1,4 +1,3 @@
-/** @jsxImportSource @emotion/react */
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { Layout } from "../../components/Layout";
 import { getMemberByName, Member, members } from "../../utils/members";
