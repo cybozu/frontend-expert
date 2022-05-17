@@ -10,7 +10,7 @@ export async function markdownToHtml(markdownContent: string): Promise<string> {
     .use(gfm)
     .use(hatenaLinkCard)
     .use(attachSizeToImage)
-    .use(html)
+    .use(html, { sanitize: false })
     .use(prism)
     .process(markdownContent);
   return result.toString();
