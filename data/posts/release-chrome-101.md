@@ -60,7 +60,7 @@ htmlで読み込みの優先度ヒントを書く場合は、`fetchpriority`属�
 `USBConfiguration`、`USBInterface`、`USBAlternateInterface`、`USBEndpoint` の4つのインスタンスが厳密な同値（`===`）なるのは、同じ`USBDevice`のアクセッサから取得した場合のみに変更されます。
 
 #### Secure context fix for dedicated workers
-安全な(HTTPSの)Originからロードされているが、安全でない(HTTPSでない)コンテキストでインスタンス化された専用ワーカーは安全だとはみなされなくなりました。
+全な(HTTPSの)Originからロードされていますが、安全でない(HTTPSでない)コンテキストでインスタンス化された専用ワーカーは安全だとはみなされなくなりました。
 
 具体的に上記のような状況において、以下のような変更が入ります
 - `self.isSecureContext`が`false`を返すようになる
