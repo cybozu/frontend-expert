@@ -1,6 +1,6 @@
 ---
 title: "Chrome 101 リリースノートまとめ"
-author: "sajikix"
+author: "Saji"
 editor: "nus3"
 createdAt: "2022-5-16"
 summary: "Chrome 101 のリリースノートの要約です"
