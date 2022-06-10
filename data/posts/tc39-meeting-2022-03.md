@@ -82,7 +82,45 @@ Pattern Matching は名前の通りパターンマッチを導入するための
 
 - https://docs.google.com/presentation/d/1M0bzEEBZGfb_gIDVjIytbfYnLUhG7EN9iUTx6KJE2po/edit#slide=id.gfacc5909b0_0_5
 
+`Function.prototype.once` は、`Function` に一度だけ呼び出されるような関数を作るためのインスタンスメソッドを導入するプロポーザルです。
+
+例を示します。関数 `f` は受け取った引数を出力し、それに2をかけた数を返す関数です。
+このとき `f.once()` は、一度だけ `f` を呼び出す関数を返します。`f.once()` の返り値の関数を二度以上呼び出しても `f` が再度呼び出されることはなく、その返り値は最初の`f`の返り値となります。
+
+```js
+function f (x) { console.log(x); return x * 2; }
+
+const fOnce = f.once();
+fOnce(3); // `3` が出力され、`6` が返される
+fOnce(3); // 何も出力されず、`6` が返される
+fOnce(2); // 何も出力されず、`6` が返される
+```
+
+[プロポーザルのリポジトリには現実の世界でのユースケースが掲載されています。](https://github.com/tc39/proposal-function-once/tree/15c443d07d65fc0f20d4b17f3c11a78086029bc7#real-world-examples)
+
 ### [Type Annotations](https://github.com/tc39/proposal-type-annotations)
+
+Type Annotations プロポーザルは、ECMAScript の仕様に TypeScript や Flow のような型の構文を導入するプロポーザルです。
+
+たとえば、次に示すような型注釈を含むコードが JavaScript のプログラムとして妥当になります。
+
+```ts
+const foo: string = "foo";
+
+function bar(param: number) {
+  return param.isNaN();
+}
+```
+
+このプロポーザルでは ECMAScript に型チェックを導入するのではなく、あくまで型の構文だけを導入します。つまり型による静的チェックを行う場合はこれまで通り統合開発環境やTypeScript Compilerなどを使う必要があります。
+
+このプロポーザルについて以前記事を書いたので興味のある人はそちらも参照してください。
+
+[JS に TS のような型注釈を書ける Type Annotations プロポーザル](https://sosukesuzuki.dev/posts/stage-1-type-annotations:embed)
+
+また、過去に Harajuku.ts という勉強会で [@uhyo_](https://twitter.com/uhyo_) さんと [@okunokentaro](https://twitter.com/okunokentaro) さんと議論したので興味のある人はそのときのアーカイブも御覧ください。
+
+https://youtu.be/eS51szIxGTQ
 
 ## Updates
 
