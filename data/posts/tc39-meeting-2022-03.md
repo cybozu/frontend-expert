@@ -18,6 +18,8 @@ For Stage 4 の提案はありませんでした。
 
 ### [RegExp set notation + Unicode properties of strings](https://github.com/tc39/proposal-regexp-v-flag)
 
+**Stage 3 に到達しました**
+
 ### [Change Array by Copy](https://github.com/tc39/proposal-change-array-by-copy)
 
 **Stage 3 に到達しました**
@@ -80,6 +82,8 @@ Pattern Matching は名前の通りパターンマッチを導入するための
 
 ### [Function.prototype.once](https://github.com/tc39/proposal-function-once)
 
+**Stage 1 に到達しました**
+
 - https://docs.google.com/presentation/d/1M0bzEEBZGfb_gIDVjIytbfYnLUhG7EN9iUTx6KJE2po/edit#slide=id.gfacc5909b0_0_5
 
 `Function.prototype.once` は、`Function` に一度だけ呼び出されるような関数を作るためのインスタンスメソッドを導入するプロポーザルです。
@@ -99,6 +103,8 @@ fOnce(2); // 何も出力されず、`6` が返される
 [プロポーザルのリポジトリには現実の世界でのユースケースが掲載されています。](https://github.com/tc39/proposal-function-once/tree/15c443d07d65fc0f20d4b17f3c11a78086029bc7#real-world-examples)
 
 ### [Type Annotations](https://github.com/tc39/proposal-type-annotations)
+
+**Stage 1 に到達しました**
 
 Type Annotations プロポーザルは、ECMAScript の仕様に TypeScript や Flow のような型の構文を導入するプロポーザルです。
 
