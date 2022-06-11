@@ -42,7 +42,7 @@ For Stage 4 の提案はありませんでした。
 次に Unicode properties of strings は、domain が character や code point ではなく string (character の sequence) であるような Unicode property のことです。
 (Unicode の property については Unicode の [UTS18](https://www.unicode.org/reports/tr18/#Categories) の Properties を読むのがわかりやすいと思います)
 
-このプロポーザルの中では次の property of string がサポートされるようです。(ref: https://github.com/tc39/ecma262/pull/2418/files#diff-00f81a4e81713d00d0ebd710c18a798b699d244361ceb04fecbb06db6b32e8ba)
+このプロポーザルの中では次の property of string がサポートされるようです。(ref: https://github.com/tc39/ecma262/pull/2418/files#diff-00f81a4e81713d00d0ebd710c18a798b699d244361ceb04fecbb06db6b32e8ba)  
 (見たところどれも Binary のものしかありませんが、今後他の datatype のものも追加されるかどうかはわかりません)
 
 - `Basic_Emoji`
@@ -57,7 +57,7 @@ For Stage 4 の提案はありませんでした。
 
 Unicode についてはあまり詳しくないので誤りを見つけた人は教えてほしいです。
 
-もともとは[別のプロポーザル](https://github.com/tc39/proposal-regexp-unicode-sequence-properties)でしたが、2021年5月にこのプロポーザルにマージされました。
+ちなみに Unicode properties of strings はもともとは[別のプロポーザル](https://github.com/tc39/proposal-regexp-unicode-sequence-properties)でしたが、2021年5月にこのプロポーザルにマージされました。
 
 ### [Change Array by Copy](https://github.com/tc39/proposal-change-array-by-copy)
 
@@ -105,7 +105,7 @@ Decorators はクラスを拡張するための構文を導入するプロポー
 ちなみに現在 TypeScript に実装されている Decorators は現在の TC39 の Decorators とは異なるものです。[TypeScript 4.8 で TC39 の Decorators を実装することが検討されています。](https://github.com/microsoft/TypeScript/issues/49074)
 
 筆者としては、Decorators はコードを書くときの体験を大きく変えうる機能である一方で、複雑で厄介なコードを生み出す可能性も高い機能だと考えています。
-したがって一般的な Web アプリケーション開発にとっては、アプリケーション側からはライブラリ開発者が提供する Decorators を使用する程度にとどめておくのが、適切な関わり方なのではないかと思っています。
+したがって一般的な Web アプリケーション開発にとっては、ライブラリが提供する Decorators を使用する程度にとどめておくのが、適切な関わり方なのではないかと思っています。
 
 この新しい Decorators に対してコミュニティがどのように向き合っていくのか、動向が気になるところです。
 
@@ -168,6 +168,8 @@ function bar(param: number) {
 https://youtu.be/eS51szIxGTQ
 
 ## Updates
+
+ステージの移動はないものの更新が紹介された提案を列挙します。ここでは詳細については説明しませんがスライドや関連するIssueへのリンクを貼ったので興味のある人は参照してください。
 
 ### [Array Grouping](https://github.com/tc39/proposal-array-grouping)
 
