@@ -214,3 +214,4 @@ https://youtu.be/eS51szIxGTQ
   - [Implement the updated JS decorators proposal · Issue #48885 · microsoft/TypeScript](https://github.com/microsoft/TypeScript/issues/48885)
 - Unicode
   - [UTS #18: Unicode Regular Expressions](https://www.unicode.org/reports/tr18/)
+  - [Unicode Utilities: Character Property Index](https://util.unicode.org/UnicodeJsps/properties.jsp)
