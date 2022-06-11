@@ -20,6 +20,45 @@ For Stage 4 の提案はありませんでした。
 
 **Stage 3 に到達しました**
 
+このプロポーザルは正規表現に新しく`v`フラグを導入し、その中で set notation と Unicode properties of strings を使えるようにします。
+(翻訳するとしたら set notation は「集合の表記」、properties of strings は「文字列プロパティ」でしょうか。定訳がわからないのでこの記事ではこれらの用語を英語のまま表記します。)
+
+まず、set notation とは次のような記法のことです。
+(`A` や `B` は character class (`[a-z]`など) もしくは Unicode property escape (`\p{ASCII}`など) とします)
+
+```
+// 差(difference/subtraction)
+[A--B]
+
+// 共通部分(intersection)
+[A&&B]
+
+// nested character class
+[A--[0-9]]
+```
+
+[プロポーザルのリポジトリでは実用的なユースケースが紹介されています。](https://github.com/tc39/proposal-regexp-v-flag#illustrative-examples)
+
+次に Unicode properties of strings は、domain が character や code point ではなく string (character の sequence) であるような Unicode property のことです。
+(Unicode の property については Unicode の [UTS18](https://www.unicode.org/reports/tr18/#Categories) の Properties を読むのがわかりやすいと思います)
+
+このプロポーザルの中では次の property of string がサポートされるようです。(ref: https://github.com/tc39/ecma262/pull/2418/files#diff-00f81a4e81713d00d0ebd710c18a798b699d244361ceb04fecbb06db6b32e8ba)
+(見たところどれも Binary のものしかありませんが、今後他の datatype のものも追加されるかどうかはわかりません)
+
+- `Basic_Emoji`
+- `Emoji_Keycap_Sequence`
+- `RGI_Emoji_Modifier_Sequence`
+- `RGI_Emoji_Flag_Sequence`
+- `RGI_Emoji_Tag_Sequence`
+- `RGI_Emoji_ZWJ_Sequence`
+- `RGI_Emoji`
+
+これによって複数の code point からなる Emoji に対して Unicode property escape を使ってマッチさせられるようです。
+
+Unicode についてはあまり詳しくないので誤りを見つけた人は教えてほしいです。
+
+もともとは[別のプロポーザル](https://github.com/tc39/proposal-regexp-unicode-sequence-properties)でしたが、2021年5月にこのプロポーザルにマージされました。
+
 ### [Change Array by Copy](https://github.com/tc39/proposal-change-array-by-copy)
 
 **Stage 3 に到達しました**
@@ -100,7 +139,7 @@ fOnce(3); // 何も出力されず、`6` が返される
 fOnce(2); // 何も出力されず、`6` が返される
 ```
 
-[プロポーザルのリポジトリには現実の世界でのユースケースが掲載されています。](https://github.com/tc39/proposal-function-once/tree/15c443d07d65fc0f20d4b17f3c11a78086029bc7#real-world-examples)
+[プロポーザルのリポジトリでは実用的なユースケースが紹介されています。](https://github.com/tc39/proposal-function-once/tree/15c443d07d65fc0f20d4b17f3c11a78086029bc7#real-world-examples)
 
 ### [Type Annotations](https://github.com/tc39/proposal-type-annotations)
 
@@ -171,3 +210,5 @@ https://youtu.be/eS51szIxGTQ
 - TypeScript
   - [TypeScript 4.8 Iteration Plan · Issue #49074 · microsoft/TypeScript](https://github.com/microsoft/TypeScript/issues/49074)
   - [Implement the updated JS decorators proposal · Issue #48885 · microsoft/TypeScript](https://github.com/microsoft/TypeScript/issues/48885)
+- Unicode
+  - [UTS #18: Unicode Regular Expressions](https://www.unicode.org/reports/tr18/)
