@@ -55,7 +55,7 @@ For Stage 4 の提案はありませんでした。
 
 これによって複数の code point からなる Emoji に対して Unicode property escape を使ってマッチさせられるようです。
 
-Unicode についてはあまり詳しくないので誤りを見つけた人は教えてほしいです。
+(Unicode についてはあまり詳しくないので記述について誤りを見つけた人は教えてほしいです。)
 
 ちなみに Unicode properties of strings はもともとは[別のプロポーザル](https://github.com/tc39/proposal-regexp-unicode-sequence-properties)でしたが、2021年5月にこのプロポーザルにマージされました。
 
