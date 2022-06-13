@@ -2,7 +2,7 @@
 title: "Chrome 101 リリースノートまとめ"
 author: "Saji"
 editor: "nus3"
-createdAt: "2022-5-16"
+createdAt: "2022-05-16"
 summary: "Chrome 101 のリリースノートの要約です"
 tags:
   - Releasenote
