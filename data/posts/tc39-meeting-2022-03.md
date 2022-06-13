@@ -117,6 +117,47 @@ Decorators はクラスを拡張するための構文を導入するプロポー
 
 Pattern Matching は名前の通りパターンマッチを導入するためのプロポーザルです。
 
+現在の ECMAScript では正規表現を除き値のマッチングを行うことができません。
+また、`switch` 文にはよく知られたいくつかの問題があります。
+
+- 式として使えない
+- 各 `case` に明示的な `break` で必要である
+- 各 `case` でスコープが曖昧である
+- など
+
+Pattern Matching ではこれらの問題に対処するための新しい構文を導入します。
+
+例を示します。
+
+```ts
+match (res) {
+  when ({ status: 200, body, ...rest }): handleData(body, rest)
+  when ({ status, destination: url }) if (300 <= status && status < 400):
+    handleRedirect(url)
+  when ({ status: 500 }) if (!this.hasRetried): do {
+    retry(req);
+    this.hasRetried = true;
+  }
+  default: throwSomething();
+}
+```
+
+- `match` からはじまるブロック全体は match construct と呼ばれます。match construct 全体で一つの式として振る舞います。
+- `match(res)` の `res` は matchable と呼ばれます。matchable は任意の式です。
+- `when` や `default` で始まる部分を clause (句) と呼びます。clause は `:` で LHS と RHS に区切られます。
+  - clause の LHS は `when` もしくは `default` で始まる必要があります。
+    - `when` clause は、`when` というキーワードのあとにカッコで囲まれた pattern を記述します。
+      - カッコで囲まれた pattern のあとには `if` と条件式で構成された guard を記述することができます。pattern の表現力では不十分だった場合に guard を使ってさらなるロジックを記述できます。
+    - `default` clause は他のどの clause にもマッチしなかった場合にマッチします。
+      - `default` clause はなくても問題ありませんが、使う場合はからなず最後に置かなければいけません。
+  - clause の RHS は任意の式です。ブロックステートメント(`{ }`)を書くことはできません。なので、複雑なロジックを記述したいときは現在では即時実行関数を使う必要があります。将来的には、現在提案されている [do expression]() がここで役に立つでしょう。
+
+`when` clause に続く pattern では、実際にはもっと複雑なパターンを記述できます。(ref: https://github.com/tc39/proposal-pattern-matching#pattern)
+
+Pattern Mathcing はかなり複雑で JavaScript のコーディングスタイルを大きく変えうる強力な機能です。
+
+今回のミーティングでは仕様のテキストに懸念があり、時間内に Stage 2 に到達する合意は得られなかったようです。
+
 ## For Stage 1
 
 ### [Function.prototype.once](https://github.com/tc39/proposal-function-once)
