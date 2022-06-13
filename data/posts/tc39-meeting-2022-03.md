@@ -154,7 +154,7 @@ match (res) {
 
 `when` clause に続く pattern では、実際にはもっと複雑なパターンを記述できます。(ref: https://github.com/tc39/proposal-pattern-matching#pattern)
 
-Pattern Mathcing はかなり複雑で JavaScript のコーディングスタイルを大きく変えうる強力な機能です。
+Pattern Mathcing は JavaScript のコーディングスタイルを大きく変えうる強力な機能です。
 
 今回のミーティングでは仕様のテキストに懸念があり、時間内に Stage 2 に到達する合意は得られなかったようです。
 
