@@ -2,13 +2,13 @@
 title: "ECMAScriptの最新動向 2022年03月版"
 author: "sosukesuzuki"
 createdAt: "2022-06-13"
-summary: "2021年03月28日~31日に開催された TC39 meeting 89th の内容を紹介します"
+summary: "2022年03月28日~31日に開催された TC39 meeting 89th の内容を紹介します"
 tags:
   - TC39
   - ECMAScript
 ---
 
-この記事では2021年03月28日~31日に開催された TC39 meeting 89th で議題に上がったプロポーザルを紹介します。
+この記事では2022年03月28日~31日に開催された TC39 meeting 89th で議題に上がったプロポーザルを紹介します。
 
 ## For Stage 4
 
