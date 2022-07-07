@@ -13,11 +13,11 @@ tags:
 
 Chrome 102 のリリースノート関連の情報をまとめました。
 
-https://developer.chrome.com/blog/new-in-chrome-102/
-https://developer.chrome.com/blog/new-in-devtools-102/
-https://developer.chrome.com/blog/deps-rems-102/
-https://www.chromestatus.com/features#milestone%3D102
-https://v8.dev/blog/v8-release-102
+- https://developer.chrome.com/blog/new-in-chrome-102/
+- https://developer.chrome.com/blog/new-in-devtools-102/
+- https://developer.chrome.com/blog/deps-rems-102/
+- https://www.chromestatus.com/features#milestone%3D102
+- https://v8.dev/blog/v8-release-102
 
 ## New In Chrome (Chrome102)
 
@@ -57,8 +57,6 @@ https://web.dev/file-handling/
 `inert`属性は Chrome では 102 からサポートされますが、FireFox や Safari でも同様にサポートされる予定です。(執筆現在、Safari は 15.5 から、FireFox は Nightly で利用可能です。)
 
 ### Navigation API
-
-#### 概要
 
 近年の多く見られる SPA で作られたアプリでは、ページ移動なしで URL を更新します。この挙動を実現するため、一般的に`History API`が利用されますが、`History API`ではうまく用件を満たせないことや、動作がわかりにくくなることがあります。
 
@@ -125,6 +123,7 @@ Permissions-Policy に`CH-Save-Data`を追加することで Client Hint とし�
 `Sec-CH-Save-Data`が適切な Client Hint になり、Permissions-Policy を介してサードパーティへ送信されることを防ぐことができます。
 
 参考: Save-Data
+
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Save-Data
 
 ### AudioContext.outputLatency
