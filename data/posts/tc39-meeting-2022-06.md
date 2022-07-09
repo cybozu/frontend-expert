@@ -8,6 +8,8 @@ tags:
   - ECMAScript
 ---
 
+この記事では2022年06月06日~09日に開催された TC39 meeting 90th で議題に上がったプロポーザルを紹介します。
+
 ## For Stage 4
 
 ### [`findLast` / `findLastIndex`](https://github.com/tc39/proposal-array-find-from-last/)
