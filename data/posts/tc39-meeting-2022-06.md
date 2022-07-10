@@ -1,7 +1,7 @@
 ---
 title: "ECMAScriptの最新動向 2022年06月版"
 author: "sosukesuzuki"
-createdAt: "2022-07-07"
+createdAt: "2022-07-11"
 summary: "2022年06月06日~09日に開催された TC39 meeting 90th の内容を紹介します"
 tags:
   - TC39
@@ -10,13 +10,13 @@ tags:
 
 この記事では2022年06月06日~09日に開催された TC39 meeting 90th で議題に上がったプロポーザルを紹介します。
 
-## For Stage 4
+### For Stage 4
 
 ### [`findLast` / `findLastIndex`](https://github.com/tc39/proposal-array-find-from-last/)
 
 **Stage 4 に到達しました**
 
-`findLast` は `findLastIndex` は、`Array.prototype.find` と `Array.prototype.findLastIndex` の逆から捜査するバージョンです。
+`findLast` は `findLastIndex` は、`Array.prototype.find` と `Array.prototype.findLastIndex` の逆から走査するバージョンです。
 
 ```js
 const arr = [
@@ -55,7 +55,7 @@ Symbols as WeakMap keys は WeakMap のキーとして Symbol を使えるよう
 
 Symbols as WeakMap keys が一見シンプルながらこれまで Stage 2 のままだったのは、グローバルシンボルレジストリに登録された symbol や well-known symbols などのいわゆる eternal symbol を WeakMap のキーとして許容するかどうか、という論点のためでした。
 
-まだ議事録が公開されていないため今回のミーティングでどのような議論が行われたのかはわかりませんが、スライド( http://www.rricard.me/serve/tc39-jun2022-symbols-as-wm-keys.pdf ) 上では次のように書かれています。
+スライド( http://www.rricard.me/serve/tc39-jun2022-symbols-as-wm-keys.pdf ) 上では次のように書かれています。
 
 - 通常の Symbol コンストラクタで作られる unique symbols は WeakMap のキーとして許容する
 - `Symbol.for("...")` で作られるグローバルシンボルレジストリに登録された registered symbols は WeakMap のキーとして許容しない
@@ -76,7 +76,6 @@ RegExp Modifiers は正規表現パターンの中でのフラグの変更を可
 ### [`JSON.parse` source text access](https://github.com/tc39/proposal-json-parse-with-source)
 
 **仕様のテキストの修正を待って条件付き Stage 3 にるようです**
-(2022年6月のミーティングの議事録はまだ公開されていないので詳細は不明です。)
 
 `JSON.parse` source text access は、`JSON.parser` の第２引数として渡すことができる関数(reviver)の中でもとのテキストにアクセスできるようにするためのプロポーザルです。
 
@@ -186,7 +185,34 @@ create table student(
 
 **Stage 2 に到達しませんでした**
 
-<!-- TODO: 書く -->
+Grouped and Auto-Accessors はクラスのアクセサを定義する新しい方法を導入するプロポーザルです。
+
+まず Grouped は次のようにして一つのプロパティのアクセサをまとめて定義できます。
+
+```js
+class C {
+  accessor x {
+    get() {...}
+    set() {...}
+  }
+}
+const obj = {
+  accessor x {
+    get() {...}
+    set() {...}
+  }
+}
+```
+
+そして Auto-Accessors は Grouped に対するシンタックスシュガーのようなものです。
+
+```js
+class C {
+  accessor a = 1; // `accessor a { get; set; } = 1` と同じ
+}
+```
+
+プロポーザルに README では様々なパターンが紹介されているので興味がある人はそちらを参照してください。
 
 ## For Stage 1
 
@@ -200,13 +226,22 @@ create table student(
 
 でした。そして実際に Stage 1 をスキップして Stage 2 に到達しました。
 
-<!-- TODO: 書く -->
+Duplicate named capture groups は正規表現の中で同名の名前付きグループを複数記述可能にするためのプロポーザルです。
+
+次のコードを見てください。
+
+```js
+str.match(/(?<year>[0-9]{4})-[0-9]{2}|[0-9]{2}-(?<year>[0-9]{4})/);
+```
+
+これは yyyy-MM もしくは MM-yyyy の形をした文字列のマッチする正規表現ですが、現在の ECMAScript としてはインバリッドです。なぜなら同じ正規表現の中で同名の名前付きキャプチャグループが複数存在するからです。
+
+このようなケースでは、同じ正規表現の中に同名の名前付きキャプチャグループを複数記述できると便利です。
+
 
 ### [`this` parameter](https://github.com/hax/proposal-this-parameter)
 
-**Stage 1 に到達しなかったようです**
-
-https://github.com/babel/proposals/issues/82 ではこのプロポーザルについての言及がない上に、2022年6月のミーティングの議事録はまだ公開されていないため Stage 1 に達成したかどうかはわかりません。ですが[プロポーザルの README](https://github.com/hax/proposal-this-parameter) には Stage 0 と書かれており、https://github.com/tc39/proposals/blob/main/stage-1-proposals.md にも掲載されていないため、おそらく Stage 1 には到達しなかったのでしょう。(TC39 の多くのドキュメントは手作業で管理されているので、更新し忘れている可能性もあります)
+**Stage 1 に到達しませんでした**
 
 `this` parameter は、TypeScript の `this` parameter のような構文を JavaScript に導入するためのプロポーザルです。
 
@@ -230,7 +265,17 @@ function toHex(this) {
 
 **Stage 1 に到達しました**
 
-<!-- TODO: 書く -->
+RegExp Atomic Operators はバックトラックを制御するための新しい構文を正規表現に追加するプロポーザルです。
+
+たとえば `/a(bc|b)c/` という正規表現は `"abcc"` にも `"abc"` にもマッチします。
+`"abcc"` のときは単純で、まず先頭の `a` がマッチし、次に `(bc|b)` の `bc` にマッチして、最後に `c` がマッチします。
+一方で `"abc"` のときはやや複雑です。まず先頭の `a` がマッチし、次に `(bc|b)` の `bc` にマッチしますが、そうすると最後の `c` にはマッチできません。そこで `(bc|b)` までもどります。前回のマッチングにおいて `bc` ではマッチできなかったので、もう一つの選択肢である `b` にマッチさせます。そして最後の `c` にマッチします。
+
+このような後続のパターンがマッチしない場合に一つ前のパターンに戻ってマッチを試みることをバックトラックといいます。RegExp Atomic Operators はこのようなバックトラックを制御するための構文を追加します。
+
+たとえば前述の `/a(bc|b)c` というパターンでバックトラックが発生しないように Atomic Operators を使って書くと `/a(?>(bc|b))c` になります。このパターンでは `"abcc"` にはマッチしますが、`(bc|c)` へのバックトラックが発生しないため `"abc"` にはマッチしません。
+
+他にもいくつかの新しい構文があるみたいなので興味がある人はプロポーザルの README かスペックテキストを参照してください。
 
 ## Updates
 
@@ -268,6 +313,9 @@ Array Grouping は [Lodash の `groupBy`](https://lodash.com/docs/4.17.15#groupB
 
 - TC39
   - [agendas/06.md at main · tc39/agendas](https://github.com/tc39/agendas/blob/main/2022/06.md)
+  - [notes/jun-06.md at main · tc39/notes](https://github.com/tc39/notes/blob/main/meetings/2022-06/jun-06.md)
+  - [notes/jun-07.md at main · tc39/notes](https://github.com/tc39/notes/blob/main/meetings/2022-06/jun-07.md)
+  - [notes/jun-08.md at main · tc39/notes](https://github.com/tc39/notes/blob/main/meetings/2022-06/jun-08.md)
 - Babel
   - [Jun 2022 · Issue #82 · babel/proposals](https://github.com/babel/proposals/issues/82)
 - SpiderMonkey
