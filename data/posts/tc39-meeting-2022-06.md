@@ -77,7 +77,7 @@ RegExp Modifiers は正規表現パターンの中でのフラグの変更を可
 
 **仕様のテキストの修正を待って条件付き Stage 3 にるようです**
 
-`JSON.parse` source text access は、`JSON.parser` の第２引数として渡すことができる関数(reviver)の中でもとのテキストにアクセスできるようにするためのプロポーザルです。
+`JSON.parse` source text access は、`JSON.parse` の第２引数として渡すことができる関数(reviver)の中でもとのテキストにアクセスできるようにするためのプロポーザルです。
 
 reviver ではパースした JSON のそれぞれのメンバーのキーとバリューにアクセスし、結果のオブジェクトを返す前になんらかの変換を施すことができます。
 
