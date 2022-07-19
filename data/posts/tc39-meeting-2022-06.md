@@ -16,7 +16,7 @@ tags:
 
 **Stage 4 に到達しました**
 
-`findLast` は `findLastIndex` は、`Array.prototype.find` と `Array.prototype.findLastIndex` の逆から走査するバージョンです。
+`findLast` と `findLastIndex` は、`Array.prototype.find` と `Array.prototype.findIndex` の逆から走査するバージョンです。
 
 ```js
 const arr = [
