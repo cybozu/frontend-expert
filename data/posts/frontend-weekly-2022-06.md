@@ -37,10 +37,6 @@ Tailwind CSS のチームが最近行った活動のまとめです。
 - VSCode の Tailwind CSS IntelliSense の拡張に Tailwind CSS language mode が追加
 - Tailwind CSS templates が発表予定
 
-### [Vue “vapor” - an experimental, Solid.js-inspired compilation strategy.](https://twitter.com/_jessicasachs/status/1532283507145420801)
-
-`vue/vapor` が Vue Amsterdam で発表されました。SolidJS をベースにしたコンパイルの仕組みとのことです。
-
 ### [`lerna/lerna` v5.0.0 Release](https://github.com/lerna/lerna/releases/tag/v5.0.0)
 
 Lerna が Nx に委譲されてから初のアップデートです。内部処理が Nx に切り替わリました。
@@ -49,7 +45,7 @@ Lerna が Nx に委譲されてから初のアップデートです。内部処�
 
 Vue Amsterdam での Evan you の発表資料です。
 
-Vue 2.7 以降での更新内容や、直近リリース予定の Vue 3.3 での変更内容、エコシステムの状況などに加え、Vue の将来向けに検討されている新しいコンパイルの仕組みについてなどが紹介されています。
+Vue 2.7 の内容や、直近リリース予定の Vue 3.3 での変更内容、エコシステムの状況などに加え、Vue の将来向けに検討されている vue/vapor と呼ばれる新しいコンパイルの仕組みについてなどが紹介されています。
 
 ### [Prettier 2.7](https://prettier.io/blog/2022/06/14/2.7.0.html)
 
@@ -66,7 +62,7 @@ https://bundlescanner.com/website/beta.music.apple.com%2Fus%2Fbrowse/all
 
 ### [Component Encyclopedia のアップデート](https://storybook.js.org/blog/component-encyclopedia/)
 
-さまざまなプロダクトの StoryBook コンポーネントを見れる Component Encyclopedia がアップデートされました。各コンポーネントの検索機能の追加などが追加されています。
+さまざまなプロダクトの Storybook コンポーネントを見れる Component Encyclopedia がアップデートされました。各コンポーネントの検索機能の追加などが追加されています。
 
 fonts や token といった検索を利用することで、 Design token の参考にできたり、デザインシステムやコンポーネントの見せ方、Storybook の Addon 活用方法なども調べることができ、辞書的に活用できるそうです。
 
@@ -141,4 +137,4 @@ Google Fonts に Roboto Flex という新しい Variable Fonts が追加され�
 
 ### [Customizing Color Fonts on the Web](https://webkit.org/blog/12662/customizing-color-fonts-on-the-web/)
 
-@font-palette-values が Safari 15.4 以降でサポートされたカラーフォントに関しての記事です。カラーパレットの Override 方法や、実際に適用するときの指定方法などが紹介されています。
+Safari 15.4 から`@font-palette-values`がサポートされました。この記事では実際に`@font-palette-values`を使ってカラーフォントに定義されているパレットを指定する方法や、パレットの色を上書きする方法が紹介されています。
