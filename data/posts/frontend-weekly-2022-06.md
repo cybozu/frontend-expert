@@ -1,7 +1,7 @@
 ---
 title: "Cybozu Frontend Weekly 2022年6月まとめ"
 author: "nus3"
-createdAt: "2022-07-20"
+createdAt: "2022-07-25"
 summary: "6月にFrontend Weeklyで話したフロントエンドの話題まとめ"
 tags:
   - Cybozu
