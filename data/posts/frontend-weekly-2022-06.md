@@ -138,3 +138,7 @@ Google Fonts に Roboto Flex という新しい Variable Fonts が追加され�
 ### [Customizing Color Fonts on the Web](https://webkit.org/blog/12662/customizing-color-fonts-on-the-web/)
 
 Safari 15.4 から`@font-palette-values`がサポートされました。この記事では実際に`@font-palette-values`を使ってカラーフォントに定義されているパレットを指定する方法や、パレットの色を上書きする方法が紹介されています。
+
+---
+
+nus3 が印象に残っているのは、[フォーカスされているボタンのスタイリング](https://web.dev/building-a-button-component/#interactive-focus-ring)の話です。フォーカスされたボタンのインタラクティブなデザインをシンプルな CSS で実装できるのでおすすめです！
