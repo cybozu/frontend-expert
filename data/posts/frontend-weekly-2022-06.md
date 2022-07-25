@@ -9,9 +9,9 @@ tags:
   - FrontendWeekly
 ---
 
-フロントエンドエキスパートチームでは、毎週火曜の 17 時に最近のフロントエンド情報を見てワイワイする Cybozu Frontend Weekly を開催しています。
+フロントエンドエキスパートチームでは週に 1 回、最近のフロントエンド情報を見てワイワイする Cybozu Frontend Weekly というイベントを社内で開催しています。
 
-今回は Cybozu Frontend Weekly で 6 月に話した記事をご紹介します。
+今回は Cybozu Frontend Weekly で 6 月に話題に上がった記事をご紹介します。
 
 ## 💬 Languages
 
@@ -23,7 +23,7 @@ Node.js v16 の EOL が 当初の予定より 7 ヶ月早まり 2023/9/11 にな
 
 ### [RedwoodJS を Ruby on Rails と比較してみる](https://zenn.dev/mugi/articles/334f9556095a07)
 
-チームの[@mugi_uno](https://twitter.com/mugi_uno) さんが書いてくれた RedwoodJS と Ruby on Rails の比較記事。本人曰く、RedwoodRecord という ORM が Rails の ActiveRecord にかなり近い体験を提供してくれるので感動したらしいです。また、RedwoodJS は RedwoodJS を利用する企業に対してファンドを実施するなど市場拡大に対して精力的なようです。
+チームの[@mugi_uno](https://twitter.com/mugi_uno) が書いた RedwoodJS と Ruby on Rails の比較記事。本人曰く、RedwoodRecord という ORM が Rails の ActiveRecord にかなり近い体験を提供してくれるので感動したらしいです。また、RedwoodJS は RedwoodJS を利用する企業に対してファンドを実施するなど市場拡大に対して精力的なようです。
 
 ### [feat: create "@eslint-community GitHub organization" RFC #91](https://github.com/eslint/rfcs/pull/91)
 
@@ -43,7 +43,7 @@ Tailwind CSS のチームが最近行った活動のまとめです。
 
 ### [`lerna/lerna` v5.0.0 Release](https://github.com/lerna/lerna/releases/tag/v5.0.0)
 
-Lerna が Nx にが委譲されてから初のアップデートです。内部処理が Nx に切り替わリました。
+Lerna が Nx に委譲されてから初のアップデートです。内部処理が Nx に切り替わリました。
 
 ### [State of Vuenion](https://docs.google.com/presentation/d/1tPaimqwJEXinPYifwUvA4gLCI6SezZsViuJvieWGAug/edit)
 
