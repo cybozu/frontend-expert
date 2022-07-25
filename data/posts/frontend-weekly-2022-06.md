@@ -111,6 +111,8 @@ HTTP 関連 RFC がどばっと公開されました。
 - RFC 9220: Bootstrapping WebSockets with HTTP/3
 - RFC 9230: Oblivious DNS over HTTPS
 
+各 RFC については[HTTP 関連 RFC が大量に出た話と 3 行まとめ](https://blog.jxck.io/entries/2022-06-16/HTTP-RFCs.html)で概要が紹介されています。
+
 なお、RFC 公開を祝い HTTP RFC Publication Study という、
 複数人の方で内容のキャッチアップを行うイベントが行われ、その動画が YouTube 上にアーカイブとして残っています。
 https://www.youtube.com/watch?v=_hfG0HCufbs
