@@ -67,7 +67,7 @@ Vite 2.x までは、Proxy を経由したサーバー確立に課題があっ�
 
 Vite では以前から [`Glob Import`](https://vitejs.dev/guide/features.html#glob-import) と呼ばれる機能が存在し、特別な関数 `import.meta.glob` を介して glob 形式で記述してのモジュール一括インポートが可能です。
 
-Vite 3.0 では機能が強化され、より柔軟が指定が可能になりました。
+Vite 3.0 では機能が強化され、より柔軟な指定が可能になりました。
 
 - Multiple Patterns : 複数の glob パターンの記述
 - Negative Patterns : 除外パターンの記述
