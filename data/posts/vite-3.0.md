@@ -7,7 +7,7 @@ tags:
   - Vite
 ---
 
-2022/7/13に、フロントエンドツールである Vite の v3.0.0 がリリースされました 🎉
+2022/7/13に、フロントエンドツールである Vite のバージョン 3.0 がリリースされました 🎉
 
 - [Vite 3.0 is out! | Vite](https://vitejs.dev/blog/announcing-vite3.html)
 - [CHANGELOG](https://github.com/vitejs/vite/blob/v3.0.0/packages/vite/CHANGELOG.md)
