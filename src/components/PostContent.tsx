@@ -127,4 +127,10 @@ const style = css`
   .post table tr {
     border-top: 1px solid #c6cbd1;
   }
+
+  blockquote {
+    padding: 0 1em;
+    color: #777;
+    border-left: 0.25em solid #ddd;
+  }
 `;
