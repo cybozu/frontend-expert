@@ -13,7 +13,7 @@ tags:
 - [CHANGELOG](https://github.com/vitejs/vite/blob/v3.0.0/packages/vite/CHANGELOG.md)
 - [Migration from v2 | Vite](https://vitejs.dev/guide/migration.html)
 
-このエントリーでは、リリース時に公開されたブログ([Release v3.0.0 · vitejs/vite](https://github.com/vitejs/vite/releases/tag/v3.0.0))の内容をベースに、変更点を改めて１つずつ掘り下げて確認してみます。
+このエントリーでは、リリース時に公開されたアナウンス([Release v3.0.0 · vitejs/vite](https://github.com/vitejs/vite/releases/tag/v3.0.0))の内容をベースに、変更点を改めて１つずつ掘り下げて確認してみます。
 
 
 ### New Documentation
