@@ -18,7 +18,7 @@ tags:
 
 ### New Documentation
 
-公式ドキュメント([vitejs.dev](https://vitejs.dev/))が [VitePress](https://vitepress.vuejs.org/) のデフォルトテーマを利用した形で刷新されました。ダークテーマ表示などが可能になっています。
+公式ドキュメント([vitejs.dev](https://ja.vitejs.dev/))が [VitePress](https://vitepress.vuejs.org/) のデフォルトテーマを利用した形で刷新されました。ダークテーマ表示などが可能になっています。
 
 また、あわせて次のサブドメインでもドキュメントを閲覧できるようになっています。
 
