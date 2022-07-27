@@ -1,7 +1,7 @@
 ---
 title: "Vite 3.0 の内容をおさらいする"
 author: "mugi"
-createdAt: "2022-07-25"
+createdAt: "2022-07-27"
 summary: "Vite 3.0 の内容をおさらいします"
 tags:
   - Vite
