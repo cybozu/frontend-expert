@@ -1,18 +1,21 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { Layout } from "../../components/Layout";
-import { getAllPosts, getPostBySlug } from "../../utils/posts";
-import type { PostData } from "../../utils/posts";
-import { getMemberByName, getMembersByName } from "../../utils/members";
-import { Tags } from "../../components/Tags";
-import { PostContent } from "../../components/PostContent";
-import { TweetButton } from "../../components/TweetButton";
-import { PostContact } from "../../components/PostContact";
 import { AuthorAndEditor } from "../../components/AuthorAndEditor";
-import { PostTitle } from "../../components/PostTitle";
+import { Layout } from "../../components/Layout";
+import { PostContact } from "../../components/PostContact";
+import { PostContent } from "../../components/PostContent";
 import { PostPublishedOn } from "../../components/PostPublishedOn";
+import { PostTitle } from "../../components/PostTitle";
+import { Tags } from "../../components/Tags";
+import { TweetButton } from "../../components/TweetButton";
+import { getMemberByName, getMembersByName } from "../../utils/members";
+import {
+  getAllPosts,
+  getPostBySlug,
+  MarkdownPostData,
+} from "../../utils/posts";
 
 type Props = {
-  post: PostData;
+  post: MarkdownPostData;
 };
 
 const Post = ({ post }: Props) => {
@@ -59,7 +62,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getAllPosts();
+  const allPosts = await getAllPosts();
+  const posts = allPosts.filter((post) => post.type === "markdown");
 
   return {
     paths: posts.map((post) => {

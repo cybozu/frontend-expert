@@ -6,13 +6,16 @@ import { MemberIcon } from "./MemberIcon";
 type Props = {
   posts: PostData[];
 };
+
 export const Posts = ({ posts }: Props) => {
   return (
     <div css={style}>
-      {posts.map(({ slug, metaData }) => {
+      {posts.map((post) => {
+        const { slug, href, metaData } = post;
+
         return (
           <div key={slug} className="item">
-            <Link href={`/posts/${slug}`} passHref>
+            <Link href={href} passHref>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a>
                 <div className="title">{metaData.title}</div>
