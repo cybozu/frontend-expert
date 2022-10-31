@@ -98,6 +98,12 @@ export async function getPostBySlug(slug: string): Promise<PostData> {
 
 let posts: PostData[];
 
+const formatZennDate = (dateString: string) => {
+  const localeString = new Date(dateString).toLocaleDateString("ja-JP");
+  const [y, m, d] = localeString.split("/");
+  return `${y.padStart(4, "0")}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
+};
+
 export async function getAllPosts() {
   if (posts) {
     return posts;
@@ -116,9 +122,7 @@ export async function getAllPosts() {
         metaData: {
           title: `${article.emoji} ${article.title}`,
           author: zennMemberMap[article.user.username].name,
-          createdAt: new Date(article.published_at)
-            .toLocaleDateString()
-            .replace(/\//g, "-"),
+          createdAt: formatZennDate(article.published_at),
           tags: ["zenn"],
         },
       })
