@@ -1,23 +1,39 @@
+import matter from "gray-matter";
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 import { markdownToHtml } from "./markdown/markdownToHtml";
+import { zennMemberMap } from "./members";
+import { getZennData } from "./zenn/getZennData";
 
 type PostMetaData = {
   title: string;
   author: string;
-  editor?: string | string[];
   createdAt: string;
-  updatedAt: string;
   tags: string[];
-  summary: string;
 };
 
-export type PostData = {
+type MarkdownPostMetaData = PostMetaData & {
+  editor: string | string[];
+  summary: string;
+  updatedAt: string;
+};
+
+export type MarkdownPostData = {
+  type: "markdown";
   slug: string;
+  href: string;
   content: string;
+  metaData: MarkdownPostMetaData;
+};
+
+export type ZennPostData = {
+  type: "zenn";
+  slug: string;
+  href: string;
   metaData: PostMetaData;
 };
+
+export type PostData = MarkdownPostData | ZennPostData;
 
 const postsDirectoryPath = path.join(process.cwd(), "data", "posts");
 
@@ -25,8 +41,10 @@ function getPostSlugs() {
   return fs.readdirSync(postsDirectoryPath);
 }
 
-function assertMetaData(metaData: any): asserts metaData is PostMetaData {
-  const missingProperties: Array<keyof PostMetaData> = [];
+function assertMetaData(
+  metaData: any
+): asserts metaData is MarkdownPostMetaData {
+  const missingProperties: Array<keyof MarkdownPostMetaData> = [];
   if (!("title" in metaData)) {
     missingProperties.push("title");
   }
@@ -50,6 +68,10 @@ function assertMetaData(metaData: any): asserts metaData is PostMetaData {
   }
 }
 
+export function isMarkdownPostData(post: PostData): post is MarkdownPostData {
+  return post.type === "markdown";
+}
+
 export async function getPostBySlug(slug: string): Promise<PostData> {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = path.join(postsDirectoryPath, `${realSlug}.md`);
@@ -66,6 +88,8 @@ export async function getPostBySlug(slug: string): Promise<PostData> {
   assertMetaData(data);
 
   return {
+    type: "markdown",
+    href: `/posts/${realSlug}`,
     slug: realSlug,
     content: await markdownToHtml(content),
     metaData: data,
@@ -78,8 +102,28 @@ export async function getAllPosts() {
   if (posts) {
     return posts;
   }
+
   const slugs = getPostSlugs();
-  const _posts = await Promise.all(slugs.map(getPostBySlug));
+
+  const _markdownPosts = await Promise.all(slugs.map(getPostBySlug));
+  const _zennPosts = getZennData()
+    .articles.filter((article) => !!zennMemberMap[article.user.username])
+    .map(
+      (article): ZennPostData => ({
+        type: "zenn",
+        slug: `__zenn-${article.slug}`,
+        href: `https://zenn.dev${article.path}`,
+        metaData: {
+          title: `${article.emoji} ${article.title}`,
+          author: zennMemberMap[article.user.username].name,
+          createdAt: new Date(article.published_at)
+            .toLocaleDateString()
+            .replace(/\//g, "-"),
+          tags: ["zenn"],
+        },
+      })
+    );
+  const _posts = [..._markdownPosts, ..._zennPosts];
 
   return _posts.sort((post1, post2) =>
     post1.metaData.createdAt > post2.metaData.createdAt ? -1 : 1
@@ -93,11 +137,19 @@ export async function getPostsByAuthor(authorName: string) {
 
 export async function getAllTags() {
   posts = await getAllPosts();
-  const tags = Array.from(new Set(posts.flatMap((post) => post.metaData.tags)));
+  const tags = Array.from(
+    new Set(
+      posts
+        .filter((post): post is MarkdownPostData => isMarkdownPostData(post))
+        .flatMap((post) => post.metaData.tags)
+    )
+  );
   return tags;
 }
 
 export async function getPostsByTag(tag: string) {
   posts = await getAllPosts();
-  return posts.filter((post) => post.metaData.tags.includes(tag));
+  return posts.filter(
+    (post) => isMarkdownPostData(post) && post.metaData.tags.includes(tag)
+  );
 }

@@ -2,6 +2,7 @@ export type Member = {
   name: string;
   twitterId: string;
   githubUsername: string;
+  zennUsername?: string;
   active: boolean;
 };
 
@@ -16,36 +17,42 @@ export const members: Member[] = [
     name: "nakajmg",
     twitterId: "nakajmg",
     githubUsername: "nakajmg",
+    zennUsername: "nakajmg",
     active: true,
   },
   {
     name: "BaHo",
     twitterId: "b4h0_c4t",
     githubUsername: "b4h0-c4t",
+    zennUsername: "BaHo",
     active: true,
   },
   {
     name: "sosukesuzuki",
     twitterId: "__sosukesuzuki",
     githubUsername: "sosukesuzuki",
+    zennUsername: "sosukesuzuki",
     active: true,
   },
   {
     name: "mugi",
     twitterId: "mugi_uno",
     githubUsername: "mugi-uno",
+    zennUsername: "mugi",
     active: true,
   },
   {
     name: "Saji",
     twitterId: "sajikix",
     githubUsername: "sajikix",
+    zennUsername: "Saji",
     active: true,
   },
   {
     name: "nus3",
     twitterId: "nus3_",
     githubUsername: "nus3",
+    zennUsername: "nus3",
     active: true,
   },
   {
@@ -55,6 +62,16 @@ export const members: Member[] = [
     active: false,
   },
 ];
+
+export const zennMemberMap = members
+  .filter(
+    (member): member is Member & { zennUsername: string } =>
+      !!member.zennUsername
+  )
+  .reduce((prev, member) => {
+    prev[member.zennUsername] = member;
+    return prev;
+  }, {} as Record<string, Member>);
 
 export const activeMembers: Member[] = members.filter(
   (member) => member.active
