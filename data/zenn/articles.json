@@ -1,1 +1,1 @@
-{ "articles": [] }
+{"articles":[{"id":122380,"slug":"ecmascript-trim","title":"String.prototype.trim() は何をトリムするのか？","path":"/cybozu_frontend/articles/ecmascript-trim","emoji":"✂️","published_at":"2022-10-28T10:44:02.510+09:00","user":{"username":"mugi"}}]}
