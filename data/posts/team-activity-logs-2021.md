@@ -8,7 +8,7 @@ tags:
   - FrontendExpert
 ---
 
-この記事は[Cybozu Advent Calendar 2021](https://adventar.org/calendars/6823)の18日目の記事です（業務なので前日に出してます🍀）。
+この記事は[Cybozu Advent Calendar 2021](https://adventar.org/calendars/6823)の 18 日目の記事です（業務なので前日に出してます 🍀）。
 
 サイボウズには 10 年以上運用が続いているプロダクトがいくつかあります。フロントエンドエキスパートチームは、そんなプロダクトや開発メンバーへの支援を横断的に行うチームです。
 
@@ -119,15 +119,7 @@ Cybozu Frontend Monthly は多くの人に視聴してもらえており、中�
 
 フロントエンドエキスパートチームの活動はチームメンバーだけでなく、プロダクトチームなどの協力があってこその活動も多いです。来年も関係各所と連携を取りつつ、着々と成果が出せるように取り組んで行きたいと思います。
 
-フロントエンドの横断的支援チーム、フロントエンドのリアーキテクチャなどに興味がある方はカジュアル面談からでもぜひお願いします。
-
-[Meety - サイボウズの Web フロントエンドについて話します](https://meety.net/matches/TgEdHofmrGjd:embed)
-
-[Meety - サイボウズのフロントエンド、チーム、働き方についてなどなんでも](https://meety.net/matches/arWAMFBPtzsm:embed)
-
-[Meety - サイボウズの開発組織について話します！](https://meety.net/matches/phQxpBZQLDBO:embed)
-
-応募もお待ちしております。
+フロントエンドの横断的支援チーム、フロントエンドのリアーキテクチャなどに興味がある方はカジュアル面談、応募をお待ちしております。
 
 [キャリア採用 - フロントエンドエキスパート](https://cybozu.co.jp/company/job/recruitment/list/front_end_expert.html:embed)
 
