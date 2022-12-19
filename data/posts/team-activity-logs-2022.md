@@ -35,9 +35,9 @@ kintone のフロントエンドリアーキテクチャ（フロリア）はゆ
 
 ### サイボウズ製品販売管理システムのフロントエンドリアーキテクチャ
 
-kintone をはじめとした、サイボウズの製品をお客様が購入する際に使われる販売管理システムは kintone と同じく Closure で構築された歴史のあるサービスです。
+kintone をはじめとした、サイボウズの製品をお客様が購入する際に使われる「販売管理システム」は、 kintone と同じく Closure で構築された歴史のあるサービスです。
 
-今年はこの販売管理システムの 1 ページのリアーキテクチャが完了しリリースすることができました。このまま勢いをつけてリアーキテクチャ完了を目指したいと思います。
+今年はこの販売管理システムの 1 ページのリアーキテクチャが完了しリリースすることができました 🎉 このまま勢いをつけてリアーキテクチャ完了を目指したいと思います。
 
 ## Frontend Monthly の開催
 
@@ -54,6 +54,7 @@ kintone をはじめとした、サイボウズの製品をお客様が購入す
 - [Cybozu Frontend Monthly#27 (ゲスト：株式会社ナレッジワーク) - connpass](https://cybozu.connpass.com/event/258919/)
 - [Cybozu Frontend Monthly#28 (ゲスト：サイボウズ Mantle チーム) - connpass](https://cybozu.connpass.com/event/262716/)
 - [Cybozu Frontend Monthly#29 JSConf JP 2022 Special - connpass](https://cybozu.connpass.com/event/265151/)
+- [Cybozu Frontend Monthly Special 2022 - connpass](https://cybozu.connpass.com/event/269123/)
 
 おかげさまで開催回数が 30 回まできました。2023 年も継続して開催したいと思います。
 
