@@ -22,7 +22,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
     "html-entities": "^2.3.3",
-    "next": "^12.1.5",
+    "next": "^13.1.5",
     "nextjs-google-analytics": "^1.0.9",
     "prismjs": "^1.27.0",
     "react": "^18.0.0",
