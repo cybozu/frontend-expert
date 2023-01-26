@@ -9,16 +9,13 @@ export const Header: VFC = () => {
       <div className="content">
         <h1>
           <Link href="/" passHref>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-            <a>
-              <Image
-                alt="Frontend Expert Team Logo"
-                width="200"
-                height="78"
-                src="/frontend-expert/logo.png"
-                unoptimized
-              />
-            </a>
+            <Image
+              alt="Frontend Expert Team Logo"
+              width="200"
+              height="78"
+              src="/frontend-expert/logo.png"
+              unoptimized
+            />
           </Link>
         </h1>
         <nav className="navigation">

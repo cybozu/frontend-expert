@@ -6,9 +6,8 @@ export const Tags = ({ tags }: { tags: string[] }) => {
     <div css={style}>
       {tags.map((tag) => {
         return (
-          <Link key={tag} href={`/tags/${tag}`} passHref>
-            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid -- passHref で渡しているから */}
-            <a className="tag">{tag}</a>
+          <Link key={tag} href={`/tags/${tag}`} passHref className="tag">
+            {tag}
           </Link>
         );
       })}

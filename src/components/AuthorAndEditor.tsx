@@ -8,11 +8,8 @@ import { MemberIcon } from "./MemberIcon";
 const Author = ({ author, label }: { author: Member; label?: string }) => {
   return (
     <div css={authorStyle}>
-      <Link href={`/members/${author.name}`} passHref>
-        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-        <a className="memberIcon">
-          <MemberIcon width="60" height="60" name={author.name} />
-        </a>
+      <Link href={`/members/${author.name}`} className="memberIcon" passHref>
+        <MemberIcon width="60" height="60" name={author.name} />
       </Link>
       <div className="authorInfo">
         <div className="label">{label ? label : "Author"}</div>

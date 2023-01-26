@@ -16,24 +16,20 @@ export const Posts = ({ posts }: Props) => {
         return (
           <div key={slug} className="item">
             <Link href={href} passHref>
-              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a>
-                <div className="title">{metaData.title}</div>
-
-                <div className="author">
-                  <MemberIcon width="30" height="30" name={metaData.author} />
-                  <span className="date">{metaData.createdAt}</span>
-                </div>
-                <div className="tags">
-                  {metaData.tags.map((tag, index) => {
-                    return (
-                      <span className="tag" key={index}>
-                        {tag}
-                      </span>
-                    );
-                  })}
-                </div>
-              </a>
+              <div className="title">{metaData.title}</div>
+              <div className="author">
+                <MemberIcon width="30" height="30" name={metaData.author} />
+                <span className="date">{metaData.createdAt}</span>
+              </div>
+              <div className="tags">
+                {metaData.tags.map((tag, index) => {
+                  return (
+                    <span className="tag" key={index}>
+                      {tag}
+                    </span>
+                  );
+                })}
+              </div>
             </Link>
           </div>
         );
