@@ -1,5 +1,5 @@
 import { css } from "@emotion/css";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Layout } from "../components/Layout";
 import { PageLayout } from "../components/PageLayout";
 

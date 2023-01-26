@@ -1,6 +1,6 @@
 import { VFC } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { css } from "@emotion/react";
 
 export const Header: VFC = () => {
