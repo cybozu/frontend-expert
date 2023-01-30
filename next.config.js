@@ -33,8 +33,26 @@ const nextConfig = {
         basePath: false,
       },
       {
+        source: "/members/:name",
+        destination: "/frontend-expert/members/:name",
+        permanent: true,
+        basePath: false,
+      },
+      {
         source: "/posts",
         destination: "/frontend-expert/posts",
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: "/posts/page/:pageNum",
+        destination: "/frontend-expert/posts/page/:pageNum",
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: "/posts/:slug",
+        destination: "/frontend-expert/posts/:slug",
         permanent: true,
         basePath: false,
       },

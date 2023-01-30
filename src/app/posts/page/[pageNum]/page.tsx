@@ -1,13 +1,17 @@
 import matter from "gray-matter";
-import { Posts } from "../../components/Posts";
-import { PostsPaginate } from "../../components/PostsPaginate";
-import { postsPerPage } from "../../utils/constants";
-import { PostData } from "../../utils/posts";
+import { Posts } from "../../../../components/Posts";
+import { PostsPaginate } from "../../../../components/PostsPaginate";
+import { postsPerPage } from "../../../../utils/constants";
+import { PostData } from "../../../../utils/posts";
 type Value = {
   default: string;
 };
 
-const PostsPage = async () => {
+type Params = {
+  pageNum?: string;
+};
+
+const PostsPage = async ({ params }: { params: Params }) => {
   const allPosts = ((context) => {
     const keys = context.keys().filter((fileName) => /^\.\//.test(fileName));
     const values = keys.map(context);
@@ -23,9 +27,11 @@ const PostsPage = async () => {
       };
     });
     return data;
-  })(require.context("../../../data/posts", true, /\.*\.md$/)) as PostData[];
+  })(
+    require.context("../../../../../data/posts", true, /\.*\.md$/)
+  ) as PostData[];
   const totalPage = Math.ceil(allPosts.length / postsPerPage);
-  const pageNum = 1;
+  const pageNum = parseInt(params?.pageNum || "1", 10);
   const start = (pageNum - 1) * postsPerPage;
   const end = start + postsPerPage;
   const posts = allPosts
