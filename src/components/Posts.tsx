@@ -1,30 +1,29 @@
-import { css } from "@emotion/react";
 import Link from "next/link";
 import { PostData } from "../utils/posts";
 import { MemberIcon } from "./MemberIcon";
-
+import styles from "./css/Posts.module.css";
 type Props = {
   posts: PostData[];
 };
 
 export const Posts = ({ posts }: Props) => {
   return (
-    <div css={style}>
+    <div>
       {posts.map((post) => {
         const { slug, href, metaData } = post;
 
         return (
-          <div key={slug} className="item">
+          <div key={slug} className={styles.item}>
             <Link href={href} passHref>
-              <div className="title">{metaData.title}</div>
-              <div className="author">
-                <MemberIcon width="30" height="30" name={metaData.author} />
-                <span className="date">{metaData.createdAt}</span>
+              <div className={styles.title}>{metaData.title}</div>
+              <div className={styles.author}>
+                <MemberIcon width={30} height={30} name={metaData.author} />
+                <span className={styles.date}>{metaData.createdAt}</span>
               </div>
-              <div className="tags">
+              <div className={styles.tags}>
                 {metaData.tags.map((tag, index) => {
                   return (
-                    <span className="tag" key={index}>
+                    <span className={styles.tag} key={index}>
                       {tag}
                     </span>
                   );
@@ -37,42 +36,3 @@ export const Posts = ({ posts }: Props) => {
     </div>
   );
 };
-
-const style = css`
-  .item {
-    font-size: 1.1rem;
-    padding: 12px 4px 8px;
-  }
-  .item + .item {
-    margin-top: 8px;
-    border-top: 1px solid #ebebeb;
-  }
-  .title {
-    font-size: 1.2em;
-  }
-  .tags {
-    margin-top: 12px;
-    display: flex;
-    align-items: center;
-    grid-gap: 8px;
-  }
-  .tag {
-    font-size: 0.5em;
-    border: 1px solid;
-    padding: 2px 4px;
-    border-radius: 2px;
-    color: currentColor;
-  }
-  .date {
-    font-size: 0.8em;
-  }
-  .author {
-    display: flex;
-    align-items: center;
-    grid-gap: 8px;
-    padding-top: 8px;
-    img {
-      border-radius: 4px;
-    }
-  }
-`;

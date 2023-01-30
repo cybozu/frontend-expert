@@ -1,18 +1,10 @@
-import { css } from "@emotion/react";
-import { FC } from "react";
+import { ReactNode } from "react";
+import styles from "./css/PageLayout.module.css";
 
-export const PageLayout: FC = ({ children }) => {
-  return <div css={style}>{children}</div>;
+type Props = {
+  children: ReactNode;
 };
 
-const style = css`
-  h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.75;
-  }
-`;
+export const PageLayout = ({ children }: Props) => {
+  return <div className={styles.pageLayout}>{children}</div>;
+};

@@ -1,7 +1,7 @@
-import { css } from "@emotion/react";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import styles from "./css/TweetButton.module.css";
 
 const twitterBaseUrl = "https://twitter.com/intent/tweet";
 export const TweetButton = () => {
@@ -19,8 +19,13 @@ export const TweetButton = () => {
 
   return (
     <>
-      <p css={style}>
-        <a href={href} className="tweetButton" target="_blank" rel="noreferrer">
+      <p className={styles.tweetButtonOuter}>
+        <a
+          href={href}
+          className={styles.tweetButton}
+          target="_blank"
+          rel="noreferrer"
+        >
           <FontAwesomeIcon icon={faTwitter} />
           ツイート
         </a>
@@ -28,34 +33,3 @@ export const TweetButton = () => {
     </>
   );
 };
-
-const style = css`
-  margin-top: 32px;
-  .tweetButton {
-    width: 88px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    padding: 4px;
-    font-size: 12px;
-    background-color: #1d9bf0;
-    position: relative;
-    height: 20px;
-    box-sizing: border-box;
-    padding: 1px 12px 1px 12px;
-    color: #fff;
-    border-radius: 9999px;
-    font-weight: 500;
-    cursor: pointer;
-    vertical-align: top;
-    &:hover {
-      background-color: #0c7abf;
-    }
-    svg {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      margin-right: 4px;
-    }
-  }
-`;

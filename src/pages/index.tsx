@@ -1,7 +1,7 @@
-import { css } from "@emotion/css";
 import Image from "next/legacy/image";
 import { Layout } from "../components/Layout";
 import { PageLayout } from "../components/PageLayout";
+import styles from "../components/css/IndexPage.module.css";
 
 const IndexPage = () => (
   <Layout>
@@ -11,7 +11,7 @@ const IndexPage = () => (
         href="https://speakerdeck.com/cybozuinsideout/frontendexpert-team"
         target="_blank"
         rel="noreferrer"
-        className={thubnmailStyle}
+        className={styles.thumbnail}
       >
         <Image
           unoptimized
@@ -22,7 +22,7 @@ const IndexPage = () => (
         />
       </a>
       <a
-        className={linkStyle}
+        className={styles.link}
         href="https://speakerdeck.com/cybozuinsideout/frontendexpert-team"
         target="_blank"
         aria-hidden="true"
@@ -33,18 +33,5 @@ const IndexPage = () => (
     </PageLayout>
   </Layout>
 );
-
-const thubnmailStyle = css`
-  border: 1px solid #dbdbdb;
-  border-radius: 3px;
-  display: block;
-`;
-
-const linkStyle = css`
-  margin-top: 8px;
-  display: block;
-  text-align: right;
-  font-size: 0.8em;
-`;
 
 export default IndexPage;

@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #4d5156;
+  background-color: var(--primary-color);
+}
+
+html {
+  font-size: 18px;
+  font-family: Montserrat, sans-serif;
+}
+
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+:not(pre) > pre[class*="language-"] {
+  font-size: 0.8rem;
+  margin: 1.5rem 0.5rem;
+  box-sizing: border-box;
+  border-radius: 2px;
+  line-height: 1.75;
+  padding: 0.5rem;
+}
+
+a:link {
+  text-decoration: none;
+  color: #0366d6;
+}
+a:visited {
+  color: #0366d6;
+}
+
+.hatena-link-frame {
+  max-width: 400px;
+  width: 100%;
+}

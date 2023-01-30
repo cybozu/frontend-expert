@@ -1,0 +1,36 @@
+.item {
+  font-size: 1.1rem;
+  padding: 12px 4px 8px;
+}
+.item + .item {
+  margin-top: 8px;
+  border-top: 1px solid #ebebeb;
+}
+.title {
+  font-size: 1.2em;
+}
+.tags {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  grid-gap: 8px;
+}
+.tag {
+  font-size: 0.5em;
+  border: 1px solid;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: currentColor;
+}
+.date {
+  font-size: 0.8em;
+}
+.author {
+  display: flex;
+  align-items: center;
+  grid-gap: 8px;
+  padding-top: 8px;
+}
+.author img {
+  border-radius: 4px;
+}

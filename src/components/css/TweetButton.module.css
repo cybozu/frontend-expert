@@ -1,0 +1,34 @@
+.tweetButtonOuter {
+  margin-top: 32px;
+}
+
+.tweetButton {
+  width: 88px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  font-size: 12px;
+  background-color: #1d9bf0;
+  position: relative;
+  height: 20px;
+  box-sizing: border-box;
+  padding: 1px 12px 1px 12px;
+  color: #fff;
+  border-radius: 9999px;
+  font-weight: 500;
+  cursor: pointer;
+  vertical-align: top;
+}
+.tweetButton:link {
+  color: #fff;
+}
+.tweetButton:hover {
+  background-color: #0c7abf;
+}
+.tweetButton svg {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+}

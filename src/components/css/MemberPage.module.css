@@ -1,0 +1,50 @@
+.layout {
+  padding: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+
+}
+
+.memberIcon img {
+  border-radius: 4px;
+}
+
+.memberName {
+  font-size: 1.8rem;
+  font-weight: normal;
+}
+
+.links {
+  list-style: none;
+  margin-top: 16px;
+}
+
+.links li {
+  margin-right: 1.2rem;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.posts {
+  border-left: 1px solid #ebebeb;
+  padding-left: 16px;
+}
+@media (max-width: 600px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .layout {
+    display: block;
+  }
+  .posts {
+    border: none;
+    padding-left: 0;
+    margin-top: 16px;
+    border-top: 1px solid #ebebeb;
+  }
+}
+

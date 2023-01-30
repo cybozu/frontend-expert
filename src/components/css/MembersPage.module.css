@@ -1,0 +1,48 @@
+.members {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  margin: auto;
+  max-width: 800px;
+
+}
+
+.member {
+  margin-bottom: 2.5rem;
+  display: flex;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+  padding-left: 1.2rem;
+}
+
+.details .name {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.details .links ul {
+  list-style-type: none;
+}
+
+.details .links ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+}
+.inactive {
+  color: gray;
+  font-size: 0.8rem;
+  padding-left: 8px;
+}
+
+@media (max-width: 600px) {
+  .members {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

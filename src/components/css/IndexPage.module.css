@@ -1,0 +1,12 @@
+.thumbnail {
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  display: block;
+}
+
+.link {
+  margin-top: 8px;
+  display: block;
+  text-align: right;
+  font-size: 0.8em;
+}

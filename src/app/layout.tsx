@@ -1,10 +1,10 @@
-import { useMemo, FC, ReactNode } from "react";
+import "./app.css";
+import "./theme.css";
+import "prismjs/themes/prism.css";
+import { useMemo, FC } from "react";
 import Head from "next/head";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
-import { usePagesViews } from "nextjs-google-analytics";
-import styles from "./css/Layout.module.css";
-
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
 const SITE_URL = "https://cybozu.github.io/frontend-expert";
 const DESCRIPTION =
@@ -32,18 +32,23 @@ type Props = {
   title?: string;
   slug?: string;
   description?: string;
-  children: ReactNode;
+  children: React.ReactNode;
 };
 
-export const Layout = ({ children, title, slug, description }: Props) => {
+export default function RootLayout({
+  children,
+  title,
+  slug,
+  description,
+}: Props) {
   const pageTitle = usePageTitle(title);
   const ogImageUrl = useOgImageUrl(slug);
   const descriptionText = useMemo(() => {
     return description ?? DESCRIPTION;
   }, [description]);
-  usePagesViews();
+
   return (
-    <div className={styles.layout}>
+    <div>
       <Head>
         <title>{pageTitle}</title>
         <meta charSet="utf-8" />
@@ -81,10 +86,27 @@ export const Layout = ({ children, title, slug, description }: Props) => {
         />
       </Head>
       <Header />
-      <main className={styles.main}>
-        <div className={styles.content}>{children}</div>
+      <main className="main">
+        <div className="content">{children}</div>
       </main>
       <Footer />
     </div>
   );
-};
+}
+
+// const style = css`
+//   width: 100%;
+
+//   .main {
+//     max-width: 100%;
+//     background-color: white;
+//   }
+
+//   .main .content {
+//     margin: 0 auto;
+//     max-width: var(--content-width);
+//     box-sizing: border-box;
+//     padding: 1rem 1rem 1.5rem;
+//     min-height: 400px;
+//   }
+// `;

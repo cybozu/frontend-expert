@@ -2,8 +2,8 @@ import Image from "next/legacy/image";
 import { getIconByName } from "../utils/members";
 
 type Props = {
-  width: string;
-  height: string;
+  width: number;
+  height: number;
   name: string;
 };
 

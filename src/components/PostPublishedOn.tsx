@@ -1,8 +1,7 @@
-import { css } from "@emotion/react";
-
+import styles from "./css/PostPublishedOn.module.css";
 export const PostPublishedOn = ({ createdAt }: { createdAt: string }) => {
   return (
-    <div css={style}>
+    <div className={styles.postPublishedOn}>
       Published on{" "}
       <time dateTime={createdAt} itemProp="datePublished">
         {createdAt}
@@ -10,9 +9,3 @@ export const PostPublishedOn = ({ createdAt }: { createdAt: string }) => {
     </div>
   );
 };
-
-const style = css`
-  margin-top: 0.6rem;
-  font-size: 0.8rem;
-  font-weight: bold;
-`;

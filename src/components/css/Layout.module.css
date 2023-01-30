@@ -1,0 +1,16 @@
+.layout {
+  width: 100%;
+}
+
+.main {
+  max-width: 100%;
+  background-color: white;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: var(--content-width);
+  box-sizing: border-box;
+  padding: 1rem 1rem 1.5rem;
+  min-height: 400px;
+}

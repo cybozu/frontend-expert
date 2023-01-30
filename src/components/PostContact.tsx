@@ -1,8 +1,8 @@
-import { css } from "@emotion/react";
+import styles from "./css/PostContact.module.css";
 
 export const PostContact = () => {
   return (
-    <div css={style}>
+    <div className={styles.postContact}>
       記事に関する報告などは
       <a
         href="https://github.com/cybozu/frontend-expert/issues"
@@ -15,11 +15,3 @@ export const PostContact = () => {
     </div>
   );
 };
-
-const style = css`
-  font-size: 0.9rem;
-  text-align: center;
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #ccc;
-`;

@@ -1,0 +1,20 @@
+.postPaginate {
+  margin-top: 40px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  grid-gap: 8px;
+}
+.postPaginate a {
+  border: 1px solid #dedede;
+  text-align: center;
+  padding: 8px 16px;
+  border-radius: 2px;
+}
+.postPaginate a:hover {
+  border-color: currentColor;
+}  
+.isCurrentPage {
+  color: inherit;
+  border-color: black;
+}

@@ -1,6 +1,5 @@
-import { css } from "@emotion/react";
 import Link from "next/link";
-
+import styles from "./css/PostPaginate.module.css";
 type Props = {
   pageNum: number;
   totalPage: number;
@@ -9,7 +8,7 @@ export const PostsPaginate = ({ pageNum, totalPage }: Props) => {
   const arr = Array.from({ length: totalPage }).map((_, k) => k + 1);
 
   return (
-    <div css={style}>
+    <div className={styles.postPaginate}>
       {arr.map((_pageNum, index) => {
         return pageNum !== _pageNum ? (
           <Link href={`/posts/page/${_pageNum}`} key={index} passHref>
@@ -17,7 +16,7 @@ export const PostsPaginate = ({ pageNum, totalPage }: Props) => {
           </Link>
         ) : (
           /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-          <a className="isCurrentPage" key={index}>
+          <a className={styles.isCurrentPage} key={index}>
             {_pageNum}
           </a>
         );
@@ -25,24 +24,3 @@ export const PostsPaginate = ({ pageNum, totalPage }: Props) => {
     </div>
   );
 };
-
-const style = css`
-  margin-top: 40px;
-  margin-bottom: 32px;
-  display: flex;
-  justify-content: center;
-  grid-gap: 8px;
-  a {
-    border: 1px solid #dedede;
-    text-align: center;
-    padding: 8px 16px;
-    border-radius: 2px;
-    &:hover {
-      border-color: currentColor;
-    }
-  }
-  .isCurrentPage {
-    color: inherit;
-    border-color: black;
-  }
-`;
