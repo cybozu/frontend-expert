@@ -1,8 +1,10 @@
-import { useMemo, FC, ReactNode } from "react";
+import "../_pages/app.css";
+import "../_pages/theme.css";
+import "prismjs/themes/prism.css";
+import { useMemo, ReactNode } from "react";
 import Head from "next/head";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { usePagesViews } from "nextjs-google-analytics";
 import styles from "./css/Layout.module.css";
 
 const SITE_NAME = "サイボウズ フロントエンドエキスパートチーム";
@@ -41,7 +43,7 @@ export const Layout = ({ children, title, slug, description }: Props) => {
   const descriptionText = useMemo(() => {
     return description ?? DESCRIPTION;
   }, [description]);
-  usePagesViews();
+  // usePagesViews();
   return (
     <div className={styles.layout}>
       <Head>
