@@ -42,7 +42,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-unicorn": "^40.1.0",
     "gh-pages": "^3.2.3",
-    "gray-matter": "^4.0.2",
+    "gray-matter": "^4.0.3",
     "image-size": "^1.0.0",
     "minify-xml": "^3.2.0",
     "next-remote-watch": "^1.0.0",

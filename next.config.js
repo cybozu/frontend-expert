@@ -18,6 +18,28 @@ const nextConfig = {
     });
     return config;
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/frontend-expert",
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: "/members",
+        destination: "/frontend-expert/members",
+        permanent: true,
+        basePath: false,
+      },
+      {
+        source: "/posts",
+        destination: "/frontend-expert/posts",
+        permanent: true,
+        basePath: false,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
