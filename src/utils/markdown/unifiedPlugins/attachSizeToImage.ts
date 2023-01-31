@@ -1,4 +1,5 @@
-import path from "node:path";
+// eslint-disable-next-line
+import path from "path";
 import type { Plugin } from "unified";
 import type { Node, Parent } from "unist";
 import type { Image } from "mdast";
