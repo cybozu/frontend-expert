@@ -11,11 +11,28 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  webpack: function (config) {
+  webpack: function (config, { isServer }) {
     config.module.rules.push({
       test: /\.md$/,
       use: "raw-loader",
     });
+    config.externals = { canvas: {} };
+    if (!isServer) {
+      config.resolve = {
+        ...config.resolve,
+        fallback: {
+          net: false,
+          dns: false,
+          tls: false,
+          assert: false,
+          path: false,
+          fs: false,
+          events: false,
+          process: false,
+          child_process: false,
+        },
+      };
+    }
     return config;
   },
   async redirects() {
