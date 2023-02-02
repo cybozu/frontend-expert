@@ -24,7 +24,7 @@ export const hatenaLinkCard: Plugin = () => {
 
       const url = (node.url as string).replace(/:embed$/, "");
       node.children = [
-        h("div", { className: "hatena-link" }, [
+        h("span", { className: "hatena-link" }, [
           h("iframe", {
             className: "hatena-link-frame",
             src: `https://hatenablog-parts.com/embed?url=${url}`,
