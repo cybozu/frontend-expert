@@ -73,6 +73,12 @@ const nextConfig = {
         permanent: true,
         basePath: false,
       },
+      {
+        source: "/tags/:tag",
+        destination: "/frontend-expert/tags/:tag",
+        permanent: true,
+        basePath: false,
+      },
     ];
   },
 };

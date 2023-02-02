@@ -1,7 +1,8 @@
+"use client";
 import "../_pages/app.css";
 import "../_pages/theme.css";
 import "prismjs/themes/prism.css";
-import { useMemo, ReactNode } from "react";
+import { ReactNode } from "react";
 import Head from "next/head";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
@@ -13,23 +14,8 @@ const DESCRIPTION =
   "サイボウズ フロントエンドエキスパートチームのウェブサイトです";
 
 const DEFAULT_PAGE_TITLE = SITE_NAME;
-function usePageTitle(title?: string) {
-  return useMemo(
-    () => (title ? `${title} | ${DEFAULT_PAGE_TITLE}` : DEFAULT_PAGE_TITLE),
-    [title]
-  );
-}
 
 const OG_IMAGE_URL = SITE_URL + "/ogp/ogp.jpg";
-function useOgImageUrl(slug?: string) {
-  return useMemo(() => {
-    if (slug) {
-      return SITE_URL + "/ogp/posts/" + slug + ".jpg";
-    }
-    return OG_IMAGE_URL;
-  }, [slug]);
-}
-
 type Props = {
   title?: string;
   slug?: string;
@@ -38,11 +24,13 @@ type Props = {
 };
 
 export const Layout = ({ children, title, slug, description }: Props) => {
-  const pageTitle = usePageTitle(title);
-  const ogImageUrl = useOgImageUrl(slug);
-  const descriptionText = useMemo(() => {
-    return description ?? DESCRIPTION;
-  }, [description]);
+  const pageTitle = title
+    ? `${title} | ${DEFAULT_PAGE_TITLE}`
+    : DEFAULT_PAGE_TITLE;
+  const ogImageUrl = slug
+    ? SITE_URL + "/ogp/posts/" + slug + ".jpg"
+    : OG_IMAGE_URL;
+  const descriptionText = description ?? DESCRIPTION;
   // usePagesViews();
   return (
     <div className={styles.layout}>

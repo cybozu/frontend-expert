@@ -12,7 +12,7 @@ import gfm from "remark-gfm";
 import { hatenaLinkCard } from "../../../utils/markdown/unifiedPlugins/hatenaLinkCard";
 import { attachSizeToImage } from "../../../utils/markdown/unifiedPlugins/attachSizeToImage";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPost } from "./getPost";
 import rehypeRaw from "rehype-raw";
 
