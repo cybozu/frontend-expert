@@ -1,7 +1,6 @@
 import { Posts } from "../../components/Posts";
 import { PostsPaginate } from "../../components/PostsPaginate";
-import { postsPerPage } from "../../utils/constants";
-
+import { postsPerPage } from "../constants";
 import { getAllPosts } from "./getAllPosts";
 
 const PostsPage = async () => {

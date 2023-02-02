@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PostData } from "../utils/posts";
+import { PostData } from "../types";
 import { MemberIcon } from "./MemberIcon";
 import styles from "./css/Posts.module.css";
 type Props = {

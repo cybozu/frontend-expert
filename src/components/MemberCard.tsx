@@ -1,4 +1,4 @@
-import { Member } from "../utils/members";
+import { Member } from "../app/members/members";
 import Link from "next/link";
 import { MemberIcon } from "./MemberIcon";
 import { faGithubAlt, faTwitter } from "@fortawesome/free-brands-svg-icons";

@@ -1,7 +1,8 @@
 import { PageLayout } from "../../components/PageLayout";
 import styles from "./MembersPage.module.css";
-import { members } from "../../utils/members";
+import { members } from "./members";
 import { MemberCard } from "../../components/MemberCard";
+
 const MembersPage = () => {
   return (
     <PageLayout>

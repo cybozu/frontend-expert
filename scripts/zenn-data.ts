@@ -1,7 +1,7 @@
 import { dirname } from "dirname-filename-esm";
 import fs from "node:fs/promises";
 import path from "node:path";
-import { Articles } from "../src/utils/zenn/schema";
+import { Articles } from "../src/app/posts/schema";
 
 const __dirname = dirname(import.meta);
 const ZENN_DIR_PATH = path.join(__dirname, "..", "data", "zenn");

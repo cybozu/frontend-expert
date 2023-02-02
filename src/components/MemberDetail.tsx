@@ -1,6 +1,6 @@
 import { faGithubAlt, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Member } from "../utils/members";
+import { Member } from "../app/members/members";
 import styles from "./css/MemberDetail.module.css";
 import { MemberIcon } from "./MemberIcon";
 

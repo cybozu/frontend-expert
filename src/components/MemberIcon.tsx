@@ -1,5 +1,5 @@
 import Image from "next/legacy/image";
-import { getIconByName } from "../utils/members";
+import { getIconByName } from "../app/members/members";
 
 type Props = {
   width: number;

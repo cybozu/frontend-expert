@@ -1,10 +1,21 @@
 import { Posts } from "../../../../components/Posts";
 import { PostsPaginate } from "../../../../components/PostsPaginate";
-import { postsPerPage } from "../../../../utils/constants";
+import { postsPerPage } from "../../../constants";
 import { getAllPosts } from "../../getAllPosts";
 
 type Params = {
   pageNum?: string;
+};
+
+export const generateStaticParams = () => {
+  const allPosts = getAllPosts();
+  const totalPage = Math.ceil(allPosts.length / postsPerPage);
+
+  return Array.from({ length: totalPage }).map((_, index) => {
+    return {
+      page: index + 1,
+    };
+  });
 };
 
 const PostsPage = async ({ params }: { params: Params }) => {

@@ -6,19 +6,29 @@ import { PostPublishedOn } from "../../../components/PostPublishedOn";
 import { PostTitle } from "../../../components/PostTitle";
 import { Tags } from "../../../components/Tags";
 import { TweetButton } from "../../../components/TweetButton";
-import { getMemberByName, getMembersByName } from "../../../utils/members";
+import { getMemberByName, getMembersByName } from "../../members/members";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
-import { hatenaLinkCard } from "../../../utils/markdown/unifiedPlugins/hatenaLinkCard";
-import { attachSizeToImage } from "../../../utils/markdown/unifiedPlugins/attachSizeToImage";
+import { hatenaLinkCard } from "./hatenaLinkCard";
+import { attachSizeToImage } from "./attachSizeToImage";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { getPost } from "./getPost";
 import rehypeRaw from "rehype-raw";
+import { getAllPosts } from "../getAllPosts";
 
 type Params = {
   slug: string;
 };
+
+// export const generateStaticParams = () => {
+//   const allPosts = getAllPosts();
+//   return allPosts.map((post) => {
+//     return {
+//       slug: post.slug,
+//     };
+//   });
+// };
 
 const PostPage = ({ params }: { params: Params }) => {
   const post = getPost({ slug: params.slug });
