@@ -1,3 +1,6 @@
+import "./app.css";
+import "./theme.css";
+import "prismjs/themes/prism.css";
 import { Layout } from "../components/Layout";
 type Props = {
   title?: string;

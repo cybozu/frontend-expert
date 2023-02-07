@@ -1,7 +1,4 @@
 "use client";
-import "../_pages/app.css";
-import "../_pages/theme.css";
-import "prismjs/themes/prism.css";
 import { ReactNode } from "react";
 import Head from "next/head";
 import { Header } from "./Header";

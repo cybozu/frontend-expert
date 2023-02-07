@@ -1,4 +1,4 @@
-import { MarkdownPostData } from "../../../utils/posts";
+import { MarkdownPostData } from "../../../types";
 import matter from "gray-matter";
 
 type Value = {

@@ -1,3 +1,5 @@
+/* global __dirname */
+const path = require("node:path");
 /**
  * @type {import('next').NextConfig}
  */
@@ -10,6 +12,7 @@ const nextConfig = {
   swcMinify: true,
   experimental: {
     appDir: true,
+    esmExternals: "loose",
   },
   webpack: function (config, { isServer }) {
     config.module.rules.push({
