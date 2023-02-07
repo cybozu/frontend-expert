@@ -1,10 +1,11 @@
+"use client";
 import { Posts } from "../../../../components/Posts";
 import { PostsPaginate } from "../../../../components/PostsPaginate";
 import { postsPerPage } from "../../../constants";
 import { getAllPosts } from "../../getAllPosts";
 
 type Params = {
-  pageNum?: string;
+  pageNum: string;
 };
 
 export const generateStaticParams = () => {
@@ -13,15 +14,15 @@ export const generateStaticParams = () => {
 
   return Array.from({ length: totalPage }).map((_, index) => {
     return {
-      page: index + 1,
+      pageNum: index + 1 + "",
     };
   });
 };
 
-const PostsPage = async ({ params }: { params: Params }) => {
+const PostsPage = ({ params }: { params: Params }) => {
   const allPosts = getAllPosts();
   const totalPage = Math.ceil(allPosts.length / postsPerPage);
-  const pageNum = parseInt(params?.pageNum || "1", 10);
+  const pageNum = parseInt(params.pageNum, 10);
   const start = (pageNum - 1) * postsPerPage;
   const end = start + postsPerPage;
   const posts = allPosts

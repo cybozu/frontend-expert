@@ -1,3 +1,4 @@
+"use client";
 import { Posts } from "../../../components/Posts";
 import { getAllPosts } from "../../posts/getAllPosts";
 
@@ -11,22 +12,22 @@ type Params = {
   tag: string;
 };
 
-// export const generateStaticParams = () => {
-//   const allPosts = getAllPosts();
-//   const tags = Array.from(
-//     new Set(
-//       allPosts
-//         .filter((post) => post.type === "markdown")
-//         .flatMap((post) => post.metaData.tags)
-//     )
-//   );
+export const generateStaticParams = () => {
+  const allPosts = getAllPosts();
+  const tags = Array.from(
+    new Set(
+      allPosts
+        .filter((post) => post.type === "markdown")
+        .flatMap((post) => post.metaData.tags)
+    )
+  );
 
-//   return tags.map((tag) => {
-//     return {
-//       tag,
-//     };
-//   });
-// };
+  return tags.map((tag) => {
+    return {
+      tag,
+    };
+  });
+};
 
 const TagPage = ({ params: { tag } }: { params: Params }) => {
   const { posts } = getData({ tag });

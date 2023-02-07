@@ -21,14 +21,14 @@ type Params = {
   slug: string;
 };
 
-// export const generateStaticParams = () => {
-//   const allPosts = getAllPosts();
-//   return allPosts.map((post) => {
-//     return {
-//       slug: post.slug,
-//     };
-//   });
-// };
+export const generateStaticParams = () => {
+  const allPosts = getAllPosts();
+  return allPosts.map((post) => {
+    return {
+      slug: post.slug,
+    };
+  });
+};
 
 const PostPage = ({ params }: { params: Params }) => {
   const post = getPost({ slug: params.slug });

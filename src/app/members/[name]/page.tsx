@@ -1,12 +1,13 @@
+"use client";
 import { MemberDetail } from "../../../components/MemberDetail";
 import { Posts } from "../../../components/Posts";
 import styles from "./MemberPage.module.css";
 import { getMemberByName, members } from "../members";
 import { getAllPosts } from "../../posts/getAllPosts";
 
-// export const generateStaticParams = () => {
-//   return members.map(({ name }) => ({ name }));
-// };
+export const generateStaticParams = () => {
+  return members.map(({ name }) => ({ name }));
+};
 
 const getData = ({ name }: { name: string }) => {
   const member = getMemberByName(name);
