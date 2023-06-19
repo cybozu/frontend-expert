@@ -18,7 +18,7 @@ export const members: Member[] = [
     name: "BaHo",
     twitterId: "b4h0_c4t",
     githubUsername: "b4h0-c4t",
-    zennUsername: "BaHo",
+    zennUsername: "b4h0_c4t",
     active: true,
   },
   {
@@ -39,7 +39,7 @@ export const members: Member[] = [
     name: "Saji",
     twitterId: "sajikix",
     githubUsername: "sajikix",
-    zennUsername: "Saji",
+    zennUsername: "sajikix",
     active: true,
   },
   {
