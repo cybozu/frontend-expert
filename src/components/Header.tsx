@@ -31,7 +31,7 @@ export const Header: VFC = () => {
             </li>
             <li>
               <a
-                href="https://cybozu.co.jp/company/job/recruitment/list/front_end_expert.html"
+                href="https://cybozu.co.jp/recruit/entry/career/front-end-expert.html"
                 target="_blank"
                 rel="noopener noreferrer"
               >
