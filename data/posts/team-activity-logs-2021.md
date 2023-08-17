@@ -121,6 +121,6 @@ Cybozu Frontend Monthly は多くの人に視聴してもらえており、中�
 
 フロントエンドの横断的支援チーム、フロントエンドのリアーキテクチャなどに興味がある方はカジュアル面談、応募をお待ちしております。
 
-[キャリア採用 - フロントエンドエキスパート](https://cybozu.co.jp/company/job/recruitment/list/front_end_expert.html:embed)
+[キャリア採用 - フロントエンドエキスパート](https://cybozu.co.jp/recruit/entry/career/front-end-expert.html:embed)
 
-[キャリア採用 - フロントエンドエンジニア（kintone アーキテクチャ刷新 PJ）](https://cybozu.co.jp/company/job/recruitment/list/front_end_engineer_kintone.html:embed)
+[キャリア採用 - フロントエンドエンジニア（kintone アーキテクチャ刷新 PJ）](https://cybozu.co.jp/recruit/entry/career/front-end-engineer-kintone.html:embed)
