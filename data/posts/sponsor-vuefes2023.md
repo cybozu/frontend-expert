@@ -4,7 +4,7 @@ author: "nakajmg"
 createdAt: "2023-10-26"
 summary: "Vue Fes Japan 2023にサイボウズがシルバースポンサーとして協賛します。スポンサーブースの出展もあります。"
 tags:
-  - Sponser
+  - Sponsor
 ---
 
 2023年10月28（土）に開催される[Vue Fes Japan 2023](https://vuefes.jp/2023/)にサイボウズはシルバースポンサーとして協賛しています。
