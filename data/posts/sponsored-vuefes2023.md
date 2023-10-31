@@ -15,7 +15,7 @@ tags:
 
 ![サイボウズのブースの様子](/frontend-expert/image/sponsored-vuefes2023/booth01.jpg)
 
-ブースでは、Vue を「完全に理解した」、「何もわからない」、「チョットデキル」でアンケートを取ったり、[ハシコウスロット](https://cybozu.github.io/hashikou-lottery/)を使ってサイボウズフロントエンドのオリジナルキャラクター「[ハシコウ](https://blog.cybozu.io/entry/2023/09/06/133726)」のステッカーをブースに来てくれた方へプレゼントしていました。
+ブースでは、Vue を「完全に理解した」、「何もわからない」、「チョットデキル」でアンケートを取ったり、サイボウズフロントエンドのオリジナルキャラクター「[ハシコウ](https://blog.cybozu.io/entry/2023/09/06/133726)」のステッカーを[ハシコウスロット](https://cybozu.github.io/hashikou-lottery/)を使ってブースに来てくれた方へプレゼントしていました。
 
 ![アンケートボード](/frontend-expert/image/sponsored-vuefes2023/booth05.jpg)
 
