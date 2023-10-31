@@ -1,13 +1,13 @@
 ---
-title: "Vue Fes Japan 2023にスポンサーとして参加しました"
+title: "Vue Fes Japan 2023 にスポンサーとして参加しました"
 author: "nus3"
 createdAt: "2023-10-30"
-summary: "Vue Fes Japan 2023参加レポート"
+summary: "Vue Fes Japan 2023 参加レポート"
 tags:
   - Sponsor
 ---
 
-2023 年 10 月 28（土）に[Vue Fes Japan 2023](https://vuefes.jp/2023/)が開催され、サイボウズではスポンサーブースを出展しました。
+2023 年 10 月 28（土）に[Vue Fes Japan 2023](https://vuefes.jp/2023/) が開催され、サイボウズではスポンサーブースを出展しました。
 
 ## スポンサーブースの様子
 
