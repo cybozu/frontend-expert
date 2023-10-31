@@ -48,6 +48,6 @@ tags:
 
 はじめてのブース運営は学びが多かったですし、Vue Fes を通して色々な方と交流ができて、とても楽しい 1 日でした。運営スタッフの皆様、このような素敵なイベントを開催してくださりありがとうございました！
 
-そして、これはブース運営が終わり抜け殻になった FEE のメンバー達。
+これはブース運営で燃え尽きそうになる nus3。
 
-![抜け殻になったFEEメンバーたち](/frontend-expert/image/sponsored-vuefes2023/otsukare.jpg)
+![燃え尽きそうなnus3](/frontend-expert/image/sponsored-vuefes2023/nus3.jpg)
