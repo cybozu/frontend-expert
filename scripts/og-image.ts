@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { dirname } from "dirname-filename-esm";
-import puppeteer from "puppeteer";
+import { Browser, launch } from "puppeteer";
 import { getPosts, PostData } from "./utils";
 import { loadDefaultJapaneseParser } from "budoux";
 
@@ -44,7 +44,10 @@ async function clearImages(posts: PostData[]) {
 }
 
 async function captureOgImages(posts: PostData[]) {
-  const browser = await puppeteer.launch();
+  const browser = await launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+
   await captureOgImage(
     browser,
     "Cybozu Frontend Expert Team",
@@ -58,7 +61,7 @@ async function captureOgImages(posts: PostData[]) {
 }
 
 async function captureOgImage(
-  browser: puppeteer.Browser,
+  browser: Browser,
   title: string,
   imagePath: string
 ) {
@@ -75,7 +78,7 @@ async function captureOgImage(
     );
     await page.reload();
     await page.screenshot({
-      path: imagePath,
+      path: imagePath as `${string}.jpeg`,
       type: "jpeg",
     });
     await page.close();
